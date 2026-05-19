@@ -1,0 +1,61 @@
+---
+title: "Mutually Exclusive vs. Collectively Exhaustive"
+date: "2020-01-28"
+category: "Mathematics"
+tags: ["probability", "statistics", "fundamentals"]
+excerpt: "A quick primer on two foundational concepts in probability theory that are often confused — mutual exclusivity and collective exhaustiveness."
+---
+
+## Introduction
+
+In the context of probability theory you may find yourself facing the question of what makes a **sample space** a *valid* sample space.
+
+### What is a Sample Space?
+
+A **sample space** is the set of all possible outcomes of an experiment. For example, when flipping a coin, the sample space is `{Head, Tail}`. Both outcomes are:
+
+- **Mutually Exclusive** — they cannot happen at the same time
+- **Collectively Exhaustive** — together they cover every possible outcome
+
+---
+
+## Mutually Exclusive Events
+
+Two events A and B are **mutually exclusive** (also called *disjoint*) if they cannot both occur at the same time:
+
+$$P(A \cap B) = 0$$
+
+**Example:** When rolling a die, getting a 3 and getting a 5 are mutually exclusive — you can't roll both at once.
+
+---
+
+## Collectively Exhaustive Events
+
+A set of events is **collectively exhaustive** if at least one of them must occur. Together they cover the entire sample space:
+
+$$P(A_1 \cup A_2 \cup \ldots \cup A_n) = 1$$
+
+**Example:** When rolling a standard die, the events `{1, 2}`, `{3, 4}`, `{5, 6}` are collectively exhaustive — one of these groups must appear.
+
+---
+
+## Why Both Matter
+
+For a valid probability distribution, you need events that are:
+
+1. **Mutually Exclusive** — no overlap between outcomes
+2. **Collectively Exhaustive** — every possibility is accounted for
+
+Together, these properties form a **MECE** (Mutually Exclusive, Collectively Exhaustive) partition of the sample space. This concept is fundamental not just in probability but also in structured problem-solving (used widely in consulting and systems design).
+
+---
+
+## Quick Summary
+
+| Property | Meaning | Formula |
+|---|---|---|
+| Mutually Exclusive | Events cannot co-occur | P(A ∩ B) = 0 |
+| Collectively Exhaustive | Events cover all possibilities | P(A₁ ∪ ... ∪ Aₙ) = 1 |
+| MECE | Both properties hold | Valid probability space |
+
+Stay tuned for more probability content. Feel free to drop a comment below!

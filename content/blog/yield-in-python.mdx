@@ -1,0 +1,116 @@
+---
+title: "yield in Python"
+date: "2020-03-05"
+category: "Coding"
+tags: ["python", "generators", "programming"]
+excerpt: "Understanding the yield keyword in Python — how generators work, when to use them, and their key advantages over regular functions."
+---
+
+## Introduction
+
+If you've been writing Python code, you will definitely find yourself writing functions to solve tasks.
+
+For example, consider this function:
+
+```python
+def function_1(x: int):
+    for i in range(11):
+        print(f'{x}*{i} = {x*i}')
+```
+
+Its behavior is straightforward — it prints a multiplication table. But what about this version?
+
+```python
+def function_2(x: int):
+    for i in range(11):
+        yield f'{x}*{i} = {x*i}'
+```
+
+The keyword **`yield`** may not be obvious at first. Let's break it down.
+
+---
+
+## `return` vs `yield`
+
+`function_1` with `x=5` prints:
+
+```
+5*0 = 0
+5*1 = 5
+5*2 = 10
+...
+5*10 = 50
+```
+
+`function_2` does *not* print anything immediately. Instead, `yield` **suspends** the function's execution and sends a value back to the caller — but retains enough state to resume exactly where it left off.
+
+This means its code produces a series of values *over time*, rather than computing them all at once.
+
+---
+
+## Generator Functions
+
+The `yield` statement is only used in **generator functions**. When a generator function is called, it returns a **generator iterator** (a generator object). The body is executed lazily — only when you call `next()` on it:
+
+```python
+gen = function_2(5)
+print(next(gen))  # "5*0 = 0"
+print(next(gen))  # "5*1 = 5"
+```
+
+Or iterate it:
+
+```python
+for line in function_2(5):
+    print(line)
+```
+
+---
+
+## How yield Works Internally
+
+When `yield` is executed:
+
+1. The current state (local variables, instruction pointer, evaluation stack) is **frozen**
+2. The yielded value is returned to `next()`'s caller
+3. On the next `next()` call, execution resumes immediately after the `yield`
+
+---
+
+## Advantages of `yield`
+
+- **Memory efficient** — values are generated one at a time, not stored all at once
+- **Lazy evaluation** — computation happens only when needed
+- **Stateful** — the generator remembers its position between calls
+
+## Disadvantages
+
+- Can be harder to debug without appropriate logging
+- Cannot be reused — a consumed generator is exhausted
+
+---
+
+## Practical Example
+
+Generators shine when working with large datasets:
+
+```python
+def read_large_file(filepath):
+    with open(filepath) as f:
+        for line in f:
+            yield line.strip()
+
+# Processes lines one at a time — never loads the full file into memory
+for line in read_large_file("huge_dataset.txt"):
+    process(line)
+```
+
+The associated notebook for this post is available on [GitHub](https://github.com/Kabongosalomon/Online-Tutorial/blob/master/English/yield%20in%20Python.ipynb).
+
+---
+
+## References
+
+- [GeeksforGeeks — return vs yield](https://www.geeksforgeeks.org/use-yield-keyword-instead-return-keyword-python/)
+- [GeeksforGeeks — yield Keyword](https://www.geeksforgeeks.org/python-yield-keyword/)
+- [Python Documentation — yield](https://docs.python.org/3/reference/expressions.html#yield-expressions)

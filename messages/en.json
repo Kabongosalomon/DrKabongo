@@ -1,0 +1,121 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Projects",
+    "publications": "Publications",
+    "cv": "CV",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Salomon Kabongo",
+    "title": "PhD",
+    "tagline": "AI Researcher · Engineer · Educator",
+    "description": "Lead Software Engineer at State Farm's Innovation Group, PhD in NLP from Leibniz Universität Hannover, former Board Member of the Masakhane Research Foundation. Building AI for Africa and the world.",
+    "cta_cv": "View CV",
+    "cta_youtube": "Watch on YouTube",
+    "cta_contact": "Get in Touch",
+    "scroll": "Scroll down"
+  },
+  "stats": {
+    "patent": "1 Patent Issued + 3 Pending",
+    "patent_year": "AI/ML · State Farm",
+    "bestpaper": "Best Paper Award",
+    "bestpaper_venue": "ICADL 2021",
+    "citations": "280+ Citations",
+    "citations_label": "Masakhane NLP",
+    "funding": "~$9M Research Funding",
+    "funding_label": "Masakhane (2021–2026)"
+  },
+  "about": {
+    "section_label": "About",
+    "title": "Bridging AI Research & Real-World Impact",
+    "bio1": "Dr. Salomon Kabongo is an AI researcher, engineer, and educator with a deep commitment to democratizing technology for Africa and the world. He holds a PhD in Computer Science (NLP/LLMs) from Leibniz Universität Hannover, Germany.",
+    "bio2": "As Lead Software Engineer at State Farm's Innovation Group, he leads R&D in computer vision, document intelligence, and generative AI — resulting in 1 issued AI/ML patent and 3+ additional filings. He previously served on the board of the Masakhane Research Foundation (2021–2026), where he drove a $9M+ initiative to build AI infrastructure for over one billion African language speakers.",
+    "bio3": "A passionate educator, Dr. Kabongo shares his knowledge through YouTube channels in English, French, and Lingala — making AI accessible across languages and continents.",
+    "research_title": "Research Interests",
+    "research_items": [
+      "Natural Language Processing & Large Language Models",
+      "Automatic Speech Recognition & Translation (low-resource languages)",
+      "Knowledge Graphs & Information Extraction",
+      "Computer Vision & Multimodal AI",
+      "African Language Technology"
+    ]
+  },
+  "youtube": {
+    "section_label": "Content",
+    "title": "Learn With Me",
+    "subtitle": "Sharing AI knowledge across three languages. Subscribe to the channel that speaks your language.",
+    "english_name": "@DrKabongo",
+    "english_desc": "English content on AI, NLP, research, and technology. Deep dives, tutorials, and career insights for the global AI community.",
+    "english_label": "English Channel",
+    "french_name": "@DrKabongoFr",
+    "french_desc": "Contenu en français sur l'IA, les LLMs, la recherche et la carrière tech. Pour la francophonie africaine et mondiale.",
+    "french_label": "French Channel",
+    "lingala_name": "@DarAkili",
+    "lingala_desc": "African educators teaching in African languages — Lingala and more. Technology, science, and knowledge in the languages of Africa.",
+    "lingala_label": "African Languages",
+    "subscribe": "Subscribe",
+    "watch": "Watch Now"
+  },
+  "blog": {
+    "section_label": "Blog",
+    "title": "Latest Posts",
+    "subtitle": "Technical articles on AI, programming, and career growth.",
+    "read_more": "Read more",
+    "all_posts": "View all posts",
+    "min_read": "min read",
+    "back": "Back to blog",
+    "no_posts": "No posts yet. Stay tuned!"
+  },
+  "projects": {
+    "section_label": "Projects",
+    "title": "Selected Projects",
+    "subtitle": "Open-source contributions, research platforms, and side projects.",
+    "github": "GitHub",
+    "demo": "Live Demo",
+    "paper": "Paper"
+  },
+  "publications": {
+    "section_label": "Publications",
+    "title": "Publications & Patents",
+    "subtitle": "Peer-reviewed papers, workshops, and patents across NLP, speech, and information retrieval.",
+    "paper": "Paper",
+    "code": "Code",
+    "patent_label": "US Patent",
+    "citations_label": "citations",
+    "scholar": "Google Scholar",
+    "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ"
+  },
+  "cv": {
+    "section_label": "CV",
+    "title": "Curriculum Vitae",
+    "subtitle": "PhD in NLP · Lead Software Engineer · Masakhane Board Member",
+    "download": "Download PDF",
+    "education": "Education",
+    "experience": "Experience",
+    "skills": "Technical Skills",
+    "awards": "Awards & Honors",
+    "present": "Present",
+    "languages_label": "Languages",
+    "deep_learning": "Deep Learning & AI",
+    "cloud": "Cloud & MLOps",
+    "research_areas": "Research Areas"
+  },
+  "contact": {
+    "section_label": "Contact",
+    "title": "Let's Connect",
+    "subtitle": "Open to research collaborations, speaking engagements, and technical partnerships.",
+    "book_call": "Book a Call",
+    "book_call_url": "https://appt.link/meeting-with-salomon-kabongo",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "scholar": "Scholar"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "built_with": "Built with Next.js & Deployed on Vercel",
+    "redirect_notice": "Previously at skabongo.github.io"
+  }
+}

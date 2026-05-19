@@ -1,0 +1,121 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "blog": "Blog",
+    "projects": "Projets",
+    "publications": "Publications",
+    "cv": "CV",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Salomon Kabongo",
+    "title": "PhD",
+    "tagline": "Chercheur en IA · Ingénieur · Éducateur",
+    "description": "Ingénieur logiciel principal au groupe Innovation de State Farm, docteur en NLP de l'Université Leibniz de Hanovre, ancien membre du conseil de la Fondation Masakhane. Je construis l'IA pour l'Afrique et le monde.",
+    "cta_cv": "Voir le CV",
+    "cta_youtube": "Voir sur YouTube",
+    "cta_contact": "Me contacter",
+    "scroll": "Défiler"
+  },
+  "stats": {
+    "patent": "1 Brevet Délivré + 3 en cours",
+    "patent_year": "IA/ML · State Farm",
+    "bestpaper": "Meilleur article",
+    "bestpaper_venue": "ICADL 2021",
+    "citations": "280+ Citations",
+    "citations_label": "Masakhane NLP",
+    "funding": "~9M$ en financement",
+    "funding_label": "Masakhane (2021–2026)"
+  },
+  "about": {
+    "section_label": "À propos",
+    "title": "Relier la recherche en IA à un impact réel",
+    "bio1": "Dr Salomon Kabongo est chercheur en IA, ingénieur et éducateur, profondément engagé à démocratiser la technologie pour l'Afrique et le monde. Il est titulaire d'un doctorat en informatique (NLP/LLMs) de l'Université Leibniz de Hanovre, en Allemagne.",
+    "bio2": "En tant qu'ingénieur logiciel principal au groupe Innovation de State Farm, il dirige la R&D en vision par ordinateur, intelligence documentaire et IA générative — avec 1 brevet IA/ML délivré et 3+ dépôts en cours. Il a été membre du conseil de la Fondation Masakhane (2021–2026), pilotant une initiative de plus de 9M$ pour construire l'infrastructure IA au bénéfice de plus d'un milliard de locuteurs de langues africaines.",
+    "bio3": "Éducateur passionné, Dr Kabongo partage ses connaissances via des chaînes YouTube en anglais, français et lingala — rendant l'IA accessible à travers les langues et les continents.",
+    "research_title": "Domaines de recherche",
+    "research_items": [
+      "Traitement du langage naturel et grands modèles de langage",
+      "Reconnaissance et traduction automatique de la parole (langues peu dotées)",
+      "Graphes de connaissances et extraction d'information",
+      "Vision par ordinateur et IA multimodale",
+      "Technologies des langues africaines"
+    ]
+  },
+  "youtube": {
+    "section_label": "Contenu",
+    "title": "Apprendre avec moi",
+    "subtitle": "Partager la connaissance en IA en trois langues. Abonnez-vous à la chaîne qui parle votre langue.",
+    "english_name": "@DrKabongo",
+    "english_desc": "Contenu en anglais sur l'IA, le NLP, la recherche et la technologie. Analyses approfondies, tutoriels et conseils de carrière.",
+    "english_label": "Chaîne anglaise",
+    "french_name": "@DrKabongoFr",
+    "french_desc": "Contenu en français sur l'IA, les LLMs, la recherche et la carrière tech. Pour la francophonie africaine et mondiale.",
+    "french_label": "Chaîne française",
+    "lingala_name": "@DarAkili",
+    "lingala_desc": "Des éducateurs africains qui enseignent en langues africaines — lingala et plus. Technologie, science et savoir dans les langues d'Afrique.",
+    "lingala_label": "Langues africaines",
+    "subscribe": "S'abonner",
+    "watch": "Regarder"
+  },
+  "blog": {
+    "section_label": "Blog",
+    "title": "Derniers articles",
+    "subtitle": "Articles techniques sur l'IA, la programmation et l'évolution de carrière.",
+    "read_more": "Lire la suite",
+    "all_posts": "Voir tous les articles",
+    "min_read": "min de lecture",
+    "back": "Retour au blog",
+    "no_posts": "Pas encore d'articles. Restez connecté !"
+  },
+  "projects": {
+    "section_label": "Projets",
+    "title": "Projets sélectionnés",
+    "subtitle": "Contributions open source, plateformes de recherche et projets annexes.",
+    "github": "GitHub",
+    "demo": "Démo en ligne",
+    "paper": "Article"
+  },
+  "publications": {
+    "section_label": "Publications",
+    "title": "Publications et Brevets",
+    "subtitle": "Articles évalués par des pairs, ateliers et brevets en NLP, parole et recherche d'information.",
+    "paper": "Article",
+    "code": "Code",
+    "patent_label": "Brevet américain",
+    "citations_label": "citations",
+    "scholar": "Google Scholar",
+    "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ"
+  },
+  "cv": {
+    "section_label": "CV",
+    "title": "Curriculum Vitae",
+    "subtitle": "Docteur en NLP · Ingénieur logiciel principal · Membre du conseil Masakhane",
+    "download": "Télécharger le PDF",
+    "education": "Formation",
+    "experience": "Expérience",
+    "skills": "Compétences techniques",
+    "awards": "Prix et distinctions",
+    "present": "Présent",
+    "languages_label": "Langages",
+    "deep_learning": "Deep Learning & IA",
+    "cloud": "Cloud & MLOps",
+    "research_areas": "Domaines de recherche"
+  },
+  "contact": {
+    "section_label": "Contact",
+    "title": "Restons en contact",
+    "subtitle": "Ouvert aux collaborations de recherche, aux interventions et aux partenariats techniques.",
+    "book_call": "Réserver un appel",
+    "book_call_url": "https://appt.link/meeting-with-salomon-kabongo",
+    "email": "E-mail",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "scholar": "Scholar"
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "built_with": "Construit avec Next.js et déployé sur Vercel",
+    "redirect_notice": "Anciennement sur skabongo.github.io"
+  }
+}

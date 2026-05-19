@@ -1,0 +1,92 @@
+---
+title: "Circular Queue: Python Implementation"
+date: "2020-01-29"
+category: "Coding"
+tags: ["leetcode", "data-structures", "python"]
+excerpt: "A clean Python implementation of the circular queue (ring buffer) data structure that beats 94% of LeetCode submissions."
+---
+
+## Problem Description
+
+Design an implementation of the **circular queue**. The circular queue is a linear data structure in which the operations are performed based on [FIFO](https://en.wikipedia.org/wiki/FIFO_and_LIFO_accounting) (First In First Out) principle and the last position is connected back to the first position to make a circle. It is also called a **Ring Buffer**.
+
+This implementation should support the following operations:
+
+- **`MyCircularQueue(k)`** — Constructor, set the size of the queue to be `k`.
+- **`Front()`** — Get the front item from the queue. Return -1 if the queue is empty.
+- **`Rear()`** — Get the last item from the queue. Return -1 if the queue is empty.
+- **`enQueue(value)`** — Insert an element into the circular queue. Return `True` if successful.
+- **`deQueue()`** — Delete an element from the circular queue. Return `True` if successful.
+- **`isEmpty()`** — Checks whether the circular queue is empty.
+- **`isFull()`** — Checks whether the circular queue is full.
+
+Find below my Python implementation that **beats 94.37%** of Python3 submissions on LeetCode.
+
+---
+
+## Code
+
+```python
+class MyCircularQueue:
+
+    def __init__(self, k: int):
+        self.q = []   # internal list
+        self.k = k    # max capacity
+
+    def enQueue(self, value: int) -> bool:
+        if len(self.q) >= self.k:
+            return False
+        self.q.append(value)
+        return True
+
+    def deQueue(self) -> bool:
+        if len(self.q) == 0:
+            return False
+        del self.q[0]
+        return True
+
+    def Front(self) -> int:
+        if len(self.q) == 0:
+            return -1
+        return self.q[0]
+
+    def Rear(self) -> int:
+        if self.isEmpty():
+            return -1
+        return self.q[-1]
+
+    def isEmpty(self) -> bool:
+        return len(self.q) == 0
+
+    def isFull(self) -> bool:
+        return len(self.q) == self.k
+
+
+# Usage:
+# obj = MyCircularQueue(k)
+# obj.enQueue(value)
+# obj.deQueue()
+# obj.Front()
+# obj.Rear()
+# obj.isEmpty()
+# obj.isFull()
+```
+
+---
+
+## Why Use a Circular Queue?
+
+Circular queues are commonly used in:
+
+- **CPU scheduling** — round-robin schedulers
+- **Memory management** — ring buffers for I/O
+- **Streaming data** — audio/video buffers
+- **Producer-consumer patterns** — bounded queues
+
+The "circular" nature means that when the queue is full, the oldest element is overwritten (in some variants), making it memory-efficient for fixed-size buffers.
+
+---
+
+## Reference
+
+- [LeetCode — Queue and Stack](https://leetcode.com/explore/learn/card/queue-stack/228/first-in-first-out-data-structure/1337/)
