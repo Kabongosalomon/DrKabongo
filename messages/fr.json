@@ -11,11 +11,13 @@
     "name": "Salomon Kabongo",
     "title": "PhD",
     "tagline": "Chercheur en IA · Ingénieur · Éducateur",
-    "description": "Ingénieur logiciel principal au groupe Innovation de State Farm, docteur en NLP de l'Université Leibniz de Hanovre, ancien membre du conseil de la Fondation Masakhane. Je construis l'IA pour l'Afrique et le monde.",
+    "description": "Ingénieur logiciel principal au groupe Innovation de State Farm, docteur en Informatique avec une spécialisation en NLP, Extraction d'Information et Graphes de Connaissances de l'Université Leibniz de Hanovre, ancien membre du conseil de la Fondation Masakhane. Je construis l'IA pour l'Afrique et le monde.",
     "cta_cv": "Voir le CV",
     "cta_youtube": "Voir sur YouTube",
     "cta_contact": "Me contacter",
-    "scroll": "Défiler"
+    "scroll": "Défiler",
+    "badge_title": "PhD · Informatique",
+    "badge_subtitle": "NLP · EI · Graphes de Connaissances"
   },
   "stats": {
     "patent": "1 Brevet Délivré + 3 en cours",

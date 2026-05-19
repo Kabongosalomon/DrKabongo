@@ -11,11 +11,13 @@
     "name": "Salomon Kabongo",
     "title": "PhD",
     "tagline": "AI Researcher · Engineer · Educator",
-    "description": "Lead Software Engineer at State Farm's Innovation Group, PhD in NLP from Leibniz Universität Hannover, former Board Member of the Masakhane Research Foundation. Building AI for Africa and the world.",
+    "description": "Lead Software Engineer at State Farm's Innovation Group, PhD in Computer Science with a focus on NLP, Information Extraction and Knowledge Graphs from Leibniz Universität Hannover, former Board Member of the Masakhane Research Foundation. Building AI for Africa and the world.",
     "cta_cv": "View CV",
     "cta_youtube": "Watch on YouTube",
     "cta_contact": "Get in Touch",
-    "scroll": "Scroll down"
+    "scroll": "Scroll down",
+    "badge_title": "PhD · Comp. Science",
+    "badge_subtitle": "NLP · IE · Knowledge Graphs"
   },
   "stats": {
     "patent": "1 Patent Issued + 3 Pending",

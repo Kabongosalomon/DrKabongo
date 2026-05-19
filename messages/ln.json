@@ -11,11 +11,13 @@
     "name": "Salomon Kabongo",
     "title": "PhD",
     "tagline": "Chercheur en AI · Ingénieur · Molakisi",
-    "description": "Lead Software Engineer na Innovation Group ya State Farm, Docteur (PhD) na NLP awuta Leibniz Universität Hannover, ancien membre ya conseil d'administration ya Fondation Masakhane. Kosala ba AI pona Afrique pe mokili mobimba.",
+    "description": "Lead Software Engineer na Innovation Group ya State Farm, Docteur (PhD) na Informatique na fokus na NLP, Extraction ya Makambo pe Graphes ya Boyebi, awuta Leibniz Universität Hannover, ancien membre ya conseil d'administration ya Fondation Masakhane. Kosala ba AI pona Afrique pe mokili mobimba.",
     "cta_cv": "Tala CV",
     "cta_youtube": "Landa na YouTube",
     "cta_contact": "Contactez nga",
-    "scroll": "Kita na se"
+    "scroll": "Kita na se",
+    "badge_title": "PhD · Informatique",
+    "badge_subtitle": "NLP · EI · Graphes ya Boyebi"
   },
   "stats": {
     "patent": "1 Brevet ebimi + 3 en cours",

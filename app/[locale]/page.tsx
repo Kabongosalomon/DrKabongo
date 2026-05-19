@@ -69,7 +69,7 @@ export default async function HomePage({
               <div className="inline-flex items-center gap-2 bg-brand/10 border border-brand/20 rounded-full px-4 py-1.5 mb-6">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                 <span className="text-xs font-semibold text-brand-light">
-                  @DrKabongo · @DarAkili
+                  @DrKabongo · @DarAkili · @SalomonKabongo
                 </span>
               </div>
 
@@ -133,8 +133,8 @@ export default async function HomePage({
                 </div>
                 {/* Floating badge */}
                 <div className="absolute -bottom-2 -right-2 bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 shadow-xl shrink-0">
-                  <p className="text-xs font-bold text-white">PhD · NLP</p>
-                  <p className="text-xs text-slate-400">Leibniz U. Hannover</p>
+                  <p className="text-xs font-bold text-white">{t('badge_title')}</p>
+                  <p className="text-xs text-slate-400">{t('badge_subtitle')}</p>
                 </div>
               </div>
             </div>
