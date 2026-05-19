@@ -1,88 +1,88 @@
 {
   "nav": {
-    "home": "Liboso",
+    "home": "Accueil",
     "blog": "Blog",
-    "projects": "Misala",
-    "publications": "Makomi",
+    "projects": "Projets",
+    "publications": "Publications",
     "cv": "CV",
-    "contact": "Toyebana"
+    "contact": "Contact"
   },
   "hero": {
     "name": "Salomon Kabongo",
     "title": "PhD",
-    "tagline": "Mosali ya AI · Motonga · Molakisi",
-    "description": "Ingénieur monene ya State Farm Innovation Group, docteur ya NLP ya Leibniz Universität Hannover, membre ya liboso ya conseil ya Fondation Masakhane. Nazali kotonga AI mpo na Afrika mpe mokili mobimba.",
+    "tagline": "Chercheur en AI · Ingénieur · Molakisi",
+    "description": "Lead Software Engineer na Innovation Group ya State Farm, Docteur (PhD) na NLP awuta Leibniz Universität Hannover, ancien membre ya conseil d'administration ya Fondation Masakhane. Kosala ba AI pona Afrique pe mokili mobimba.",
     "cta_cv": "Tala CV",
-    "cta_youtube": "Tala YouTube",
-    "cta_contact": "Koloba na ngai",
-    "scroll": "Kulusu wuta"
+    "cta_youtube": "Landa na YouTube",
+    "cta_contact": "Contactez nga",
+    "scroll": "Kita na se"
   },
   "stats": {
-    "patent": "1 Brevet + 3 en cours",
+    "patent": "1 Brevet ebimi + 3 en cours",
     "patent_year": "AI/ML · State Farm",
-    "bestpaper": "Prix ya Makomi Malamu",
+    "bestpaper": "Prix ya Article ya malamu",
     "bestpaper_venue": "ICADL 2021",
     "citations": "280+ Citations",
     "citations_label": "Masakhane NLP",
-    "funding": "~9M$ Financement",
+    "funding": "~9M$ Financement ya Recherche",
     "funding_label": "Masakhane (2021–2026)"
   },
   "about": {
-    "section_label": "Ntina na ngai",
-    "title": "Kokangisa Boyebi ya AI na Misala ya Solosolo",
-    "bio1": "Dr Salomon Kabongo azali mosali ya AI, motonga mpe molakisi, na motema ya kokabola teknolojia mpo na Afrika mpe mokili mobimba. Azali na doctorat ya informatique (NLP/LLMs) ya Leibniz Universität Hannover, Alemani.",
-    "bio2": "Lokola Ingénieur monene ya State Farm Innovation Group, atambwisaka R&D ya vision ya ordinateur, intelligence ya makomi mpe AI générative — na brevet 1 ya AI/ML oyo ebolami mpe 3+ oyo ezali kobosama. Azalaki na conseil ya Fondation Masakhane (2021–2026), atambwisaki initiative ya 9M$+ mpo na kotonga infrastructure ya AI mpo na koleka miliyar moko ya bato oyo balobaka minoko ya Afrika.",
-    "bio3": "Lokola molakisi ya motema, Dr Kabongo akaboaka boyebi na nzela ya YouTube na Anglais, Français mpe Lingala — kolakisa AI koleka minoko mpe ba continents.",
-    "research_title": "Ba domaines ya boluki",
+    "section_label": "À propos",
+    "title": "Kokangisa Recherche en AI na Impact ya vrai",
+    "bio1": "Dr. Salomon Kabongo azali chercheur en AI, ingénieur, pe molakisi oyo aza engagé pona ko démocratiser technologie pona Afrique pe mokili mobimba. Aza na PhD en Informatique (NLP/LLMs) ya Leibniz Universität Hannover, na Allemagne.",
+    "bio2": "En tant que Lead Software Engineer na Innovation Group ya State Farm, a diriger R&D na computer vision, intelligence documentaire, pe AI générative — oyo ebimisi 1 brevet ya AI/ML pe ba dépôts 3+ misusu. Avant, azalaki na conseil d'administration ya Fondation Masakhane (2021–2026), esika a diriger initiative ya 9M$+ pona ko tonga infrastructure ya AI pona plus d'un milliard ya ba locuteurs ya minoko ya Afrique.",
+    "bio3": "Molakisi ya passionné, Dr. Kabongo a partager boyebi naye na nzela ya ba chaînes YouTube na Anglais, Français, pe Lingala — ko rendre AI accessible na ba langues pe ba continents nyonso.",
+    "research_title": "Ba Domaines ya Recherche",
     "research_items": [
-      "Traitement ya Minoko na ba Modèles ya Monene ya Minoko",
-      "Reconnaissance mpe Traduction ya Koloba (minoko ya bozangi bisaleli)",
-      "Ba Graphes ya Boyebi mpe Kobimisa Bakomeli",
-      "Vision ya Ordinateur mpe AI Multimodale",
-      "Teknolojia ya Minoko ya Afrika"
+      "Traitement du Langage Naturel (NLP) & Large Language Models (LLMs)",
+      "Reconnaissance pe Traduction ya maloba (pona ba langues à faibles ressources)",
+      "Graphes de Connaissances & Extraction d'Informations",
+      "Computer Vision & AI Multimodale",
+      "Technologie ya minoko ya Afrique"
     ]
   },
   "youtube": {
-    "section_label": "Makomi ya Vidéo",
-    "title": "Yekola na Ngai",
-    "subtitle": "Kokabola boyebi ya AI na minoko misato. Inscription na canal oyo elobaka monoko na yo.",
+    "section_label": "Contenu",
+    "title": "Yekola na nga",
+    "subtitle": "Ko partager boyebi ya AI na minoko misato. Abonne-toi na chaîne oyo elobaka monoko na yo.",
     "english_name": "@DrKabongo",
-    "english_desc": "Makomi na Anglais mpo na AI, NLP, boluki mpe teknolojia. Analyses ya mozindo, ba tutoriels mpe nsango ya carrière.",
-    "english_label": "Canal ya Anglais",
+    "english_desc": "Contenu na Anglais pona AI, NLP, recherche, pe technologie. Analyses de fond, ba tutoriels, pe conseils ya carrière pona communauté mondiale ya AI.",
+    "english_label": "Chaîne Anglaise",
     "french_name": "@DrKabongoFr",
-    "french_desc": "Makomi na Français mpo na AI, LLMs, boluki mpe carrière ya teknolojia. Mpo na ba francophones ya Afrika mpe mokili.",
-    "french_label": "Canal ya Français",
+    "french_desc": "Contenu na Français pona l'IA, les LLMs, recherche pe carrière tech. Pona la francophonie africaine pe mondiale.",
+    "french_label": "Chaîne Française",
     "lingala_name": "@DarAkili",
-    "lingala_desc": "Ba molakisi ya Afrika balakisaka na minoko ya Afrika — Lingala mpe mosusu. Teknolojia, science mpe boyebi na minoko ya Afrika.",
-    "lingala_label": "Minoko ya Afrika",
-    "subscribe": "Inscription",
-    "watch": "Tala Sikoyo"
+    "lingala_desc": "Ba éducateurs africains bazo lakisa na minoko ya Afrique — Lingala pe misusu. Technologie, science, pe boyebi na minoko ya Afrique.",
+    "lingala_label": "Minoko ya Afrique",
+    "subscribe": "S'abonner",
+    "watch": "Tala sikoyo"
   },
   "blog": {
     "section_label": "Blog",
-    "title": "Makomi ya Sika",
-    "subtitle": "Ba articles ya technique mpo na AI, programation mpe bokoli ya carrière.",
+    "title": "Ba Articles ya sika",
+    "subtitle": "Ba articles techniques pona AI, programmation, pe évolution ya carrière.",
     "read_more": "Tanga lisusu",
-    "all_posts": "Tala makomi nionso",
-    "min_read": "miniti ya kotanga",
+    "all_posts": "Tala ba articles nyonso",
+    "min_read": "min ya ko tanga",
     "back": "Zonga na blog",
-    "no_posts": "Makomi ezalaki te naino. Koya lisusu !"
+    "no_posts": "Article eza te pona sikoyo. Bozela koya!"
   },
   "projects": {
-    "section_label": "Misala",
-    "title": "Misala Elongisamaki",
-    "subtitle": "Ba contributions ya open-source, plateformes ya boluki mpe ba projets.",
+    "section_label": "Projets",
+    "title": "Ba Projets sélectionnés",
+    "subtitle": "Ba contributions open-source, plateformes ya recherche, pe ba projets personnels.",
     "github": "GitHub",
-    "demo": "Tala en direct",
-    "paper": "Makomi"
+    "demo": "Démo en direct",
+    "paper": "Article"
   },
   "publications": {
-    "section_label": "Makomi",
-    "title": "Makomi mpe Ba Brevets",
-    "subtitle": "Ba articles ya boluki, ba ateliers mpe ba brevets mpo na NLP, koloba mpe kobimisa bakomeli.",
-    "paper": "Makomi",
+    "section_label": "Publications",
+    "title": "Publications pe Brevets",
+    "subtitle": "Ba articles évalués par les pairs, ba ateliers, pe ba brevets na NLP, speech, pe recherche d'information.",
+    "paper": "Article",
     "code": "Code",
-    "patent_label": "Brevet ya Ameriki",
+    "patent_label": "Brevet US",
     "citations_label": "citations",
     "scholar": "Google Scholar",
     "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ"
@@ -90,32 +90,32 @@
   "cv": {
     "section_label": "CV",
     "title": "Curriculum Vitae",
-    "subtitle": "Docteur ya NLP · Ingénieur monene · Membre ya Conseil Masakhane",
-    "download": "Download PDF",
-    "education": "Kelasi",
-    "experience": "Mosala",
-    "skills": "Ba Makoki ya Technique",
-    "awards": "Ba Prix mpe Litomba",
+    "subtitle": "PhD na NLP · Lead Software Engineer · Membre ya Conseil Masakhane",
+    "download": "Télécharger PDF",
+    "education": "Études",
+    "experience": "Expérience",
+    "skills": "Compétences Techniques",
+    "awards": "Prix pe Distinctions",
     "present": "Sikoyo",
-    "languages_label": "Minoko ya Code",
+    "languages_label": "Minoko",
     "deep_learning": "Deep Learning & AI",
     "cloud": "Cloud & MLOps",
-    "research_areas": "Ba Domaines ya Boluki"
+    "research_areas": "Domaines ya Recherche"
   },
   "contact": {
-    "section_label": "Toyebana",
-    "title": "Toyebana",
-    "subtitle": "Nazalaki pembeni mpo na ba collaborations ya boluki, ba interventions mpe ba partenariats ya technique.",
-    "book_call": "Luka rendez-vous",
+    "section_label": "Contact",
+    "title": "To Solola",
+    "subtitle": "Ouvert pona ba collaborations ya recherche, ba conférences, pe ba partenariats techniques.",
+    "book_call": "Zwa Rendez-vous",
     "book_call_url": "https://appt.link/meeting-with-salomon-kabongo",
-    "email": "Email",
+    "email": "E-mail",
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "scholar": "Scholar"
   },
   "footer": {
-    "rights": "Makoki nionso ebatamaki.",
-    "built_with": "Esalami na Next.js mpe déployé na Vercel",
-    "redirect_notice": "Liboso na skabongo.github.io"
+    "rights": "Tous droits réservés.",
+    "built_with": "Esalami na Next.js pe eza déployé na Vercel",
+    "redirect_notice": "Avant ezalaki na skabongo.github.io"
   }
 }
