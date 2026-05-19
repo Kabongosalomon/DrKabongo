@@ -10,7 +10,19 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'blog' })
-  return { title: t('title'), description: t('subtitle') }
+  const canonical = locale === 'en' ? 'https://drkabongo.com/blog' : `https://drkabongo.com/${locale}/blog`
+  return {
+    title: t('title'),
+    description: t('subtitle'),
+    alternates: {
+      canonical,
+      languages: {
+        en: 'https://drkabongo.com/blog',
+        fr: 'https://drkabongo.com/fr/blog',
+        ln: 'https://drkabongo.com/ln/blog',
+      },
+    },
+  }
 }
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {

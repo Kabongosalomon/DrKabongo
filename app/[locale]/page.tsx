@@ -10,6 +10,21 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const canonical = locale === 'en' ? 'https://drkabongo.com' : `https://drkabongo.com/${locale}`
+  return {
+    alternates: {
+      canonical,
+      languages: {
+        en: 'https://drkabongo.com',
+        fr: 'https://drkabongo.com/fr',
+        ln: 'https://drkabongo.com/ln',
+      },
+    },
+  }
+}
+
 function localePath(locale: string, path: string) {
   return locale === 'en' ? path : `/${locale}${path}`
 }

@@ -20,10 +20,25 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; slug: string }>
 }) {
-  const { slug } = await params
+  const { locale, slug } = await params
   const post = getPostBySlug(slug)
   if (!post) return {}
-  return { title: post.title, description: post.excerpt }
+  const canonical =
+    locale === 'en'
+      ? `https://drkabongo.com/blog/${slug}`
+      : `https://drkabongo.com/${locale}/blog/${slug}`
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: {
+      canonical,
+      languages: {
+        en: `https://drkabongo.com/blog/${slug}`,
+        fr: `https://drkabongo.com/fr/blog/${slug}`,
+        ln: `https://drkabongo.com/ln/blog/${slug}`,
+      },
+    },
+  }
 }
 
 function localePath(locale: string, path: string) {

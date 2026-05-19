@@ -8,7 +8,19 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'cv' })
-  return { title: t('title'), description: t('subtitle') }
+  const canonical = locale === 'en' ? 'https://drkabongo.com/cv' : `https://drkabongo.com/${locale}/cv`
+  return {
+    title: t('title'),
+    description: t('subtitle'),
+    alternates: {
+      canonical,
+      languages: {
+        en: 'https://drkabongo.com/cv',
+        fr: 'https://drkabongo.com/fr/cv',
+        ln: 'https://drkabongo.com/ln/cv',
+      },
+    },
+  }
 }
 
 export default async function CVPage({ params }: { params: Promise<{ locale: string }> }) {

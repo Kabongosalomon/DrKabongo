@@ -20,15 +20,32 @@ export const metadata: Metadata = {
   },
   description:
     'AI Researcher, Lead Software Engineer at State Farm, and Board Member of the Masakhane Research Foundation. Building AI for Africa and the world.',
+  alternates: {
+    canonical: 'https://drkabongo.com',
+    languages: {
+      en: 'https://drkabongo.com',
+      fr: 'https://drkabongo.com/fr',
+      ln: 'https://drkabongo.com/ln',
+    },
+  },
   openGraph: {
     type: 'website',
     url: 'https://drkabongo.com',
     siteName: 'Dr. Kabongo',
     locale: 'en_US',
-    alternateLocale: ['fr_FR'],
+    alternateLocale: ['fr_FR', 'ln'],
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Salomon Kabongo, PhD — AI Researcher & Engineer',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
+    images: ['/og-image.png'],
   },
   icons: {
     icon: '/favicon.ico',
