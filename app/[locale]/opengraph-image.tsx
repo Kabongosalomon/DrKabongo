@@ -4,7 +4,7 @@ import { routing } from '@/i18n/routing'
 
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
-export const alt = 'Salomon Kabongo, PhD — AI researcher, educator and speaker'
+export const alt = 'Salomon Kabongo — Dr. Kabongo'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -44,7 +44,7 @@ export default async function OpengraphImage({
               color: '#7C7469',
             }}
           >
-            {t('credential')}
+            {t('eyebrow')}
           </div>
           <div
             style={{

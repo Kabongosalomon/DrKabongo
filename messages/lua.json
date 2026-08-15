@@ -8,7 +8,7 @@
     "projects": "Baprojet",
     "publications": "Bapublication",
     "cv": "CV",
-    "contact": "Contact",
+    "work_with_me": "Tuenze mudimu pamue",
     "language": "Shintulula muakulu",
     "open_menu": "Zulula menu",
     "close_menu": "Kanga menu",
@@ -19,22 +19,22 @@
     "to_light": "Ndaya ku thème wa butoke"
   },
   "hero": {
+    "eyebrow": "CHERCHEUR MU AI · INGÉNIEUR · MULONGESHI",
     "name": "Salomon Kabongo",
-    "credential": "PhD mu Informatique",
-    "lede": "Ndi ngenza recherche bua kumanya mushindu udi ba machine bilonga muakulu — ne ndi ngulongesha bualu ebu mu Anglais, Français, Lingala ne Tshiluba.",
-    "description": "Mudimu wanyi udi pankatshi pa malu abidi adi kaayi asambakena misangu ya bungi to: recherche wa NLP udi ba expert bamone, ne kutuadila dimanya edi kudi bantu badi kabayi bafunda bua bobo. Ndi nteka technologie wa muakulu bua miakulu ya Afrika, ndi nenza AI appliquée mu ba entreprise, ne ndi ngumvuija yonso ibidi ku YouTube.",
-    "cta_videos": "Tangila bavidéo ba sika",
-    "cta_speaking": "Mbikila bua conférence",
-    "now_label": "Lelu",
+    "lede": "Ndi nteka, ngenza recherche, ne ngulongesha intelligence artificielle.",
+    "description": "Mudimu wanyi udi utangila foundation models, AI multimodale, computer vision, intelligence documentaire, extraction wa ba information scientifique, ne technologie bua miakulu ya Afrika. Ku diambuluisha dia Dr. Kabongo, ndi ngulongesha AI pratique mu Anglais, Français, Lingala, Tshiluba ne Swahili.",
+    "cta_videos": "Tangila bavidéo banyi",
+    "cta_work": "Tangila mudimu wanyi",
+    "now_label": "Mu tshikoso",
     "now_role": "Lead Software Engineer, Innovation Group wa State Farm",
-    "now_phd": "PhD mu Informatique, Leibniz Universität Hannover",
-    "now_masakhane": "Ancien membre wa conseil, Masakhane Research Foundation",
+    "now_phd": "PhD mu Informatique · mujikija mu novembre 2025",
+    "now_darakili": "Dr. Kabongo · éducation wa AI ne mudimu ku DarAkili",
     "portrait_alt": "Salomon Kabongo"
   },
   "videos": {
     "section_label": "Vidéo",
-    "home_title": "Bavidéo bia mpindieu mu ba chaîne",
-    "home_subtitle": "Recherche mumvuija, ba outil muleja, ne miyuki bua kuteka technologie mu Afrika ne bua Afrika.",
+    "home_title": "Longa AI ne Dr. Kabongo",
+    "home_subtitle": "Recherche mumvuija, ba outil pratique muleja, ne miyuki ya bushuwa bua AI wa mpindieu — mu miakulu ne ba niveau mishilashilangane.",
     "all_videos": "Bavidéo bionso",
     "title": "Bavidéo",
     "subtitle": "Bionso bidi bipatuka mu ba chaîne, bia mpindieu kumpala. Bavidéo badi bateka kumpala badi ku mutu.",
@@ -47,8 +47,8 @@
     "count": "{count, plural, =0 {Kakuena vidéo to} one {vidéo #} other {bavidéo #}}",
     "coming_soon": "Vidéo wa kumpala udi ulua kaayi kule",
     "channels_label": "Ba chaîne",
-    "channels_title": "Chaîne umue bua muakulu umue",
-    "channels_subtitle": "Dilaya dimue mu chaîne yonso: kuenza bua meji a AI wa mpindieu amvuike mu muakulu udi muntu wela meji nawu bushuwa.",
+    "channels_title": "Ba chaîne inayi, éducation mu miakulu itanu",
+    "channels_subtitle": "Ba chaîne ya YouTube idi mu Anglais, Français, Lingala ne Tshiluba. Ba contenu ya éducation ne accès ya site ewu bidi kabidi mu Swahili.",
     "subscribe": "S'abonner",
     "topic_ai_explained": "AI mumvuija",
     "topic_deep_learning": "Deep learning",
@@ -56,7 +56,7 @@
     "topic_research_talks": "Recherche ne baconférence",
     "topic_tutorials": "Batutoriel",
     "channel_en_label": "Anglais",
-    "channel_en_desc": "Ba analyse ya recherche, kulonga mu bujitu bua NLP ne ba LLM, ne mibelu ya bushuwa bua kuteka carrière mu AI.",
+    "channel_en_desc": "Ba analyse ya recherche, AI pratique, ne ba explication patoke bua foundation models, ba système multimodale ne carrière technique.",
     "channel_fr_label": "Français",
     "channel_fr_desc": "AI mumvuija mu Français, bua francophonie wa Afrika ne wa buloba bujima — recherche, carrière ne pratique.",
     "channel_ln_label": "Lingála",
@@ -65,86 +65,128 @@
     "channel_lua_desc": "AI, recherche ne technologie bimvuija mu Tshiluba — bualu meji a technique kaena ne bua kulomba muakulu wa bampengu kumpala to.",
     "empty_subtitle": "Ba chaîne mbapiapia ne bavidéo ba kumpala badi balua. Abonne-toi bua kupanga bualu ebu to.",
     "empty_title": "Kakuena tshintu tshidi tshipatuke to",
-    "empty_body": "Ndi n'enregistrer bavidéo ba kumpala mpindieu. Chaîne yonso idi muinshi eyi idi ilongesha bualu bumue mu muakulu mukuabo — abonne-toi ku udi wakula muakulu webe."
+    "empty_body": "Ndi n'enregistrer bavidéo ba kumpala mpindieu. Ba chaîne inayi idi muinshi eyi idi ilongesha AI mu Anglais, Français, Lingala ne Tshiluba; ba contenu ya kulonga mu Swahili idi kabidi ku site ewu."
   },
   "about": {
     "section_label": "Recherche",
-    "title": "Technologie wa muakulu bua bantu badi bapua muoyo misangu ya bungi",
-    "bio1": "Ndi ne doctorat (PhD) mu Informatique ku Leibniz Universität Hannover, muaba uvua recherche wanyi utangila traitement wa muakulu naturel (NLP), extraction wa malu ne graphe ya dimanya — nangananga, mushindu wa kupatula ku bungi ba résultat structuré ne comparable munkatshi mua littérature scientifique.",
-    "bio2": "Mu Innovation Group wa State Farm ndi nlombola recherche appliquée mu computer vision, intelligence documentaire ne AI générative — mudimu udi mupatule brevet umue wa AI/ML ne ba dépôt isatu mikuabo. Mu conseil wa Masakhane Research Foundation, ngakambuluisha programme wa kupita 9M$ bua kuteka infrastructure NLP ouverte bua kupita milliard umue wa bantu badi bakula miakulu ya Afrika.",
-    "bio3": "Recherche ne dilongesha bidi projet umue. Article udi uya anu kudi bantu badi babala Anglais kabidi udi article udi kayi mujikije mudimu wende to — ke bualu kayi ndi ngulongesha mu Anglais, Français, Lingala ne Tshiluba.",
+    "title": "Fuma ku kumvua AI, kufika ku kuteka nawu",
+    "bio1": "Ndi ne doctorat (PhD) mu Informatique ku Leibniz Universität Hannover. Recherche wanyi udi utangila mushindu udi ba système ya AI bakeba, bakangisha ne ba évaluer ba preuve mu miakulu, ba document, ba image ne littérature scientifique.",
+    "bio2": "Ndi nkangisha recherche udi ba pair batangile ne ingénierie wa buloba bua bushuwa mu foundation models, AI multimodale, computer vision, intelligence documentaire ne évaluation fiable. Mudimu ewu udi ne brevet américain mupeshibue bua confidentialité ne désidentification ya ba image.",
+    "bio3": "Recherche ne éducation bidi bitupa bia projet umue: dimanya dia AI didi ne mushinga didi ne bua kuikala rigoureuse, pratique ne dipeteke kupita Anglais. Ku diambuluisha dia Dr. Kabongo, ndi ngulongesha mu Anglais, Français, Lingala, Tshiluba ne Swahili.",
+    "closing": "Recherche udi upeta tshidi mua kuenzeka. Ingénierie udi uteta tshintu atshi mu buloba bua bushuwa. Dilongesha didi dienza bua dimanya ditambule.",
     "research_title": "Ba domaine ya recherche",
     "research_items": [
-      "Traitement wa muakulu naturel (NLP) ne Large Language Models",
-      "Reconnaissance ne traduction ya mêyi bua miakulu idi ne ba ressource mikese",
-      "Graphe ya dimanya ne extraction wa malu a scientifique",
-      "Computer vision ne AI multimodale",
-      "Technologie wa miakulu ya Afrika"
+      {
+        "title": "Foundation models ne ba LLM",
+        "description": "Mushindu udi ba modèle balongolola contexte, bakeba preuve, benza raisonnement mu ba tâche mishilashilangane ne bapona mu pratique."
+      },
+      {
+        "title": "AI multimodale ne computer vision",
+        "description": "Ba système badi bamvua ne bakangisha ba image, vidéo, texte ne ba signal mikuabo."
+      },
+      {
+        "title": "NLP ne extraction wa information",
+        "description": "Kushintulula ba document ne littérature scientifique bua ikale dimanya structurée ne didi ne mushinga."
+      },
+      {
+        "title": "Évaluation ne AI fiable",
+        "description": "Kuteta qualité, ba limite ne bikala modèle udi ukumbana ne usage wa mushinga mu buloba bua bushuwa."
+      },
+      {
+        "title": "Technologie wa miakulu ya Afrika",
+        "description": "Ba donnée, ba modèle ne ba méthode idi communauté ulombola bua ba contexte multilingue ne idi ne ba ressource mikese."
+      },
+      {
+        "title": "Éducation wa AI",
+        "description": "Kuenza bua AI wa mpindieu umvuike ne usadibue mu miakulu ne ba niveau mishilashilangane."
+      }
     ],
     "figures_label": "Bimanyinu bia mudimu",
     "read_cv": "Bala CV mujima",
     "see_publications": "Tangila bapublication",
-    "darakili": "Dilaya edi ke didi dinenza bua nenze mudimu ku DarAkili, plateforme wa éducation STEM muaba badi ba professionnel ba Afrika bapatula ba minicours ya ofele mu miakulu yabu.",
+    "darakili": "Dilaya edi didi dilombola kabidi mudimu wanyi ku DarAkili, plateforme wa éducation STEM muaba badi ba professionnel ba Afrika bapatula ba minicours ya ofele mu miakulu yabu.",
     "see_projects": "Tangila baprojet"
   },
   "stats": {
-    "patent": "Brevet 1 mupeshibue, 3 idi iindila",
-    "patent_year": "AI/ML · State Farm",
-    "bestpaper": "Prix wa article muimpe kupita",
-    "bestpaper_venue": "ICADL 2021",
-    "citations": "Kupita 280 citation",
-    "citations_label": "Google Scholar",
-    "funding": "Kupita 9M$ wa financement",
-    "funding_label": "Masakhane, 2021–2026"
+    "items": [
+      {
+        "value": "PhD",
+        "label": "Informatique",
+        "detail": "Leibniz Universität Hannover · mujikija mu novembre 2025"
+      },
+      {
+        "value": "Brevet US 12,613,996",
+        "label": "Confidentialité ne désidentification ya ba image",
+        "detail": "Mupeshibue le 28 avril 2026"
+      },
+      {
+        "value": "Best Paper",
+        "label": "Recherche wa premier auteur udi bamanye",
+        "detail": "ICADL 2021"
+      },
+      {
+        "value": "AI appliquée",
+        "label": "Fuma ku recherche kufika ku ba système ya bushuwa",
+        "detail": "Expérience mu AI multimodale, documentaire ne générative"
+      },
+      {
+        "value": "Ancien membre wa conseil",
+        "label": "Masakhane Research Foundation",
+        "detail": "Gouvernance ne partenariat bua recherche wa miakulu ya Afrika"
+      },
+      {
+        "value": "Miakulu 5",
+        "label": "Éducation wa AI",
+        "detail": "Anglais · Français · Lingala · Tshiluba · Swahili"
+      }
+    ]
   },
   "speaking": {
     "section_label": "Baconférence",
     "home_title": "Baconférence, malongesha ne ba table ronde",
-    "home_subtitle": "Ndi ngakula kumpala kua ba chercheur ne kumpala kua bantu bonso, mu Anglais anyi mu Français, bua recherche wa AI, technologie wa miakulu ya Afrika, ne tshidi tshikengela bua kuteka yonso ibidi.",
+    "home_subtitle": "Ndi ngakula mu Anglais anyi Français kumpala kua public ya recherche, technique ne général bua AI wa mpindieu, ba système appliqué, technologie wa miakulu ya Afrika ne carrière technique.",
     "title": "Baconférence",
     "subtitle": "Ndi ngakula ku ba université, ba groupe ya recherche, baconférence ne ba entreprise — mu Anglais anyi Français, ku ligne anyi ku présentiel.",
     "topics_title": "Malu andi ngakula",
-    "topic_1_title": "Muaba udi ba grand modèle ya muakulu bapona bushuwa",
-    "topic_1_desc": "Muyuki wa chercheur udi wenza mudimu bua tshidi ba système ba lelu benza bimpe, muaba udi bipona, ne mushindu wa kumanya dishilangana — bua public technique, kakuyi kulomba expertise wa NLP.",
-    "topic_2_title": "AI bua miakulu ya Afrika",
-    "topic_2_desc": "Bualu kayi kupita milliard umue wa bantu kabatu bapeta technologie wa muakulu to, tshidi Masakhane ne communauté bateke, ne njila wa bushuwa udi kumpala.",
-    "topic_3_title": "Kufuma ku recherche kufika ku production",
-    "topic_3_desc": "Kutuadila machine learning kufuma ku article kufika ku système udi muenze ne mupete brevet munkatshi mua organisation munene — ne ba compromis adi muntu kayi ufunda to.",
-    "topic_4_title": "Kuteka carrière wa recherche kufuma ku luseke",
-    "topic_4_desc": "Bua ba étudiant ne ba chercheur bapiapia badi pambelu pa njila wa tshibidilu: mushindu wa kukeba ba collaborateur, kupatula ba article, ne kuitabujibua.",
+    "topic_1_title": "Tshidi AI wa mpindieu mua kuenza — ne tshidi kayi mua kuenza",
+    "topic_1_desc": "Explication patoke ya ba capacité ya lelu, mushindu udi upona misangu ya bungi, ne mushindu wa ku évaluer ba déclaration kakuyi hype.",
+    "topic_2_title": "AI multimodale ne appliquée",
+    "topic_2_desc": "Mushindu udi miakulu, vision, vidéo ne ba document bikangama mu ba système utile — fuma ku choix ya recherche kufika ku ba compromis ya buloba bua bushuwa.",
+    "topic_3_title": "Technologie wa miakulu ya Afrika",
+    "topic_3_desc": "Tshidi tshikengela bua kuteka AI pamue ne bua ba communauté multilingue ya Afrika: ba donnée, évaluation, accès ne participation.",
+    "topic_4_title": "Recherche ne développement wa carrière technique",
+    "topic_4_desc": "Ba leçon pratique bua kukeba ba collaborateur, kupatula mudimu wa bukole, kukolesha jugement technique ne kuteka carrière udi ulama.",
     "past_title": "Baconférence bavua benzeke",
     "invite_title": "Mbikila bua conférence",
-    "invite_body": "Ngambila bua public webe, dituku ne format. Ndi nandamuna ku demande yonso, ne ndi nsanka bua kulongolola conférence bilondeshile tshidi groupe webe wenza.",
-    "invite_cta": "Angata rendez-vous",
-    "invite_email": "Nfundila directement",
+    "invite_body": "Tumina organisation anyi événement, public, dituku ne muaba uudi u proposer, format ne sujet. Ndi ntangila ba invitation mu Anglais ne Français, à distance anyi sur place.",
     "watch_recording": "Tangila enregistrement",
     "slides": "Badiapositive",
     "poster": "Poster"
   },
   "consulting": {
     "section_label": "Mibelu",
-    "title": "Conseil ne accompagnement",
-    "subtitle": "Accompagnement wa pa nkayadi bua ba équipe badi bateka ne ba modèle ya muakulu, AI documentaire, anyi technologie wa miakulu ya Afrika.",
+    "title": "Conseil sélectif mu AI",
+    "subtitle": "Mibelu ciblé bua ba équipe badi bangata décision wa mushinga mu recherche wa AI, évaluation, architecture ne ba système multilingue.",
     "areas_title": "Malu andi mpesha mibelu",
-    "area_1_title": "Ba système NLP ne LLM appliqués",
-    "area_1_desc": "Ba revue ya architecture, conception wa évaluation, ne mibelu ya bushuwa bua kumanya bikala modèle wa muakulu udi menemene outil udi ukumbana ne problème udi kumpala kuebe.",
-    "area_2_title": "Intelligence documentaire",
-    "area_2_desc": "Ba pipeline ya extraction, classification ne dimvua bua ba document ba bushuwa badi complexe — domaine wa mudimu wanyi wa brevet.",
-    "area_3_title": "Technologie wa miakulu ya Afrika",
-    "area_3_desc": "Stratégie wa ba donnée, bulunda ne communauté ne disungula dia ba modèle bua ba équipe badi bateka bintu bua ba marché ya Afrika ne ba utilisateur ba miakulu ya bungi.",
-    "area_4_title": "Stratégie wa recherche",
-    "area_4_desc": "Bua ba laboratoire ne ba fondation: direction wa recherche, stratégie wa publication, ne kuteka ba collaboration adi ashala kupita cycle wa kumpala wa financement.",
+    "area_1_title": "Évaluation wa ba modèle",
+    "area_1_desc": "Conception wa évaluation, analyse wa échec ne kumona ne ba preuve bikala modèle udi ukumbana ne usage wende.",
+    "area_2_title": "Revue wa recherche ne architecture",
+    "area_2_desc": "Kutangila ne focus système ya AI, plan wa recherche anyi direction technique kumpala kua équipe kupesha dîba ne ba ressource ya bungi.",
+    "area_3_title": "AI multilingue ne miakulu ya Afrika",
+    "area_3_desc": "Stratégie wa ba donnée, évaluation, choix wa ba modèle ne ba approche idi inemeka communauté bua ba produit multilingue ne contexte ya Afrika.",
+    "area_4_title": "Ba atelier technique",
+    "area_4_desc": "Ba session personnalisé bua kuambuluisha ba équipe ya recherche ne ingénierie bamvue méthode, bakokanisha ba compromis anyi bumvuangana bua approche ya AI.",
     "formats_title": "Mushindu utudi mua kuenza mudimu",
-    "format_1_title": "Muyuki umue",
-    "format_1_desc": "Appel umue bua kutentekesha dipangadika. Misangu ya bungi bidi bikumbana.",
-    "format_2_title": "Revue technique",
-    "format_2_desc": "Ditangila dia système, dia ba donnée anyi dia plan wa recherche, dipeshibue bu évaluation mufunda.",
-    "format_3_title": "Accompagnement wa matuku onso",
-    "format_3_desc": "Mudimu udi upingana ne équipe mu trimestre anyi kupita.",
-    "cta_title": "Tuadija ne muyuki",
-    "cta_body": "Appel wa kumpala udi wa ofele ne kena ne bualu bukuabo anu bua kumanya bikala ndi mua kukuambuluisha bushuwa. Bikala meme ki muntu udi ukumbana to, nenkuambile ne nenkuleje muntu mukuabo.",
-    "cta_book": "Angata rendez-vous",
-    "cta_email": "Nfundila"
+    "format_1_title": "Consultation wa musangu umue",
+    "format_1_desc": "Muyuki ciblé bua kumvuija question, kuteta décision anyi kumanya ba étape idi ilonda.",
+    "format_2_title": "Revue mufunda",
+    "format_2_desc": "Évaluation udi ne limite patoke wa système, ba donnée, architecture, plan wa évaluation anyi direction wa recherche.",
+    "format_3_title": "Atelier anyi sprint ya conseil",
+    "format_3_desc": "Mission wa dîba dikese ne question, public, livrable ne dituku dia ndekelu bidi ba définir.",
+    "boundary_title": "Ba limite patoke",
+    "boundary_body": "Ba mission idi isadila information wa public anyi wa client ne kayiyi isangisha mudimu confidentiel, propriétaire anyi udi utangila employeur wanyi. Demande yonso idi ipita mu vérification ya conflit ne mu ba autorisation idi ikengela.",
+    "cta_title": "Lomba diambuluisha dia conseil",
+    "cta_body": "Tumina organisation anyi industrie webe, question, résultat uudi ukeba, calendrier ne conflit yonso udi mua kuikala. Ndi ngitaba anu ba mission mikese idi ne ba limite patoke."
   },
   "blog": {
     "section_label": "Mifundu",
@@ -160,7 +202,7 @@
   "projects": {
     "section_label": "Baprojet",
     "title": "Baprojet basungudibue",
-    "subtitle": "Ba contribution open source, ba plateforme ya recherche ne ba projet ba luseke.",
+    "subtitle": "Ba système ya recherche, contribution open source ne ba outil ya éducation mu ba domaine ya AI wa mpindieu.",
     "github": "GitHub",
     "demo": "Démo",
     "paper": "Article",
@@ -169,11 +211,9 @@
   "publications": {
     "section_label": "Bapublication",
     "title": "Bapublication ne ba brevet",
-    "subtitle": "Ba article badi ba pair batangile, ba atelier ne ba brevet mu NLP, mêyi ne dikeba dia malu.",
+    "subtitle": "Recherche udi ba pair batangile ne ba brevet mu foundation models, AI multimodale, NLP, mêyi ne extraction wa information.",
     "paper": "Article",
     "code": "Code",
-    "patent_label": "Brevet US",
-    "citations_label": "citation",
     "award_label": "Distinction",
     "scholar": "Google Scholar",
     "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ"
@@ -181,8 +221,7 @@
   "cv": {
     "section_label": "CV",
     "title": "Curriculum vitae",
-    "subtitle": "PhD mu NLP · Lead Software Engineer · Ancien membre wa conseil wa Masakhane",
-    "download": "Télécharger PDF",
+    "subtitle": "Chercheur mu AI · Lead Software Engineer · PhD mu Informatique",
     "education": "Dilonga",
     "experience": "Expérience",
     "publications_patents": "Bapublication ne ba brevet basungudibue",
@@ -197,15 +236,17 @@
   "contact": {
     "section_label": "Contact",
     "title": "Tuenze mudimu pamue",
-    "subtitle": "Ndi mujikuluke bua ba invitation ya conférence, ba collaboration ya recherche ne ba mission ya conseil idi mikese.",
-    "speaking_cta": "Mbikila bua conférence",
-    "consulting_cta": "Conseil ne accompagnement",
-    "book_call": "Angata rendez-vous",
-    "book_call_url": "https://appt.link/meeting-with-salomon-kabongo",
-    "email": "E-mail",
-    "linkedin": "LinkedIn",
-    "github": "GitHub",
-    "scholar": "Scholar",
+    "subtitle": "Njila ibidi ciblé bua kuenza mudimu pamue, ne ba attente patoke ne contact wa kumpala ku e-mail.",
+    "speaking_title": "Ba invitation ya conférence",
+    "speaking_body": "Baconférence, malongesha ne ba panel mu Anglais anyi Français bua public ya recherche, technique ne général.",
+    "speaking_cta": "Tumina demande ya conférence",
+    "advisory_title": "Conseil sélectif mu AI",
+    "advisory_body": "Ba consultation wa musangu umue, revue mufunda ne atelier bua ba question ya AI bidi ba définir bimpe.",
+    "advisory_cta": "Tumina demande ya conseil",
+    "speaking_email_subject": "Invitation ya conférence — [organisation anyi événement]",
+    "speaking_email_body": "Moyo Dr. Kabongo,\n\nNdi musue kukubikila bua conférence.\n\nOrganisation anyi événement:\nPublic:\nDituku ne muaba bidi ba proposer:\nFormat (à distance anyi sur place):\nSujet anyi objectifs:\n\nContexte mukuabo:",
+    "advisory_email_subject": "Demande ya conseil mu AI — [organisation]",
+    "advisory_email_body": "Moyo Dr. Kabongo,\n\nNdi musue kulomba bualu bua mission wa conseil sélectif mu AI.\n\nOrganisation ne industrie:\nQuestion wa kuandamuna:\nRésultat udi ukebibua:\nCalendrier:\nBa conflit idi mua kuikala anyi affiliation udi pertinent:\n\nInformation udi usadibua udi wa public anyi wa client: [eyi/to]\n\nContexte mukuabo:",
     "community_title": "Buela mu communauté",
     "community_subtitle": "Miaba ibidi bua kulonda mudimu, kuela nkonko ne kupetangana ne bakuabo badi balonga malu amue.",
     "community_whatsapp_name": "Chaîne WhatsApp",
@@ -224,12 +265,13 @@
     "videos": "Tangila bavidéo"
   },
   "footer": {
-    "tagline": "Chercheur mu AI, ingénieur ne mulongeshi. Kuteka ne kumvuija technologie wa muakulu mu miakulu idi bantu bela meji nayi bushuwa.",
+    "tagline": "Chercheur mu AI, ingénieur ne mulongeshi. Kuteka ba système utile ne kuenza bua AI wa mpindieu umvuike mu miakulu mishilashilangane.",
     "explore": "Keba",
     "connect": "Londa",
     "work_with_me": "Tuenze mudimu pamue",
     "rights": "Tous droits réservés.",
     "connect_whatsapp": "Chaîne WhatsApp",
-    "connect_discord": "Serveur Discord"
+    "connect_discord": "Serveur Discord",
+    "disclaimer": "Makanisi adi afundibue apa adi anyi nkayanyi. Ba affiliation idi itekibua anu bua identification ne kayiyi ileja endorsement to. Ba engagement ya pambelu idi imonibua mu capacité wanyi wa personnel ne idi ne bua kupita mu vérification ya conflit ne mu ba autorisation idi ikengela."
   }
 }

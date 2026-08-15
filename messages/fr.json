@@ -8,7 +8,7 @@
     "projects": "Projets",
     "publications": "Publications",
     "cv": "CV",
-    "contact": "Contact",
+    "work_with_me": "Travailler avec moi",
     "language": "Changer de langue",
     "open_menu": "Ouvrir le menu",
     "close_menu": "Fermer le menu",
@@ -19,22 +19,22 @@
     "to_light": "Passer au thème clair"
   },
   "hero": {
+    "eyebrow": "CHERCHEUR EN IA · INGÉNIEUR · ENSEIGNANT",
     "name": "Salomon Kabongo",
-    "credential": "Docteur en informatique",
-    "lede": "J'étudie comment les machines apprennent le langage — et je l'enseigne en anglais, français, lingala et tshiluba.",
-    "description": "Mon travail se situe entre deux mondes qui se croisent rarement : la recherche en TAL évaluée par les pairs, et la transmission de ce savoir à celles et ceux pour qui il n'a jamais été écrit. Je construis des technologies du langage pour les langues africaines, je déploie de l'IA appliquée en entreprise, et j'explique les deux sur YouTube.",
-    "cta_videos": "Voir les dernières vidéos",
-    "cta_speaking": "M'inviter à intervenir",
-    "now_label": "Actuellement",
+    "lede": "Je conçois, j'étudie et j'enseigne l'intelligence artificielle.",
+    "description": "Mes travaux couvrent les modèles de fondation, l'IA multimodale, la vision par ordinateur, l'intelligence documentaire, l'extraction d'informations scientifiques et les technologies pour les langues africaines. Avec Dr. Kabongo, j'enseigne l'IA pratique en anglais, français, lingala, tshiluba et swahili.",
+    "cta_videos": "Voir mes vidéos",
+    "cta_work": "Découvrir mon travail",
+    "now_label": "En bref",
     "now_role": "Lead Software Engineer, Innovation Group chez State Farm",
-    "now_phd": "Doctorat en informatique, Leibniz Universität Hannover",
-    "now_masakhane": "Ancien membre du conseil, Masakhane Research Foundation",
+    "now_phd": "Doctorat en informatique · obtenu en novembre 2025",
+    "now_darakili": "Dr. Kabongo · éducation à l'IA et contribution à DarAkili",
     "portrait_alt": "Salomon Kabongo"
   },
   "videos": {
     "section_label": "Vidéo",
-    "home_title": "Les dernières vidéos des chaînes",
-    "home_subtitle": "La recherche expliquée, les outils démontrés, et des conversations sur ce que signifie construire la technologie en Afrique et pour l'Afrique.",
+    "home_title": "Apprendre l'IA avec Dr. Kabongo",
+    "home_subtitle": "La recherche expliquée, des outils concrets en démonstration et des échanges sincères sur l'IA moderne — dans plusieurs langues et pour tous les niveaux.",
     "all_videos": "Toutes les vidéos",
     "title": "Vidéos",
     "subtitle": "Tout ce qui a été publié sur les chaînes, du plus récent au plus ancien. Les vidéos mises en avant apparaissent en tête.",
@@ -47,8 +47,8 @@
     "count": "{count, plural, =0 {Aucune vidéo pour l'instant} one {# vidéo} other {# vidéos}}",
     "coming_soon": "Première vidéo bientôt disponible",
     "channels_label": "Chaînes",
-    "channels_title": "Une chaîne par langue",
-    "channels_subtitle": "Le même engagement dans chacune : rendre les idées de l'IA moderne compréhensibles dans la langue où l'on pense vraiment.",
+    "channels_title": "Quatre chaînes, un enseignement en cinq langues",
+    "channels_subtitle": "Les chaînes YouTube sont en anglais, français, lingala et tshiluba. Les contenus pédagogiques et l'accès à ce site sont également proposés en swahili.",
     "subscribe": "S'abonner",
     "topic_ai_explained": "L'IA expliquée",
     "topic_deep_learning": "Apprentissage profond",
@@ -56,7 +56,7 @@
     "topic_research_talks": "Recherche et conférences",
     "topic_tutorials": "Tutoriels",
     "channel_en_label": "Anglais",
-    "channel_en_desc": "Analyses de recherche, plongées en profondeur sur le TAL et les LLMs, et des réflexions honnêtes sur la construction d'une carrière en IA.",
+    "channel_en_desc": "Analyses de recherche, IA pratique et explications claires sur les modèles de fondation, les systèmes multimodaux et les carrières techniques.",
     "channel_fr_label": "Français",
     "channel_fr_desc": "L'IA expliquée en français, pour la francophonie africaine et mondiale — recherche, carrière et pratique.",
     "channel_ln_label": "Lingála",
@@ -65,86 +65,128 @@
     "channel_lua_desc": "L'IA, la recherche et la technologie expliquées en tshiluba — parce qu'une idée technique ne devrait pas exiger d'abord une langue coloniale.",
     "empty_subtitle": "Les chaînes sont récentes et les premières vidéos arrivent. Abonnez-vous pour ne pas les manquer.",
     "empty_title": "Rien n'est encore publié",
-    "empty_body": "J'enregistre les premières vidéos en ce moment. Chaque chaîne ci-dessous enseigne la même matière dans une langue différente — abonnez-vous à celle qui parle la vôtre."
+    "empty_body": "J'enregistre les premières vidéos en ce moment. Les quatre chaînes ci-dessous enseignent l'IA en anglais, français, lingala et tshiluba ; le site propose aussi des contenus pédagogiques en swahili."
   },
   "about": {
     "section_label": "Recherche",
-    "title": "La technologie du langage pour celles et ceux qu'elle oublie",
-    "bio1": "Je suis docteur en informatique de la Leibniz Universität Hannover, où mes recherches ont porté sur le traitement automatique du langage, l'extraction d'informations et les graphes de connaissances — plus précisément, sur la façon d'extraire à grande échelle des résultats structurés et comparables de la littérature scientifique.",
-    "bio2": "Au sein de l'Innovation Group de State Farm, je dirige la recherche appliquée en vision par ordinateur, en intelligence documentaire et en IA générative — un travail qui a donné lieu à un brevet IA/ML délivré et trois autres dépôts. Au conseil de la Masakhane Research Foundation, j'ai contribué à porter un programme de plus de 9 M$ destiné à construire une infrastructure TAL ouverte pour plus d'un milliard de locuteurs de langues africaines.",
-    "bio3": "La recherche et l'enseignement sont un seul et même projet. Un article qui ne circule qu'auprès de ceux qui lisent déjà l'anglais est un article qui n'a pas terminé son travail — c'est pourquoi j'enseigne en anglais, français, lingala et tshiluba.",
+    "title": "De la compréhension de l'IA à sa mise en pratique",
+    "bio1": "Je suis docteur en informatique de la Leibniz Universität Hannover. Mes recherches étudient comment les systèmes d'IA trouvent, relient et évaluent des éléments probants dans le langage, les documents, les images et la littérature scientifique.",
+    "bio2": "Je relie la recherche évaluée par les pairs à l'ingénierie de terrain autour des modèles de fondation, de l'IA multimodale, de la vision par ordinateur, de l'intelligence documentaire et de l'évaluation fiable. Ces travaux comprennent un brevet américain délivré sur la confidentialité et la désidentification des images.",
+    "bio3": "La recherche et l'éducation font partie d'un même projet : un savoir utile sur l'IA doit être rigoureux, pratique et accessible au-delà de l'anglais. Avec Dr. Kabongo, j'enseigne en anglais, français, lingala, tshiluba et swahili.",
+    "closing": "La recherche découvre ce qui est possible. L'ingénierie le met à l'épreuve du réel. L'enseignement fait circuler le savoir.",
     "research_title": "Domaines de recherche",
     "research_items": [
-      "Traitement automatique du langage et grands modèles de langue",
-      "Reconnaissance et traduction de la parole pour les langues peu dotées",
-      "Graphes de connaissances et extraction d'informations scientifiques",
-      "Vision par ordinateur et IA multimodale",
-      "Technologies des langues africaines"
+      {
+        "title": "Modèles de fondation et LLM",
+        "description": "Comment les modèles utilisent le contexte, retrouvent des preuves, raisonnent entre les tâches et échouent en pratique."
+      },
+      {
+        "title": "IA multimodale et vision par ordinateur",
+        "description": "Des systèmes qui comprennent et relient images, vidéo, texte et autres signaux."
+      },
+      {
+        "title": "TAL et extraction d'informations",
+        "description": "Transformer les documents et la littérature scientifique en connaissances structurées et utiles."
+      },
+      {
+        "title": "Évaluation et IA fiable",
+        "description": "Tester la qualité, les limites et l'adéquation des modèles à des usages réels à forts enjeux."
+      },
+      {
+        "title": "Technologies des langues africaines",
+        "description": "Données, modèles et méthodes communautaires pour les contextes multilingues et peu dotés."
+      },
+      {
+        "title": "Éducation à l'IA",
+        "description": "Rendre l'IA moderne compréhensible et utile dans plusieurs langues et à tous les niveaux."
+      }
     ],
     "figures_label": "Quelques repères",
     "read_cv": "Lire le CV complet",
     "see_publications": "Voir les publications",
-    "darakili": "C'est cette même conviction qui me fait travailler sur DarAkili, une plateforme d'éducation scientifique où des professionnels africains publient de courtes formations gratuites dans leurs propres langues.",
+    "darakili": "Cette conviction guide aussi mon travail sur DarAkili, une plateforme d'éducation scientifique où des professionnels africains publient de courtes formations gratuites dans leurs propres langues.",
     "see_projects": "Voir les projets"
   },
   "stats": {
-    "patent": "1 brevet délivré, 3 en instance",
-    "patent_year": "IA/ML · State Farm",
-    "bestpaper": "Prix du meilleur article",
-    "bestpaper_venue": "ICADL 2021",
-    "citations": "Plus de 280 citations",
-    "citations_label": "Google Scholar",
-    "funding": "Plus de 9 M$ de financement",
-    "funding_label": "Masakhane, 2021–2026"
+    "items": [
+      {
+        "value": "Doctorat",
+        "label": "Informatique",
+        "detail": "Leibniz Universität Hannover · obtenu en novembre 2025"
+      },
+      {
+        "value": "Brevet américain 12 613 996",
+        "label": "Confidentialité et désidentification des images",
+        "detail": "Délivré le 28 avril 2026"
+      },
+      {
+        "value": "Meilleur article",
+        "label": "Travaux reconnus en premier auteur",
+        "detail": "ICADL 2021"
+      },
+      {
+        "value": "IA appliquée",
+        "label": "De la recherche aux systèmes réels",
+        "detail": "Expérience en IA multimodale, documentaire et générative"
+      },
+      {
+        "value": "Ancien membre du conseil",
+        "label": "Masakhane Research Foundation",
+        "detail": "Gouvernance et partenariats pour la recherche sur les langues africaines"
+      },
+      {
+        "value": "5 langues",
+        "label": "Éducation à l'IA",
+        "detail": "Anglais · Français · Lingala · Tshiluba · Swahili"
+      }
+    ]
   },
   "speaking": {
     "section_label": "Conférences",
     "home_title": "Conférences, cours et tables rondes",
-    "home_subtitle": "J'interviens devant des publics de chercheurs comme devant le grand public, en anglais ou en français, sur la recherche en IA, les technologies des langues africaines, et ce qu'il faut pour construire les deux.",
+    "home_subtitle": "J'interviens en anglais ou en français auprès de publics scientifiques, techniques et généralistes sur l'IA moderne, les systèmes appliqués, les langues africaines et les carrières techniques.",
     "title": "Conférences",
     "subtitle": "J'interviens auprès d'universités, de groupes de recherche, de conférences et d'entreprises — en anglais ou en français, à distance ou sur place.",
     "topics_title": "Mes sujets d'intervention",
-    "topic_1_title": "Là où les grands modèles de langue échouent vraiment",
-    "topic_1_desc": "Le regard d'un chercheur en activité sur ce que les systèmes actuels réussissent, là où ils se brisent, et comment faire la différence — pour un public technique, sans présupposer une expertise en TAL.",
-    "topic_2_title": "L'IA pour les langues africaines",
-    "topic_2_desc": "Pourquoi plus d'un milliard de locuteurs restent mal servis par les technologies du langage, ce que Masakhane et la communauté ont construit, et à quoi ressemble une voie réaliste vers la suite.",
-    "topic_3_title": "De la recherche à la production",
-    "topic_3_desc": "Faire passer l'apprentissage automatique de l'article à un système déployé et breveté au sein d'une grande organisation — et les compromis que personne ne documente.",
-    "topic_4_title": "Construire une carrière de chercheur depuis la marge",
-    "topic_4_desc": "Pour les étudiants et jeunes chercheurs hors des circuits traditionnels : comment trouver des collaborateurs, publier, et être pris au sérieux.",
+    "topic_1_title": "Ce que l'IA moderne peut — et ne peut pas — faire",
+    "topic_1_desc": "Une lecture claire des capacités actuelles, des modes d'échec fréquents et des moyens d'évaluer les affirmations sans céder au battage médiatique.",
+    "topic_2_title": "IA multimodale et appliquée",
+    "topic_2_desc": "Comment langage, vision, vidéo et documents se combinent dans des systèmes utiles — des choix de recherche aux compromis du terrain.",
+    "topic_3_title": "Technologies des langues africaines",
+    "topic_3_desc": "Ce qu'exige la construction d'une IA avec et pour les communautés africaines multilingues : données, évaluation, accès et participation.",
+    "topic_4_title": "Recherche et développement de carrière technique",
+    "topic_4_desc": "Des leçons pratiques pour trouver des collaborateurs, publier de bons travaux, affiner son jugement technique et bâtir une carrière durable.",
     "past_title": "Interventions sélectionnées",
     "invite_title": "M'inviter à intervenir",
-    "invite_body": "Parlez-moi de votre public, de la date et du format. Je réponds à chaque demande, et j'adapte volontiers une intervention aux travaux de votre groupe.",
-    "invite_cta": "Prendre rendez-vous",
-    "invite_email": "M'écrire directement",
+    "invite_body": "Indiquez l'organisation ou l'événement, le public, la date et le lieu envisagés, le format et le thème. J'étudie les invitations en anglais et en français, à distance ou sur place.",
     "watch_recording": "Voir l'enregistrement",
     "slides": "Diapositives",
     "poster": "Poster"
   },
   "consulting": {
     "section_label": "Conseil",
-    "title": "Conseil et accompagnement",
-    "subtitle": "Accompagnement indépendant pour les équipes qui construisent avec des modèles de langue, de l'IA documentaire ou des technologies des langues africaines.",
+    "title": "Conseil sélectif en IA",
+    "subtitle": "Un accompagnement ciblé pour les équipes qui prennent des décisions importantes en recherche, évaluation, architecture et systèmes multilingues.",
     "areas_title": "Mes domaines d'intervention",
-    "area_1_title": "Systèmes TAL et LLM appliqués",
-    "area_1_desc": "Revues d'architecture, conception de protocoles d'évaluation, et avis honnêtes sur la pertinence réelle d'un modèle de langue pour le problème que vous avez devant vous.",
-    "area_2_title": "Intelligence documentaire",
-    "area_2_desc": "Chaînes d'extraction, de classification et de compréhension pour des documents réels et désordonnés — le domaine de mes travaux brevetés.",
-    "area_3_title": "Technologies des langues africaines",
-    "area_3_desc": "Stratégie de données, partenariats communautaires et choix de modèles pour les équipes qui construisent pour les marchés africains et les utilisateurs multilingues.",
-    "area_4_title": "Stratégie de recherche",
-    "area_4_desc": "Pour les laboratoires et les fondations : orientation de recherche, stratégie de publication, et construction de collaborations qui survivent au premier cycle de financement.",
+    "area_1_title": "Évaluation de modèles",
+    "area_1_desc": "Conception d'évaluations, analyse des échecs et appréciation fondée sur les preuves de l'adéquation d'un modèle à l'usage visé.",
+    "area_2_title": "Revues de recherche et d'architecture",
+    "area_2_desc": "Examen ciblé d'un système d'IA, d'un plan de recherche ou d'une orientation technique avant d'y engager des ressources importantes.",
+    "area_3_title": "IA multilingue et langues africaines",
+    "area_3_desc": "Stratégie de données, évaluation, choix de modèles et approches attentives aux communautés pour les produits multilingues et les contextes africains.",
+    "area_4_title": "Ateliers techniques",
+    "area_4_desc": "Séances sur mesure pour aider les équipes de recherche et d'ingénierie à comprendre une méthode, comparer des compromis ou s'aligner sur une approche IA.",
     "formats_title": "Formats de collaboration",
-    "format_1_title": "Un simple échange",
-    "format_1_desc": "Un appel pour éprouver une décision. Souvent, cela suffit.",
-    "format_2_title": "Revue technique",
-    "format_2_desc": "L'examen ciblé d'un système, d'un jeu de données ou d'un plan de recherche, restitué sous forme d'évaluation écrite.",
-    "format_3_title": "Accompagnement continu",
-    "format_3_desc": "Une collaboration récurrente avec une équipe sur un trimestre ou davantage.",
-    "cta_title": "Commençons par une conversation",
-    "cta_body": "Le premier appel est gratuit et n'a d'autre objet que de déterminer si je peux réellement vous aider. Si je ne suis pas la bonne personne, je vous le dirai et vous orienterai vers quelqu'un d'autre.",
-    "cta_book": "Prendre rendez-vous",
-    "cta_email": "M'écrire"
+    "format_1_title": "Consultation ponctuelle",
+    "format_1_desc": "Un échange ciblé pour clarifier une question, éprouver une décision ou définir les prochaines étapes.",
+    "format_2_title": "Revue écrite",
+    "format_2_desc": "Une évaluation circonscrite d'un système, de données, d'une architecture, d'un protocole d'évaluation ou d'une orientation de recherche.",
+    "format_3_title": "Atelier ou sprint de conseil",
+    "format_3_desc": "Une mission limitée dans le temps, avec une question, un public, un livrable et une date de fin définis.",
+    "boundary_title": "Un cadre clair",
+    "boundary_body": "Les missions s'appuient sur des informations publiques ou appartenant au client et excluent tout travail confidentiel, propriétaire ou lié à mon employeur. Chaque demande fait l'objet d'une vérification des conflits et des autorisations requises.",
+    "cta_title": "Demander un accompagnement",
+    "cta_body": "Précisez votre organisation ou secteur, la question, le livrable souhaité, le calendrier et les conflits potentiels. Je n'accepte qu'un nombre limité de missions clairement délimitées."
   },
   "blog": {
     "section_label": "Écrits",
@@ -160,7 +202,7 @@
   "projects": {
     "section_label": "Projets",
     "title": "Projets sélectionnés",
-    "subtitle": "Contributions open source, plateformes de recherche et projets personnels.",
+    "subtitle": "Systèmes de recherche, contributions open source et outils pédagogiques dans différents domaines de l'IA moderne.",
     "github": "GitHub",
     "demo": "Démo",
     "paper": "Article",
@@ -169,11 +211,9 @@
   "publications": {
     "section_label": "Publications",
     "title": "Publications et brevets",
-    "subtitle": "Articles évalués par les pairs, ateliers et brevets en TAL, parole et recherche d'information.",
+    "subtitle": "Recherches évaluées par les pairs et brevets couvrant les modèles de fondation, l'IA multimodale, le TAL, la parole et l'extraction d'informations.",
     "paper": "Article",
     "code": "Code",
-    "patent_label": "Brevet US",
-    "citations_label": "citations",
     "award_label": "Distinction",
     "scholar": "Google Scholar",
     "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ"
@@ -181,8 +221,7 @@
   "cv": {
     "section_label": "CV",
     "title": "Curriculum vitae",
-    "subtitle": "Doctorat en TAL · Lead Software Engineer · Ancien membre du conseil de Masakhane",
-    "download": "Télécharger le PDF",
+    "subtitle": "Chercheur en IA · Lead Software Engineer · Docteur en informatique",
     "education": "Formation",
     "experience": "Expérience",
     "publications_patents": "Publications et brevets sélectionnés",
@@ -197,15 +236,17 @@
   "contact": {
     "section_label": "Contact",
     "title": "Travailler ensemble",
-    "subtitle": "Je suis ouvert aux invitations à intervenir, aux collaborations de recherche et à un nombre limité de missions de conseil.",
-    "speaking_cta": "M'inviter à intervenir",
-    "consulting_cta": "Conseil et accompagnement",
-    "book_call": "Prendre rendez-vous",
-    "book_call_url": "https://appt.link/meeting-with-salomon-kabongo",
-    "email": "E-mail",
-    "linkedin": "LinkedIn",
-    "github": "GitHub",
-    "scholar": "Scholar",
+    "subtitle": "Deux manières ciblées de travailler ensemble, avec des attentes claires et un premier contact par e-mail.",
+    "speaking_title": "Invitations à intervenir",
+    "speaking_body": "Conférences, cours et tables rondes en anglais ou en français pour des publics scientifiques, techniques et généralistes.",
+    "speaking_cta": "Envoyer une demande d'intervention",
+    "advisory_title": "Conseil sélectif en IA",
+    "advisory_body": "Consultations ponctuelles, revues écrites et ateliers pour des questions d'IA clairement définies.",
+    "advisory_cta": "Envoyer une demande de conseil",
+    "speaking_email_subject": "Invitation à intervenir — [organisation ou événement]",
+    "speaking_email_body": "Bonjour Dr. Kabongo,\n\nJe souhaite vous inviter à intervenir.\n\nOrganisation ou événement :\nPublic :\nDate et lieu envisagés :\nFormat (à distance ou sur place) :\nThème ou objectifs :\n\nContexte complémentaire :",
+    "advisory_email_subject": "Demande de conseil en IA — [organisation]",
+    "advisory_email_body": "Bonjour Dr. Kabongo,\n\nJe souhaite vous contacter au sujet d'une mission de conseil sélectif en IA.\n\nOrganisation et secteur :\nQuestion à traiter :\nLivrable souhaité :\nCalendrier :\nConflits potentiels ou affiliations pertinentes :\n\nLes informations concernées sont publiques ou appartiennent au client : [oui/non]\n\nContexte complémentaire :",
     "community_title": "Rejoignez la communauté",
     "community_subtitle": "Deux espaces pour suivre le travail, poser des questions et rencontrer d'autres personnes qui apprennent la même chose.",
     "community_whatsapp_name": "Chaîne WhatsApp",
@@ -224,12 +265,13 @@
     "videos": "Parcourir les vidéos"
   },
   "footer": {
-    "tagline": "Chercheur en IA, ingénieur et enseignant. Construire et expliquer les technologies du langage dans les langues où les gens pensent vraiment.",
+    "tagline": "Chercheur en IA, ingénieur et enseignant. Construire des systèmes utiles et rendre l'IA moderne compréhensible dans plusieurs langues.",
     "explore": "Explorer",
     "connect": "Me suivre",
     "work_with_me": "Travailler ensemble",
     "rights": "Tous droits réservés.",
     "connect_whatsapp": "Chaîne WhatsApp",
-    "connect_discord": "Serveur Discord"
+    "connect_discord": "Serveur Discord",
+    "disclaimer": "Les opinions exprimées ici sont les miennes. Les affiliations sont indiquées à des fins d'identification uniquement et n'impliquent aucun soutien. Les activités extérieures sont envisagées à titre personnel et restent soumises à une vérification des conflits ainsi qu'aux autorisations requises."
   }
 }

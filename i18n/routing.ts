@@ -8,6 +8,13 @@ export const routing = defineRouting({
   locales: ['en', 'fr', 'sw', 'ln', 'lua'],
   defaultLocale: 'en',
   localePrefix: 'as-needed',
+  /**
+   * Off on purpose. With detection on, next-intl redirects `/` based on the
+   * visitor's Accept-Language header and a stored NEXT_LOCALE cookie — so a
+   * phone set to French landed on /fr instead of the English homepage.
+   * The URL is now the only thing that decides the language.
+   */
+  localeDetection: false,
 })
 
 /** Names are shown in their own language, never translated. */

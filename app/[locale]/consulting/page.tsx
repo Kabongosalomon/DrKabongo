@@ -1,6 +1,7 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { alternatesFor } from '@/lib/metadata'
+import { emailEnquiryHref } from '@/lib/contact'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -32,6 +33,10 @@ export default async function ConsultingPage({ params }: { params: Promise<{ loc
     title: t(`format_${n}_title`),
     desc: t(`format_${n}_desc`),
   }))
+  const enquiryHref = emailEnquiryHref(
+    tc('advisory_email_subject'),
+    tc('advisory_email_body'),
+  )
 
   return (
     <div className="min-h-dvh">
@@ -70,23 +75,22 @@ export default async function ConsultingPage({ params }: { params: Promise<{ loc
           </div>
         </section>
 
+        <section className="mt-20 rounded-lg border border-rule bg-surface p-6 sm:p-8">
+          <p className="eyebrow">{t('boundary_title')}</p>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-2">
+            {t('boundary_body')}
+          </p>
+        </section>
+
         <section className="mt-20 border-t border-rule pt-10">
           <h2 className="font-serif text-2xl font-medium text-ink sm:text-3xl">{t('cta_title')}</h2>
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-2">{t('cta_body')}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href={tc('book_call_url')}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={enquiryHref}
               className="inline-flex min-w-0 items-center rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-opacity hover:opacity-90"
             >
-              {t('cta_book')}
-            </a>
-            <a
-              href="mailto:kabongosalomon@gmail.com"
-              className="inline-flex min-w-0 items-center rounded-md border border-ink px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
-            >
-              {t('cta_email')}
+              {tc('advisory_cta')}
             </a>
           </div>
         </section>

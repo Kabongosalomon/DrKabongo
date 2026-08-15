@@ -26,11 +26,47 @@ const CONTACT = [
 
 const PUBLICATIONS = [
   {
-    title: 'Systems and Methods for Advanced Duplicate Image Search and Analysis',
-    venue: 'US Patent',
+    title: 'Systems and Methods for Image Privacy and De-identification',
+    venue: 'U.S. Patent',
+    year: '2026',
+    detail: 'U.S. Patent No. 12,613,996 · Issued Apr. 28, 2026 · Assignee: State Farm',
+    award: 'Issued U.S. patent',
+  },
+  {
+    title: 'INJONGO: A Multicultural Intent Detection and Slot-filling Dataset for 16 African Languages',
+    venue: 'ACL',
+    year: '2025',
+    detail:
+      'Co-authored a culturally grounded benchmark for intent detection and slot filling in 16 African languages.',
+  },
+  {
+    title: 'IrokoBench: A New Benchmark for African Languages in the Age of Large Language Models',
+    venue: 'NAACL',
+    year: '2025',
+    detail:
+      'Co-authored a human-translated benchmark for evaluating language-model reasoning across 17 African languages.',
+  },
+  {
+    title: 'Effective Context Selection in LLM-based Leaderboard Generation',
+    venue: 'NLDB',
     year: '2024',
-    detail: 'App. 18/652,500, No. US20240411724A1 · Assignee: State Farm',
-    award: 'US Patent',
+    detail:
+      'First-author study of how document representation and context selection affect extraction quality, reliability, and efficiency.',
+  },
+  {
+    title: 'Systems and Methods for Advanced Duplicate Image Search and Analysis',
+    venue: 'U.S. Published Patent Application',
+    year: '2024',
+    detail:
+      'App. 18/652,500 · Publication No. US20240411724A1 · Assignee: State Farm',
+    award: 'Pending published application',
+  },
+  {
+    title: 'Zero-shot Entailment of Leaderboards for Empirical AI Research',
+    venue: 'ACM/IEEE JCDL',
+    year: '2023',
+    detail:
+      'First-author evaluation of whether supervised extraction models generalize to unseen leaderboard labels.',
   },
   {
     title: 'Bibletts & LiSTra: African Speech Corpora',
@@ -43,22 +79,22 @@ const PUBLICATIONS = [
     title: 'Automated Mining of Leaderboards for Empirical AI Research',
     venue: 'ICADL · International Journal on Digital Libraries',
     year: '2021',
-    detail: '30+ citations. SOTA metric extraction from scientific text.',
+    detail: 'First-author research on extracting and representing empirical AI results from scientific text.',
     award: 'ICADL 2021 Best Paper Award',
   },
   {
     title: 'Participatory Research for Low-Resourced Machine Translation',
     venue: 'EMNLP Findings',
     year: '2020',
-    detail: '280+ citations. Standard benchmark for African Language NLP.',
+    detail: 'Community-led research on methods and infrastructure for African-language machine translation.',
   },
 ]
 
 const AWARDS = [
   {
-    year: '2024',
-    award: 'US Patent Issued (AI/ML) + 3 Pending',
-    org: 'State Farm — Innovation Group',
+    year: '2026',
+    award: 'U.S. Patent No. 12,613,996 issued',
+    org: 'Systems and Methods for Image Privacy and De-identification · Assignee: State Farm',
   },
   {
     year: '2021',
@@ -93,7 +129,7 @@ function ExperienceItem({
   role: string
   org: string
   period: string
-  location: string
+  location?: string
   bullets: string[]
   highlight?: string
 }) {
@@ -106,7 +142,7 @@ function ExperienceItem({
         </div>
         <div className="min-w-0 text-left sm:shrink-0 sm:text-right">
           <p className="text-xs text-ink-3">{period}</p>
-          <p className="text-xs text-ink-3">{location}</p>
+          {location && <p className="text-xs text-ink-3">{location}</p>}
         </div>
       </div>
 
@@ -200,14 +236,13 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                 role="Lead Software Engineer"
                 org="State Farm — Innovation Group"
                 period={`Feb 2022 – ${t('present')}`}
-                location="Bloomington-Normal, IL"
                 bullets={[
-                  'Designed automated pre-labeling pipelines using embedding-based retrieval to accelerate data annotation.',
-                  'Architected a proprietary document deduplication system utilizing visual similarity and hashing algorithms to identify near-duplicates, significantly streamlining business workflows.',
-                  'Led R&D initiatives on Synthetic Media (Deepfake) detection and Video Understanding; benchmarked Visual Language Models (VLMs) against vendor solutions.',
-                  'Invented novel computer vision applications for the insurance domain in AI/ML, resulting in 1 issued patent and 3+ additional filings pending.',
+                  'Led applied research and development on synthetic-media detection, video understanding, and vision-language models to inform technical decisions.',
+                  'Designed embedding-based pre-labeling pipelines to accelerate data annotation and model-development workflows.',
+                  'Architected a document deduplication system combining exact hashing and visual-similarity search to identify near-duplicate content at scale.',
+                  'Co-invented computer-vision systems for privacy and document analysis, including an issued U.S. patent and a pending published patent application.',
                 ]}
-                highlight="4 patent filings"
+                highlight="Applied AI research and engineering"
               />
 
               <ExperienceItem
@@ -216,11 +251,10 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                 period="2021 – May 2026"
                 location="Global"
                 bullets={[
-                  'Spearheaded the strategic formation of the Masakhane AI Hub, defining the 2025–2029 roadmap to build digital public infrastructure for 1 billion+ African language speakers.',
-                  'Secured and oversaw the execution of ~$9M USD in research funding (including $5M from the Bill & Melinda Gates Foundation and $4M from IDRC) to democratize AI access.',
-                  "Led high-level collaborations with strategic partners including Google.org, Lacuna Fund, and UNESCO, scaling the community's impact across 50+ African languages.",
+                  'Helped shape the Masakhane AI Hub’s 2025–2029 strategy for language technology and digital public infrastructure serving African-language communities.',
+                  'Supported governance and partnerships associated with approximately $9M in research funding and collaborations with Google.org, Lacuna Fund, UNESCO, the Gates Foundation, and IDRC.',
                 ]}
-                highlight="~$9M research funding"
+                highlight="Former board member"
               />
 
               <ExperienceItem
@@ -229,9 +263,10 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                 period="Nov 2020 – Nov 2022"
                 location="Hannover, Germany"
                 bullets={[
-                  'Engineered the core "Leaderboards" feature for the Open Research Knowledge Graph (ORKG), utilizing Knowledge Graphs to automatically track and visualize state-of-the-art (SOTA) progress across scientific publications.',
-                  'Collaborated with Hannover Medical School (MHH) on personalized medicine research, applying machine learning techniques to analyze large-scale genetic datasets for predictive healthcare outcomes.',
-                  'Conducted research on Scholarly Information Extraction, developing novel NLP pipelines to extract metric data from unstructured text for knowledge graph construction.',
+                  'Defined and pursued a multi-year research agenda for converting empirical AI results in scientific papers into reliable, machine-actionable leaderboard records.',
+                  'Developed and evaluated transformer and large-language-model pipelines across supervised, zero-shot, few-shot, and instruction-tuning settings.',
+                  'Engineered the core Leaderboards feature for the Open Research Knowledge Graph, integrating extracted Task-Dataset-Metric-Score records into searchable knowledge-graph views.',
+                  'Built datasets and evaluation workflows for scholarly information extraction, including context-selection studies, ablations, and exact- and partial-match analyses.',
                 ]}
               />
             </ul>
@@ -306,9 +341,8 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                   'PyTorch',
                   'TensorFlow',
                   'Hugging Face Transformers',
-                  'LLMs',
+                  'LLM fine-tuning',
                   'RAG',
-                  'LangChain',
                   'OpenCV',
                 ]}
               />
@@ -326,11 +360,11 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
               <SkillGroup
                 label={t('research_areas')}
                 items={[
-                  'NLP',
-                  'Computer Vision',
-                  'Knowledge Graphs',
-                  'Speech Translation',
-                  'Generative AI',
+                  'Experiment design',
+                  'Dataset construction',
+                  'Ablation studies',
+                  'Zero/few-shot evaluation',
+                  'Information extraction',
                 ]}
               />
             </div>

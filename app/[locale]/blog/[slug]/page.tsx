@@ -110,7 +110,8 @@ export default async function BlogPostPage({
           )}
         </header>
 
-        <article className="prose prose-sm sm:prose-base mt-10 max-w-none">
+        {/* No prose-sm step-down: article text is what people read longest, so it should never sit below the site's 16px baseline, mobile included. */}
+        <article className="prose mt-10 max-w-none">
           <MDXRemote
             source={post.content}
             components={mdxComponents}

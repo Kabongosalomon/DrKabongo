@@ -8,7 +8,7 @@
     "projects": "Projects",
     "publications": "Publications",
     "cv": "CV",
-    "contact": "Contact",
+    "work_with_me": "Work with me",
     "language": "Change language",
     "open_menu": "Open menu",
     "close_menu": "Close menu",
@@ -19,22 +19,22 @@
     "to_light": "Switch to light theme"
   },
   "hero": {
+    "eyebrow": "AI RESEARCHER · ENGINEER · EDUCATOR",
     "name": "Salomon Kabongo",
-    "credential": "PhD, Computer Science",
-    "lede": "I research how machines learn language — and I teach it in English, French, Lingala and Tshiluba.",
-    "description": "My work sits between two things that rarely meet: peer-reviewed NLP research, and getting that knowledge to the people it was never written for. I build language technology for African languages, ship applied AI in industry, and explain both on YouTube.",
-    "cta_videos": "Watch the latest",
-    "cta_speaking": "Invite me to speak",
-    "now_label": "Currently",
+    "lede": "I build, research, and teach artificial intelligence.",
+    "description": "My work spans foundation models, multimodal AI, computer vision, document intelligence, scholarly information extraction, and technology for African languages. Through Dr. Kabongo, I teach practical AI in English, French, Lingala, Tshiluba, and Swahili.",
+    "cta_videos": "Watch my videos",
+    "cta_work": "Explore my work",
+    "now_label": "At a glance",
     "now_role": "Lead Software Engineer, Innovation Group at State Farm",
-    "now_phd": "PhD in Computer Science, Leibniz Universität Hannover",
-    "now_masakhane": "Former Board Member, Masakhane Research Foundation",
+    "now_phd": "PhD in Computer Science · completed November 2025",
+    "now_darakili": "Dr. Kabongo · AI education and work on DarAkili",
     "portrait_alt": "Salomon Kabongo"
   },
   "videos": {
     "section_label": "Video",
-    "home_title": "Latest from the channels",
-    "home_subtitle": "Research explained, tools demonstrated, and conversations about building technology in and for Africa.",
+    "home_title": "Learn AI with Dr. Kabongo",
+    "home_subtitle": "Research explained, practical tools demonstrated, and honest conversations about modern AI — across languages and levels of experience.",
     "all_videos": "All videos",
     "title": "Videos",
     "subtitle": "Everything published across the channels, newest first. Featured videos are pinned to the top.",
@@ -47,8 +47,8 @@
     "count": "{count, plural, =0 {No videos yet} one {# video} other {# videos}}",
     "coming_soon": "First video coming soon",
     "channels_label": "Channels",
-    "channels_title": "One channel per language",
-    "channels_subtitle": "The same commitment in each: make the ideas behind modern AI understandable in the language someone actually thinks in.",
+    "channels_title": "Four channels, education in five languages",
+    "channels_subtitle": "YouTube channels are available in English, French, Lingala, and Tshiluba. Educational content and access on this site also include Swahili.",
     "subscribe": "Subscribe",
     "topic_ai_explained": "AI explained",
     "topic_deep_learning": "Deep learning",
@@ -56,7 +56,7 @@
     "topic_research_talks": "Research & talks",
     "topic_tutorials": "Tutorials",
     "channel_en_label": "English",
-    "channel_en_desc": "Research walkthroughs, deep dives on NLP and LLMs, and honest notes on building a career in AI.",
+    "channel_en_desc": "Research walkthroughs, practical AI, and clear explanations of foundation models, multimodal systems, and technical careers.",
     "channel_fr_label": "Français",
     "channel_fr_desc": "L'IA expliquée en français, pour la francophonie africaine et mondiale — recherche, carrière et pratique.",
     "channel_ln_label": "Lingála",
@@ -65,86 +65,128 @@
     "channel_lua_desc": "AI, research and technology explained in Tshiluba — because a technical idea should not require a colonial language first.",
     "empty_subtitle": "The channels are new and the first videos are on the way. Subscribe and you will not miss them.",
     "empty_title": "Nothing published yet",
-    "empty_body": "I am recording the first videos now. Each channel below teaches the same material in a different language — subscribe to the one that speaks yours."
+    "empty_body": "I am recording the first videos now. The four channels below teach AI in English, French, Lingala, and Tshiluba; Swahili learning content is also available through this site."
   },
   "about": {
     "section_label": "Research",
-    "title": "Language technology for the people it usually skips",
-    "bio1": "I hold a PhD in Computer Science from Leibniz Universität Hannover, where my research focused on natural language processing, information extraction and knowledge graphs — specifically, how to pull structured, comparable claims out of the scientific literature at scale.",
-    "bio2": "At State Farm's Innovation Group I lead applied research in computer vision, document intelligence and generative AI, work that has produced one issued AI/ML patent and three further filings. On the Masakhane Research Foundation board I helped drive a $9M+ programme building open NLP infrastructure for over a billion African language speakers.",
-    "bio3": "The research and the teaching are the same project. A paper that only circulates among people who already read English is a paper that has not finished its job — which is why I teach in English, French, Lingala and Tshiluba.",
+    "title": "From understanding AI to building with it",
+    "bio1": "I hold a PhD in Computer Science from Leibniz Universität Hannover. My research examines how AI systems find, connect, and evaluate evidence across language, documents, images, and scientific literature.",
+    "bio2": "I connect peer-reviewed research with real-world engineering across foundation models, multimodal AI, computer vision, document intelligence, and reliable evaluation. That work includes an issued U.S. patent in image privacy and de-identification.",
+    "bio3": "Research and education are part of the same project: useful AI knowledge should be rigorous, practical, and available beyond English. Through Dr. Kabongo, I teach in English, French, Lingala, Tshiluba, and Swahili.",
+    "closing": "Research discovers what is possible. Engineering tests it in the real world. Teaching makes the knowledge travel.",
     "research_title": "Research interests",
     "research_items": [
-      "Natural language processing & large language models",
-      "Speech recognition and translation for low-resource languages",
-      "Knowledge graphs & scholarly information extraction",
-      "Computer vision & multimodal AI",
-      "African language technology"
+      {
+        "title": "Foundation models & LLMs",
+        "description": "How models use context, retrieve evidence, reason across tasks, and fail in practice."
+      },
+      {
+        "title": "Multimodal AI & computer vision",
+        "description": "Systems that understand and connect images, video, text, and other signals."
+      },
+      {
+        "title": "NLP & information extraction",
+        "description": "Turning documents and scientific literature into structured, useful knowledge."
+      },
+      {
+        "title": "Evaluation & reliable AI",
+        "description": "Testing model quality, limitations, and fitness for consequential real-world use."
+      },
+      {
+        "title": "African-language technology",
+        "description": "Data, models, and community-led methods for multilingual and low-resource settings."
+      },
+      {
+        "title": "AI education",
+        "description": "Making modern AI understandable and useful across languages and experience levels."
+      }
     ],
     "figures_label": "Selected record",
     "read_cv": "Read the full CV",
     "see_publications": "See publications",
-    "darakili": "That conviction is also why I work on DarAkili, a STEM education platform where African professionals publish free mini-courses in their own languages.",
+    "darakili": "That conviction also guides my work on DarAkili, a STEM education platform where African professionals publish free mini-courses in their own languages.",
     "see_projects": "See projects"
   },
   "stats": {
-    "patent": "1 patent issued, 3 pending",
-    "patent_year": "AI/ML · State Farm",
-    "bestpaper": "Best Paper Award",
-    "bestpaper_venue": "ICADL 2021",
-    "citations": "280+ citations",
-    "citations_label": "Google Scholar",
-    "funding": "$9M+ research funding",
-    "funding_label": "Masakhane, 2021–2026"
+    "items": [
+      {
+        "value": "PhD",
+        "label": "Computer Science",
+        "detail": "Leibniz Universität Hannover · completed November 2025"
+      },
+      {
+        "value": "U.S. Patent 12,613,996",
+        "label": "Image privacy & de-identification",
+        "detail": "Issued April 28, 2026"
+      },
+      {
+        "value": "Best Paper",
+        "label": "First-author research recognition",
+        "detail": "ICADL 2021"
+      },
+      {
+        "value": "Applied AI",
+        "label": "Research to real-world systems",
+        "detail": "Experience across multimodal, document, and generative AI"
+      },
+      {
+        "value": "Former board member",
+        "label": "Masakhane Research Foundation",
+        "detail": "Governance and partnerships for African-language research"
+      },
+      {
+        "value": "5 languages",
+        "label": "AI education",
+        "detail": "English · French · Lingala · Tshiluba · Swahili"
+      }
+    ]
   },
   "speaking": {
     "section_label": "Speaking",
     "home_title": "Talks, lectures and panels",
-    "home_subtitle": "I speak to research audiences and general ones, in English or French, on AI research, African language technology, and what it takes to build both.",
+    "home_subtitle": "I speak in English or French to research, technical, and general audiences about modern AI, applied systems, African-language technology, and technical careers.",
     "title": "Speaking",
     "subtitle": "I give talks to universities, research groups, conferences and companies — in English or French, remote or in person.",
     "topics_title": "What I speak about",
-    "topic_1_title": "Where large language models actually fail",
-    "topic_1_desc": "A working researcher's account of what current systems do well, where they break, and how to tell the difference — pitched at a technical audience without assuming NLP expertise.",
-    "topic_2_title": "AI for African languages",
-    "topic_2_desc": "Why over a billion speakers remain underserved by language technology, what Masakhane and the wider community have built, and what a realistic path forward looks like.",
-    "topic_3_title": "From research to production",
-    "topic_3_desc": "Taking machine learning from a paper to a shipped, patented system inside a large organisation — and the trade-offs nobody writes up.",
-    "topic_4_title": "Building a research career from the margins",
-    "topic_4_desc": "For students and early-career researchers outside the traditional pipeline: how to find collaborators, publish, and be taken seriously.",
+    "topic_1_title": "What modern AI can — and cannot — do",
+    "topic_1_desc": "A clear account of current capabilities, common failure modes, and how to evaluate claims without hype.",
+    "topic_2_title": "Multimodal and applied AI",
+    "topic_2_desc": "How language, vision, video, and documents come together in useful systems — from research choices to real-world trade-offs.",
+    "topic_3_title": "African-language technology",
+    "topic_3_desc": "What it takes to build AI with and for multilingual African communities, including data, evaluation, access, and participation.",
+    "topic_4_title": "Research and technical career development",
+    "topic_4_desc": "Practical lessons on finding collaborators, publishing strong work, growing technical judgment, and building a durable career.",
     "past_title": "Selected talks & appearances",
     "invite_title": "Invite me to speak",
-    "invite_body": "Tell me about the audience, the date and the format. I answer every enquiry, and I am glad to tailor a talk to what your group is working on.",
-    "invite_cta": "Book a conversation",
-    "invite_email": "Email me directly",
+    "invite_body": "Share the organization or event, audience, proposed date and location, format, and topic. I consider invitations in English and French, remotely or in person.",
     "watch_recording": "Watch recording",
     "slides": "Slides",
     "poster": "Poster"
   },
   "consulting": {
-    "section_label": "Consulting",
-    "title": "Consulting & advisory",
-    "subtitle": "Independent advisory for teams building with language models, document AI, or African language technology.",
+    "section_label": "Advisory",
+    "title": "Selective AI advisory",
+    "subtitle": "Focused guidance for teams making consequential decisions about AI research, evaluation, architecture, and multilingual systems.",
     "areas_title": "What I advise on",
-    "area_1_title": "Applied NLP & LLM systems",
-    "area_1_desc": "Architecture reviews, evaluation design, and honest assessments of whether a language model is the right tool for the problem in front of you.",
-    "area_2_title": "Document intelligence",
-    "area_2_desc": "Extraction, classification and understanding pipelines for messy real-world documents — the area of my patent work.",
-    "area_3_title": "African language technology",
-    "area_3_desc": "Data strategy, community partnership and model choices for teams building products for African markets and multilingual users.",
-    "area_4_title": "Research strategy",
-    "area_4_desc": "For labs and foundations: research direction, publication strategy, and building collaborations that survive past the first grant cycle.",
+    "area_1_title": "Model evaluation",
+    "area_1_desc": "Evaluation design, failure analysis, and evidence-based assessments of whether a model is fit for its intended use.",
+    "area_2_title": "Research & architecture reviews",
+    "area_2_desc": "Focused review of an AI system, research plan, or technical direction before a team commits significant time and resources.",
+    "area_3_title": "Multilingual & African-language AI",
+    "area_3_desc": "Data strategy, evaluation, model choices, and community-aware approaches for multilingual products and African contexts.",
+    "area_4_title": "Technical workshops",
+    "area_4_desc": "Tailored sessions that help research and engineering teams understand a method, assess trade-offs, or align on an AI approach.",
     "formats_title": "How we can work",
-    "format_1_title": "A single conversation",
-    "format_1_desc": "One call to pressure-test a decision. Often enough.",
-    "format_2_title": "Technical review",
-    "format_2_desc": "A focused review of a system, dataset or research plan, delivered as a written assessment.",
-    "format_3_title": "Ongoing advisory",
-    "format_3_desc": "A recurring engagement with a team over a quarter or more.",
-    "cta_title": "Start with a conversation",
-    "cta_body": "The first call is free and has no agenda beyond working out whether I can genuinely help. If I am not the right person, I will say so and point you to someone who is.",
-    "cta_book": "Book a call",
-    "cta_email": "Email me"
+    "format_1_title": "One-off consultation",
+    "format_1_desc": "A focused conversation to clarify a question, pressure-test a decision, or identify next steps.",
+    "format_2_title": "Written review",
+    "format_2_desc": "A bounded assessment of a system, dataset, architecture, evaluation plan, or research direction.",
+    "format_3_title": "Workshop or advisory sprint",
+    "format_3_desc": "A time-boxed engagement with a defined question, audience, deliverable, and end date.",
+    "boundary_title": "Clear boundaries",
+    "boundary_body": "Engagements use public or client-owned information and exclude confidential, proprietary, or employer-related work. Every enquiry is subject to conflict review and any required approvals.",
+    "cta_title": "Request advisory support",
+    "cta_body": "Share your organization or industry, the question, desired output, timing, and any potential conflicts. I accept only a limited number of clearly bounded engagements."
   },
   "blog": {
     "section_label": "Writing",
@@ -160,7 +202,7 @@
   "projects": {
     "section_label": "Projects",
     "title": "Selected projects",
-    "subtitle": "Open-source contributions, research platforms and side projects.",
+    "subtitle": "Research systems, open-source contributions, and educational tools across modern AI.",
     "github": "GitHub",
     "demo": "Live demo",
     "paper": "Paper",
@@ -169,11 +211,9 @@
   "publications": {
     "section_label": "Publications",
     "title": "Publications & patents",
-    "subtitle": "Peer-reviewed papers, workshops and patents across NLP, speech and information retrieval.",
+    "subtitle": "Peer-reviewed research and patents spanning foundation models, multimodal AI, NLP, speech, and information extraction.",
     "paper": "Paper",
     "code": "Code",
-    "patent_label": "US Patent",
-    "citations_label": "citations",
     "award_label": "Award",
     "scholar": "Google Scholar",
     "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ"
@@ -181,8 +221,7 @@
   "cv": {
     "section_label": "CV",
     "title": "Curriculum vitae",
-    "subtitle": "PhD in NLP · Lead Software Engineer · Former Masakhane board member",
-    "download": "Download PDF",
+    "subtitle": "AI researcher · Lead Software Engineer · PhD in Computer Science",
     "education": "Education",
     "experience": "Experience",
     "publications_patents": "Selected publications & patents",
@@ -197,15 +236,17 @@
   "contact": {
     "section_label": "Contact",
     "title": "Work with me",
-    "subtitle": "I am open to speaking invitations, research collaborations and a limited number of advisory engagements.",
-    "speaking_cta": "Invite me to speak",
-    "consulting_cta": "Consulting & advisory",
-    "book_call": "Book a call",
-    "book_call_url": "https://appt.link/meeting-with-salomon-kabongo",
-    "email": "Email",
-    "linkedin": "LinkedIn",
-    "github": "GitHub",
-    "scholar": "Scholar",
+    "subtitle": "Two focused ways to work together, with clear expectations and an email-first process.",
+    "speaking_title": "Speaking invitations",
+    "speaking_body": "Talks, lectures, and panels in English or French for research, technical, and general audiences.",
+    "speaking_cta": "Send a speaking enquiry",
+    "advisory_title": "Selective AI advisory",
+    "advisory_body": "Bounded consultations, written reviews, and workshops for clearly defined AI questions.",
+    "advisory_cta": "Send an advisory enquiry",
+    "speaking_email_subject": "Speaking invitation — [organization or event]",
+    "speaking_email_body": "Hello Dr. Kabongo,\n\nI would like to invite you to speak.\n\nOrganization or event:\nAudience:\nProposed date and location:\nFormat (remote or in person):\nTopic or goals:\n\nAdditional context:",
+    "advisory_email_subject": "AI advisory enquiry — [organization]",
+    "advisory_email_body": "Hello Dr. Kabongo,\n\nI would like to enquire about a selective AI advisory engagement.\n\nOrganization and industry:\nQuestion to address:\nDesired output:\nTiming:\nPotential conflicts or relevant affiliations:\n\nThe information involved is public or client-owned: [yes/no]\n\nAdditional context:",
     "community_title": "Join the community",
     "community_subtitle": "Two places to follow the work, ask questions and meet others learning the same things.",
     "community_whatsapp_name": "WhatsApp channel",
@@ -224,12 +265,13 @@
     "videos": "Browse the videos"
   },
   "footer": {
-    "tagline": "AI researcher, engineer and educator. Building and explaining language technology in the languages people actually think in.",
+    "tagline": "AI researcher, engineer, and educator. Building useful systems and making modern AI understandable across languages.",
     "explore": "Explore",
     "connect": "Connect",
     "work_with_me": "Work with me",
     "rights": "All rights reserved.",
     "connect_whatsapp": "WhatsApp channel",
-    "connect_discord": "Discord server"
+    "connect_discord": "Discord server",
+    "disclaimer": "Views expressed here are my own. Affiliations are provided for identification only and do not imply endorsement. Outside engagements are considered in a personal capacity and are subject to conflict review and any required approvals."
   }
 }

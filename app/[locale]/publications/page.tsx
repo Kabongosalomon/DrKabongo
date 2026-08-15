@@ -17,13 +17,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 interface Publication {
-  type: 'patent' | 'journal' | 'conference' | 'workshop' | 'thesis'
+  type: 'patent' | 'patent_application' | 'journal' | 'conference' | 'workshop' | 'thesis'
   title: string
   venue: string
   year: number
   authors?: string
   abstract?: string
-  citations?: number
   award?: string
   paper?: string
   code?: string
@@ -33,13 +32,65 @@ interface Publication {
 const PUBLICATIONS: Publication[] = [
   {
     type: 'patent',
-    title: 'Systems and Methods for Advanced Duplicate Image Search and Analysis',
-    venue: 'US Patent Issued · App. 18/652,500 · Publication No. US20240411724A1',
-    year: 2024,
-    authors: 'Salomon Kabongo (Assignee: State Farm)',
+    title: 'Systems and Methods for Image Privacy and De-identification',
+    venue: 'U.S. Patent No. 12,613,996 · Issued April 28, 2026',
+    year: 2026,
+    authors: 'Salomon Kabongo · Co-inventor',
     abstract:
-      'Issued patent for a system identifying duplicate documents using vector embeddings and similarity hashing. Provides scalable, high-accuracy deduplication for enterprise-scale document repositories. Additionally, 3+ AI/ML patent filings pending.',
+      'Co-invented a computer-vision system for detecting and obscuring people and personally identifiable text in images.',
+    tags: ['Computer Vision', 'Image Privacy', 'De-identification', 'AI/ML'],
+  },
+  {
+    type: 'conference',
+    title: 'INJONGO: A Multicultural Intent Detection and Slot-filling Dataset for 16 African Languages',
+    venue: 'ACL 2025 · Long Papers',
+    year: 2025,
+    abstract:
+      'Co-authored a culturally grounded, open benchmark for evaluating intent detection and slot filling across 16 African languages.',
+    paper: 'https://aclanthology.org/2025.acl-long.464/',
+    tags: ['African Languages', 'Intent Detection', 'Slot Filling', 'LLM Evaluation'],
+  },
+  {
+    type: 'conference',
+    title: 'IrokoBench: A New Benchmark for African Languages in the Age of Large Language Models',
+    venue: 'NAACL 2025 · Long Papers',
+    year: 2025,
+    abstract:
+      'Co-authored a human-translated benchmark for evaluating natural-language inference, mathematical reasoning, and knowledge-based question answering across 17 African languages.',
+    paper: 'https://aclanthology.org/2025.naacl-long.139/',
+    tags: ['African Languages', 'LLM Evaluation', 'Reasoning', 'Multilingual NLP'],
+  },
+  {
+    type: 'conference',
+    title: 'Effective Context Selection in LLM-based Leaderboard Generation: An Empirical Study',
+    venue: 'NLDB 2024',
+    year: 2024,
+    abstract:
+      'First-author study of how document representations and context selection affect extraction quality, reliability, and computational efficiency in LLM-based leaderboard generation.',
+    paper: 'https://arxiv.org/pdf/2407.02409',
+    tags: ['Large Language Models', 'Context Selection', 'Information Extraction', 'Evaluation'],
+  },
+  {
+    type: 'patent_application',
+    title: 'Systems and Methods for Advanced Duplicate Image Search and Analysis',
+    venue:
+      'Pending U.S. Published Patent Application · App. 18/652,500 · Publication No. US20240411724A1',
+    year: 2024,
+    authors: 'Salomon Kabongo · Co-inventor',
+    abstract:
+      'Co-invented a system combining hash-based exact matching with visual-similarity analysis to identify duplicate and near-duplicate images.',
     tags: ['Computer Vision', 'Vector Embeddings', 'Similarity Hashing', 'AI/ML'],
+  },
+  {
+    type: 'conference',
+    title: 'Zero-shot Entailment of Leaderboards for Empirical AI Research',
+    venue: 'ACM/IEEE Joint Conference on Digital Libraries (JCDL 2023)',
+    year: 2023,
+    abstract:
+      'First-author evaluation of whether supervised leaderboard-extraction models generalize to previously unseen labels, accompanied by a zero-shot evaluation dataset.',
+    paper: 'https://arxiv.org/pdf/2303.16835',
+    code: 'https://github.com/Kabongosalomon/task-dataset-metric-nli-extraction',
+    tags: ['Zero-shot Evaluation', 'Natural Language Inference', 'Information Extraction'],
   },
   {
     type: 'conference',
@@ -47,7 +98,7 @@ const PUBLICATIONS: Publication[] = [
     venue: 'Interspeech 2022 · NeurIPS 2022 Black in AI Workshop',
     year: 2022,
     abstract:
-      'Co-authored "Bibletts", a high-fidelity multilingual speech corpus. Developed LiSTra, the first English-to-Lingala speech translation dataset and baseline — using both traditional cascade ASR+MT and a transformer-based End-to-End architecture.',
+      'Co-authored BibleTTS, a multilingual speech corpus, and developed LiSTra, an English-to-Lingala speech-translation dataset and baseline using cascade ASR and machine translation alongside an end-to-end architecture.',
     code: 'https://github.com/dsfsi/2020-AMMI-salomon',
     tags: ['ASR', 'Speech Translation', 'Lingala', 'Low-Resource NLP'],
   },
@@ -58,8 +109,7 @@ const PUBLICATIONS: Publication[] = [
     year: 2021,
     award: 'ICADL 2021 Best Paper Award',
     abstract:
-      'Presents a comprehensive approach for generating Leaderboards for knowledge-graph-based scholarly information organization. Investigates automated leaderboard construction using BERT, SciBERT, and XLNet — achieving F1 > 90% and setting new state-of-the-art for leaderboard extraction.',
-    citations: 30,
+      'Introduces an end-to-end approach for extracting empirical AI results from scientific text and representing them as searchable, knowledge-graph-based leaderboards.',
     paper: 'https://arxiv.org/pdf/2109.13089.pdf',
     code: 'https://github.com/Kabongosalomon/task-dataset-metric-nli-extraction',
     tags: ['Knowledge Graphs', 'Information Extraction', 'NLP', 'Scholarly IE'],
@@ -70,7 +120,7 @@ const PUBLICATIONS: Publication[] = [
     venue: 'NeurIPS 2021 · Black in AI Workshop (Spotlight)',
     year: 2021,
     abstract:
-      'Presents the Lingala Speech Translation (LiSTra) dataset and releases a full pipeline for constructing such datasets in other low-resource languages. Reports baselines using both cascade ASR→MT and a revolutionary transformer-based End-to-End architecture with customized interactive attention.',
+      'Presents the Lingala Speech Translation (LiSTra) dataset and a reusable pipeline for constructing similar resources in other low-resource languages. Reports cascade ASR-to-MT and transformer-based end-to-end baselines.',
     paper: '/archive/posterBiai2021.pdf',
     code: 'https://github.com/dsfsi/2020-AMMI-salomon',
     tags: ['ASR', 'Machine Translation', 'Lingala', 'Transformers'],
@@ -81,8 +131,7 @@ const PUBLICATIONS: Publication[] = [
     venue: 'EMNLP Findings 2020 · AfricaNLP Workshop ICLR 2020',
     year: 2020,
     abstract:
-      'Contributor to the Masakhane NLP initiative. Discusses methodology for building an African NLP research community and outlines success in addressing the lack of resources for African languages. Sets the standard for African Language NLP.',
-    citations: 280,
+      'Contributed to a community-led study of participatory methods for building machine-translation research, datasets, and models for African languages.',
     paper: 'https://arxiv.org/pdf/2003.11529.pdf',
     code: 'https://github.com/masakhane-io/masakhane.git',
     tags: ['Machine Translation', 'African Languages', 'Low-Resource NLP', 'Community'],
@@ -103,6 +152,7 @@ const PUBLICATIONS: Publication[] = [
 
 const TYPE_LABELS: Record<Publication['type'], string> = {
   patent: 'Patent',
+  patent_application: 'Patent application',
   journal: 'Journal / Conference',
   conference: 'Conference / Workshop',
   workshop: 'Workshop',
@@ -157,17 +207,14 @@ export default async function PublicationsPage({
                 <li key={pub.title} className="border-t border-rule pt-5">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <span className="eyebrow">{TYPE_LABELS[pub.type]}</span>
-                    {pub.citations && (
-                      <span className="text-xs text-ink-3">
-                        {pub.citations}+ {t('citations_label')}
-                      </span>
-                    )}
                   </div>
 
                   <h3 className="mt-2 font-serif text-lg font-medium text-balance text-ink">
                     {pub.title}
                   </h3>
                   <p className="mt-1 text-sm text-ink-2">{pub.venue}</p>
+
+                  {pub.authors && <p className="mt-1 text-xs text-ink-3">{pub.authors}</p>}
 
                   {pub.award && (
                     <p className="mt-2 text-sm font-medium text-accent">

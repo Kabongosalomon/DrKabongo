@@ -2,7 +2,13 @@ import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import { routing } from '@/i18n/routing'
 import { Link } from '@/i18n/navigation'
-import { alternatesFor } from '@/lib/metadata'
+import {
+  absoluteUrl,
+  alternateOpenGraphLocales,
+  alternatesFor,
+  openGraphLocaleFor,
+} from '@/lib/metadata'
+import { emailEnquiryHref } from '@/lib/contact'
 import { getAllVideos, countByChannel, CHANNEL_KEYS } from '@/lib/videos'
 import { getAllPosts } from '@/lib/blog'
 import { COMMUNITY } from '@/content/community'
@@ -21,19 +27,42 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  return { alternates: alternatesFor(locale) }
+  const t = await getTranslations({ locale, namespace: 'hero' })
+  const title = `${t('name')} — ${t('eyebrow')}`
+  const description = t('description')
+
+  return {
+    title,
+    description,
+    alternates: alternatesFor(locale),
+    openGraph: {
+      type: 'website' as const,
+      url: absoluteUrl(locale),
+      siteName: 'Dr. Kabongo',
+      title,
+      description,
+      locale: openGraphLocaleFor(locale),
+      alternateLocale: alternateOpenGraphLocales(locale),
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title,
+      description,
+    },
+  }
 }
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   setRequestLocale(locale)
 
-  const [t, tv, ta, ts, tsp, tb, tc] = await Promise.all([
+  const [t, tv, ta, ts, tsp, tco, tb, tc] = await Promise.all([
     getTranslations({ locale, namespace: 'hero' }),
     getTranslations({ locale, namespace: 'videos' }),
     getTranslations({ locale, namespace: 'about' }),
     getTranslations({ locale, namespace: 'stats' }),
     getTranslations({ locale, namespace: 'speaking' }),
+    getTranslations({ locale, namespace: 'consulting' }),
     getTranslations({ locale, namespace: 'blog' }),
     getTranslations({ locale, namespace: 'contact' }),
   ])
@@ -45,20 +74,31 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   const posts = getAllPosts().slice(0, 3)
 
-  const figures = [
-    { value: ts('patent'), label: ts('patent_year') },
-    { value: ts('bestpaper'), label: ts('bestpaper_venue') },
-    { value: ts('citations'), label: ts('citations_label') },
-    { value: ts('funding'), label: ts('funding_label') },
-  ]
+  const figures = ts.raw('items') as Array<{
+    value: string
+    label: string
+    detail: string
+  }>
+  const researchItems = ta.raw('research_items') as Array<{
+    title: string
+    description: string
+  }>
 
-  const now = [t('now_role'), t('now_phd'), t('now_masakhane')]
+  const now = [t('now_role'), t('now_phd'), t('now_darakili')]
 
-  const topics = [
-    { title: tsp('topic_1_title'), desc: tsp('topic_1_desc') },
-    { title: tsp('topic_2_title'), desc: tsp('topic_2_desc') },
-    { title: tsp('topic_3_title'), desc: tsp('topic_3_desc') },
-  ]
+  const topics = [1, 2, 3, 4].map((n) => ({
+    title: tsp(`topic_${n}_title`),
+    desc: tsp(`topic_${n}_desc`),
+  }))
+
+  const speakingHref = emailEnquiryHref(
+    tc('speaking_email_subject'),
+    tc('speaking_email_body'),
+  )
+  const advisoryHref = emailEnquiryHref(
+    tc('advisory_email_subject'),
+    tc('advisory_email_body'),
+  )
 
   return (
     <>
@@ -66,7 +106,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="mx-auto max-w-5xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-16">
           <div className="min-w-0 order-2 lg:order-1">
-            <p className="eyebrow">{t('credential')}</p>
+            <p className="eyebrow">{t('eyebrow')}</p>
             <h1 className="mt-3 font-serif text-4xl leading-[1.08] font-medium text-balance text-ink sm:text-5xl">
               {t('name')}
             </h1>
@@ -82,12 +122,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               >
                 {t('cta_videos')}
               </Link>
-              <Link
-                href="/speaking"
+              <a
+                href="#research"
                 className="inline-flex min-w-0 items-center gap-2 rounded-md border border-ink px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
               >
-                {t('cta_speaking')}
-              </Link>
+                {t('cta_work')}
+              </a>
             </div>
           </div>
 
@@ -123,9 +163,61 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      {/* ─── RESEARCH & ENGINEERING ─── */}
+      <section id="research" className="scroll-mt-24 border-t border-rule bg-surface">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+          <p className="eyebrow">{ta('section_label')}</p>
+          <h2 className="mt-2 max-w-3xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+            {ta('title')}
+          </h2>
+
+          <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+            <div className="min-w-0 space-y-4 text-base leading-relaxed text-ink-2">
+              <p>{ta('bio1')}</p>
+              <p>{ta('bio2')}</p>
+              <p>{ta('bio3')}</p>
+              <p>{ta('darakili')}</p>
+              <p className="border-l-2 border-accent pl-4 font-serif text-lg leading-relaxed text-ink">
+                {ta('closing')}
+              </p>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+                <ArrowLink href="/publications">{ta('see_publications')}</ArrowLink>
+                <ArrowLink href="/projects">{ta('see_projects')}</ArrowLink>
+                <ArrowLink href="/cv">{ta('read_cv')}</ArrowLink>
+              </div>
+            </div>
+
+            <div className="min-w-0">
+              <h3 className="eyebrow">{ta('research_title')}</h3>
+              <ul className="mt-3 grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:grid-cols-1">
+                {researchItems.map(({ title, description }) => (
+                  <li key={title} className="border-t border-rule py-3">
+                    <h4 className="font-serif text-base text-ink">{title}</h4>
+                    <p className="mt-1 text-sm leading-relaxed text-ink-2">{description}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-16 border-t border-rule pt-10">
+            <h3 className="eyebrow">{ta('figures_label')}</h3>
+            <dl className="mt-4 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+              {figures.map(({ value, label, detail }) => (
+                <div key={`${value}-${label}`} className="border-t border-rule pt-3">
+                  <dt className="font-serif text-lg leading-snug text-balance text-ink">{value}</dt>
+                  <dd className="mt-1 text-sm font-medium text-ink-2">{label}</dd>
+                  <dd className="mt-1 text-xs leading-relaxed text-ink-3">{detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
       {/* ─── VIDEOS ─── */}
       {videos.length > 0 && (
-        <section className="border-t border-rule bg-surface">
+        <section className="border-t border-rule">
           <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div className="min-w-0">
@@ -160,7 +252,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       )}
 
       {/* ─── CHANNELS ─── */}
-      <section className="border-t border-rule">
+      <section className="border-t border-rule bg-surface">
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
           <p className="eyebrow">{tv('channels_label')}</p>
           <h2 className="mt-2 max-w-2xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
@@ -187,51 +279,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* ─── RESEARCH ─── */}
-      <section id="research" className="border-t border-rule bg-surface">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
-          <p className="eyebrow">{ta('section_label')}</p>
-          <h2 className="mt-2 max-w-2xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
-            {ta('title')}
-          </h2>
-
-          <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-            <div className="min-w-0 space-y-4 text-base leading-relaxed text-ink-2">
-              <p>{ta('bio1')}</p>
-              <p>{ta('bio2')}</p>
-              <p>{ta('bio3')}</p>
-              <p>{ta('darakili')}</p>
-              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
-                <ArrowLink href="/publications">{ta('see_publications')}</ArrowLink>
-                <ArrowLink href="/projects">{ta('see_projects')}</ArrowLink>
-                <ArrowLink href="/cv">{ta('read_cv')}</ArrowLink>
-              </div>
-            </div>
-
-            <div className="min-w-0">
-              <h3 className="eyebrow">{ta('research_title')}</h3>
-              <ul className="mt-3 space-y-2.5">
-                {(ta.raw('research_items') as string[]).map((item) => (
-                  <li key={item} className="border-t border-rule pt-2.5 text-sm leading-relaxed text-ink-2">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <h3 className="eyebrow mt-10">{ta('figures_label')}</h3>
-              <dl className="mt-3 grid grid-cols-1 gap-x-6 gap-y-4 xs:grid-cols-2">
-                {figures.map(({ value, label }) => (
-                  <div key={value} className="border-t border-rule pt-2.5">
-                    <dt className="font-serif text-base leading-snug text-balance text-ink">{value}</dt>
-                    <dd className="mt-0.5 text-xs text-ink-3">{label}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ─── SPEAKING ─── */}
       <section className="border-t border-rule">
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
@@ -249,7 +296,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {tsp('home_subtitle')}
           </p>
 
-          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {topics.map(({ title, desc }) => (
               <div key={title} className="border-t border-rule pt-5">
                 <h3 className="font-serif text-lg font-medium text-balance text-ink">{title}</h3>
@@ -289,7 +336,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       )}
 
       {/* ─── WORK WITH ME ─── */}
-      <section id="contact" className="border-t border-rule">
+      <section id="contact" className="scroll-mt-24 border-t border-rule">
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
           <p className="eyebrow">{tc('section_label')}</p>
           <h2 className="mt-2 max-w-2xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
@@ -297,33 +344,34 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">{tc('subtitle')}</p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href={tc('book_call_url')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-w-0 items-center rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-opacity hover:opacity-90"
-            >
-              {tc('book_call')}
-            </a>
-            <Link
-              href="/speaking"
-              className="inline-flex min-w-0 items-center rounded-md border border-ink px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
-            >
-              {tc('speaking_cta')}
-            </Link>
-            <Link
-              href="/consulting"
-              className="inline-flex min-w-0 items-center rounded-md border border-ink px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
-            >
-              {tc('consulting_cta')}
-            </Link>
-            <a
-              href="mailto:kabongosalomon@gmail.com"
-              className="inline-flex min-w-0 items-center rounded-md border border-rule px-5 py-2.5 text-sm font-medium text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
-            >
-              {tc('email')}
-            </a>
+          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <article className="border-t border-rule pt-5">
+              <h3 className="font-serif text-xl font-medium text-ink">{tc('speaking_title')}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-2">{tc('speaking_body')}</p>
+              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <a
+                  href={speakingHref}
+                  className="inline-flex min-w-0 items-center rounded-md bg-ink px-4 py-2 text-sm font-medium text-paper transition-opacity hover:opacity-90"
+                >
+                  {tc('speaking_cta')}
+                </a>
+                <ArrowLink href="/speaking">{tsp('topics_title')}</ArrowLink>
+              </div>
+            </article>
+
+            <article className="border-t border-rule pt-5">
+              <h3 className="font-serif text-xl font-medium text-ink">{tc('advisory_title')}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-2">{tc('advisory_body')}</p>
+              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <a
+                  href={advisoryHref}
+                  className="inline-flex min-w-0 items-center rounded-md bg-ink px-4 py-2 text-sm font-medium text-paper transition-opacity hover:opacity-90"
+                >
+                  {tc('advisory_cta')}
+                </a>
+                <ArrowLink href="/consulting">{tco('areas_title')}</ArrowLink>
+              </div>
+            </article>
           </div>
 
           {/* Community */}

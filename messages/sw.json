@@ -8,7 +8,7 @@
     "projects": "Baprojet",
     "publications": "Bapublication",
     "cv": "CV",
-    "contact": "Contact",
+    "work_with_me": "Tutumike pamoja",
     "language": "Kubadilisha lugha",
     "open_menu": "Fungua menu",
     "close_menu": "Funga menu",
@@ -19,22 +19,22 @@
     "to_light": "Kuingia mu thème clair"
   },
   "hero": {
+    "eyebrow": "CHERCHEUR MU AI · INGÉNIEUR · MWALIMU",
     "name": "Salomon Kabongo",
-    "credential": "PhD mu Informatique",
-    "lede": "Nafanyaka recherche juu ya namna ba machine inajifunzaka lugha — na nafundishaka mu Anglais, Français, Lingala na Tshiluba.",
-    "description": "Kazi yangu iko katikati ya vitu mbili yenye haikutanake sana : recherche ya NLP yenye ba expert walihakikisha, na kufikisha hii ujuzi kwa watu wenye haikuandikiwaka juu yao. Najenga technologie ya lugha juu ya lugha za Afrika, natumikaka na AI appliquée mu ba entreprise, na nafasiriaka yote mbili ku YouTube.",
-    "cta_videos": "Angalia bavideo ya sasa",
-    "cta_speaking": "Nialike ku conférence",
-    "now_label": "Sasa hivi",
+    "lede": "Najengaka, nafanyaka recherche, na nafundishaka intelligence artificielle.",
+    "description": "Kazi yangu inagusa foundation models, AI multimodale, computer vision, intelligence documentaire, extraction ya ba information scientifique, na technologie juu ya lugha za Afrika. Kupitia Dr. Kabongo, nafundishaka AI pratique mu Anglais, Français, Lingala, Tshiluba na Swahili.",
+    "cta_videos": "Angalia bavideo yangu",
+    "cta_work": "Chunguza kazi yangu",
+    "now_label": "Kwa kifupi",
     "now_role": "Lead Software Engineer, Innovation Group ku State Farm",
-    "now_phd": "PhD mu Informatique, Leibniz Universität Hannover",
-    "now_masakhane": "Ancien membre ya conseil, Masakhane Research Foundation",
+    "now_phd": "PhD mu Informatique · ilimalizika Novemba 2025",
+    "now_darakili": "Dr. Kabongo · elimu ya AI na kazi juu ya DarAkili",
     "portrait_alt": "Salomon Kabongo"
   },
   "videos": {
     "section_label": "Video",
-    "home_title": "Bavideo ya sasa kutoka ku ba chaîne",
-    "home_subtitle": "Recherche inafasiriwa, ba outil inaonyeshwa, na mazungumuzo juu ya kujenga technologie mu Afrika na juu ya Afrika.",
+    "home_title": "Jifunze AI na Dr. Kabongo",
+    "home_subtitle": "Recherche inafasiriwa, ba outil pratique inaonyeshwa, na mazungumuzo ya kweli juu ya AI ya sasa — mu lugha tofauti na juu ya niveau zote.",
     "all_videos": "Bavideo yote",
     "title": "Bavideo",
     "subtitle": "Kila kitu yenye ilichapishwa ku ba chaîne yote, ya mupya kwanza. Bavideo yenye ilitiwa mbele iko ku juu.",
@@ -47,8 +47,8 @@
     "count": "{count, plural, =0 {Hakuna video bado} one {video #} other {bavideo #}}",
     "coming_soon": "Video ya kwanza inakuya hivi karibuni",
     "channels_label": "Bachaîne",
-    "channels_title": "Chaîne moya juu ya lugha moya",
-    "channels_subtitle": "Ahadi ile ile mu kila chaîne : kufanya mawazo ya AI ya sasa ieleweke mu lugha yenye mutu anawazaka nayo kweli.",
+    "channels_title": "Bachaîne ine, elimu mu lugha tano",
+    "channels_subtitle": "Bachaîne ya YouTube iko mu Anglais, Français, Lingala na Tshiluba. Ba contenu ya elimu na access ya hii site iko pia mu Swahili.",
     "subscribe": "S'abonner",
     "topic_ai_explained": "AI inafasiriwa",
     "topic_deep_learning": "Deep learning",
@@ -56,7 +56,7 @@
     "topic_research_talks": "Recherche na baconférence",
     "topic_tutorials": "Batutoriel",
     "channel_en_label": "Anglais",
-    "channel_en_desc": "Ba analyse ya recherche, kujifunza kwa kina juu ya NLP na ba LLM, na ba conseil ya kweli juu ya kujenga carrière mu AI.",
+    "channel_en_desc": "Ba analyse ya recherche, AI pratique, na mafasirio wazi juu ya foundation models, ba système multimodale na carrière technique.",
     "channel_fr_label": "Français",
     "channel_fr_desc": "AI inafasiriwa mu Français, juu ya francophonie ya Afrika na ya dunia — recherche, carrière na pratique.",
     "channel_ln_label": "Lingála",
@@ -65,86 +65,128 @@
     "channel_lua_desc": "AI, recherche na technologie inafasiriwa mu Tshiluba — juu wazo ya technique haipasweke kuomba lugha ya kikoloni kwanza.",
     "empty_subtitle": "Ba chaîne ni ya mupya na bavideo ya kwanza inakuya. Abonne-toi juu usikose.",
     "empty_title": "Hakuna kitu ilichapishwa bado",
-    "empty_body": "Niko naregistrer bavideo ya kwanza sasa hivi. Kila chaîne hapa chini inafundisha somo ile ile mu lugha tofauti — abonne-toi ku ile yenye inasema lugha yako."
+    "empty_body": "Niko naregistrer bavideo ya kwanza sasa hivi. Bachaîne ine hapa chini inafundisha AI mu Anglais, Français, Lingala na Tshiluba; ba contenu ya kujifunza mu Swahili iko pia ku hii site."
   },
   "about": {
     "section_label": "Recherche",
-    "title": "Technologie ya lugha juu ya wale wenye wanasahaulikaka mara mingi",
-    "bio1": "Niko na doctorat (PhD) mu Informatique ku Leibniz Universität Hannover, kwenye recherche yangu iliangalia traitement ya lugha naturel (NLP), extraction ya ba information na graphe ya connaissances — hasa, namna ya kutosha ba résultat structuré na comparable kutoka mu littérature scientifique ku niveau ya juu.",
-    "bio2": "Mu Innovation Group ya State Farm naongoza recherche appliquée mu computer vision, intelligence documentaire na AI générative — kazi yenye ilitosha brevet moya ya AI/ML na ba dépôt zingine tatu. Ku conseil ya Masakhane Research Foundation nilisaidia kuendesha programme ya zaidi ya 9M$ juu ya kujenga infrastructure NLP ouverte juu ya zaidi ya milliard moya ya watu wenye wanasemaka lugha za Afrika.",
-    "bio3": "Recherche na kufundisha ni projet ile ile. Article yenye inazunguka tu kati ya watu wenye wanajua kusoma Anglais tayari ni article yenye haijamaliza kazi yake bado — njo maana nafundishaka mu Anglais, Français, Lingala na Tshiluba.",
+    "title": "Kutoka kuelewa AI mpaka kuitumia kujenga",
+    "bio1": "Niko na doctorat (PhD) mu Informatique kutoka Leibniz Universität Hannover. Recherche yangu inaangalia namna ba système ya AI inatafuta, inaunganisha na inatathmini ba preuve mu lugha, ba document, ba image na littérature scientifique.",
+    "bio2": "Naunganishaka recherche yenye ba pair waliangalia na ingénierie ya dunia ya kweli mu foundation models, AI multimodale, computer vision, intelligence documentaire na évaluation fiable. Hii kazi inajumuisha brevet américain yenye ilitolewa juu ya confidentialité na désidentification ya ba image.",
+    "bio3": "Recherche na elimu ni sehemu ya projet ile ile: ujuzi ya AI yenye iko na maana inapaswa kuwa rigoureux, pratique na ipatikane zaidi ya Anglais. Kupitia Dr. Kabongo, nafundishaka mu Anglais, Français, Lingala, Tshiluba na Swahili.",
+    "closing": "Recherche inavumbua kile inawezekana. Ingénierie inaijaribu mu dunia ya kweli. Kufundisha inafanya ujuzi usafiri.",
     "research_title": "Ba domaine ya recherche",
     "research_items": [
-      "Traitement ya lugha naturel (NLP) na Large Language Models",
-      "Reconnaissance na traduction ya sauti juu ya lugha zenye ziko na ba ressource kidogo",
-      "Graphe ya connaissances na extraction ya ba information scientifique",
-      "Computer vision na AI multimodale",
-      "Technologie ya lugha za Afrika"
+      {
+        "title": "Foundation models na ba LLM",
+        "description": "Namna ba modèle inatumia contexte, inatafuta preuve, inafanya raisonnement mu ba tâche tofauti na inashindwaka mu pratique."
+      },
+      {
+        "title": "AI multimodale na computer vision",
+        "description": "Ba système yenye inaelewa na kuunganisha ba image, vidéo, texte na signaux zingine."
+      },
+      {
+        "title": "NLP na extraction ya information",
+        "description": "Kubadilisha ba document na littérature scientifique kuwa ujuzi structuré na yenye iko utile."
+      },
+      {
+        "title": "Évaluation na AI fiable",
+        "description": "Kujaribu qualité, limites na kama modèle inafaa juu ya matumizi ya maana mu dunia ya kweli."
+      },
+      {
+        "title": "Technologie ya lugha za Afrika",
+        "description": "Ba donnée, ba modèle na njia yenye communauté inaongoza juu ya contexte multilingue na yenye iko na ba ressource kidogo."
+      },
+      {
+        "title": "Elimu ya AI",
+        "description": "Kufanya AI ya sasa ieleweke na itumike mu lugha na niveau tofauti."
+      }
     ],
     "figures_label": "Mifano ya kazi",
     "read_cv": "Soma CV yote",
     "see_publications": "Ona bapublication",
-    "darakili": "Imani ile ile njo inafanya natumika ku DarAkili, plateforme ya éducation STEM kwenye ba professionnel ya Afrika wanatosha ba minicours ya bure mu lugha zao wenyewe.",
+    "darakili": "Hii conviction inaongoza pia kazi yangu juu ya DarAkili, plateforme ya elimu STEM kwenye ba professionnel wa Afrika wanachapisha ba minicours ya bure mu lugha zao wenyewe.",
     "see_projects": "Ona baprojet"
   },
   "stats": {
-    "patent": "Brevet 1 ilitolewa, 3 inangoja",
-    "patent_year": "AI/ML · State Farm",
-    "bestpaper": "Prix ya article ya mzuri zaidi",
-    "bestpaper_venue": "ICADL 2021",
-    "citations": "Zaidi ya 280 citation",
-    "citations_label": "Google Scholar",
-    "funding": "Zaidi ya 9M$ ya financement",
-    "funding_label": "Masakhane, 2021–2026"
+    "items": [
+      {
+        "value": "PhD",
+        "label": "Informatique",
+        "detail": "Leibniz Universität Hannover · ilimalizika Novemba 2025"
+      },
+      {
+        "value": "Brevet US 12,613,996",
+        "label": "Confidentialité na désidentification ya ba image",
+        "detail": "Ilitolewa tarehe 28 Aprili 2026"
+      },
+      {
+        "value": "Best Paper",
+        "label": "Recherche ya premier auteur yenye ilitambuliwa",
+        "detail": "ICADL 2021"
+      },
+      {
+        "value": "AI appliquée",
+        "label": "Kutoka recherche mpaka ba système ya kweli",
+        "detail": "Expérience mu AI multimodale, documentaire na générative"
+      },
+      {
+        "value": "Ancien membre ya conseil",
+        "label": "Masakhane Research Foundation",
+        "detail": "Gouvernance na partenariat juu ya recherche ya lugha za Afrika"
+      },
+      {
+        "value": "Lugha 5",
+        "label": "Elimu ya AI",
+        "detail": "Anglais · Français · Lingala · Tshiluba · Swahili"
+      }
+    ]
   },
   "speaking": {
     "section_label": "Baconférence",
     "home_title": "Baconférence, masomo na ba table ronde",
-    "home_subtitle": "Ninasemaka mbele ya ba chercheur na mbele ya watu wote, mu Anglais ao mu Français, juu ya recherche ya AI, technologie ya lugha za Afrika, na nini inahitajika juu ya kujenga yote mbili.",
+    "home_subtitle": "Naongeaka mu Anglais ao Français mbele ya public ya recherche, technique na général juu ya AI ya sasa, ba système appliqué, technologie ya lugha za Afrika na carrière technique.",
     "title": "Baconférence",
     "subtitle": "Nafanyaka baconférence ku ba université, ba groupe ya recherche, baconférence na ba entreprise — mu Anglais ao mu Français, ku ligne ao mu présentiel.",
     "topics_title": "Vitu yenye ninasemaka juu yayo",
-    "topic_1_title": "Fasi kwenye ba grand modèle ya lugha inaangukaka kweli",
-    "topic_1_desc": "Mazungumuzo ya chercheur yenye iko natumika juu ya kile ba système ya sasa inafanya mzuri, fasi kwenye inavunjikaka, na namna ya kujua tofauti — juu ya public technique, bila kuomba expertise ya NLP.",
-    "topic_2_title": "AI juu ya lugha za Afrika",
-    "topic_2_desc": "Juu ya nini zaidi ya milliard moya ya watu hawapate bado technologie ya lugha, nini Masakhane na communauté walijenga, na njia ya kweli yenye inabakia mbele.",
-    "topic_3_title": "Kutoka recherche mupaka production",
-    "topic_3_desc": "Kutosha machine learning kutoka ku article mupaka ku système yenye ilifanywa na kupata brevet ndani ya organisation kubwa — na ba compromis yenye mutu haandikake.",
-    "topic_4_title": "Kujenga carrière ya recherche kutoka pembeni",
-    "topic_4_desc": "Juu ya ba étudiant na ba chercheur wa sasa wenye wako inje ya njia ya kawaida : namna ya kutafuta ba collaborateur, kutosha ba article, na kukubaliwa.",
+    "topic_1_title": "Kile AI ya sasa inaweza — na haiwezi — kufanya",
+    "topic_1_desc": "Mafasirio wazi ya capacités ya sasa, namna inashindwaka mara mingi, na jinsi ya kutathmini ba déclaration bila hype.",
+    "topic_2_title": "AI multimodale na appliquée",
+    "topic_2_desc": "Namna lugha, vision, vidéo na ba document inaungana mu ba système utile — kutoka choix ya recherche mpaka ba compromis ya dunia ya kweli.",
+    "topic_3_title": "Technologie ya lugha za Afrika",
+    "topic_3_desc": "Kile inahitajika juu ya kujenga AI pamoja na juu ya ba communauté multilingue ya Afrika: ba donnée, évaluation, access na participation.",
+    "topic_4_title": "Recherche na développement ya carrière technique",
+    "topic_4_desc": "Ba leçon pratique juu ya kutafuta ba collaborateur, kuchapisha kazi ya nguvu, kukuza jugement technique na kujenga carrière yenye itaendelea.",
     "past_title": "Baconférence yenye ilifanyika",
     "invite_title": "Nialike ku conférence",
-    "invite_body": "Niambie juu ya public yako, date na format. Najibu ku demande yote, na nafurahi kutengeneza conférence kulingana na kile groupe yako iko nafanya.",
-    "invite_cta": "Panga rendez-vous",
-    "invite_email": "Nitumie email directement",
+    "invite_body": "Tuma organisation ao événement, public, date na fasi yenye unapendekeza, format na sujet. Naangaliaka ba invitation mu Anglais na Français, à distance ao sur place.",
     "watch_recording": "Angalia enregistrement",
     "slides": "Badiapositive",
     "poster": "Poster"
   },
   "consulting": {
     "section_label": "Ushauri",
-    "title": "Ushauri na accompagnement",
-    "subtitle": "Accompagnement indépendant juu ya ba équipe yenye iko najenga na ba modèle ya lugha, AI documentaire, ao technologie ya lugha za Afrika.",
+    "title": "Ushauri sélectif mu AI",
+    "subtitle": "Ushauri ciblé juu ya ba équipe yenye inakamata décision ya maana mu recherche ya AI, évaluation, architecture na ba système multilingue.",
     "areas_title": "Vitu yenye natoaka ushauri juu yayo",
-    "area_1_title": "Ba système NLP na LLM appliqués",
-    "area_1_desc": "Ba revue ya architecture, conception ya évaluation, na avis ya kweli juu ya kujua kama modèle ya lugha ni kweli outil yenye inastahili ku problème yenye iko mbele yako.",
-    "area_2_title": "Intelligence documentaire",
-    "area_2_desc": "Ba pipeline ya extraction, classification na compréhension juu ya ba document ya kweli yenye inakuwaka complexe — domaine ya kazi yangu ya brevet.",
-    "area_3_title": "Technologie ya lugha za Afrika",
-    "area_3_desc": "Stratégie ya ba donnée, partenariat na communauté na choix ya ba modèle juu ya ba équipe yenye iko najenga juu ya ba marché ya Afrika na ba utilisateur multilingue.",
-    "area_4_title": "Stratégie ya recherche",
-    "area_4_desc": "Juu ya ba laboratoire na ba fondation : direction ya recherche, stratégie ya publication, na kujenga ba collaboration yenye itaendelea zaidi ya cycle ya kwanza ya financement.",
+    "area_1_title": "Évaluation ya ba modèle",
+    "area_1_desc": "Conception ya évaluation, analyse ya échec na kuangalia na ba preuve kama modèle inafaa juu ya matumizi yake.",
+    "area_2_title": "Revue ya recherche na architecture",
+    "area_2_desc": "Kuangalia kwa focus système ya AI, plan ya recherche ao direction technique mbele équipe itumie mda na ba ressource mingi.",
+    "area_3_title": "AI multilingue na lugha za Afrika",
+    "area_3_desc": "Stratégie ya ba donnée, évaluation, choix ya ba modèle na njia yenye inaheshimia communauté juu ya ba produit multilingue na contexte ya Afrika.",
+    "area_4_title": "Ba atelier technique",
+    "area_4_desc": "Ba session personnalisé juu ya kusaidia équipe ya recherche na ingénierie ielewe méthode, ilinganishe ba compromis ao ikubaliane juu ya approche ya AI.",
     "formats_title": "Namna tunaweza tumika",
-    "format_1_title": "Mazungumuzo moya tu",
-    "format_1_desc": "Appel moya juu ya kuangalia décision. Mara mingi inatosha.",
-    "format_2_title": "Revue technique",
-    "format_2_desc": "Examen ya système, ya ba donnée ao ya plan ya recherche, inatolewa kama évaluation yenye iliandikwa.",
-    "format_3_title": "Accompagnement ya mda murefu",
-    "format_3_desc": "Kazi yenye inarudiaka na équipe kwa mda ya trimestre ao zaidi.",
-    "cta_title": "Tuanze na mazungumuzo",
-    "cta_body": "Appel ya kwanza ni ya bure na haina but ingine zaidi ya kujua kama naweza kukusaidia kweli. Kama mimi hapana mutu yenye anastahili, nitakuambia na nitakuonyesha mutu mwingine.",
-    "cta_book": "Panga rendez-vous",
-    "cta_email": "Nitumie email"
+    "format_1_title": "Consultation ya mara moya",
+    "format_1_desc": "Mazungumuzo ciblé juu ya kuweka question wazi, kujaribu décision ao kutambua ba étape yenye inafuata.",
+    "format_2_title": "Revue yenye iliandikwa",
+    "format_2_desc": "Évaluation yenye iko na limite wazi ya système, ba donnée, architecture, plan ya évaluation ao direction ya recherche.",
+    "format_3_title": "Atelier ao sprint ya ushauri",
+    "format_3_desc": "Mission ya mda yenye iko na question, public, livrable na date ya mwisho yenye ilifafanuliwa.",
+    "boundary_title": "Ba limite wazi",
+    "boundary_body": "Ba mission inatumia information ya public ao ya client na haikubali kazi confidentiel, propriétaire ao yenye iko na uhusiano na employeur wangu. Kila demande inapitia vérification ya conflit na autorisation yote yenye inahitajika.",
+    "cta_title": "Omba musaada ya ushauri",
+    "cta_body": "Tuma organisation ao industrie yako, question, résultat yenye unataka, calendrier na conflit yoyote possible. Nakubali tu ba mission chache yenye iko na limite wazi."
   },
   "blog": {
     "section_label": "Maandishi",
@@ -160,7 +202,7 @@
   "projects": {
     "section_label": "Baprojet",
     "title": "Baprojet yenye ilichaguliwa",
-    "subtitle": "Ba contribution open source, ba plateforme ya recherche na ba projet ya pembeni.",
+    "subtitle": "Ba système ya recherche, contribution open source na ba outil ya elimu mu domaine tofauti ya AI ya sasa.",
     "github": "GitHub",
     "demo": "Démo",
     "paper": "Article",
@@ -169,11 +211,9 @@
   "publications": {
     "section_label": "Bapublication",
     "title": "Bapublication na ba brevet",
-    "subtitle": "Ba article yenye ba pair waliangalia, ba atelier na ba brevet mu NLP, sauti na recherche ya ba information.",
+    "subtitle": "Recherche yenye ba pair waliangalia na ba brevet mu foundation models, AI multimodale, NLP, sauti na extraction ya information.",
     "paper": "Article",
     "code": "Code",
-    "patent_label": "Brevet US",
-    "citations_label": "citation",
     "award_label": "Distinction",
     "scholar": "Google Scholar",
     "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ"
@@ -181,8 +221,7 @@
   "cv": {
     "section_label": "CV",
     "title": "Curriculum vitae",
-    "subtitle": "PhD mu NLP · Lead Software Engineer · Ancien membre ya conseil ya Masakhane",
-    "download": "Télécharger PDF",
+    "subtitle": "Chercheur mu AI · Lead Software Engineer · PhD mu Informatique",
     "education": "Formation",
     "experience": "Expérience",
     "publications_patents": "Bapublication na ba brevet yenye ilichaguliwa",
@@ -197,15 +236,17 @@
   "contact": {
     "section_label": "Contact",
     "title": "Tutumike pamoja",
-    "subtitle": "Niko wazi juu ya ba invitation ya conférence, ba collaboration ya recherche na ba mission ya conseil ya kidogo.",
-    "speaking_cta": "Nialike ku conférence",
-    "consulting_cta": "Ushauri na accompagnement",
-    "book_call": "Panga rendez-vous",
-    "book_call_url": "https://appt.link/meeting-with-salomon-kabongo",
-    "email": "Email",
-    "linkedin": "LinkedIn",
-    "github": "GitHub",
-    "scholar": "Scholar",
+    "subtitle": "Njia mbili ciblé ya kutumika pamoja, na ba attente wazi na contact ya kwanza kupitia email.",
+    "speaking_title": "Ba invitation ya conférence",
+    "speaking_body": "Baconférence, bacours na ba panel mu Anglais ao Français juu ya public ya recherche, technique na général.",
+    "speaking_cta": "Tuma demande ya conférence",
+    "advisory_title": "Ushauri sélectif mu AI",
+    "advisory_body": "Ba consultation ya mara moya, revue yenye iliandikwa na atelier juu ya ba question ya AI yenye iko wazi.",
+    "advisory_cta": "Tuma demande ya ushauri",
+    "speaking_email_subject": "Invitation ya conférence — [organisation ao événement]",
+    "speaking_email_body": "Habari Dr. Kabongo,\n\nNingependa kukualika uongee.\n\nOrganisation ao événement:\nPublic:\nDate na fasi yenye inapendekezwa:\nFormat (à distance ao sur place):\nSujet ao objectifs:\n\nContexte ingine:",
+    "advisory_email_subject": "Demande ya ushauri mu AI — [organisation]",
+    "advisory_email_body": "Habari Dr. Kabongo,\n\nNingependa kuuliza juu ya mission ya ushauri sélectif mu AI.\n\nOrganisation na industrie:\nQuestion ya kujibu:\nRésultat yenye inatafutwa:\nCalendrier:\nBa conflit possible ao affiliation yenye iko pertinent:\n\nInformation yenye itatumika ni ya public ao ya client: [ndiyo/hapana]\n\nContexte ingine:",
     "community_title": "Ingia mu communauté",
     "community_subtitle": "Fasi mbili juu ya kufuata kazi, kuuliza ba question na kukutana na watu wengine wenye wako najifunza vitu zile zile.",
     "community_whatsapp_name": "Chaîne WhatsApp",
@@ -224,12 +265,13 @@
     "videos": "Angalia bavideo"
   },
   "footer": {
-    "tagline": "Chercheur mu AI, ingénieur na mwalimu. Kujenga na kufasiria technologie ya lugha mu lugha zenye watu wanawazaka nazo kweli.",
+    "tagline": "Chercheur mu AI, ingénieur na mwalimu. Kujenga ba système utile na kufanya AI ya sasa ieleweke mu lugha tofauti.",
     "explore": "Chunguza",
     "connect": "Fuata",
     "work_with_me": "Tutumike pamoja",
     "rights": "Tous droits réservés.",
     "connect_whatsapp": "Chaîne WhatsApp",
-    "connect_discord": "Serveur Discord"
+    "connect_discord": "Serveur Discord",
+    "disclaimer": "Maoni yenye iko hapa ni yangu mwenyewe. Ba affiliation inatajwa tu juu ya identification na haimaanishe endorsement. Ba engagement ya inje inaangaliwa mu capacité yangu ya personnel na inapitia vérification ya conflit pamoja na autorisation yote yenye inahitajika."
   }
 }

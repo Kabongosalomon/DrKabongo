@@ -31,16 +31,32 @@ const PROJECTS: Project[] = [
   {
     name: 'DarAkili',
     description:
-      'A STEM education platform where African professionals publish free mini-courses in their own languages — so that learning a technical subject no longer requires going through English or French first. Bridging the diaspora and the continent through teaching.',
+      'A multilingual STEM education platform where African professionals share free mini-courses in the languages their communities use, connecting expertise across the diaspora and the continent.',
     tags: ['STEM Education', 'African Languages', 'Community', 'Platform'],
     demo: 'https://darakili.com',
     youtube: 'https://www.youtube.com/@DarAkili',
     highlight: 'STEM education platform',
   },
   {
+    name: 'IrokoBench',
+    description:
+      'A human-translated benchmark for evaluating natural-language inference, mathematical reasoning, and knowledge-based question answering across 17 African languages.',
+    tags: ['LLM Evaluation', 'African Languages', 'Reasoning', 'Multilingual NLP'],
+    paper: 'https://aclanthology.org/2025.naacl-long.139/',
+    highlight: 'NAACL 2025 · Long Papers',
+  },
+  {
+    name: 'INJONGO',
+    description:
+      'A culturally grounded, open benchmark for intent detection and slot filling, created with native-speaker utterances across 16 African languages.',
+    tags: ['Intent Detection', 'Slot Filling', 'African Languages', 'LLM Evaluation'],
+    paper: 'https://aclanthology.org/2025.acl-long.464/',
+    highlight: 'ACL 2025 · Long Papers',
+  },
+  {
     name: 'Masakhane Web Platform',
     description:
-      'A Mozilla-funded web platform for African language translation — similar to Google Translate but focused exclusively on African languages made available by the Masakhane community.',
+      'A Mozilla-funded web platform that makes community-built translation models for African languages available through an accessible interface.',
     tags: ['NLP', 'Machine Translation', 'African Languages', 'Web'],
     demo: 'http://translate.masakhane.io/',
     highlight: 'Mozilla Open Source Support Award',
@@ -48,11 +64,11 @@ const PROJECTS: Project[] = [
   {
     name: 'Masakhane Initiative',
     description:
-      'Putting African researchers from across the continent together to build translation models for African languages. Masakhane means "We Build Together" in isiZulu.',
+      'A participatory research community where African researchers collaborate on datasets, models, and methods for African-language technology. Masakhane means "We Build Together" in isiZulu.',
     tags: ['NLP', 'African Languages', 'Community', 'Research'],
     github: 'https://github.com/masakhane-io/masakhane',
     demo: 'https://www.masakhane.io/home',
-    highlight: '280+ Citations · EMNLP Findings 2020',
+    highlight: 'EMNLP Findings 2020 · Community research',
   },
   {
     name: 'ORKG Leaderboards',
@@ -71,20 +87,6 @@ const PROJECTS: Project[] = [
     github: 'https://github.com/dsfsi/2020-AMMI-salomon',
     paper: '/archive/posterBiai2021.pdf',
     highlight: 'NeurIPS 2021 Black in AI Workshop',
-  },
-  {
-    name: 'CNN Dog Breed Classifier',
-    description:
-      'A Convolutional Neural Network that performs better than average humans at identifying dog breeds. Also produces an estimate of the closest-resembling dog breed for human photos.',
-    tags: ['Computer Vision', 'CNN', 'PyTorch'],
-    github: 'https://github.com/Kabongosalomon/CNN-Project-Dog-Breed-Classifier',
-  },
-  {
-    name: 'Face Generation with DCGAN',
-    description:
-      'Generating realistic face images using Deep Convolutional Generative Adversarial Networks (DCGAN) — a pair of competing multilayer neural networks.',
-    tags: ['Generative AI', 'GAN', 'Computer Vision', 'PyTorch'],
-    github: 'https://github.com/Kabongosalomon/Face-Generation-Project',
   },
 ]
 

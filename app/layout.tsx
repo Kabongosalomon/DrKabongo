@@ -1,22 +1,22 @@
 import type { Metadata } from 'next'
-import { SITE_URL, alternatesFor } from '@/lib/metadata'
+import { SITE_URL, alternateOpenGraphLocales, alternatesFor } from '@/lib/metadata'
 import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Salomon Kabongo, PhD — AI Researcher, Educator & Speaker',
+    default: 'Salomon Kabongo, PhD — AI Researcher, Engineer & Educator',
     template: '%s | Dr. Kabongo',
   },
   description:
-    'AI researcher (NLP, LLMs, knowledge graphs), Lead Software Engineer at State Farm, and former board member of the Masakhane Research Foundation. Teaching AI in English, French and Lingala.',
+    'AI researcher, engineer and educator working across foundation models, multimodal AI, document intelligence and African-language technology. Teaching in English, French, Lingala, Tshiluba and Swahili.',
   alternates: alternatesFor('en'),
   openGraph: {
     type: 'website',
     url: SITE_URL,
     siteName: 'Dr. Kabongo',
     locale: 'en_US',
-    alternateLocale: ['fr_FR', 'ln'],
+    alternateLocale: alternateOpenGraphLocales('en'),
   },
   twitter: {
     card: 'summary_large_image',

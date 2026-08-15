@@ -1,9 +1,11 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { Newsreader, Inter, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { routing } from '@/i18n/routing'
+import { alternateOpenGraphLocales, openGraphLocaleFor } from '@/lib/metadata'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 
@@ -33,6 +35,23 @@ const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t!==
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+
+  return {
+    openGraph: {
+      type: 'website',
+      siteName: 'Dr. Kabongo',
+      locale: openGraphLocaleFor(locale),
+      alternateLocale: alternateOpenGraphLocales(locale),
+    },
+  }
 }
 
 export default async function LocaleLayout({

@@ -1,6 +1,7 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { alternatesFor } from '@/lib/metadata'
+import { emailEnquiryHref } from '@/lib/contact'
 import { TALKS, type Talk } from '@/content/talks'
 
 export function generateStaticParams() {
@@ -73,6 +74,10 @@ export default async function SpeakingPage({ params }: { params: Promise<{ local
     slides: t('slides'),
     poster: t('poster'),
   }
+  const enquiryHref = emailEnquiryHref(
+    tc('speaking_email_subject'),
+    tc('speaking_email_body'),
+  )
 
   return (
     <div className="min-h-dvh">
@@ -125,18 +130,10 @@ export default async function SpeakingPage({ params }: { params: Promise<{ local
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-2">{t('invite_body')}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href={tc('book_call_url')}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={enquiryHref}
               className="inline-flex min-w-0 items-center rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-opacity hover:opacity-90"
             >
-              {t('invite_cta')}
-            </a>
-            <a
-              href="mailto:kabongosalomon@gmail.com"
-              className="inline-flex min-w-0 items-center rounded-md border border-ink px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
-            >
-              {t('invite_email')}
+              {tc('speaking_cta')}
             </a>
           </div>
         </section>

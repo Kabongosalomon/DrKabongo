@@ -8,7 +8,7 @@
     "projects": "Baprojet",
     "publications": "Bapublication",
     "cv": "CV",
-    "contact": "Contact",
+    "work_with_me": "Tosala elongo",
     "language": "Kobongola monoko",
     "open_menu": "Fungola menu",
     "close_menu": "Kanga menu",
@@ -19,22 +19,22 @@
     "to_light": "Kende na thème clair"
   },
   "hero": {
+    "eyebrow": "CHERCHEUR NA AI · INGÉNIEUR · MOLAKISI",
     "name": "Salomon Kabongo",
-    "credential": "PhD na Informatique",
-    "lede": "Nasalaka bolukiluki (recherche) mpo na koyeba ndenge ba machine eyekolaka minoko — pe nalakisaka yango na Anglais, Français, Lingala pe Tshiluba.",
-    "description": "Mosala na ngai ezali na katsikatsi ya makambo mibale oyo ekutanaka mbala mingi te : recherche ya NLP oyo bato ya mayele ba talela, pe komema boyebi yango epai ya bato oyo ekomamaki mpo na bango te. Natongaka technologie ya minoko mpo na minoko ya Afrique, nasalaka AI appliquée na ba entreprise, pe na expliquaka nionso mibale na YouTube.",
-    "cta_videos": "Tala bavideo ya sika",
-    "cta_speaking": "Benga ngai mpo na conférence",
-    "now_label": "Sik'oyo",
+    "lede": "Natongaka, nasalaka recherche, pe nalakisaka intelligence artificielle.",
+    "description": "Mosala na ngai etalaka foundation models, AI multimodale, computer vision, intelligence documentaire, extraction ya ba information scientifique, pe technologie mpo na minoko ya Afrique. Na nzela ya Dr. Kabongo, nalakisaka AI pratique na Anglais, Français, Lingala, Tshiluba pe Swahili.",
+    "cta_videos": "Tala bavideo na ngai",
+    "cta_work": "Tala mosala na ngai",
+    "now_label": "Na mokuse",
     "now_role": "Lead Software Engineer, Innovation Group na State Farm",
-    "now_phd": "PhD na Informatique, Leibniz Universität Hannover",
-    "now_masakhane": "Ancien membre ya conseil, Masakhane Research Foundation",
+    "now_phd": "PhD na Informatique · esilaki na novembre 2025",
+    "now_darakili": "Dr. Kabongo · éducation ya AI pe mosala na DarAkili",
     "portrait_alt": "Salomon Kabongo"
   },
   "videos": {
     "section_label": "Video",
-    "home_title": "Bavideo ya sika na bachaîne",
-    "home_subtitle": "Recherche oyo e expliqué, ba outil oyo elakisami, pe masolo mpo na kotonga technologie na Afrique pe mpo na Afrique.",
+    "home_title": "Yekola AI na Dr. Kabongo",
+    "home_subtitle": "Recherche oyo e expliqué, ba outil pratique oyo elakisami, pe masolo ya solo mpo na AI ya sika — na minoko pe ba niveau ndenge na ndenge.",
     "all_videos": "Bavideo nionso",
     "title": "Bavideo",
     "subtitle": "Nionso oyo ebimi na bachaîne, ya sika liboso. Bavideo oyo e mis en avant ezali na likolo.",
@@ -47,8 +47,8 @@
     "count": "{count, plural, =0 {Video eza naino te} one {video #} other {bavideo #}}",
     "coming_soon": "Video ya liboso ekoya kala mingi te",
     "channels_label": "Bachaîne",
-    "channels_title": "Chaîne moko mpo na monoko moko",
-    "channels_subtitle": "Engagement moko na chaîne moko na moko : kosala ete makanisi ya AI ya sika esosolama na monoko oyo moto akanisaka na yango penza.",
+    "channels_title": "Bachaîne minei, éducation na minoko mitano",
+    "channels_subtitle": "Bachaîne ya YouTube ezali na Anglais, Français, Lingala pe Tshiluba. Ba contenu ya éducation pe accès ya site oyo ezali mpe na Swahili.",
     "subscribe": "S'abonner",
     "topic_ai_explained": "AI expliqué",
     "topic_deep_learning": "Deep learning",
@@ -56,7 +56,7 @@
     "topic_research_talks": "Recherche pe baconférence",
     "topic_tutorials": "Batutoriel",
     "channel_en_label": "Anglais",
-    "channel_en_desc": "Ba analyse ya recherche, koyekola na mozindo mpo na NLP pe ba LLM, pe ba conseil ya solo mpo na kotonga carrière na AI.",
+    "channel_en_desc": "Ba analyse ya recherche, AI pratique, pe ba explication ya polele mpo na foundation models, ba système multimodale pe carrière technique.",
     "channel_fr_label": "Français",
     "channel_fr_desc": "AI expliqué na Français, mpo na francophonie ya Afrique pe ya mokili — recherche, carrière pe pratique.",
     "channel_ln_label": "Lingála",
@@ -65,86 +65,128 @@
     "channel_lua_desc": "AI, recherche pe technologie e expliqué na Tshiluba — pamba te likanisi ya technique esengeli te koluka monoko ya colonisation liboso.",
     "empty_subtitle": "Bachaîne eza ya sika pe bavideo ya liboso ezali koya. Abonne-toi mpo ozanga yango te.",
     "empty_title": "Eloko ebimi naino te",
-    "empty_body": "Nazali ko enregistrer bavideo ya liboso sik'oyo. Chaîne moko na moko awa na se elakisaka likambo moko na monoko mosusu — abonne-toi na oyo elobaka monoko na yo."
+    "empty_body": "Nazali ko enregistrer bavideo ya liboso sik'oyo. Bachaîne minei awa na se elakisaka AI na Anglais, Français, Lingala pe Tshiluba; ba contenu ya koyekola na Swahili ezali mpe na site oyo."
   },
   "about": {
     "section_label": "Recherche",
-    "title": "Technologie ya monoko mpo na bato oyo basila kobosanama mbala mingi",
-    "bio1": "Nazali na doctorat (PhD) na Informatique uta Leibniz Universität Hannover, esika recherche na ngai etalaki traitement ya monoko naturel (NLP), extraction ya makambo pe graphe ya boyebi — mingi mingi, ndenge ya kobimisa na grande échelle ba résultat structuré pe comparable na kati ya littérature scientifique.",
-    "bio2": "Na Innovation Group ya State Farm, na kambaka recherche appliquée na computer vision, intelligence documentaire pe AI générative — mosala oyo ebimisi brevet moko ya AI/ML pe ba dépôt misato mosusu. Na conseil ya Masakhane Research Foundation, na sungaki programme ya koleka 9M$ mpo na kotonga infrastructure NLP ouverte mpo na koleka milliard moko ya bato oyo balobaka minoko ya Afrique.",
-    "bio3": "Recherche pe kolakisa ezali projet se moko. Article oyo ekei kaka epai ya bato oyo basila koyeba kotanga Anglais ezali article oyo esilisi mosala na yango te — yango wana nalakisaka na Anglais, Français, Lingala pe Tshiluba.",
+    "title": "Uta na kososola AI kino kotonga na yango",
+    "bio1": "Nazali na doctorat (PhD) na Informatique uta Leibniz Universität Hannover. Recherche na ngai etalaka ndenge ba système ya AI elukaka, ekangisaka pe e évaluaka ba preuve na kati ya minoko, ba document, ba image pe littérature scientifique.",
+    "bio2": "Nakomisaka recherche oyo ba pair ba talela elongo na ingénierie ya mokili ya solo na foundation models, AI multimodale, computer vision, intelligence documentaire pe évaluation fiable. Mosala yango esangisi brevet américain oyo epesami mpo na confidentialité pe désidentification ya ba image.",
+    "bio3": "Recherche pe éducation ezali biteni ya projet moko: boyebi ya AI oyo ezali na tina esengeli ezala rigoureux, pratique pe ezala accessible koleka Anglais. Na nzela ya Dr. Kabongo, nalakisaka na Anglais, Français, Lingala, Tshiluba pe Swahili.",
+    "closing": "Recherche emonisaka nini ekoki kosalema. Ingénierie emekaka yango na mokili ya solo. Kolakisa esalaka ete boyebi etambola.",
     "research_title": "Ba domaine ya recherche",
     "research_items": [
-      "Traitement ya monoko naturel (NLP) pe Large Language Models",
-      "Reconnaissance pe traduction ya maloba mpo na minoko oyo ezali na ba ressource moke",
-      "Graphe ya boyebi pe extraction ya makambo ya scientifique",
-      "Computer vision pe AI multimodale",
-      "Technologie ya minoko ya Afrique"
+      {
+        "title": "Foundation models pe ba LLM",
+        "description": "Ndenge ba modèle esalelaka contexte, elukaka preuve, esalaka raisonnement na ba tâche ndenge na ndenge pe ekweyaka na pratique."
+      },
+      {
+        "title": "AI multimodale pe computer vision",
+        "description": "Ba système oyo esosolaka pe ekangisaka ba image, vidéo, texte pe signaux mosusu."
+      },
+      {
+        "title": "NLP pe extraction ya information",
+        "description": "Kobongola ba document pe littérature scientifique na boyebi structuré pe oyo ezali na tina."
+      },
+      {
+        "title": "Évaluation pe AI fiable",
+        "description": "Komeka qualité, ba limite pe soki modèle ebongi mpo na usage ya ntina na mokili ya solo."
+      },
+      {
+        "title": "Technologie ya minoko ya Afrique",
+        "description": "Ba donnée, ba modèle pe ba méthode oyo communauté ekambaka mpo na ba contexte multilingue pe oyo ezali na ba ressource moke."
+      },
+      {
+        "title": "Éducation ya AI",
+        "description": "Kosala ete AI ya sika esosolama pe esalelama na minoko pe ba niveau ndenge na ndenge."
+      }
     ],
     "figures_label": "Ndakisa ya mosala",
     "read_cv": "Tanga CV mobimba",
     "see_publications": "Tala bapublication",
-    "darakili": "Conviction wana nde esali ete nasala na DarAkili, plateforme ya éducation STEM esika ba professionnel ya Afrique babimisaka minicours ofele na minoko na bango moko.",
+    "darakili": "Conviction wana ekambaka mpe mosala na ngai na DarAkili, plateforme ya éducation STEM esika ba professionnel ya Afrique babimisaka minicours ofele na minoko na bango moko.",
     "see_projects": "Tala baprojet"
   },
   "stats": {
-    "patent": "Brevet 1 epesami, 3 ezali kozela",
-    "patent_year": "AI/ML · State Farm",
-    "bestpaper": "Prix ya article ya malamu koleka",
-    "bestpaper_venue": "ICADL 2021",
-    "citations": "Koleka 280 citation",
-    "citations_label": "Google Scholar",
-    "funding": "Koleka 9M$ ya financement",
-    "funding_label": "Masakhane, 2021–2026"
+    "items": [
+      {
+        "value": "PhD",
+        "label": "Informatique",
+        "detail": "Leibniz Universität Hannover · esilaki na novembre 2025"
+      },
+      {
+        "value": "Brevet US 12,613,996",
+        "label": "Confidentialité pe désidentification ya ba image",
+        "detail": "Epesami le 28 avril 2026"
+      },
+      {
+        "value": "Best Paper",
+        "label": "Recherche ya premier auteur oyo e reconnu",
+        "detail": "ICADL 2021"
+      },
+      {
+        "value": "AI appliquée",
+        "label": "Uta recherche kino ba système ya solo",
+        "detail": "Expérience na AI multimodale, documentaire pe générative"
+      },
+      {
+        "value": "Ancien membre ya conseil",
+        "label": "Masakhane Research Foundation",
+        "detail": "Gouvernance pe partenariat mpo na recherche ya minoko ya Afrique"
+      },
+      {
+        "value": "Minoko 5",
+        "label": "Éducation ya AI",
+        "detail": "Anglais · Français · Lingala · Tshiluba · Swahili"
+      }
+    ]
   },
   "speaking": {
     "section_label": "Baconférence",
     "home_title": "Baconférence, bacours pe ba table ronde",
-    "home_subtitle": "Nalobaka liboso ya ba chercheur pe liboso ya bato nionso, na Anglais to na Français, mpo na recherche ya AI, technologie ya minoko ya Afrique, pe nini esengeli mpo na kotonga nionso mibale.",
+    "home_subtitle": "Nalobaka na Anglais to Français liboso ya public ya recherche, technique pe général mpo na AI ya sika, ba système appliqué, technologie ya minoko ya Afrique pe carrière technique.",
     "title": "Baconférence",
     "subtitle": "Nalobaka na ba université, ba groupe ya recherche, baconférence pe ba entreprise — na Anglais to Français, en ligne to na présentiel.",
     "topics_title": "Makambo oyo nalobelaka",
-    "topic_1_title": "Esika ba grand modèle ya monoko ekweyaka penza",
-    "topic_1_desc": "Lisolo ya chercheur oyo azali kosala mpo na nini ba système ya lelo esalaka malamu, esika ebukanaka, pe ndenge ya koyeba bokeseni — mpo na public technique, kozanga kosenga expertise ya NLP.",
-    "topic_2_title": "AI mpo na minoko ya Afrique",
-    "topic_2_desc": "Mpo na nini koleka milliard moko ya bato bazangi naino technologie ya monoko, nini Masakhane pe communauté batongi, pe nzela ya solo oyo etikali liboso.",
-    "topic_3_title": "Uta na recherche kino na production",
-    "topic_3_desc": "Komema machine learning uta na article kino na système oyo esalemi pe ezwi brevet na kati ya organisation monene — pe ba compromis oyo moto akomaka te.",
-    "topic_4_title": "Kotonga carrière ya recherche uta na pembeni",
-    "topic_4_desc": "Mpo na ba étudiant pe ba chercheur ya sika oyo bazali libanda ya nzela ya momesano : ndenge ya koluka ba collaborateur, kobimisa ba article, pe kondimama.",
+    "topic_1_title": "Nini AI ya sika ekoki — pe ekoki te — kosala",
+    "topic_1_desc": "Explication ya polele ya ba capacité ya lelo, ndenge ekweyaka mbala mingi, pe ndenge ya ko évaluer ba déclaration kozanga hype.",
+    "topic_2_title": "AI multimodale pe appliquée",
+    "topic_2_desc": "Ndenge minoko, vision, vidéo pe ba document ekangamaka na ba système utile — uta choix ya recherche kino ba compromis ya mokili ya solo.",
+    "topic_3_title": "Technologie ya minoko ya Afrique",
+    "topic_3_desc": "Nini esengeli mpo na kotonga AI elongo na pe mpo na ba communauté multilingue ya Afrique: ba donnée, évaluation, accès pe participation.",
+    "topic_4_title": "Recherche pe développement ya carrière technique",
+    "topic_4_desc": "Ba leçon pratique mpo na koluka ba collaborateur, kobimisa mosala ya makasi, kokolisa jugement technique pe kotonga carrière oyo ekowumela.",
     "past_title": "Baconférence oyo esalemaki",
     "invite_title": "Benga ngai mpo na conférence",
-    "invite_body": "Yebisa ngai mpo na public na yo, date pe format. Nayanolaka na demande nionso, pe nasepelaka kobongisa conférence kotalela oyo groupe na yo ezali kosala.",
-    "invite_cta": "Zwa rendez-vous",
-    "invite_email": "Komela ngai directement",
+    "invite_body": "Tinda organisation to événement, public, date pe esika oyo o proposer, format pe sujet. Natalelaka ba invitation na Anglais pe Français, à distance to sur place.",
     "watch_recording": "Tala enregistrement",
     "slides": "Badiapositive",
     "poster": "Poster"
   },
   "consulting": {
     "section_label": "Conseil",
-    "title": "Conseil pe accompagnement",
-    "subtitle": "Accompagnement indépendant mpo na ba équipe oyo ezali kotonga na ba modèle ya monoko, AI documentaire, to technologie ya minoko ya Afrique.",
+    "title": "Conseil sélectif na AI",
+    "subtitle": "Toli ciblé mpo na ba équipe oyo ekamata décision ya ntina na recherche ya AI, évaluation, architecture pe ba système multilingue.",
     "areas_title": "Makambo oyo napesaka conseil",
-    "area_1_title": "Ba système NLP pe LLM appliqués",
-    "area_1_desc": "Ba revue ya architecture, conception ya évaluation, pe avis ya solo mpo na koyeba soki modèle ya monoko ezali penza outil oyo ebongi na problème na yo.",
-    "area_2_title": "Intelligence documentaire",
-    "area_2_desc": "Ba pipeline ya extraction, classification pe compréhension mpo na ba document ya solo oyo ezali complexe — domaine ya mosala na ngai ya brevet.",
-    "area_3_title": "Technologie ya minoko ya Afrique",
-    "area_3_desc": "Stratégie ya ba donnée, partenariat na communauté pe choix ya ba modèle mpo na ba équipe oyo ezali kotonga mpo na ba marché ya Afrique pe ba utilisateur multilingue.",
-    "area_4_title": "Stratégie ya recherche",
-    "area_4_desc": "Mpo na ba laboratoire pe ba fondation : direction ya recherche, stratégie ya publication, pe kotonga ba collaboration oyo ekowumela koleka cycle ya liboso ya financement.",
+    "area_1_title": "Évaluation ya ba modèle",
+    "area_1_desc": "Conception ya évaluation, analyse ya échec pe kotalela na ba preuve soki modèle ebongi mpo na usage na yango.",
+    "area_2_title": "Revue ya recherche pe architecture",
+    "area_2_desc": "Kotalela na focus système ya AI, plan ya recherche to direction technique liboso équipe epesa tango pe ba ressource mingi.",
+    "area_3_title": "AI multilingue pe minoko ya Afrique",
+    "area_3_desc": "Stratégie ya ba donnée, évaluation, choix ya ba modèle pe ba approche oyo e respecter communauté mpo na ba produit multilingue pe contexte ya Afrique.",
+    "area_4_title": "Ba atelier technique",
+    "area_4_desc": "Ba session personnalisé mpo na kosalisa ba équipe ya recherche pe ingénierie esosola méthode, ekokanisa ba compromis to eyokana na approche ya AI.",
     "formats_title": "Ndenge tokoki kosala",
-    "format_1_title": "Lisolo se moko",
-    "format_1_desc": "Appel moko mpo na kotalela décision. Mbala mingi ekoki.",
-    "format_2_title": "Revue technique",
-    "format_2_desc": "Examen ya système, ya ba donnée to ya plan ya recherche, epesami lokola évaluation ekomami.",
-    "format_3_title": "Accompagnement ya molai",
-    "format_3_desc": "Mosala oyo ezongelaka na équipe na boumeli ya trimestre to koleka.",
-    "cta_title": "Tobanda na lisolo",
-    "cta_body": "Appel ya liboso ezali ofele pe ezali na but mosusu te longola kaka koyeba soki nakoki penza kosalisa yo. Soki nazali moto oyo ebongi te, nakoyebisa yo pe nakolakisa yo moto mosusu.",
-    "cta_book": "Zwa rendez-vous",
-    "cta_email": "Komela ngai"
+    "format_1_title": "Consultation ya mbala moko",
+    "format_1_desc": "Lisolo ciblé mpo na kopesa question polele, komeka décision to koyeba ba étape oyo elandi.",
+    "format_2_title": "Revue oyo ekomami",
+    "format_2_desc": "Évaluation oyo ezali na limite polele ya système, ba donnée, architecture, plan ya évaluation to direction ya recherche.",
+    "format_3_title": "Atelier to sprint ya conseil",
+    "format_3_desc": "Mission ya tango mokuse na question, public, livrable pe date ya suka oyo e définir.",
+    "boundary_title": "Ba limite ya polele",
+    "boundary_body": "Ba mission esalelaka information ya public to ya client pe elongolaka mosala confidentiel, propriétaire to oyo etali employeur na ngai. Demande nionso eleki na vérification ya conflit pe na ba autorisation oyo esengeli.",
+    "cta_title": "Senga lisungi ya conseil",
+    "cta_body": "Tinda organisation to industrie na yo, question, résultat oyo olingi, calendrier pe conflit nionso oyo ekoki kozala. Nandimaka kaka ba mission moke oyo ezali na limite ya polele."
   },
   "blog": {
     "section_label": "Makomi",
@@ -160,7 +202,7 @@
   "projects": {
     "section_label": "Baprojet",
     "title": "Baprojet oyo eponami",
-    "subtitle": "Ba contribution open source, ba plateforme ya recherche pe ba projet ya pembeni.",
+    "subtitle": "Ba système ya recherche, contribution open source pe ba outil ya éducation na ba domaine ya AI ya sika.",
     "github": "GitHub",
     "demo": "Démo",
     "paper": "Article",
@@ -169,11 +211,9 @@
   "publications": {
     "section_label": "Bapublication",
     "title": "Bapublication pe ba brevet",
-    "subtitle": "Ba article oyo ba pair ba examiner, ba atelier pe ba brevet na NLP, maloba pe recherche ya makambo.",
+    "subtitle": "Recherche oyo ba pair ba talela pe ba brevet na foundation models, AI multimodale, NLP, maloba pe extraction ya information.",
     "paper": "Article",
     "code": "Code",
-    "patent_label": "Brevet US",
-    "citations_label": "citation",
     "award_label": "Distinction",
     "scholar": "Google Scholar",
     "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ"
@@ -181,8 +221,7 @@
   "cv": {
     "section_label": "CV",
     "title": "Curriculum vitae",
-    "subtitle": "PhD na NLP · Lead Software Engineer · Ancien membre ya conseil ya Masakhane",
-    "download": "Télécharger PDF",
+    "subtitle": "Chercheur na AI · Lead Software Engineer · PhD na Informatique",
     "education": "Formation",
     "experience": "Expérience",
     "publications_patents": "Bapublication pe ba brevet oyo eponami",
@@ -197,15 +236,17 @@
   "contact": {
     "section_label": "Contact",
     "title": "Tosala elongo",
-    "subtitle": "Nazali ouvert mpo na ba invitation ya conférence, ba collaboration ya recherche pe ba mission ya conseil oyo ezali moke.",
-    "speaking_cta": "Benga ngai mpo na conférence",
-    "consulting_cta": "Conseil pe accompagnement",
-    "book_call": "Zwa rendez-vous",
-    "book_call_url": "https://appt.link/meeting-with-salomon-kabongo",
-    "email": "E-mail",
-    "linkedin": "LinkedIn",
-    "github": "GitHub",
-    "scholar": "Scholar",
+    "subtitle": "Nzela mibale ciblé mpo na kosala elongo, na ba attente ya polele pe contact ya liboso na e-mail.",
+    "speaking_title": "Ba invitation ya conférence",
+    "speaking_body": "Baconférence, bacours pe ba panel na Anglais to Français mpo na public ya recherche, technique pe général.",
+    "speaking_cta": "Tinda demande ya conférence",
+    "advisory_title": "Conseil sélectif na AI",
+    "advisory_body": "Ba consultation ya mbala moko, revue oyo ekomami pe atelier mpo na ba question ya AI oyo e définir malamu.",
+    "advisory_cta": "Tinda demande ya conseil",
+    "speaking_email_subject": "Invitation ya conférence — [organisation to événement]",
+    "speaking_email_body": "Mbote Dr. Kabongo,\n\nNalingi kobenga yo mpo oloba na événement na biso.\n\nOrganisation to événement:\nPublic:\nDate pe esika oyo e proposer:\nFormat (à distance to sur place):\nSujet to objectifs:\n\nContexte mosusu:",
+    "advisory_email_subject": "Demande ya conseil na AI — [organisation]",
+    "advisory_email_body": "Mbote Dr. Kabongo,\n\nNalingi kotuna mpo na mission ya conseil sélectif na AI.\n\nOrganisation pe industrie:\nQuestion oyo esengeli kozwa eyano:\nRésultat oyo tolingi:\nCalendrier:\nBa conflit oyo ekoki kozala to affiliation oyo ezali pertinent:\n\nInformation oyo ekosalelama ezali ya public to ya client: [iyo/te]\n\nContexte mosusu:",
     "community_title": "Kota na communauté",
     "community_subtitle": "Bisika mibale mpo na kolanda mosala, kotuna mituna pe kokutana na bato oyo bazali koyekola makambo se wana.",
     "community_whatsapp_name": "Chaîne WhatsApp",
@@ -224,12 +265,13 @@
     "videos": "Tala bavideo"
   },
   "footer": {
-    "tagline": "Chercheur na AI, ingénieur pe molakisi. Kotonga pe ko explique technologie ya monoko na minoko oyo bato bakanisaka na yango penza.",
+    "tagline": "Chercheur na AI, ingénieur pe molakisi. Kotonga ba système utile pe kosala ete AI ya sika esosolama na minoko ndenge na ndenge.",
     "explore": "Luka",
     "connect": "Landa ngai",
     "work_with_me": "Tosala elongo",
     "rights": "Tous droits réservés.",
     "connect_whatsapp": "Chaîne WhatsApp",
-    "connect_discord": "Serveur Discord"
+    "connect_discord": "Serveur Discord",
+    "disclaimer": "Makanisi oyo elobami awa ezali ya ngai moko. Ba affiliation etyami kaka mpo na identification pe elingi koloba endorsement te. Ba engagement ya libanda etalelami na capacité na ngai ya personnel pe esengeli eleka na vérification ya conflit pe na ba autorisation oyo esengeli."
   }
 }

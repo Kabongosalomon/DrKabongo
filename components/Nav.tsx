@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
-import LanguageSwitcher, { LanguageList } from './LanguageSwitcher'
+import LanguageSwitcher from './LanguageSwitcher'
 import ThemeToggle from './ThemeToggle'
 
 const MENU_ID = 'primary-menu'
@@ -92,19 +92,20 @@ export default function Nav() {
       <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link
           href="/"
-          className="min-w-0 shrink font-serif text-lg font-medium tracking-tight text-ink transition-colors hover:text-accent"
+          aria-label={`Dr. Kabongo — ${t('home')}`}
+          className="shrink-0 font-serif text-lg font-medium tracking-tight text-ink transition-colors hover:text-accent"
         >
-          <span className="hidden sm:inline">Salomon Kabongo</span>
-          <span className="sm:hidden">S. Kabongo</span>
+          <span className="md:hidden lg:inline">Dr. Kabongo</span>
+          <span className="hidden md:inline lg:hidden">DK</span>
         </Link>
 
-        <div className="hidden items-center gap-6 lg:flex">
+        <div className="hidden items-center gap-3 md:flex lg:gap-6">
           {links.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               aria-current={isActive(href) ? 'page' : undefined}
-              className={`text-sm transition-colors ${
+              className={`text-xs transition-colors lg:text-sm ${
                 isActive(href)
                   ? 'font-medium text-ink underline decoration-accent decoration-2 underline-offset-[6px]'
                   : 'text-ink-2 hover:text-ink'
@@ -115,22 +116,20 @@ export default function Nav() {
           ))}
         </div>
 
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 lg:gap-2">
           <ThemeToggle />
-          <div className="hidden lg:block">
-            <LanguageSwitcher />
-          </div>
+          <LanguageSwitcher />
           <Link
-            href="/cv"
-            className="hidden shrink-0 items-center rounded-md border border-ink px-3 py-1.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper lg:inline-flex"
+            href="/#contact"
+            className="hidden shrink-0 items-center rounded-md border border-ink px-2 py-1.5 text-xs font-medium text-ink transition-colors hover:bg-ink hover:text-paper md:inline-flex lg:px-3 lg:text-sm"
           >
-            {t('cv')}
+            {t('work_with_me')}
           </Link>
 
           <button
             ref={triggerRef}
             type="button"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-rule text-ink-2 transition-colors hover:border-ink-3 hover:text-ink lg:hidden"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-rule text-ink-2 transition-colors hover:border-ink-3 hover:text-ink md:hidden"
             onClick={() => setOpen((value) => !value)}
             aria-label={open ? t('close_menu') : t('open_menu')}
             aria-expanded={open}
@@ -150,7 +149,7 @@ export default function Nav() {
       <div
         id={MENU_ID}
         hidden={!open}
-        className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-rule bg-paper px-4 py-3 lg:hidden"
+        className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-rule bg-paper px-4 py-3 md:hidden"
       >
         <Link
           href="/"
@@ -172,15 +171,11 @@ export default function Nav() {
           </Link>
         ))}
         <Link
-          href="/cv"
-          className="mt-4 flex items-center justify-center rounded-md border border-ink px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
+          href="/#contact"
+          className="mt-4 mb-1 flex items-center justify-center rounded-md border border-ink px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
         >
-          {t('cv')}
+          {t('work_with_me')}
         </Link>
-
-        <div className="mt-6 mb-1">
-          <LanguageList onSelect={() => setOpen(false)} />
-        </div>
       </div>
     </header>
   )

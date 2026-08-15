@@ -105,6 +105,7 @@ export default function Footer() {
           <p>
             © {year} Dr. Kabongo. {t('rights')}
           </p>
+          <p className="mt-3 max-w-3xl leading-relaxed">{t('disclaimer')}</p>
         </div>
       </div>
     </footer>
