@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { CHANNELS, CHANNEL_KEYS } from '@/lib/videos'
 import { COMMUNITY, DARAKILI_URL } from '@/content/community'
+import { BOOKING_URL } from '@/lib/contact'
 
 const SOCIAL = [
   { href: 'https://scholar.google.com/citations?user=BPDma7YAAAAJ', label: 'Google Scholar' },
@@ -71,6 +72,16 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-ink-2 transition-colors hover:text-accent"
+                >
+                  {t('book_time')}
+                </a>
+              </li>
               <li>
                 <a
                   href="mailto:kabongosalomon@gmail.com"

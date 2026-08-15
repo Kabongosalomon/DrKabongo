@@ -8,7 +8,7 @@ import {
   alternatesFor,
   openGraphLocaleFor,
 } from '@/lib/metadata'
-import { emailEnquiryHref } from '@/lib/contact'
+import { BOOKING_URL, emailEnquiryHref } from '@/lib/contact'
 import { getAllVideos, countByChannel, CHANNEL_KEYS } from '@/lib/videos'
 import { getAllPosts } from '@/lib/blog'
 import { COMMUNITY } from '@/content/community'
@@ -373,6 +373,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </div>
             </article>
           </div>
+
+          <aside className="mt-8 rounded-lg border border-rule bg-surface p-5 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-6">
+            <div className="min-w-0">
+              <h3 className="font-serif text-xl font-medium text-ink">
+                {tc('conversation_title')}
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-2">
+                {tc('conversation_body')}
+              </p>
+            </div>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex shrink-0 items-center rounded-md border border-ink px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper sm:mt-0"
+            >
+              {tc('conversation_cta')}
+            </a>
+          </aside>
 
           {/* Community */}
           <div className="mt-16">
