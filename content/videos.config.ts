@@ -28,6 +28,7 @@ export const FEATURED: string[] = [
 /** Never rendered. Add an ID here to retire a video from the site. */
 export const HIDDEN: string[] = [
   '8FxfFZXpMWI', // "Kabongo Live Stream" — untitled test stream, no content
+  '4Jp6ZtiYd2M', // 2018 ACM Turing Award — no longer public on the channel
 ]
 
 /**
