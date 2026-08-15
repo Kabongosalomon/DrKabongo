@@ -218,3 +218,9 @@ __marimo__/
 
 node_modules/
 .next/
+# typescript incremental build info
+tsconfig.tsbuildinfo
+
+# macOS
+.DS_Store
+**/.DS_Store

@@ -1,0 +1,123 @@
+[
+  {
+    "id": "ZlEEXpedJWk",
+    "title": "Poster 21 Black in AI Workshop @ NeurIPS 2021 by Salomon Kabongo",
+    "published": "2021-11-29T14:56:58+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/ZlEEXpedJWk/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=ZlEEXpedJWk",
+    "description": "My Spotlight talks at The 5th Black in AI Workshop @ NeurIPS 2021.",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "8FxfFZXpMWI",
+    "title": "Kabongo Live Stream",
+    "published": "2020-06-27T13:17:18+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/8FxfFZXpMWI/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=8FxfFZXpMWI",
+    "description": "",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "jOKy_AnyLic",
+    "title": "Masakhane MT. How to get started ?",
+    "published": "2020-05-23T04:46:57+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/jOKy_AnyLic/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=jOKy_AnyLic",
+    "description": "This live tutorial will help from training your model to making a pull request to the Masakhane community. Thanks to Salomey OSEI.",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "FShFA9eK-eU",
+    "title": "Amazing interview with a mathematician - Dimby from Madagascar.",
+    "published": "2020-05-18T00:38:37+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/FShFA9eK-eU/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=FShFA9eK-eU",
+    "description": "This video is part of a new series that will feature great African Mathematicians.\n\n#Mathematics #AIMS #Africa #AMMI",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "rC_DDhMhVc8",
+    "title": "The Transformer, From RNN to Attention",
+    "published": "2020-04-17T15:17:26+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/rC_DDhMhVc8/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=rC_DDhMhVc8",
+    "description": "The Transformer, From RNN to Attention\n\nThe presentation was given by Salomon KABONGO, at the Data Science for Social Impact Research Group, Lab meeting, Pretoria, South Africa",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "CCRV43RKZ2g",
+    "title": "Introduction to Deep Learning with PyTorch (Session 2)",
+    "published": "2019-08-07T13:33:14+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/CCRV43RKZ2g/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=CCRV43RKZ2g",
+    "description": "Session 2 of a series of live video on Zoom, on the Introduction to Deep Learning with PyTorch. \n\nThis notebook as other in this series can be found here : https://github.com/Kabongosalomon/Secure-and-Private-AI-Scholarship-Challenge-from-Facebook/tree/master/intro-to-pytorch",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "4Jp6ZtiYd2M",
+    "title": "2018 ACM Turing Award (Yoshua Bengio, Geoffrey Hinton, and Yann LeCun)",
+    "published": "2019-05-25T14:01:09+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/4Jp6ZtiYd2M/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=4Jp6ZtiYd2M",
+    "description": "Yoshua Bengio, Geoffrey Hinton, and Yann LeCun discuss their work and the 2018 ACM A.M. Turing Award.",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "pfSkjwZP_TU",
+    "title": "How to move from Math Image to LaTeX",
+    "published": "2019-05-04T13:10:54+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/pfSkjwZP_TU/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=pfSkjwZP_TU",
+    "description": "In this short tutorial, I'm demonstrating the use of Mathpix, how one can use it to convert images to LaTeX. https://mathpix.com/",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "wCuBwQslUX0",
+    "title": "Colab, Debugger in jupyter notebook",
+    "published": "2019-04-22T16:40:58+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/wCuBwQslUX0/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=wCuBwQslUX0",
+    "description": "In this video, I Introduce Colab nand how one can switch from CPU to GPU run-time. I ended with explaining how to use how Python debugger IPDB",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "ZW6Wa1QEtyQ",
+    "title": "How to get access to Stellenbosh Digital Library (AIMS_SA)",
+    "published": "2019-02-11T19:00:15+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/ZW6Wa1QEtyQ/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=ZW6Wa1QEtyQ",
+    "description": "In this video, I'm showing how to get access to the stellenbosh Digital Library for the first time using your student number. This can be very usefull for example to get a free Office 365, MathLab distributiion and much more. This video is specially for AIMS Student, those who are at AIMS South Africa.",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "iejqZwWR4NY",
+    "title": "Bitbucket how to create, clone, and push a repository",
+    "published": "2018-12-24T15:35:35+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/iejqZwWR4NY/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=iejqZwWR4NY",
+    "description": "This video just shows you, how to create, clone, and push a repository onBitbucket.",
+    "topics": [],
+    "featured": false
+  }
+]

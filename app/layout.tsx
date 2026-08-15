@@ -1,61 +1,33 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { SITE_URL, alternatesFor } from '@/lib/metadata'
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://drkabongo.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Salomon Kabongo, PhD — AI Researcher & Engineer',
+    default: 'Salomon Kabongo, PhD — AI Researcher, Educator & Speaker',
     template: '%s | Dr. Kabongo',
   },
   description:
-    'AI Researcher, Lead Software Engineer at State Farm, and Board Member of the Masakhane Research Foundation. Building AI for Africa and the world.',
-  alternates: {
-    canonical: 'https://drkabongo.com',
-    languages: {
-      en: 'https://drkabongo.com',
-      fr: 'https://drkabongo.com/fr',
-      ln: 'https://drkabongo.com/ln',
-    },
-  },
+    'AI researcher (NLP, LLMs, knowledge graphs), Lead Software Engineer at State Farm, and former board member of the Masakhane Research Foundation. Teaching AI in English, French and Lingala.',
+  alternates: alternatesFor('en'),
   openGraph: {
     type: 'website',
-    url: 'https://drkabongo.com',
+    url: SITE_URL,
     siteName: 'Dr. Kabongo',
     locale: 'en_US',
     alternateLocale: ['fr_FR', 'ln'],
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Salomon Kabongo, PhD — AI Researcher & Engineer',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['/og-image.png'],
+    creator: '@SalomonKabongo',
   },
   icons: {
     icon: '/favicon.ico',
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+// The real document shell lives in app/[locale]/layout.tsx.
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return children
 }

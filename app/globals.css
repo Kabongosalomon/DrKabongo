@@ -1,124 +1,303 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-@theme {
-  --color-brand: #6366f1;
-  --color-brand-light: #818cf8;
-  --color-brand-dim: #4f46e5;
-  --color-accent: #f59e0b;
-  --color-accent-light: #fbbf24;
-  --color-surface: #0f172a;
-  --color-surface-2: #1e293b;
-  --color-surface-3: #334155;
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ─────────────────────────────────────────────────────────────
+   Palette — warm paper & ink with a single oxide-red accent.
+   Semantic values live here so the theme can flip at runtime;
+   `@theme inline` below exposes them to Tailwind as var() refs.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --paper: #fbf9f6;
+  --surface: #ffffff;
+  --raised: #f3f0ea;
+  --ink: #14120f;
+  --ink-2: #4a443c;
+  --ink-3: #7c7469;
+  --rule: #e2dcd2;
+  --accent: #7a2e1e;
+  --accent-hover: #5e2216;
+  --accent-soft: #f2e7e2;
+  --selection: #e9dcd6;
+
+  /* Syntax tokens */
+  --code-keyword: #8a2f5e;
+  --code-string: #3f6212;
+  --code-comment: #8a8279;
+  --code-number: #9a4a13;
+  --code-func: #1d4e6b;
+
+  color-scheme: light;
 }
+
+[data-theme="dark"] {
+  --paper: #0e0d0c;
+  --surface: #151412;
+  --raised: #1f1d1a;
+  --ink: #f2eee8;
+  --ink-2: #bfb8ae;
+  --ink-3: #8a8278;
+  --rule: #2c2925;
+  --accent: #e08a6e;
+  --accent-hover: #eda78f;
+  --accent-soft: #2a1b15;
+  --selection: #3a2820;
+
+  --code-keyword: #e79ac0;
+  --code-string: #a8cf7a;
+  --code-comment: #7e766c;
+  --code-number: #e5a06a;
+  --code-func: #8ec5e2;
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", monospace;
+
+  /* 375px — the narrowest phone we lay out for beyond the 320px floor. */
+  --breakpoint-xs: 23.4375rem;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Base
+   ───────────────────────────────────────────────────────────── */
 
 html {
   scroll-behavior: smooth;
+  /* `clip` rather than `hidden` so position:sticky still works. */
+  overflow-x: clip;
 }
 
 body {
-  background-color: var(--color-surface);
-  color: #f1f5f9;
+  background-color: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0f172a; }
-::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #6366f1; }
-
-/* Prose overrides for blog posts */
-.prose {
-  color: #cbd5e1;
-}
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4 {
-  color: #f1f5f9;
-  font-weight: 700;
-}
-.prose a {
-  color: #818cf8;
-  text-decoration-color: #4f46e5;
-}
-.prose a:hover {
-  color: #a5b4fc;
-}
-.prose code {
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 4px;
-  padding: 2px 6px;
-  font-size: 0.875em;
-  color: #a5b4fc;
-}
-.prose pre {
-  background: #0f172a !important;
-  border: 1px solid #334155;
-  border-radius: 8px;
-}
-.prose pre code {
-  background: transparent;
-  border: none;
-  padding: 0;
-  color: #e2e8f0;
-}
-.prose blockquote {
-  border-left-color: #6366f1;
-  color: #94a3b8;
-}
-.prose strong {
-  color: #f1f5f9;
-}
-.prose hr {
-  border-color: #334155;
-}
-.prose table th {
-  background: #1e293b;
-  color: #f1f5f9;
-}
-.prose table td {
-  border-color: #334155;
+::selection {
+  background: var(--selection);
+  color: var(--ink);
 }
 
-/* Section labels */
-.section-label {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #818cf8;
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 100px;
-  padding: 4px 14px;
-  margin-bottom: 1rem;
+/* Headings are serif by default; utilities can still override. */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.011em;
+  text-wrap: balance;
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #818cf8 0%, #6366f1 40%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* The header is fixed at 4rem — keep anchor targets clear of it. */
+:is(h1, h2, h3, h4, h5, h6)[id] {
+  scroll-margin-top: 6rem;
 }
 
-/* Card hover effect */
-.card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-/* Focus ring */
 :focus-visible {
-  outline: 2px solid #6366f1;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Editorial helpers
+   ───────────────────────────────────────────────────────────── */
+
+/* Small caps eyebrow used above section headings. */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Body links inside prose-like text. */
+.link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in oklab, var(--accent) 35%, transparent);
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+.link:hover {
+  color: var(--accent-hover);
+  text-decoration-color: currentColor;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Prose (blog posts) — @tailwindcss/typography themed to our tokens
+   ───────────────────────────────────────────────────────────── */
+
+.prose {
+  --tw-prose-body: var(--ink-2);
+  --tw-prose-headings: var(--ink);
+  --tw-prose-lead: var(--ink-2);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--ink);
+  --tw-prose-counters: var(--ink-3);
+  --tw-prose-bullets: var(--rule);
+  --tw-prose-hr: var(--rule);
+  --tw-prose-quotes: var(--ink-2);
+  --tw-prose-quote-borders: var(--accent);
+  --tw-prose-captions: var(--ink-3);
+  --tw-prose-code: var(--ink);
+  --tw-prose-pre-code: var(--ink-2);
+  --tw-prose-pre-bg: var(--raised);
+  --tw-prose-th-borders: var(--rule);
+  --tw-prose-td-borders: var(--rule);
+
+  /* Long URLs and identifiers must never push the page sideways. */
+  overflow-wrap: anywhere;
+}
+
+.prose :is(h1, h2, h3, h4) {
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+
+.prose a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+.prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  font-weight: 400;
+  background: var(--raised);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+/* typography adds these pseudo-quotes around inline code */
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}
+
+.prose pre {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  background: var(--raised);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  /* The fix for horizontal page scroll on narrow viewports. */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose pre code {
+  font-family: inherit;
+  /* Code must scroll inside <pre>, not wrap. */
+  overflow-wrap: normal;
+  white-space: pre;
+}
+
+/*
+ * Tables scroll inside a wrapper (see `mdxComponents` in the post page) rather
+ * than widening the page. The table itself stays `display: table` so column
+ * layout still works.
+ */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table-scroll > table {
+  margin-block: 0;
+}
+.prose :is(th, td) {
+  white-space: nowrap;
+}
+
+.prose :is(img, video) {
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Syntax highlighting (rehype-highlight) — themed, so it follows
+   the light/dark toggle instead of a fixed hljs stylesheet.
+   ───────────────────────────────────────────────────────────── */
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--code-comment);
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag,
+.hljs-name {
+  color: var(--code-keyword);
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string {
+  color: var(--code-string);
+}
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-built_in {
+  color: var(--code-number);
+}
+.hljs-title,
+.hljs-section,
+.hljs-function .hljs-title,
+.hljs-class .hljs-title,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: var(--code-func);
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 600;
 }

@@ -1,10 +1,19 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
 import Image from 'next/image'
-import Link from 'next/link'
-import YouTubeChannelCard from '@/components/YouTubeChannelCard'
-import BlogCard from '@/components/BlogCard'
+import { routing } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
+import { alternatesFor } from '@/lib/metadata'
+import { getAllVideos, countByChannel, CHANNEL_KEYS } from '@/lib/videos'
 import { getAllPosts } from '@/lib/blog'
+import { COMMUNITY } from '@/content/community'
+import { LanguageStrip } from '@/components/LanguageSwitcher'
+import VideoCard from '@/components/VideoCard'
+import ChannelCard from '@/components/ChannelCard'
+import CommunityCard from '@/components/CommunityCard'
+import BlogCard from '@/components/BlogCard'
+import ArrowLink from '@/components/ArrowLink'
+
+export const revalidate = 3600
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -12,388 +21,344 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const canonical = locale === 'en' ? 'https://drkabongo.com' : `https://drkabongo.com/${locale}`
-  return {
-    alternates: {
-      canonical,
-      languages: {
-        en: 'https://drkabongo.com',
-        fr: 'https://drkabongo.com/fr',
-        ln: 'https://drkabongo.com/ln',
-      },
-    },
-  }
+  return { alternates: alternatesFor(locale) }
 }
 
-function localePath(locale: string, path: string) {
-  return locale === 'en' ? path : `/${locale}${path}`
-}
-
-export default async function HomePage({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}) {
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   setRequestLocale(locale)
 
-  const t = await getTranslations({ locale, namespace: 'hero' })
-  const ta = await getTranslations({ locale, namespace: 'about' })
-  const ty = await getTranslations({ locale, namespace: 'youtube' })
-  const tb = await getTranslations({ locale, namespace: 'blog' })
-  const tc = await getTranslations({ locale, namespace: 'contact' })
-  const ts = await getTranslations({ locale, namespace: 'stats' })
+  const [t, tv, ta, ts, tsp, tb, tc] = await Promise.all([
+    getTranslations({ locale, namespace: 'hero' }),
+    getTranslations({ locale, namespace: 'videos' }),
+    getTranslations({ locale, namespace: 'about' }),
+    getTranslations({ locale, namespace: 'stats' }),
+    getTranslations({ locale, namespace: 'speaking' }),
+    getTranslations({ locale, namespace: 'blog' }),
+    getTranslations({ locale, namespace: 'contact' }),
+  ])
 
-  const recentPosts = getAllPosts().slice(0, 3)
+  const videos = await getAllVideos()
+  const [featured, ...rest] = videos
+  const recent = rest.slice(0, 6)
+  const counts = countByChannel(videos)
+
+  const posts = getAllPosts().slice(0, 3)
+
+  const figures = [
+    { value: ts('patent'), label: ts('patent_year') },
+    { value: ts('bestpaper'), label: ts('bestpaper_venue') },
+    { value: ts('citations'), label: ts('citations_label') },
+    { value: ts('funding'), label: ts('funding_label') },
+  ]
+
+  const now = [t('now_role'), t('now_phd'), t('now_masakhane')]
+
+  const topics = [
+    { title: tsp('topic_1_title'), desc: tsp('topic_1_desc') },
+    { title: tsp('topic_2_title'), desc: tsp('topic_2_desc') },
+    { title: tsp('topic_3_title'), desc: tsp('topic_3_desc') },
+  ]
 
   return (
     <>
       {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-slate-950">
-        {/* Background grid */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(99,102,241,1) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,1) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
-        />
-        {/* Glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand/5 blur-[120px] pointer-events-none" />
+      <section className="mx-auto max-w-5xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-16">
+          <div className="min-w-0 order-2 lg:order-1">
+            <p className="eyebrow">{t('credential')}</p>
+            <h1 className="mt-3 font-serif text-4xl leading-[1.08] font-medium text-balance text-ink sm:text-5xl">
+              {t('name')}
+            </h1>
+            <p className="mt-5 max-w-xl font-serif text-xl leading-snug text-balance text-ink-2 sm:text-2xl">
+              {t('lede')}
+            </p>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-2">{t('description')}</p>
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text */}
-            <div className="order-2 lg:order-1">
-              <div className="inline-flex items-center gap-2 bg-brand/10 border border-brand/20 rounded-full px-4 py-1.5 mb-6">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs font-semibold text-brand-light">
-                  @DrKabongo · @DarAkili · @SalomonKabongo
-                </span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-3">
-                {t('name')}
-                <span className="block text-2xl sm:text-3xl font-semibold mt-1 gradient-text">
-                  {t('title')}
-                </span>
-              </h1>
-
-              <p className="text-lg text-brand-light font-medium mb-4">{t('tagline')}</p>
-
-              <p className="text-slate-400 text-base leading-relaxed mb-8 max-w-lg">
-                {t('description')}
-              </p>
-
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  href={localePath(locale, '/cv')}
-                  className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dim text-white font-semibold px-6 py-3 rounded-full transition-colors shadow-lg shadow-brand/20"
-                >
-                  {t('cta_cv')}
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-                <a
-                  href="https://www.youtube.com/@DrKabongo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold px-6 py-3 rounded-full transition-colors"
-                >
-                  <svg className="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                  </svg>
-                  {t('cta_youtube')}
-                </a>
-                <a
-                  href="https://appt.link/meeting-with-salomon-kabongo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-slate-700 hover:border-brand text-slate-300 hover:text-white font-semibold px-6 py-3 rounded-full transition-colors"
-                >
-                  {t('cta_contact')}
-                </a>
-              </div>
-            </div>
-
-            {/* Photo */}
-            <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="relative">
-                <div className="absolute inset-0 rounded-full bg-linear-to-br from-brand/40 to-accent/30 blur-2xl scale-110" />
-                <div className="relative w-56 h-56 sm:w-72 sm:h-72 rounded-full overflow-hidden border-2 border-brand/30 shadow-2xl">
-                  <Image
-                    src="/images/salomon.jpg"
-                    alt="Dr. Salomon Kabongo"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                {/* Floating badge */}
-                <div className="absolute -bottom-2 -right-2 bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 shadow-xl shrink-0">
-                  <p className="text-xs font-bold text-white">{t('badge_title')}</p>
-                  <p className="text-xs text-slate-400">{t('badge_subtitle')}</p>
-                </div>
-              </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/videos"
+                className="inline-flex min-w-0 items-center gap-2 rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-opacity hover:opacity-90"
+              >
+                {t('cta_videos')}
+              </Link>
+              <Link
+                href="/speaking"
+                className="inline-flex min-w-0 items-center gap-2 rounded-md border border-ink px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
+              >
+                {t('cta_speaking')}
+              </Link>
             </div>
           </div>
 
-          {/* Stats strip */}
-          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {[
-              { value: ts('patent'), sub: ts('patent_year'), color: '#6366f1' },
-              { value: ts('bestpaper'), sub: ts('bestpaper_venue'), color: '#f59e0b' },
-              { value: ts('citations'), sub: ts('citations_label'), color: '#10b981' },
-              { value: ts('funding'), sub: ts('funding_label'), color: '#8b5cf6' },
-            ].map(({ value, sub, color }) => (
-              <div
-                key={value}
-                className="bg-slate-900/60 border border-slate-800 rounded-xl px-4 py-3 text-center"
-              >
-                <p className="text-sm font-bold text-white mb-0.5">{value}</p>
-                <p className="text-xs text-slate-500">{sub}</p>
+          <div className="order-1 w-40 shrink-0 sm:w-48 lg:order-2 lg:w-full">
+            <div className="relative aspect-4/5 w-full overflow-hidden rounded-lg border border-rule bg-raised">
+              <Image
+                src="/images/dr-kabongo.jpg"
+                alt={t('portrait_alt')}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 256px, 192px"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2">
+          <dl className="border-t border-rule pt-5">
+            <dt className="eyebrow">{t('now_label')}</dt>
+            <dd className="mt-2">
+              <ul className="space-y-1.5">
+                {now.map((item) => (
+                  <li key={item} className="text-sm leading-relaxed text-ink-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </dl>
+
+          <LanguageStrip />
+        </div>
+      </section>
+
+      {/* ─── VIDEOS ─── */}
+      {videos.length > 0 && (
+        <section className="border-t border-rule bg-surface">
+          <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div className="min-w-0">
+                <p className="eyebrow">{tv('section_label')}</p>
+                <h2 className="mt-2 font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+                  {tv('home_title')}
+                </h2>
+              </div>
+              <ArrowLink href="/videos">{tv('all_videos')}</ArrowLink>
+            </div>
+
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">
+              {tv('home_subtitle')}
+            </p>
+
+            {featured && (
+              <div className="mt-10 max-w-3xl">
+                <p className="eyebrow mb-3">{tv('featured')}</p>
+                <VideoCard video={featured} locale={locale} featured priority />
+              </div>
+            )}
+
+            {recent.length > 0 && (
+              <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                {recent.map((video) => (
+                  <VideoCard key={video.id} video={video} locale={locale} />
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ─── CHANNELS ─── */}
+      <section className="border-t border-rule">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+          <p className="eyebrow">{tv('channels_label')}</p>
+          <h2 className="mt-2 max-w-2xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+            {tv('channels_title')}
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">
+            {tv('channels_subtitle')}
+          </p>
+
+          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {CHANNEL_KEYS.map((key) => (
+              <ChannelCard
+                key={key}
+                channelKey={key}
+                label={tv(`channel_${key}_label`)}
+                description={tv(`channel_${key}_desc`)}
+                videoCount={counts[key]}
+                countLabel={tv('count', { count: counts[key] })}
+                subscribeLabel={tv('subscribe')}
+                comingSoonLabel={tv('coming_soon')}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── RESEARCH ─── */}
+      <section id="research" className="border-t border-rule bg-surface">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+          <p className="eyebrow">{ta('section_label')}</p>
+          <h2 className="mt-2 max-w-2xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+            {ta('title')}
+          </h2>
+
+          <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="min-w-0 space-y-4 text-base leading-relaxed text-ink-2">
+              <p>{ta('bio1')}</p>
+              <p>{ta('bio2')}</p>
+              <p>{ta('bio3')}</p>
+              <p>{ta('darakili')}</p>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+                <ArrowLink href="/publications">{ta('see_publications')}</ArrowLink>
+                <ArrowLink href="/projects">{ta('see_projects')}</ArrowLink>
+                <ArrowLink href="/cv">{ta('read_cv')}</ArrowLink>
+              </div>
+            </div>
+
+            <div className="min-w-0">
+              <h3 className="eyebrow">{ta('research_title')}</h3>
+              <ul className="mt-3 space-y-2.5">
+                {(ta.raw('research_items') as string[]).map((item) => (
+                  <li key={item} className="border-t border-rule pt-2.5 text-sm leading-relaxed text-ink-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="eyebrow mt-10">{ta('figures_label')}</h3>
+              <dl className="mt-3 grid grid-cols-1 gap-x-6 gap-y-4 xs:grid-cols-2">
+                {figures.map(({ value, label }) => (
+                  <div key={value} className="border-t border-rule pt-2.5">
+                    <dt className="font-serif text-base leading-snug text-balance text-ink">{value}</dt>
+                    <dd className="mt-0.5 text-xs text-ink-3">{label}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SPEAKING ─── */}
+      <section className="border-t border-rule">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="min-w-0">
+              <p className="eyebrow">{tsp('section_label')}</p>
+              <h2 className="mt-2 font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+                {tsp('home_title')}
+              </h2>
+            </div>
+            <ArrowLink href="/speaking">{tsp('invite_title')}</ArrowLink>
+          </div>
+
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">
+            {tsp('home_subtitle')}
+          </p>
+
+          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
+            {topics.map(({ title, desc }) => (
+              <div key={title} className="border-t border-rule pt-5">
+                <h3 className="font-serif text-lg font-medium text-balance text-ink">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-2">{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── ABOUT ─── */}
-      <section id="about" className="py-24 bg-slate-950">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <span className="section-label">{ta('section_label')}</span>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">
-                {ta('title')}
-              </h2>
-              <div className="space-y-4 text-slate-400 leading-relaxed">
-                <p>{ta('bio1')}</p>
-                <p>{ta('bio2')}</p>
-                <p>{ta('bio3')}</p>
+      {/* ─── WRITING ─── */}
+      {posts.length > 0 && (
+        <section className="border-t border-rule bg-surface">
+          <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div className="min-w-0">
+                <p className="eyebrow">{tb('section_label')}</p>
+                <h2 className="mt-2 font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+                  {tb('home_title')}
+                </h2>
               </div>
-
-              <div className="mt-8 flex gap-4">
-                <a
-                  href="https://linkedin.com/in/salomon-kabongo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-lg transition-colors"
-                >
-                  <svg className="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                  LinkedIn
-                </a>
-                <a
-                  href="https://github.com/Kabongosalomon"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-lg transition-colors"
-                >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                  </svg>
-                  GitHub
-                </a>
-                <a
-                  href="https://scholar.google.com/citations?user=BPDma7YAAAAJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-lg transition-colors"
-                >
-                  Scholar
-                </a>
-                <a
-                  href="https://x.com/SalomonKabongo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-lg transition-colors"
-                >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                  X / Twitter
-                </a>
-              </div>
+              <ArrowLink href="/blog">{tb('all_posts')}</ArrowLink>
             </div>
 
-            {/* Research interests */}
-            <div>
-              <h3 className="text-xl font-bold text-white mb-4">{ta('research_title')}</h3>
-              <ul className="space-y-3">
-                {(ta.raw('research_items') as string[]).map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1 w-5 h-5 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center shrink-0">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-light" />
-                    </span>
-                    <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Talks */}
-              <div className="mt-8 bg-slate-900 border border-slate-800 rounded-xl p-5">
-                <h3 className="text-sm font-bold text-white mb-3">Talks & Presentations</h3>
-                <ul className="space-y-2.5 text-sm text-slate-400">
-                  <li>
-                    <a
-                      href="https://youtu.be/rC_DDhMhVc8"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-brand-light transition-colors underline decoration-slate-600 hover:decoration-brand-light"
-                    >
-                      The Transformer: From RNN to Attention
-                    </a>
-                    <span className="ml-2 text-slate-600">— Data Science for Social Impact, 2020</span>
-                  </li>
-                  <li>
-                    <a href="/archive/Talk_1.pdf" className="hover:text-brand-light transition-colors underline decoration-slate-600 hover:decoration-brand-light">
-                      Introduction to NLP
-                    </a>
-                    <span className="ml-2 text-slate-600">— AIMS Cape Town</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── YOUTUBE CHANNELS ─── */}
-      <section id="youtube" className="py-24 bg-slate-900/40">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <span className="section-label">{ty('section_label')}</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">{ty('title')}</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">{ty('subtitle')}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <YouTubeChannelCard
-              handle={ty('english_name')}
-              url="https://www.youtube.com/@DrKabongo"
-              label={ty('english_label')}
-              description={ty('english_desc')}
-              accentColor="#ef4444"
-              subscribeLabel={ty('subscribe')}
-            />
-            <YouTubeChannelCard
-              handle={ty('french_name')}
-              url="https://www.youtube.com/@DrKabongoFr"
-              label={ty('french_label')}
-              description={ty('french_desc')}
-              accentColor="#3b82f6"
-              subscribeLabel={ty('subscribe')}
-            />
-            <YouTubeChannelCard
-              handle={ty('lingala_name')}
-              url="https://www.youtube.com/@DarAkili"
-              label={ty('lingala_label')}
-              description={ty('lingala_desc')}
-              accentColor="#10b981"
-              subscribeLabel={ty('subscribe')}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── LATEST BLOG POSTS ─── */}
-      {recentPosts.length > 0 && (
-        <section id="blog" className="py-24 bg-slate-950">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="flex items-end justify-between mb-10">
-              <div>
-                <span className="section-label">{tb('section_label')}</span>
-                <h2 className="text-3xl sm:text-4xl font-black text-white">{tb('title')}</h2>
-              </div>
-              <Link
-                href={localePath(locale, '/blog')}
-                className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-brand-light hover:text-white transition-colors"
-              >
-                {tb('all_posts')}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {recentPosts.map((post) => (
+            <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {posts.map((post) => (
                 <BlogCard
                   key={post.slug}
                   post={post}
                   locale={locale}
-                  readMoreLabel={tb('read_more')}
                   minReadLabel={tb('min_read')}
                 />
               ))}
-            </div>
-
-            <div className="mt-8 text-center sm:hidden">
-              <Link
-                href={localePath(locale, '/blog')}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-light"
-              >
-                {tb('all_posts')}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
           </div>
         </section>
       )}
 
-      {/* ─── CONTACT ─── */}
-      <section id="contact" className="py-24 bg-linear-to-b from-slate-900/40 to-slate-950">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <span className="section-label">{tc('section_label')}</span>
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">{tc('title')}</h2>
-          <p className="text-slate-400 mb-10">{tc('subtitle')}</p>
+      {/* ─── WORK WITH ME ─── */}
+      <section id="contact" className="border-t border-rule">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+          <p className="eyebrow">{tc('section_label')}</p>
+          <h2 className="mt-2 max-w-2xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+            {tc('title')}
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">{tc('subtitle')}</p>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={tc('book_call_url')}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dim text-white font-semibold px-6 py-3 rounded-full transition-colors shadow-lg shadow-brand/20"
+              className="inline-flex min-w-0 items-center rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-opacity hover:opacity-90"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
               {tc('book_call')}
             </a>
+            <Link
+              href="/speaking"
+              className="inline-flex min-w-0 items-center rounded-md border border-ink px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
+            >
+              {tc('speaking_cta')}
+            </Link>
+            <Link
+              href="/consulting"
+              className="inline-flex min-w-0 items-center rounded-md border border-ink px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
+            >
+              {tc('consulting_cta')}
+            </Link>
             <a
               href="mailto:kabongosalomon@gmail.com"
-              className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold px-6 py-3 rounded-full transition-colors"
+              className="inline-flex min-w-0 items-center rounded-md border border-rule px-5 py-2.5 text-sm font-medium text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
               {tc('email')}
             </a>
-            <a
-              href="https://linkedin.com/in/salomon-kabongo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-slate-700 hover:border-brand text-slate-300 hover:text-white font-semibold px-6 py-3 rounded-full transition-colors"
-            >
-              {tc('linkedin')}
-            </a>
-            <a
-              href="https://x.com/SalomonKabongo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-slate-700 hover:border-brand text-slate-300 hover:text-white font-semibold px-6 py-3 rounded-full transition-colors"
-            >
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-              @SalomonKabongo
-            </a>
+          </div>
+
+          {/* Community */}
+          <div className="mt-16">
+            <h3 className="font-serif text-2xl font-medium text-balance text-ink">
+              {tc('community_title')}
+            </h3>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-2">
+              {tc('community_subtitle')}
+            </p>
+
+            <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
+              {COMMUNITY.map(({ key, href, qr }) => (
+                <CommunityCard
+                  key={key}
+                  name={tc(`community_${key}_name`)}
+                  description={tc(`community_${key}_desc`)}
+                  href={href}
+                  cta={tc(`community_${key}_cta`)}
+                  qr={qr}
+                  qrAlt={tc(`community_${key}_qr_alt`)}
+                  icon={
+                    key === 'whatsapp' ? (
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.174.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                      </svg>
+                    ) : (
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03ZM8.02 15.331c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.418 2.157-2.418 1.21 0 2.176 1.095 2.157 2.418 0 1.334-.956 2.42-2.157 2.42Zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.176 1.095 2.157 2.418 0 1.334-.946 2.42-2.157 2.42Z" />
+                      </svg>
+                    )
+                  }
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-import Link from 'next/link'
+import { alternatesFor } from '@/lib/metadata'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -9,21 +9,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'publications' })
-  const canonical =
-    locale === 'en'
-      ? 'https://drkabongo.com/publications'
-      : `https://drkabongo.com/${locale}/publications`
   return {
     title: t('title'),
     description: t('subtitle'),
-    alternates: {
-      canonical,
-      languages: {
-        en: 'https://drkabongo.com/publications',
-        fr: 'https://drkabongo.com/fr/publications',
-        ln: 'https://drkabongo.com/ln/publications',
-      },
-    },
+    alternates: alternatesFor(locale, '/publications'),
   }
 }
 
@@ -105,19 +94,12 @@ const PUBLICATIONS: Publication[] = [
     year: 2020,
     abstract:
       'Reviews mechanisms for computing word embeddings, investigates popular toolkits and embedding matrices, and experiments with selected implementations to better understand their characteristics and properties.',
-    paper: 'https://library.nexteinstein.org/thesis/an-empirical-investigation-into-the-properties-of-standard-word-embeddings/',
+    paper:
+      'https://library.nexteinstein.org/thesis/an-empirical-investigation-into-the-properties-of-standard-word-embeddings/',
     code: 'https://github.com/Kabongosalomon/Word-Embedding-Investigation',
     tags: ['Word Embeddings', 'NLP', 'Deep Learning'],
   },
 ]
-
-const TYPE_COLORS: Record<Publication['type'], string> = {
-  patent: '#f59e0b',
-  journal: '#6366f1',
-  conference: '#10b981',
-  workshop: '#8b5cf6',
-  thesis: '#06b6d4',
-}
 
 const TYPE_LABELS: Record<Publication['type'], string> = {
   patent: 'Patent',
@@ -127,14 +109,17 @@ const TYPE_LABELS: Record<Publication['type'], string> = {
   thesis: 'Thesis',
 }
 
-export default async function PublicationsPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function PublicationsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'publications' })
 
   const byYear = PUBLICATIONS.reduce<Record<number, Publication[]>>((acc, pub) => {
-    if (!acc[pub.year]) acc[pub.year] = []
-    acc[pub.year].push(pub)
+    ;(acc[pub.year] ??= []).push(pub)
     return acc
   }, {})
 
@@ -143,103 +128,87 @@ export default async function PublicationsPage({ params }: { params: Promise<{ l
     .sort((a, b) => b - a)
 
   return (
-    <div className="min-h-screen bg-slate-950 pt-24 pb-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12">
-          <div>
-            <span className="section-label">{t('section_label')}</span>
-            <h1 className="text-4xl sm:text-5xl font-black text-white mb-3">{t('title')}</h1>
-            <p className="text-slate-400 max-w-xl">{t('subtitle')}</p>
-          </div>
-          <a
-            href={t('scholar_url')}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 sm:mt-0 inline-flex items-center gap-2 text-sm font-semibold bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white px-4 py-2 rounded-lg transition-colors shrink-0"
-          >
-            {t('scholar')} ↗
-          </a>
-        </div>
+    <div className="min-h-dvh">
+      <div className="mx-auto max-w-4xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
+        <p className="eyebrow">{t('section_label')}</p>
+        <h1 className="mt-3 font-serif text-4xl font-medium text-balance text-ink sm:text-5xl">
+          {t('title')}
+        </h1>
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">{t('subtitle')}</p>
+
+        <a
+          href={t('scholar_url')}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex min-w-0 items-center gap-1.5 rounded-md border border-rule px-4 py-2 text-sm font-medium text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
+        >
+          {t('scholar')}
+          <svg className="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M7 17 17 7m0 0H8m9 0v9" />
+          </svg>
+        </a>
 
         {years.map((year) => (
-          <div key={year} className="mb-12">
-            <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-3">
-              {year}
-              <span className="flex-1 h-px bg-slate-800" />
-            </h2>
-            <div className="space-y-6">
+          <section key={year} className="mt-16">
+            <h2 className="font-serif text-2xl font-medium text-ink">{year}</h2>
+
+            <ul className="mt-6 space-y-10">
               {byYear[year].map((pub) => (
-                <div
-                  key={pub.title}
-                  className="bg-slate-900 border border-slate-800 rounded-2xl p-6"
-                >
-                  <div className="flex flex-wrap items-start gap-2 mb-3">
-                    <span
-                      className="text-xs font-semibold px-2.5 py-0.5 rounded-full"
-                      style={{
-                        backgroundColor: `${TYPE_COLORS[pub.type]}15`,
-                        color: TYPE_COLORS[pub.type],
-                        border: `1px solid ${TYPE_COLORS[pub.type]}30`,
-                      }}
-                    >
-                      {TYPE_LABELS[pub.type]}
-                    </span>
-                    {pub.award && (
-                      <span className="text-xs font-semibold bg-accent/10 text-accent border border-accent/20 px-2.5 py-0.5 rounded-full">
-                        🏆 {pub.award}
-                      </span>
-                    )}
+                <li key={pub.title} className="border-t border-rule pt-5">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="eyebrow">{TYPE_LABELS[pub.type]}</span>
                     {pub.citations && (
-                      <span className="text-xs text-slate-500 ml-auto">
+                      <span className="text-xs text-ink-3">
                         {pub.citations}+ {t('citations_label')}
                       </span>
                     )}
                   </div>
 
-                  <h3 className="text-base font-bold text-white mb-1">{pub.title}</h3>
-                  <p className="text-sm text-brand-light mb-3">{pub.venue}</p>
+                  <h3 className="mt-2 font-serif text-lg font-medium text-balance text-ink">
+                    {pub.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-ink-2">{pub.venue}</p>
 
-                  {pub.abstract && (
-                    <p className="text-sm text-slate-400 leading-relaxed mb-4">{pub.abstract}</p>
+                  {pub.award && (
+                    <p className="mt-2 text-sm font-medium text-accent">
+                      {t('award_label')}: {pub.award}
+                    </p>
                   )}
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {pub.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs bg-slate-800 border border-slate-700 text-slate-400 px-2 py-0.5 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  {pub.abstract && (
+                    <p className="mt-3 text-sm leading-relaxed text-ink-2">{pub.abstract}</p>
+                  )}
 
-                  <div className="flex flex-wrap gap-3">
-                    {pub.paper && (
-                      <a
-                        href={pub.paper}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold bg-brand/10 hover:bg-brand/20 border border-brand/20 text-brand-light px-3 py-1.5 rounded-lg transition-colors"
-                      >
-                        {t('paper')} ↗
-                      </a>
-                    )}
-                    {pub.code && (
-                      <a
-                        href={pub.code}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg transition-colors"
-                      >
-                        {t('code')}
-                      </a>
-                    )}
-                  </div>
-                </div>
+                  <p className="mt-3 text-xs text-ink-3">{pub.tags.join(' · ')}</p>
+
+                  {(pub.paper || pub.code) && (
+                    <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+                      {pub.paper && (
+                        <a
+                          href={pub.paper}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link text-sm font-medium"
+                        >
+                          {t('paper')}
+                        </a>
+                      )}
+                      {pub.code && (
+                        <a
+                          href={pub.code}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link text-sm font-medium"
+                        >
+                          {t('code')}
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          </section>
         ))}
       </div>
     </div>

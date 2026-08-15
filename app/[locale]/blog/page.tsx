@@ -1,5 +1,6 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import { alternatesFor } from '@/lib/metadata'
 import BlogCard from '@/components/BlogCard'
 import { getAllPosts } from '@/lib/blog'
 
@@ -10,18 +11,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'blog' })
-  const canonical = locale === 'en' ? 'https://drkabongo.com/blog' : `https://drkabongo.com/${locale}/blog`
   return {
     title: t('title'),
     description: t('subtitle'),
-    alternates: {
-      canonical,
-      languages: {
-        en: 'https://drkabongo.com/blog',
-        fr: 'https://drkabongo.com/fr/blog',
-        ln: 'https://drkabongo.com/ln/blog',
-      },
-    },
+    alternates: alternatesFor(locale, '/blog'),
   }
 }
 
@@ -33,24 +26,23 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   const posts = getAllPosts()
 
   return (
-    <div className="min-h-screen bg-slate-950 pt-24 pb-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="mb-12">
-          <span className="section-label">{t('section_label')}</span>
-          <h1 className="text-4xl sm:text-5xl font-black text-white mb-3">{t('title')}</h1>
-          <p className="text-slate-400 text-lg max-w-xl">{t('subtitle')}</p>
-        </div>
+    <div className="min-h-dvh">
+      <div className="mx-auto max-w-4xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
+        <p className="eyebrow">{t('section_label')}</p>
+        <h1 className="mt-3 font-serif text-4xl font-medium text-balance text-ink sm:text-5xl">
+          {t('title')}
+        </h1>
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">{t('subtitle')}</p>
 
         {posts.length === 0 ? (
-          <p className="text-slate-500">{t('no_posts')}</p>
+          <p className="mt-14 border-t border-rule pt-6 text-base text-ink-2">{t('no_posts')}</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2">
             {posts.map((post) => (
               <BlogCard
                 key={post.slug}
                 post={post}
                 locale={locale}
-                readMoreLabel={t('read_more')}
                 minReadLabel={t('min_read')}
               />
             ))}

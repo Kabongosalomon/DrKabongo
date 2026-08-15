@@ -1,5 +1,6 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import { alternatesFor } from '@/lib/metadata'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -8,19 +9,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'projects' })
-  const canonical =
-    locale === 'en' ? 'https://drkabongo.com/projects' : `https://drkabongo.com/${locale}/projects`
   return {
     title: t('title'),
     description: t('subtitle'),
-    alternates: {
-      canonical,
-      languages: {
-        en: 'https://drkabongo.com/projects',
-        fr: 'https://drkabongo.com/fr/projects',
-        ln: 'https://drkabongo.com/ln/projects',
-      },
-    },
+    alternates: alternatesFor(locale, '/projects'),
   }
 }
 
@@ -31,10 +23,20 @@ interface Project {
   github?: string
   demo?: string
   paper?: string
+  youtube?: string
   highlight?: string
 }
 
 const PROJECTS: Project[] = [
+  {
+    name: 'DarAkili',
+    description:
+      'A STEM education platform where African professionals publish free mini-courses in their own languages — so that learning a technical subject no longer requires going through English or French first. Bridging the diaspora and the continent through teaching.',
+    tags: ['STEM Education', 'African Languages', 'Community', 'Platform'],
+    demo: 'https://darakili.com',
+    youtube: 'https://www.youtube.com/@DarAkili',
+    highlight: 'STEM education platform',
+  },
   {
     name: 'Masakhane Web Platform',
     description:
@@ -86,62 +88,42 @@ const PROJECTS: Project[] = [
   },
 ]
 
-function TagBadge({ label }: { label: string }) {
-  return (
-    <span className="text-xs bg-slate-800 border border-slate-700 text-slate-400 px-2 py-0.5 rounded-full">
-      {label}
-    </span>
-  )
-}
-
 export default async function ProjectsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'projects' })
 
   return (
-    <div className="min-h-screen bg-slate-950 pt-24 pb-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="mb-12">
-          <span className="section-label">{t('section_label')}</span>
-          <h1 className="text-4xl sm:text-5xl font-black text-white mb-3">{t('title')}</h1>
-          <p className="text-slate-400 text-lg max-w-xl">{t('subtitle')}</p>
-        </div>
+    <div className="min-h-dvh">
+      <div className="mx-auto max-w-4xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
+        <p className="eyebrow">{t('section_label')}</p>
+        <h1 className="mt-3 font-serif text-4xl font-medium text-balance text-ink sm:text-5xl">
+          {t('title')}
+        </h1>
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">{t('subtitle')}</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ul className="mt-14 space-y-10">
           {PROJECTS.map((project) => (
-            <div
-              key={project.name}
-              className="card-hover bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col"
-            >
-              {project.highlight && (
-                <span className="text-xs font-semibold bg-accent/10 text-accent border border-accent/20 px-2.5 py-0.5 rounded-full mb-3 self-start">
-                  {project.highlight}
-                </span>
-              )}
+            <li key={project.name} className="border-t border-rule pt-5">
+              {project.highlight && <p className="eyebrow">{project.highlight}</p>}
 
-              <h2 className="text-lg font-bold text-white mb-2">{project.name}</h2>
-              <p className="text-sm text-slate-400 leading-relaxed mb-4 flex-1">
+              <h2 className="mt-2 font-serif text-lg font-medium text-balance text-ink">
+                {project.name}
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-2">
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag) => (
-                  <TagBadge key={tag} label={tag} />
-                ))}
-              </div>
+              <p className="mt-3 text-xs text-ink-3">{project.tags.join(' \u00b7 ')}</p>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
                 {project.github && (
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg transition-colors"
+                    className="link text-sm font-medium"
                   >
-                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                    </svg>
                     {t('github')}
                   </a>
                 )}
@@ -150,9 +132,9 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold bg-brand/10 hover:bg-brand/20 border border-brand/20 text-brand-light px-3 py-1.5 rounded-lg transition-colors"
+                    className="link text-sm font-medium"
                   >
-                    {t('demo')} ↗
+                    {t('demo')}
                   </a>
                 )}
                 {project.paper && (
@@ -160,15 +142,25 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
                     href={project.paper}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg transition-colors"
+                    className="link text-sm font-medium"
                   >
                     {t('paper')}
                   </a>
                 )}
+                {project.youtube && (
+                  <a
+                    href={project.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link text-sm font-medium"
+                  >
+                    {t('youtube')}
+                  </a>
+                )}
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   )
