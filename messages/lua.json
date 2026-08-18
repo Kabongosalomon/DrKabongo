@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Pa mbelu",
+    "courses": "Bacours",
     "videos": "Bavidéo",
     "speaking": "Baconférence",
     "consulting": "Mibelu",
@@ -27,7 +28,6 @@
     "cta_work": "Tangila mudimu wanyi",
     "now_label": "Mu tshikoso",
     "now_role": "Lead Software Engineer, Innovation Group wa State Farm",
-    "now_phd": "PhD mu Informatique · mujikija mu novembre 2025",
     "now_darakili": "Dr. Kabongo · éducation wa AI ne mudimu ku DarAkili",
     "portrait_alt": "Salomon Kabongo"
   },
@@ -62,7 +62,7 @@
     "channel_ln_label": "Lingála",
     "channel_ln_desc": "AI, recherche ne technologie bimvuija mu Lingala — bua Kinshasa, Brazzaville ne diaspora.",
     "channel_lua_label": "Tshiluba",
-    "channel_lua_desc": "AI, recherche ne technologie bimvuija mu Tshiluba — bualu meji a technique kaena ne bua kulomba muakulu wa bampengu kumpala to.",
+    "channel_lua_desc": "AI, recherche ne technologie bimvuija mu Tshiluba — bua Kananga, Mbuji-Mayi ne diaspora.",
     "empty_subtitle": "Ba chaîne mbapiapia ne bavidéo ba kumpala badi balua. Abonne-toi bua kupanga bualu ebu to.",
     "empty_title": "Kakuena tshintu tshidi tshipatuke to",
     "empty_body": "Ndi n'enregistrer bavidéo ba kumpala mpindieu. Ba chaîne inayi idi muinshi eyi idi ilongesha AI mu Anglais, Français, Lingala ne Tshiluba; ba contenu ya kulonga mu Swahili idi kabidi ku site ewu."
@@ -70,7 +70,7 @@
   "about": {
     "section_label": "Recherche",
     "title": "Fuma ku kumvua AI, kufika ku kuteka nawu",
-    "bio1": "Ndi ne doctorat (PhD) mu Informatique ku Leibniz Universität Hannover. Recherche wanyi udi utangila mushindu udi ba système ya AI bakeba, bakangisha ne ba évaluer ba preuve mu miakulu, ba document, ba image ne littérature scientifique.",
+    "bio1": "Recherche wanyi udi utangila mushindu udi ba système ya AI bakeba, bakangisha ne ba évaluer ba preuve mu miakulu, ba document, ba image ne littérature scientifique.",
     "bio2": "Ndi nkangisha recherche udi ba pair batangile ne ingénierie wa buloba bua bushuwa mu foundation models, AI multimodale, computer vision, intelligence documentaire ne évaluation fiable. Mudimu ewu udi ne brevet américain mupeshibue bua confidentialité ne désidentification ya ba image.",
     "bio3": "Recherche ne éducation bidi bitupa bia projet umue: dimanya dia AI didi ne mushinga didi ne bua kuikala rigoureuse, pratique ne dipeteke kupita Anglais. Ku diambuluisha dia Dr. Kabongo, ndi ngulongesha mu Anglais, Français, Lingala, Tshiluba ne Swahili.",
     "closing": "Recherche udi upeta tshidi mua kuenzeka. Ingénierie udi uteta tshintu atshi mu buloba bua bushuwa. Dilongesha didi dienza bua dimanya ditambule.",
@@ -187,6 +187,24 @@
     "boundary_body": "Ba mission idi isadila information wa public anyi wa client ne kayiyi isangisha mudimu confidentiel, propriétaire anyi udi utangila employeur wanyi. Demande yonso idi ipita mu vérification ya conflit ne mu ba autorisation idi ikengela.",
     "cta_title": "Lomba diambuluisha dia conseil",
     "cta_body": "Tumina organisation anyi industrie webe, question, résultat uudi ukeba, calendrier ne conflit yonso udi mua kuikala. Ndi ngitaba anu ba mission mikese idi ne ba limite patoke."
+  },
+  "courses": {
+    "section_label": "Bacours",
+    "title": "Bacours ya interactif",
+    "subtitle": "Enda ne code wa bushuwa mukanda ku mukanda, mu muakulu webe. Cours yonso idi yenza programme ne ileja tshidi variable yonso ilua.",
+    "no_courses": "Kakuena tshintu tshidi tshipatuke to. Pingana kaayi kule.",
+    "lessons": "Ba leçon",
+    "lesson_count": "{count, plural, =0 {Kakuena leçon to} one {leçon #} other {ba leçon #}}",
+    "lesson_number": "Leçon {number}",
+    "start_lesson": "Tuadija leçon",
+    "available_in": "Idi mu",
+    "lecture_video": "Cours mienregistré",
+    "watch_on_youtube": "Tangila ku YouTube",
+    "play_lecture": "Tuadija cours mienregistré",
+    "video_language_note": "Enregistrement eu udi mu {language}.",
+    "fallback_notice": "Leçon eu kayidi mu {requested} to — udi ubala version wa {shown}.",
+    "dismiss": "Kanga",
+    "back_to_courses": "Bacours yonso"
   },
   "blog": {
     "section_label": "Mifundu",

@@ -1,4 +1,4 @@
-import { FEATURED, HIDDEN, TOPICS, type TopicKey } from '@/content/videos.config'
+import { FEATURED, HIDDEN, SHORTS, TOPICS, type TopicKey } from '@/content/videos.config'
 import fallback from '@/content/videos.fallback.json'
 
 export type { TopicKey }
@@ -137,13 +137,13 @@ function fallbackFor(channel: ChannelKey): Video[] {
   return (fallback as Video[]).filter((video) => video.channel === channel)
 }
 
-/** Applies the curation overlay: drop hidden, tag topics, mark + order featured. */
+/** Applies the curation overlay: drop hidden and Shorts, tag topics, mark + order featured. */
 function curate(videos: Video[]): Video[] {
-  const hidden = new Set(HIDDEN)
+  const excluded = new Set([...HIDDEN, ...SHORTS])
   const featuredRank = new Map(FEATURED.map((id, index) => [id, index]))
 
   const visible = videos
-    .filter((video) => !hidden.has(video.id))
+    .filter((video) => !excluded.has(video.id))
     .map((video) => ({
       ...video,
       topics: TOPICS[video.id] ?? [],

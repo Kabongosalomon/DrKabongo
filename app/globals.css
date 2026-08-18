@@ -254,6 +254,20 @@ h4 {
   border: 1px solid var(--rule);
 }
 
+/*
+ * EdTrace lesson host.
+ *
+ * The viewer's vendored stylesheet declares `--et-sticky-top: 0px` directly on
+ * `.edtrace-viewer`, so a host has to outrank a single class to change it — a
+ * Tailwind arbitrary-property utility only ties on specificity and loses on
+ * source order. Two classes settle it. The value is the fixed masthead's
+ * height (`h-16` in components/Nav.tsx); without it the viewer's sticky
+ * environment panel parks underneath the nav.
+ */
+.edtrace-host .edtrace-viewer {
+  --et-sticky-top: 4rem;
+}
+
 /* ─────────────────────────────────────────────────────────────
    Syntax highlighting (rehype-highlight) — themed, so it follows
    the light/dark toggle instead of a fixed hljs stylesheet.

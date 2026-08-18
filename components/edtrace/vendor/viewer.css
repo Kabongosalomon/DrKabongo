@@ -1,0 +1,1171 @@
+/*
+ * GENERATED FILE -- do not edit by hand.
+ * Source of truth: edtrace-studio (packages/viewer/src/viewer.css).
+ * Synced by scripts/sync_web_bundle.py for course "ai_machine_learning_hello_world" (edtrace-studio git sha e9ede1584d698ad9977cd6c1a5b29ab115429748-dirty, built 2026-08-18T02:29:31+00:00).
+ * To change viewer behavior, edit edtrace-studio and re-run build_web_bundle.py + sync_web_bundle.py.
+ * > edtrace-studio vendor header end
+*/
+
+/*
+ * Scoped styles for the EdTrace viewer. Every selector is nested under
+ * `.edtrace-viewer` so this can be dropped into any host page (a bare Vite
+ * shell or a Next.js site with its own global stylesheet) without leaking
+ * page-level resets. The four rules that used to target `:root`/`html`/
+ * `body`/`#root`/bare `a`/bare `button` in the old trace-viewer/src/index.css
+ * became host-page concerns and live with each host instead.
+ *
+ * Colour is expressed entirely as `--et-*` custom properties declared on
+ * `.edtrace-viewer`, with a dark override keyed on `[data-theme="dark"]` --
+ * the attribute DrKabongo.com stamps on <html> pre-paint. No rule below the
+ * token blocks may hardcode a colour literal: that is what lets one vendored
+ * stylesheet serve a light host, a dark host, and the local Vite shell.
+ * (The Vite shell renders light by default; set data-theme="dark" on its
+ * <html> to preview the dark palette.)
+ *
+ * Syntax-highlighting colours live here too, scoped under `.edtrace-viewer`.
+ * They used to come from a bare `import 'highlight.js/styles/github.css'` in
+ * TraceViewer.jsx, which was an unscoped global stylesheet that overrode the
+ * host page's own `.hljs-*` rules on every route that loaded the viewer.
+ */
+
+.edtrace-viewer {
+  /*
+   * How far down the viewport the viewer's own sticky chrome should settle.
+   * Zero on a bare host; a site with a fixed masthead sets this to that
+   * masthead's height so the two do not overlap. Declared as a token because
+   * only the host knows its own chrome.
+   */
+  --et-sticky-top: 0px;
+
+  /* Surfaces and text */
+  --et-bg: #ffffff;
+  --et-fg: #213547;
+  --et-panel-bg: #ffffff;
+  --et-border: #cccccc;
+  --et-muted: #666666;
+  --et-muted-2: #808080;
+  --et-button-bg: #f9f9f9;
+
+  /* Links */
+  --et-link: #646cff;
+  --et-link-hover: #535bf2;
+
+  /* Code lines */
+  --et-current-line: #fffde7;
+  --et-present-current-line: #eef2ff;
+  --et-present-current-line-marker: #6366f1;
+  --et-line-number: #d3d3d3;
+  --et-line-number-hover: #000000;
+
+  /* Environment panel */
+  --et-env-border: #000000;
+  --et-env-bg: rgba(223, 255, 255, 0.85);
+  --et-env-shadow: rgba(0, 0, 0, 0.2);
+  --et-env-border-present: #a8c4c4;
+  --et-env-bg-present: rgba(244, 251, 251, 0.96);
+  --et-label: #496464;
+
+  /* Learning monitor */
+  --et-monitor-border: #0b7f78;
+  --et-monitor-bg: rgba(255, 255, 255, 0.98);
+  --et-monitor-shadow: rgba(13, 67, 64, 0.16);
+  --et-monitor-heading-fg: #103d3a;
+  --et-monitor-heading-bg: #dff5f2;
+  --et-summary-border: #b9d8d5;
+  --et-summary-bg: #f4fbfa;
+  --et-summary-fg: #385452;
+  --et-summary-strong: #102f2d;
+
+  /* Parameter table */
+  --et-table-border: #e0e8e7;
+  --et-thead-fg: #48615f;
+  --et-thead-bg: #f8fbfb;
+  --et-param-updated-fg: #064d48;
+  --et-param-updated-bg: #e3f7f4;
+  --et-param-updated-rail: #0b8f86;
+  --et-param-unchanged-fg: #667171;
+  --et-param-unchanged-bg: #f1f3f3;
+  --et-param-unchanged-rail: #aeb7b7;
+
+  /* Header and identity */
+  --et-header-border: #e2e8f0;
+  --et-header-bg: rgba(248, 250, 252, 0.97);
+  --et-course-title: #49615f;
+  --et-title-separator: #8ca09e;
+  --et-lesson-title: #173f3c;
+  --et-source-path: #73817f;
+
+  /* Controls */
+  --et-select-border: #a8bfbd;
+  --et-select-bg: #f7fbfa;
+  --et-select-fg: #173f3c;
+  --et-navbtn-border: #8db7b3;
+  --et-navbtn-fg: #174d49;
+  --et-navbtn-bg: #e8f6f4;
+
+  /* Present-mode prose */
+  --et-h1: #123f3b;
+  --et-h2: #175b55;
+  --et-pre-border: #d7e5e3;
+  --et-pre-bg: #f7faf9;
+
+  /* Media */
+  --et-video-bg: #0c1716;
+  --et-video-shadow: rgba(15, 50, 47, 0.18);
+  --et-caption: #566b69;
+  --et-play-bg: rgba(0, 0, 0, 0.65);
+  --et-play-fg: #ffffff;
+  --et-error-border: #d7aaa4;
+  --et-error-fg: #742d24;
+  --et-error-bg: #fff4f2;
+
+  /* Overlays */
+  --et-hover-shadow: rgba(0, 0, 0, 0.1);
+  --et-scrim: rgba(15, 30, 29, 0.35);
+  --et-sheet-shadow: rgba(0, 0, 0, 0.25);
+  --et-bar-bg: rgba(255, 255, 255, 0.97);
+  --et-bar-shadow: rgba(0, 0, 0, 0.08);
+
+  /* Syntax highlighting (GitHub light) */
+  --et-code-fg: #24292e;
+  --et-code-comment: #6a737d;
+  --et-code-keyword: #d73a49;
+  --et-code-string: #032f62;
+  --et-code-number: #005cc5;
+  --et-code-title: #6f42c1;
+  --et-code-builtin: #e36209;
+  --et-code-attr: #005cc5;
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Explicit base size: keeps the viewer independent of the host page's
+     typography, and is a step up from the 16px browser default because the
+     reading column now spans most of a desktop window (present mode pins
+     its own 19px separately). */
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--et-fg);
+  background-color: var(--et-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark palette. Keyed on the host's explicit theme attribute rather than
+   `prefers-color-scheme` so a host that offers a manual light/dark toggle
+   stays authoritative in both directions. */
+[data-theme="dark"] .edtrace-viewer {
+  --et-bg: #141312;
+  --et-fg: #e7e3dc;
+  --et-panel-bg: #1c1a18;
+  --et-border: #3a3733;
+  --et-muted: #a8a29a;
+  --et-muted-2: #8a8278;
+  --et-button-bg: #232120;
+
+  --et-link: #9aa2ff;
+  --et-link-hover: #b3b9ff;
+
+  --et-current-line: #3a3520;
+  --et-present-current-line: #1e2340;
+  --et-present-current-line-marker: #818cf8;
+  --et-line-number: #5c574f;
+  --et-line-number-hover: #e7e3dc;
+
+  --et-env-border: #3f4a49;
+  --et-env-bg: rgba(20, 34, 33, 0.9);
+  --et-env-shadow: rgba(0, 0, 0, 0.5);
+  --et-env-border-present: #2f4241;
+  --et-env-bg-present: rgba(18, 30, 29, 0.96);
+  --et-label: #8fb0ad;
+
+  --et-monitor-border: #1f8f86;
+  --et-monitor-bg: rgba(20, 28, 27, 0.98);
+  --et-monitor-shadow: rgba(0, 0, 0, 0.5);
+  --et-monitor-heading-fg: #bfe6e1;
+  --et-monitor-heading-bg: #17322f;
+  --et-summary-border: #274441;
+  --et-summary-bg: #16302d;
+  --et-summary-fg: #a9c7c4;
+  --et-summary-strong: #e2f2f0;
+
+  --et-table-border: #2b3a38;
+  --et-thead-fg: #9dbab7;
+  --et-thead-bg: #182f2d;
+  --et-param-updated-fg: #7fe3d6;
+  --et-param-updated-bg: #143b37;
+  --et-param-updated-rail: #22b5a7;
+  --et-param-unchanged-fg: #9aa5a4;
+  --et-param-unchanged-bg: #222626;
+  --et-param-unchanged-rail: #4d5756;
+
+  --et-header-border: #2c2925;
+  --et-header-bg: rgba(20, 19, 18, 0.97);
+  --et-course-title: #9dbab7;
+  --et-title-separator: #6b807e;
+  --et-lesson-title: #dff1ee;
+  --et-source-path: #8a9997;
+
+  --et-select-border: #3f5654;
+  --et-select-bg: #1a2a28;
+  --et-select-fg: #dff1ee;
+  --et-navbtn-border: #3d6b66;
+  --et-navbtn-fg: #bfe6e1;
+  --et-navbtn-bg: #1b3a37;
+
+  --et-h1: #d8efec;
+  --et-h2: #a6d8d1;
+  --et-pre-border: #2b3a38;
+  --et-pre-bg: #16201f;
+
+  --et-video-bg: #0c1716;
+  --et-video-shadow: rgba(0, 0, 0, 0.5);
+  --et-caption: #9aacaa;
+  --et-play-bg: rgba(0, 0, 0, 0.7);
+  --et-play-fg: #ffffff;
+  --et-error-border: #6e3a33;
+  --et-error-fg: #f3b6ad;
+  --et-error-bg: #2e1a17;
+
+  --et-hover-shadow: rgba(0, 0, 0, 0.5);
+  --et-scrim: rgba(0, 0, 0, 0.55);
+  --et-sheet-shadow: rgba(0, 0, 0, 0.6);
+  --et-bar-bg: rgba(20, 19, 18, 0.97);
+  --et-bar-shadow: rgba(0, 0, 0, 0.4);
+
+  /* Syntax highlighting (GitHub dark) */
+  --et-code-fg: #e6edf3;
+  --et-code-comment: #8b949e;
+  --et-code-keyword: #ff7b72;
+  --et-code-string: #a5d6ff;
+  --et-code-number: #79c0ff;
+  --et-code-title: #d2a8ff;
+  --et-code-builtin: #ffa657;
+  --et-code-attr: #79c0ff;
+}
+
+.edtrace-viewer a {
+  font-weight: 500;
+  color: var(--et-link);
+  text-decoration: inherit;
+}
+.edtrace-viewer a:hover {
+  color: var(--et-link-hover);
+}
+
+.edtrace-viewer button {
+  background-color: var(--et-button-bg);
+}
+
+.edtrace-viewer .icon-buttons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+.edtrace-viewer .icon-buttons button {
+  cursor: pointer;
+  border: none;
+  padding: 2px;
+}
+
+.edtrace-viewer .key {
+  font-weight: bold;
+}
+
+.edtrace-viewer .code-container {
+  font-family: monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Syntax highlighting. Scoped replacement for highlight.js/styles/github.css,
+   which TraceViewer.jsx used to import globally. */
+.edtrace-viewer .hljs {
+  color: var(--et-code-fg);
+  background: transparent;
+}
+
+.edtrace-viewer .hljs-comment,
+.edtrace-viewer .hljs-quote {
+  color: var(--et-code-comment);
+  font-style: italic;
+}
+
+.edtrace-viewer .hljs-keyword,
+.edtrace-viewer .hljs-selector-tag,
+.edtrace-viewer .hljs-doctag,
+.edtrace-viewer .hljs-type,
+.edtrace-viewer .hljs-name,
+.edtrace-viewer .hljs-deletion {
+  color: var(--et-code-keyword);
+}
+
+.edtrace-viewer .hljs-string,
+.edtrace-viewer .hljs-regexp,
+.edtrace-viewer .hljs-addition,
+.edtrace-viewer .hljs-meta .hljs-string {
+  color: var(--et-code-string);
+}
+
+.edtrace-viewer .hljs-number,
+.edtrace-viewer .hljs-literal,
+.edtrace-viewer .hljs-variable,
+.edtrace-viewer .hljs-template-variable {
+  color: var(--et-code-number);
+}
+
+.edtrace-viewer .hljs-title,
+.edtrace-viewer .hljs-section,
+.edtrace-viewer .hljs-function .hljs-title {
+  color: var(--et-code-title);
+}
+
+.edtrace-viewer .hljs-built_in,
+.edtrace-viewer .hljs-symbol,
+.edtrace-viewer .hljs-bullet {
+  color: var(--et-code-builtin);
+}
+
+.edtrace-viewer .hljs-attr,
+.edtrace-viewer .hljs-attribute,
+.edtrace-viewer .hljs-meta {
+  color: var(--et-code-attr);
+}
+
+.edtrace-viewer .hljs-emphasis {
+  font-style: italic;
+}
+
+.edtrace-viewer .hljs-strong {
+  font-weight: 700;
+}
+
+.edtrace-viewer .current-line {
+  background-color: var(--et-current-line);
+}
+
+.edtrace-viewer .present-mode .current-line {
+  background-color: var(--et-present-current-line);
+  box-shadow: inset 3px 0 var(--et-present-current-line-marker);
+}
+
+.edtrace-viewer .line-number {
+  min-width: 3em;
+  padding-right: 1em;
+  text-align: right;
+  user-select: none;
+  display: inline-block;
+  color: var(--et-line-number);
+  cursor: pointer;
+}
+
+.edtrace-viewer .line-number:hover {
+  color: var(--et-line-number-hover);
+}
+
+.edtrace-viewer .line span {
+  vertical-align: top;
+}
+
+.edtrace-viewer .markdown h1 {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+  display: inline-block;
+}
+
+.edtrace-viewer .markdown h2 {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+  display: inline-block;
+}
+
+.edtrace-viewer .markdown ul {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+  display: inline-block;
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+.edtrace-viewer .markdown ol {
+  margin: 0;
+  padding-left: 17px;
+  line-height: inherit;
+  display: inline-block;
+}
+
+.edtrace-viewer .link-container {
+  display: inline-block;
+  position: relative;
+}
+
+.edtrace-viewer .link-hover-panel {
+  display: none;
+  position: absolute;
+  background: var(--et-panel-bg);
+  border: 1px solid var(--et-border);
+  border-radius: 4px;
+  min-width: 600px;
+  padding: 10px;
+  box-shadow: 0 2px 8px var(--et-hover-shadow);
+  z-index: 1000;
+}
+
+.edtrace-viewer .link-container:hover .link-hover-panel {
+  display: block;
+}
+
+.edtrace-viewer .link-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.edtrace-viewer .link-authors {
+  color: var(--et-muted);
+  margin-bottom: 2px;
+}
+
+.edtrace-viewer .link-date {
+  color: var(--et-muted);
+  font-size: 0.9em;
+  margin-bottom: 4px;
+}
+
+.edtrace-viewer .link-description {
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+.edtrace-viewer .link-notes {
+  color: var(--et-muted-2);
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+.edtrace-viewer .trace-viewer-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  background-color: var(--et-bg);
+}
+
+.edtrace-viewer .trace-viewer-container.present-mode {
+  align-items: flex-start;
+  justify-content: stretch;
+  gap: 24px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(12px, 2.5vw, 32px);
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.edtrace-viewer .lines-panel {
+  flex: 1;
+  position: relative;
+  min-width: 1000px;
+  overflow-x: auto;
+}
+
+.edtrace-viewer .present-mode .lines-panel {
+  min-width: 0;
+  width: 100%;
+  flex: 1 1 62%;
+}
+
+.edtrace-viewer .renderings {
+  /* Scale with the window on wide desktop screens instead of pinning to a
+     fixed 800px, which left large stretches of unused space on laptops.
+     Capped at 1500px (same ceiling present-mode uses) for huge monitors. */
+  display: block;
+  width: min(100%, 1500px);
+  max-width: 100%;
+}
+
+.edtrace-viewer .present-mode .renderings {
+  width: min(100%, 1100px);
+  max-width: 100%;
+}
+
+.edtrace-viewer .present-mode.no-env .renderings {
+  width: min(100%, 1500px);
+}
+
+.edtrace-viewer .env-panel {
+  position: fixed;
+  overflow-x: auto;
+  overflow-y: auto;
+  z-index: 1000;
+  max-height: 90vh;
+  max-height: 90dvh;
+}
+
+.edtrace-viewer .present-mode .env-panel {
+  position: sticky;
+  top: calc(var(--et-sticky-top) + 16px);
+  flex: 0 1 660px;
+  width: min(660px, 38vw);
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  cursor: default;
+}
+
+.edtrace-viewer .env-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.edtrace-viewer .env {
+  border: 1px solid var(--et-env-border);
+  background-color: var(--et-env-bg);
+  min-width: 500px;
+  max-width: 500px;
+  min-height: 100px;
+  border-radius: 8px;
+  box-shadow: 0 5px 5px var(--et-env-shadow);
+  padding: 10px;
+}
+
+.edtrace-viewer .present-mode .env {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  min-height: 0;
+  border-color: var(--et-env-border-present);
+  background: var(--et-env-bg-present);
+}
+
+.edtrace-viewer .current-values-panel {
+  min-width: 0;
+}
+
+.edtrace-viewer .current-values-title {
+  margin: 0 0 6px 4px;
+  color: var(--et-label);
+  font-size: 0.78em;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.edtrace-viewer .update-monitor {
+  overflow: hidden;
+  border: 2px solid var(--et-monitor-border);
+  border-radius: 14px;
+  background: var(--et-monitor-bg);
+  box-shadow: 0 8px 24px var(--et-monitor-shadow);
+}
+
+.edtrace-viewer .update-monitor-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 16px 10px;
+  color: var(--et-monitor-heading-fg);
+  background: var(--et-monitor-heading-bg);
+  font-size: 0.9em;
+}
+
+.edtrace-viewer .update-monitor-heading > div:first-child {
+  display: flex;
+  gap: 12px;
+}
+
+.edtrace-viewer .forward-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 10px 16px 12px;
+  border-bottom: 1px solid var(--et-summary-border);
+  background: var(--et-summary-bg);
+  color: var(--et-summary-fg);
+  font-size: 0.78em;
+}
+
+.edtrace-viewer .forward-summary strong {
+  display: block;
+  color: var(--et-summary-strong);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1.04em;
+}
+
+.edtrace-viewer .parameter-monitor-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.76em;
+  font-variant-numeric: tabular-nums;
+}
+
+.edtrace-viewer .parameter-monitor-table th,
+.edtrace-viewer .parameter-monitor-table td {
+  padding: 9px 8px;
+  border-bottom: 1px solid var(--et-table-border);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.edtrace-viewer .parameter-monitor-table thead th {
+  color: var(--et-thead-fg);
+  background: var(--et-thead-bg);
+  font-family: system-ui, sans-serif;
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.edtrace-viewer .parameter-monitor-table th:first-child,
+.edtrace-viewer .parameter-monitor-table td:first-child {
+  text-align: left;
+}
+
+.edtrace-viewer .parameter-monitor-table tr:last-child th,
+.edtrace-viewer .parameter-monitor-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.edtrace-viewer .parameter-updated {
+  color: var(--et-param-updated-fg);
+  background: var(--et-param-updated-bg);
+}
+
+.edtrace-viewer .parameter-updated th {
+  border-left: 5px solid var(--et-param-updated-rail);
+}
+
+.edtrace-viewer .parameter-unchanged {
+  color: var(--et-param-unchanged-fg);
+  background: var(--et-param-unchanged-bg);
+}
+
+.edtrace-viewer .parameter-unchanged th {
+  border-left: 5px solid var(--et-param-unchanged-rail);
+}
+
+.edtrace-viewer .parameter-status {
+  display: inline-block;
+  padding: 3px 7px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: system-ui, sans-serif;
+  font-size: 0.72em;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.edtrace-viewer .env td {
+  vertical-align: top;
+}
+
+.edtrace-viewer .header {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: var(--et-sticky-top);
+  z-index: 100;
+  border-bottom: 1px solid var(--et-header-border);
+  background-color: var(--et-header-bg);
+  padding: 12px 16px;
+}
+
+.edtrace-viewer .header-title {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  min-width: 0;
+}
+
+.edtrace-viewer .trace-identity {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.edtrace-viewer .trace-breadcrumb {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.edtrace-viewer .trace-course-title {
+  color: var(--et-course-title);
+  font-size: 0.82em;
+  font-weight: 700;
+}
+
+.edtrace-viewer .trace-title-separator {
+  color: var(--et-title-separator);
+}
+
+.edtrace-viewer .trace-lesson-title {
+  color: var(--et-lesson-title);
+}
+
+.edtrace-viewer .trace-source-path {
+  overflow: hidden;
+  color: var(--et-source-path);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.74em;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.edtrace-viewer .header-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.edtrace-viewer .language-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--et-course-title);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.edtrace-viewer .language-selector select {
+  max-width: 170px;
+  padding: 5px 26px 5px 8px;
+  border: 1px solid var(--et-select-border);
+  border-radius: 7px;
+  color: var(--et-select-fg);
+  background: var(--et-select-bg);
+  font: inherit;
+  cursor: pointer;
+}
+
+.edtrace-viewer .language-selector select:disabled {
+  cursor: default;
+  opacity: 0.78;
+}
+
+.edtrace-viewer .present-mode .header {
+  padding: 12px 0 14px;
+}
+
+.edtrace-viewer .present-mode .header-title {
+  color: var(--et-lesson-title);
+  font-size: 1.1em;
+  font-weight: 800;
+}
+
+.edtrace-viewer .update-navigation {
+  margin: 0 3px;
+  padding: 6px 10px !important;
+  border: 1px solid var(--et-navbtn-border) !important;
+  border-radius: 7px;
+  color: var(--et-navbtn-fg);
+  background: var(--et-navbtn-bg) !important;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.edtrace-viewer .present-mode .code-container {
+  font-size: 18px;
+}
+
+.edtrace-viewer .present-mode .markdown h1 {
+  display: block;
+  color: var(--et-h1);
+  font-size: 46px;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.edtrace-viewer .present-mode .markdown h2 {
+  display: block;
+  margin-top: 8px;
+  color: var(--et-h2);
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.edtrace-viewer .present-mode .markdown mjx-container[display="true"] {
+  margin: 0.7em 0 !important;
+  font-size: 150% !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.edtrace-viewer .present-mode .markdown pre {
+  overflow-x: auto;
+  padding: 14px 16px;
+  border: 1px solid var(--et-pre-border);
+  border-radius: 10px;
+  background: var(--et-pre-bg);
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.edtrace-viewer .video-rendering {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 12px 0;
+}
+
+.edtrace-viewer .video-rendering video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: var(--et-video-bg);
+  box-shadow: 0 8px 24px var(--et-video-shadow);
+}
+
+.edtrace-viewer .video-rendering figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  max-width: 100%;
+  padding-top: 7px;
+  color: var(--et-caption);
+  font-size: 0.78em;
+}
+
+.edtrace-viewer .video-rendering figcaption a {
+  white-space: nowrap;
+}
+
+.edtrace-viewer .video-caption {
+  flex: 1 1 300px;
+}
+
+.edtrace-viewer .video-error {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 24px;
+  border: 1px solid var(--et-error-border);
+  border-radius: 12px;
+  color: var(--et-error-fg);
+  background: var(--et-error-bg);
+  font-family: system-ui, sans-serif;
+  font-weight: 650;
+  white-space: normal;
+}
+
+.edtrace-viewer .matrix {
+  border-collapse: collapse;
+}
+
+.edtrace-viewer .matrix > tbody > tr > td {
+  border: 1px solid var(--et-border);
+  padding: 3px;
+}
+
+.edtrace-viewer .dict {
+  border: 1px solid var(--et-border);
+}
+
+.edtrace-viewer .cloaked {
+  opacity: 0.2;
+}
+
+.edtrace-viewer .present-mode .cloaked {
+  display: none;
+}
+
+.edtrace-viewer .notes {
+  font-style: italic;
+  color: var(--et-muted-2);
+  font-size: 10px;
+  margin-left: 128px;
+}
+
+.edtrace-viewer .plot-loading {
+  display: inline-block;
+  width: 100%;
+  min-height: 120px;
+}
+
+.edtrace-viewer .youtube-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--et-video-bg);
+  box-shadow: 0 8px 24px var(--et-video-shadow);
+}
+
+.edtrace-viewer .youtube-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.edtrace-viewer .youtube-poster {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background-color: var(--et-video-bg);
+}
+
+.edtrace-viewer .youtube-poster-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edtrace-viewer .youtube-play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--et-play-bg);
+  color: var(--et-play-fg);
+  font-size: 24px;
+  z-index: 1;
+}
+
+/* Mobile-only chrome: bottom sheet toggle for the env panel and a sticky
+   step control bar. Hidden by default; Phase 2's breakpoints reveal them
+   and hide the desktop-only affordances they replace. */
+.edtrace-viewer .env-panel-mobile-header {
+  display: none;
+}
+
+.edtrace-viewer .env-panel-scrim {
+  display: none;
+}
+
+.edtrace-viewer .mobile-control-bar {
+  display: none;
+}
+
+/* Width-only breakpoints keep the CSS layout aligned with
+   COMPACT_MEDIA_QUERY in TraceViewer.jsx, including narrow desktop windows. */
+@media (max-width: 1250px) {
+  .edtrace-viewer .trace-viewer-container.present-mode {
+    flex-direction: column;
+  }
+
+  .edtrace-viewer .present-mode .env-panel {
+    position: relative;
+    top: auto;
+    order: -1;
+    width: 100%;
+    max-height: none;
+  }
+
+  .edtrace-viewer .present-mode .renderings {
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .edtrace-viewer {
+    /* Room for the fixed mobile-control-bar so the last line of content
+       (or the env-panel toggle) is never hidden behind it. */
+    padding-bottom: 56px;
+  }
+
+  .edtrace-viewer .trace-viewer-container,
+  .edtrace-viewer .trace-viewer-container.present-mode {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 12px;
+  }
+
+  .edtrace-viewer .lines-panel,
+  .edtrace-viewer .present-mode .lines-panel {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .edtrace-viewer .header-title {
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .edtrace-viewer .header-controls {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .edtrace-viewer .icon-buttons {
+    justify-content: flex-start;
+  }
+
+  /* Prev/next/step-over/step-up all have a touch equivalent in the sticky
+     mobile-control-bar (or no equivalent needed), so the desktop icon row
+     only keeps the toggles (animate/raw/env/notes) that don't. */
+  .edtrace-viewer .nav-icon-button {
+    display: none;
+  }
+
+  .edtrace-viewer .icon-buttons button {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 18px;
+  }
+
+  .edtrace-viewer .renderings,
+  .edtrace-viewer .present-mode .renderings,
+  .edtrace-viewer .present-mode.no-env .renderings {
+    width: 100%;
+  }
+
+  .edtrace-viewer .present-mode .markdown h1 {
+    font-size: clamp(30px, 9vw, 46px);
+  }
+
+  .edtrace-viewer .present-mode .markdown h2 {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  .edtrace-viewer .markdown mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .edtrace-viewer .code-container {
+    overflow-x: auto;
+  }
+
+  /* The env panel becomes a fixed bottom sheet, dismissible by the close
+     button, the mobile-control-bar toggle, or tapping the scrim. This also
+     targets `.present-mode .env-panel` explicitly to out-specificity the
+     1250px present-mode rule (which reflows the panel inline instead) --
+     below 760px the bottom sheet always wins, in every mode. */
+  .edtrace-viewer .env-panel,
+  .edtrace-viewer .present-mode .env-panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    flex: none;
+    order: initial;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    max-height: 70vh;
+    max-height: 70dvh;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -8px 24px var(--et-sheet-shadow);
+    transform: translateY(100%);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      transform 0.25s ease,
+      visibility 0s linear 0.25s;
+    z-index: 1200;
+  }
+
+  .edtrace-viewer .env-panel.mobile-open,
+  .edtrace-viewer .present-mode .env-panel.mobile-open {
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  .edtrace-viewer .env-panel-mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    padding: 10px 4px 8px;
+    margin-bottom: 6px;
+    background: var(--et-panel-bg);
+    border-bottom: 1px solid var(--et-table-border);
+    font-weight: 700;
+    color: var(--et-lesson-title);
+  }
+
+  .edtrace-viewer .env-panel-close {
+    min-width: 44px;
+    min-height: 44px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .edtrace-viewer .env-panel-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: var(--et-scrim);
+    z-index: 1100;
+  }
+
+  .edtrace-viewer .mobile-control-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1300;
+    padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px));
+    background: var(--et-bar-bg);
+    border-top: 1px solid var(--et-table-border);
+    box-shadow: 0 -4px 12px var(--et-bar-shadow);
+  }
+
+  .edtrace-viewer .mobile-control-button {
+    min-width: 44px;
+    min-height: 44px;
+    border: 1px solid var(--et-select-border);
+    border-radius: 10px;
+    background: var(--et-select-bg);
+    color: var(--et-select-fg);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .edtrace-viewer .mobile-control-button:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  .edtrace-viewer .mobile-step-counter {
+    flex: 1;
+    text-align: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    color: var(--et-course-title);
+  }
+}

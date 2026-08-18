@@ -1,0 +1,34 @@
+{
+  "built_at": "2026-08-18T02:29:31+00:00",
+  "course": "ai_machine_learning_hello_world",
+  "edtrace_studio_git_sha": "e9ede1584d698ad9977cd6c1a5b29ab115429748-dirty",
+  "files": {
+    "catalog.json": "sha256:05de4dda203bf19da93c986947d4e70e729b9d270a4a7c5f20afd8c811c167be",
+    "deps.json": "sha256:d1cd62115cbfd84f311bbe2c945cbb9297c28836bc3dfef05c1b2e5eaeb3618b",
+    "images/ai_machine_learning_hello_world/en/biological-neuron-to-neural-network.webp": "sha256:2b1e728f1f6681989875cbb5b1c94058db3f20e39ca1d156ad0cd58901289de6",
+    "images/ai_machine_learning_hello_world/en/model_fit.webp": "sha256:c680f7326f0cca1b87c4f04ce4b5796f992b6a94bbe21a926f2b63c4d4251635",
+    "images/ai_machine_learning_hello_world/fr/biological-neuron-to-neural-network.webp": "sha256:e96bddcf6501b5999e6b20877f6deef1473234a2bf72f00ef18253d3bc6ab1a0",
+    "images/ai_machine_learning_hello_world/fr/model_fit.webp": "sha256:c680f7326f0cca1b87c4f04ce4b5796f992b6a94bbe21a926f2b63c4d4251635",
+    "images/ai_machine_learning_hello_world/ln/biological-neuron-to-neural-network.webp": "sha256:d98bb8c8e59df5c4e14ebd996cbedb92c6544bfaae7d7fc6a3844427ef77d552",
+    "images/ai_machine_learning_hello_world/ln/model_fit.webp": "sha256:c680f7326f0cca1b87c4f04ce4b5796f992b6a94bbe21a926f2b63c4d4251635",
+    "images/ai_machine_learning_hello_world/lua/biological-neuron-to-neural-network.webp": "sha256:f5c76b1b80231a86dad764a5ad4ca229b7317fb4218d11fbc70c7427f1128062",
+    "images/ai_machine_learning_hello_world/lua/model_fit.webp": "sha256:c680f7326f0cca1b87c4f04ce4b5796f992b6a94bbe21a926f2b63c4d4251635",
+    "traces/en/from_scratch.json": "sha256:d06dcd14bd28fa9824bf2875497dd6e4a6a420745df48a5c688cfe40d60a5b6a",
+    "traces/fr/from_scratch.json": "sha256:252de378379986f8c704fb00d22f896864685b15708cd8cc9ea0f9c35e19ca36",
+    "traces/ln/from_scratch.json": "sha256:3326f2d6bf356689f0634a2f4fa75ff86964b4da5fa65a8e3f5945e0daba2fad",
+    "traces/lua/from_scratch.json": "sha256:3a3b5fce41a596ab5766911a7ee05bb9a34701151e0b50e15bc7833e28678048",
+    "viewer/PlotRendering.jsx": "sha256:5ec3dd311fbe3b19e0f7872ef33333d9911781194101f562eccd366774949cce",
+    "viewer/TraceViewer.jsx": "sha256:bcfdbe85013ceb155ea7536f14191221e76d2fc89b9f2c7c4c71efec822fea82",
+    "viewer/index.js": "sha256:9002234b7dc9d97b862d646e1d8e2a2756ae9e8f271deec249e7ea82730a2d70",
+    "viewer/utils.js": "sha256:8d99cf733c60dfa068e285e97019e680b4928a369f6d26020a08c9ffeb11e177",
+    "viewer/viewer.css": "sha256:e033b391dd516b8f57264def2fb245eff58b8f3f086cdd7f53bb57ba8178834b"
+  },
+  "languages": [
+    "en",
+    "fr",
+    "ln",
+    "lua"
+  ],
+  "site_layout_version": 2,
+  "viewer_version": "0.1.0"
+}

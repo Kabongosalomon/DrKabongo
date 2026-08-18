@@ -71,6 +71,7 @@ export default function Nav() {
   }, [open])
 
   const links = [
+    { href: '/courses', label: t('courses') },
     { href: '/videos', label: t('videos') },
     { href: '/speaking', label: t('speaking') },
     { href: '/publications', label: t('publications') },

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
+import { getAllCourses, allCourseLessonPairs } from '@/lib/courses'
 import { routing } from '@/i18n/routing'
 import { absoluteUrl } from '@/lib/metadata'
 
@@ -20,6 +21,7 @@ function buildEntry(path: string, lastModified?: Date): MetadataRoute.Sitemap[nu
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     '',
+    '/courses',
     '/videos',
     '/speaking',
     '/consulting',
@@ -35,5 +37,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     buildEntry(`/blog/${post.slug}`, post.date ? new Date(post.date) : undefined),
   )
 
-  return [...staticEntries, ...blogEntries]
+  const courseEntries = getAllCourses().map((catalog) =>
+    buildEntry(`/courses/${catalog.course.id}`),
+  )
+
+  const lessonEntries = allCourseLessonPairs().map(({ course, lesson }) =>
+    buildEntry(`/courses/${course}/${lesson}`),
+  )
+
+  return [...staticEntries, ...blogEntries, ...courseEntries, ...lessonEntries]
 }

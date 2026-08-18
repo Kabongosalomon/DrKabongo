@@ -84,7 +84,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     description: string
   }>
 
-  const now = [t('now_role'), t('now_phd'), t('now_darakili')]
+  // The doctorate is stated in full by the stats tile below (and signed in the
+  // footer), so "At a glance" stays about what is current.
+  const now = [t('now_role'), t('now_darakili')]
 
   const topics = [1, 2, 3, 4].map((n) => ({
     title: tsp(`topic_${n}_title`),

@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Mwanzo",
+    "courses": "Masomo",
     "videos": "Bavideo",
     "speaking": "Baconférence",
     "consulting": "Ushauri",
@@ -27,7 +28,6 @@
     "cta_work": "Chunguza kazi yangu",
     "now_label": "Kwa kifupi",
     "now_role": "Lead Software Engineer, Innovation Group ku State Farm",
-    "now_phd": "PhD mu Informatique · ilimalizika Novemba 2025",
     "now_darakili": "Dr. Kabongo · elimu ya AI na kazi juu ya DarAkili",
     "portrait_alt": "Salomon Kabongo"
   },
@@ -62,7 +62,7 @@
     "channel_ln_label": "Lingála",
     "channel_ln_desc": "AI, recherche na technologie inafasiriwa mu Lingala — juu ya Kinshasa, Brazzaville na diaspora.",
     "channel_lua_label": "Tshiluba",
-    "channel_lua_desc": "AI, recherche na technologie inafasiriwa mu Tshiluba — juu wazo ya technique haipasweke kuomba lugha ya kikoloni kwanza.",
+    "channel_lua_desc": "AI, recherche na technologie inafasiriwa mu Tshiluba — juu ya Kananga, Mbuji-Mayi na diaspora.",
     "empty_subtitle": "Ba chaîne ni ya mupya na bavideo ya kwanza inakuya. Abonne-toi juu usikose.",
     "empty_title": "Hakuna kitu ilichapishwa bado",
     "empty_body": "Niko naregistrer bavideo ya kwanza sasa hivi. Bachaîne ine hapa chini inafundisha AI mu Anglais, Français, Lingala na Tshiluba; ba contenu ya kujifunza mu Swahili iko pia ku hii site."
@@ -70,7 +70,7 @@
   "about": {
     "section_label": "Recherche",
     "title": "Kutoka kuelewa AI mpaka kuitumia kujenga",
-    "bio1": "Niko na doctorat (PhD) mu Informatique kutoka Leibniz Universität Hannover. Recherche yangu inaangalia namna ba système ya AI inatafuta, inaunganisha na inatathmini ba preuve mu lugha, ba document, ba image na littérature scientifique.",
+    "bio1": "Recherche yangu inaangalia namna ba système ya AI inatafuta, inaunganisha na inatathmini ba preuve mu lugha, ba document, ba image na littérature scientifique.",
     "bio2": "Naunganishaka recherche yenye ba pair waliangalia na ingénierie ya dunia ya kweli mu foundation models, AI multimodale, computer vision, intelligence documentaire na évaluation fiable. Hii kazi inajumuisha brevet américain yenye ilitolewa juu ya confidentialité na désidentification ya ba image.",
     "bio3": "Recherche na elimu ni sehemu ya projet ile ile: ujuzi ya AI yenye iko na maana inapaswa kuwa rigoureux, pratique na ipatikane zaidi ya Anglais. Kupitia Dr. Kabongo, nafundishaka mu Anglais, Français, Lingala, Tshiluba na Swahili.",
     "closing": "Recherche inavumbua kile inawezekana. Ingénierie inaijaribu mu dunia ya kweli. Kufundisha inafanya ujuzi usafiri.",
@@ -187,6 +187,24 @@
     "boundary_body": "Ba mission inatumia information ya public ao ya client na haikubali kazi confidentiel, propriétaire ao yenye iko na uhusiano na employeur wangu. Kila demande inapitia vérification ya conflit na autorisation yote yenye inahitajika.",
     "cta_title": "Omba musaada ya ushauri",
     "cta_body": "Tuma organisation ao industrie yako, question, résultat yenye unataka, calendrier na conflit yoyote possible. Nakubali tu ba mission chache yenye iko na limite wazi."
+  },
+  "courses": {
+    "section_label": "Masomo",
+    "title": "Masomo ya interactif",
+    "subtitle": "Pitia code ya kweli mstari kwa mstari, mu lugha yako. Kila somo inaendesha programme na kuonyesha kile kila variable inakuwa.",
+    "no_courses": "Hakuna kitu ilichapishwa bado. Rudia hivi karibuni.",
+    "lessons": "Masomo",
+    "lesson_count": "{count, plural, =0 {Hakuna somo bado} one {somo #} other {masomo #}}",
+    "lesson_number": "Somo {number}",
+    "start_lesson": "Anza somo",
+    "available_in": "Inapatikana mu",
+    "lecture_video": "Somo yenye ilirekodiwa",
+    "watch_on_youtube": "Angalia ku YouTube",
+    "play_lecture": "Cheza somo yenye ilirekodiwa",
+    "video_language_note": "Hii enregistrement iko mu {language}.",
+    "fallback_notice": "Somo hii haipatikane mu {requested} bado — unasoma version ya {shown}.",
+    "dismiss": "Funga",
+    "back_to_courses": "Masomo yote"
   },
   "blog": {
     "section_label": "Maandishi",

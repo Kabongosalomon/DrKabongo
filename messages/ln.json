@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Ebandeli",
+    "courses": "Bacours",
     "videos": "Bavideo",
     "speaking": "Baconférence",
     "consulting": "Toli",
@@ -27,7 +28,6 @@
     "cta_work": "Tala mosala na ngai",
     "now_label": "Na mokuse",
     "now_role": "Lead Software Engineer, Innovation Group na State Farm",
-    "now_phd": "PhD na Informatique · esilaki na novembre 2025",
     "now_darakili": "Dr. Kabongo · éducation ya AI pe mosala na DarAkili",
     "portrait_alt": "Salomon Kabongo"
   },
@@ -62,7 +62,7 @@
     "channel_ln_label": "Lingála",
     "channel_ln_desc": "AI, recherche pe technologie e expliqué na Lingala — mpo na Kinshasa, Brazzaville pe diaspora.",
     "channel_lua_label": "Tshiluba",
-    "channel_lua_desc": "AI, recherche pe technologie e expliqué na Tshiluba — pamba te likanisi ya technique esengeli te koluka monoko ya colonisation liboso.",
+    "channel_lua_desc": "AI, recherche pe technologie e expliqué na Tshiluba — mpo na Kananga, Mbuji-Mayi pe diaspora.",
     "empty_subtitle": "Bachaîne eza ya sika pe bavideo ya liboso ezali koya. Abonne-toi mpo ozanga yango te.",
     "empty_title": "Eloko ebimi naino te",
     "empty_body": "Nazali ko enregistrer bavideo ya liboso sik'oyo. Bachaîne minei awa na se elakisaka AI na Anglais, Français, Lingala pe Tshiluba; ba contenu ya koyekola na Swahili ezali mpe na site oyo."
@@ -70,7 +70,7 @@
   "about": {
     "section_label": "Recherche",
     "title": "Uta na kososola AI kino kotonga na yango",
-    "bio1": "Nazali na doctorat (PhD) na Informatique uta Leibniz Universität Hannover. Recherche na ngai etalaka ndenge ba système ya AI elukaka, ekangisaka pe e évaluaka ba preuve na kati ya minoko, ba document, ba image pe littérature scientifique.",
+    "bio1": "Recherche na ngai etalaka ndenge ba système ya AI elukaka, ekangisaka pe e évaluaka ba preuve na kati ya minoko, ba document, ba image pe littérature scientifique.",
     "bio2": "Nakomisaka recherche oyo ba pair ba talela elongo na ingénierie ya mokili ya solo na foundation models, AI multimodale, computer vision, intelligence documentaire pe évaluation fiable. Mosala yango esangisi brevet américain oyo epesami mpo na confidentialité pe désidentification ya ba image.",
     "bio3": "Recherche pe éducation ezali biteni ya projet moko: boyebi ya AI oyo ezali na tina esengeli ezala rigoureux, pratique pe ezala accessible koleka Anglais. Na nzela ya Dr. Kabongo, nalakisaka na Anglais, Français, Lingala, Tshiluba pe Swahili.",
     "closing": "Recherche emonisaka nini ekoki kosalema. Ingénierie emekaka yango na mokili ya solo. Kolakisa esalaka ete boyebi etambola.",
@@ -187,6 +187,24 @@
     "boundary_body": "Ba mission esalelaka information ya public to ya client pe elongolaka mosala confidentiel, propriétaire to oyo etali employeur na ngai. Demande nionso eleki na vérification ya conflit pe na ba autorisation oyo esengeli.",
     "cta_title": "Senga lisungi ya conseil",
     "cta_body": "Tinda organisation to industrie na yo, question, résultat oyo olingi, calendrier pe conflit nionso oyo ekoki kozala. Nandimaka kaka ba mission moke oyo ezali na limite ya polele."
+  },
+  "courses": {
+    "section_label": "Bacours",
+    "title": "Bacours ya interactif",
+    "subtitle": "Tambola na code ya solo molongo na molongo, na monoko na yo. Cours moko na moko esalaka programme pe elakisaka nini variable moko na moko ekomi.",
+    "no_courses": "Eloko ebimi naino te. Zonga kala mingi te.",
+    "lessons": "Ba leçon",
+    "lesson_count": "{count, plural, =0 {Leçon ezali naino te} one {leçon #} other {ba leçon #}}",
+    "lesson_number": "Leçon {number}",
+    "start_lesson": "Banda leçon",
+    "available_in": "Ezali na",
+    "lecture_video": "Cours oyo e enregistré",
+    "watch_on_youtube": "Tala na YouTube",
+    "play_lecture": "Bandela cours oyo e enregistré",
+    "video_language_note": "Enregistrement oyo ezali na {language}.",
+    "fallback_notice": "Leçon oyo ezali naino te na {requested} — ozali kotanga version ya {shown}.",
+    "dismiss": "Kanga",
+    "back_to_courses": "Bacours nionso"
   },
   "blog": {
     "section_label": "Makomi",

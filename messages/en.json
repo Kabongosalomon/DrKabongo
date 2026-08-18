@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Home",
+    "courses": "Courses",
     "videos": "Videos",
     "speaking": "Speaking",
     "consulting": "Consulting",
@@ -27,7 +28,6 @@
     "cta_work": "Explore my work",
     "now_label": "At a glance",
     "now_role": "Lead Software Engineer, Innovation Group at State Farm",
-    "now_phd": "PhD in Computer Science · completed November 2025",
     "now_darakili": "Dr. Kabongo · AI education and work on DarAkili",
     "portrait_alt": "Salomon Kabongo"
   },
@@ -62,7 +62,7 @@
     "channel_ln_label": "Lingála",
     "channel_ln_desc": "AI, research and technology explained in Lingala — for Kinshasa, Brazzaville and the diaspora.",
     "channel_lua_label": "Tshiluba",
-    "channel_lua_desc": "AI, research and technology explained in Tshiluba — because a technical idea should not require a colonial language first.",
+    "channel_lua_desc": "AI, research and technology explained in Tshiluba — for Kananga, Mbuji-Mayi and the diaspora.",
     "empty_subtitle": "The channels are new and the first videos are on the way. Subscribe and you will not miss them.",
     "empty_title": "Nothing published yet",
     "empty_body": "I am recording the first videos now. The four channels below teach AI in English, French, Lingala, and Tshiluba; Swahili learning content is also available through this site."
@@ -70,7 +70,7 @@
   "about": {
     "section_label": "Research",
     "title": "From understanding AI to building with it",
-    "bio1": "I hold a PhD in Computer Science from Leibniz Universität Hannover. My research examines how AI systems find, connect, and evaluate evidence across language, documents, images, and scientific literature.",
+    "bio1": "My research examines how AI systems find, connect, and evaluate evidence across language, documents, images, and scientific literature.",
     "bio2": "I connect peer-reviewed research with real-world engineering across foundation models, multimodal AI, computer vision, document intelligence, and reliable evaluation. That work includes an issued U.S. patent in image privacy and de-identification.",
     "bio3": "Research and education are part of the same project: useful AI knowledge should be rigorous, practical, and available beyond English. Through Dr. Kabongo, I teach in English, French, Lingala, Tshiluba, and Swahili.",
     "closing": "Research discovers what is possible. Engineering tests it in the real world. Teaching makes the knowledge travel.",
@@ -187,6 +187,24 @@
     "boundary_body": "Engagements use public or client-owned information and exclude confidential, proprietary, or employer-related work. Every enquiry is subject to conflict review and any required approvals.",
     "cta_title": "Request advisory support",
     "cta_body": "Share your organization or industry, the question, desired output, timing, and any potential conflicts. I accept only a limited number of clearly bounded engagements."
+  },
+  "courses": {
+    "section_label": "Courses",
+    "title": "Interactive courses",
+    "subtitle": "Step through real code line by line, in your own language. Each lesson runs the program and shows what every variable becomes.",
+    "no_courses": "Nothing published yet. Check back soon.",
+    "lessons": "Lessons",
+    "lesson_count": "{count, plural, =0 {No lessons yet} one {# lesson} other {# lessons}}",
+    "lesson_number": "Lesson {number}",
+    "start_lesson": "Start the lesson",
+    "available_in": "Available in",
+    "lecture_video": "Recorded lecture",
+    "watch_on_youtube": "Watch on YouTube",
+    "play_lecture": "Play the recorded lecture",
+    "video_language_note": "This recording is in {language}.",
+    "fallback_notice": "This lesson is not available in {requested} yet — you are reading the {shown} version.",
+    "dismiss": "Dismiss",
+    "back_to_courses": "All courses"
   },
   "blog": {
     "section_label": "Writing",

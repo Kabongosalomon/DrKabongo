@@ -58,6 +58,29 @@ console.log('wrote', out.length, 'videos')
 
 > **Important:** if you change which channels exist, regenerate this file. A stale snapshot can resurrect videos from a channel you removed.
 
+> **Note:** the feed endpoint throttles by IP and answers `404`/`500` while it does — including for channels that obviously exist. If regeneration fails, that's the cause; wait a few minutes and re-run. The site is unaffected meanwhile, because it falls back to this snapshot.
+
+---
+
+## Excluding Shorts
+
+Shorts are promo clips for the full videos, so they're kept out of the listings — otherwise they crowd out the lectures on a grid sorted newest-first. The RSS feed carries no duration or type, so they can't be detected automatically at render time.
+
+Refresh the list in `content/videos.config.ts` after publishing Shorts. A request to `/shorts/<id>` answers `200` for a Short and `303` (redirect to `/watch`) for a normal video:
+
+```bash
+node --input-type=module -e "
+import { readFileSync } from 'node:fs'
+const videos = JSON.parse(readFileSync('content/videos.fallback.json', 'utf8'))
+for (const v of videos) {
+  const res = await fetch('https://www.youtube.com/shorts/' + v.id, { redirect: 'manual' })
+  if (res.status === 200) console.log(\"  '\" + v.id + \"', // \" + v.channel.toUpperCase() + ' — ' + v.title.slice(0, 60))
+}
+"
+```
+
+Paste the output into `SHORTS`. Regenerate the fallback snapshot first, so newly published Shorts are included in the scan.
+
 ---
 
 ## Featuring a video

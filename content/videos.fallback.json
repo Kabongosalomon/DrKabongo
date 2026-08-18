@@ -1,5 +1,71 @@
 [
   {
+    "id": "r-6ovZ34IPk",
+    "title": "Programmation wa pa tshibidilu VS IA - Lungenyi luenza kudi Bantu",
+    "published": "2026-08-18T04:53:14+00:00",
+    "channel": "lua",
+    "thumbnail": "https://img.youtube.com/vi/r-6ovZ34IPk/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=r-6ovZ34IPk",
+    "description": "🤖 Udi musue kumanya mushindu AI udi ulongela?\n🎥 Tangila vidéo mujima:\nhttps://youtu.be/K2ZbEeIgJDQ",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "L5Svx0iZ1Ds",
+    "title": "Train Your Own AI  Master AI Concepts Simply #ai #artificialintelligence #deeplearning",
+    "published": "2026-08-18T04:15:40+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/L5Svx0iZ1Ds/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=L5Svx0iZ1Ds",
+    "description": "🤖 Want to understand how AI actually learns?\n\nOne of the easiest ways to understand Machine Learning is to train a simple model yourself.\n\nIn this clip, I break down the fundamental idea behind teaching a computer using examples instead of explicitly programming every rule.\n\n🎥 Watch the full lesson:\nhttps://youtu.be/2MUHPPKWwWA\n\n👇 Or click the related video attached to this Short to continue with the full lesson.\n\nSubscribe to Dr Kabongo for practical AI lessons — from beginner concepts to advanced Machine Learning, LLMs, Computer Vision, NLP, and more.\n\n#AI #MachineLearning #ArtificialIntelligence #LearnAI #Programming #Shorts",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "2fYzxqUyHw8",
+    "title": "IA vs Programmation  La Vraie Différence Expliquée #apprendreia #deeplearning #gradientdescent",
+    "published": "2026-08-18T04:14:02+00:00",
+    "channel": "fr",
+    "thumbnail": "https://img.youtube.com/vi/2fYzxqUyHw8/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=2fYzxqUyHw8",
+    "description": "🤖 Quelle est vraiment la différence entre programmer un ordinateur et lui apprendre ?\n\nDans cet extrait, je vous explique l’une des idées fondamentales du Machine Learning.\n\n🎥 Regardez le cours complet en cliquant sur la vidéo associée à ce Short.\n\nDans le cours complet, nous apprenons à un ordinateur à additionner à partir d’exemples — une introduction simple et concrète au Machine Learning.\n\nAbonnez-vous à Dr Kabongo Français pour apprendre l’IA, du niveau débutant au niveau avancé.\n\n#IA #MachineLearning #Programmation #IntelligenceArtificielle #Shorts\n\nPour YouTube Shorts, n’oublie surtout pas d’ajouter la vidéo longue comme Related Video / Vidéo associée. C’est beaucoup plus important que de mettre le lien brut dans la description.",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "sw7C7llz7S4",
+    "title": "Hello World de l’IA | Machine Learning From Scratch: Apprendre à un ordinateur à additionner",
+    "published": "2026-08-17T11:37:09+00:00",
+    "channel": "fr",
+    "thumbnail": "https://img.youtube.com/vi/sw7C7llz7S4/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=sw7C7llz7S4",
+    "description": "🤖 Comment une machine peut-elle réellement apprendre ?\n\nDans cette introduction d’environ une heure à l’Intelligence Artificielle (IA) et au Machine Learning, nous allons repartir de zéro pour comprendre ce qui se cache réellement derrière l’apprentissage automatique.\n\nNous commençons avec un problème extrêmement simple :\n\nl’addition.\n\nMais au lieu de programmer directement la règle :\n\n2 + 3 = 5\n\nnous allons faire comme si l’ordinateur ne connaissait plus les règles de l’addition.\n\nNous allons lui fournir des exemples et construire, étape par étape, un mécanisme lui permettant de retrouver lui-même la relation mathématique qui relie les nombres d’entrée au résultat attendu.\n\nEt surtout, nous allons le faire from scratch.\n\n❌ Pas de PyTorch\n❌ Pas de TensorFlow\n❌ Pas de scikit-learn\n❌ Pas de fonction d’entraînement qui cache les mathématiques\n\nNous allons dériver les calculs à la main, écrire notre propre logique d’apprentissage et observer comment des paramètres initialement arbitraires peuvent progressivement converger vers une fonction capable de reproduire l’addition.\n\nC’est en quelque sorte notre “Hello World” de l’Intelligence Artificielle.\n\n📚 Dans cette vidéo, nous abordons notamment :\nQu’est-ce que l’Intelligence Artificielle ?\nQu’est-ce que le Machine Learning ?\nProgrammation traditionnelle vs Machine Learning\nDonnées d’entrée et valeurs cibles\nParamètres d’un modèle\nPoids (weights) et biais (bias)\nPrédiction\nErreur et fonction de perte (loss function)\nDérivées\nDérivées partielles\nGradients\nGradient Descent\nLearning Rate\nMise à jour des paramètres\nEntraînement d’un modèle\nConvergence\nLe lien avec les réseaux de neurones\nComment ces principes se retrouvent dans les systèmes modernes d’IA\n\nL’objectif n’est pas simplement d’obtenir un programme qui fonctionne.\n\nL’objectif est de comprendre pourquoi il fonctionne.\n\nSi les termes weights, bias, loss, gradient, gradient descent, learning rate, training ou backpropagation vous ont toujours semblé abstraits, cette vidéo est conçue pour construire progressivement l’intuition mathématique derrière ces concepts.\n\n🎯 Pourquoi commencer par l’addition ?\n\nParce que l’addition nous permet de retirer toute la complexité inutile du problème.\n\nNous connaissons déjà la bonne réponse.\n\nNous pouvons donc nous concentrer entièrement sur la question fondamentale :\n\nComment une machine peut-elle découvrir une relation à partir de données plutôt que de recevoir directement la règle ?\n\nUne fois ce mécanisme compris sur un exemple aussi simple, il devient beaucoup plus facile de comprendre comment les mêmes principes peuvent être étendus à des problèmes beaucoup plus complexes.\n\n💬 Rejoignez la communauté Dr. Kabongo\n\nVous avez une question sur cette leçon ?\nVous souhaitez discuter d’IA, de Machine Learning, de mathématiques, de programmation ou proposer un sujet pour une prochaine vidéo ?\n\n💬 Discord :\nhttps://discord.gg/PUbkyrUcaa \n\n📱 Chaîne WhatsApp :\nhttps://whatsapp.com/channel/0029VbDR33v6hENldqLbRe24\n\n🌐 Site web :\nhttps://www.drkabongo.com \n\nCette vidéo fait partie de la série Hello World de l’IA, dans laquelle nous allons construire progressivement notre compréhension de l’Intelligence Artificielle à partir des principes fondamentaux.\n\nNous commencerons par les mathématiques et les mécanismes essentiels avant de progresser vers des sujets comme :\n\nNeural Networks • Deep Learning • NLP • Large Language Models • Computer Vision • RAG • AI Agents • MCP • et bien plus encore.\n\nL’objectif de cette chaîne est simple :\n\nNe pas seulement utiliser l’IA. Comprendre comment elle fonctionne.\n\nSi cette approche vous intéresse, abonnez-vous à Dr. Kabongo et rejoignez la communauté pour suivre les prochaines vidéos.\n\n#IntelligenceArtificielle #MachineLearning #IA #MachineLearningFromScratch #GradientDescent #DeepLearning #NeuralNetworks #ApprendreIA #Programmation",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "K2ZbEeIgJDQ",
+    "title": "Hello World ku AI mu Tshiluba | Machine Learning From Scratch -- Kulongesha Ordinatɛr Addition",
+    "published": "2026-08-16T00:33:05+00:00",
+    "channel": "lua",
+    "thumbnail": "https://img.youtube.com/vi/K2ZbEeIgJDQ/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=K2ZbEeIgJDQ",
+    "description": "🤖 AI ne Machine Learning mu Tshiluba -- katataka ku tshibangidilu!\n\nMu vidéo ewu, tudi tutangila Artificial Intelligence (AI) ne Machine Learning ku tshibangidilu mene.\n\nTudi tubuela ku tshilejelu tshipepele: addition.\n\nPamutu pa kuambila ordinatɛr patoke ne:\n\n2 + 3 = 5\n\ntudi tuenza ordinatɛr bu ne uvulama mikenji ya addition, pashishe tudi tumulongesha bua kusanga yeye nkayende mushindu wa addition udi ukola, ku dienza training ku bimfuanyi.\n\nMu lesson ewu, katuena tuenza mudimu ne:\n\n❌ PyTorch\n❌ TensorFlow\n❌ scikit-learn\n❌ Machine Learning library udi ukusokela mathematics\n\nTudi tuenza mathematics ne code from scratch, step by step.\n\n📚 Bintu bitudi tulonga\n\nMu vidéo ewu tudi tumona:\n\nAI ne Machine Learning ntshinyi?\nTraditional programming ne Machine Learning bidi bishilangane mushindu kayi?\nInputs ne targets\nWeights ne bias\nPrediction\nError ne loss\nLoss function\nDerivatives ne partial derivatives\nGradient\nGradient Descent\nLearning Rate\nParameter updates\nTraining\nMushindu model udi ulonga ku bimfuanyi\nMushindu concepts eyi idi ilunda ku Neural Networks ne AI wa matuku aa\n\nTshipatshila ki mbua kulonda code patupu.\n\nTshipatshila ntshia kumanya tshinyi tshidi tshienzeka mukati pa Machine Learning ne bua tshinyi model udi mua kulonga.\n\nEwu udi “Hello World” wa AI mu Tshiluba — kutangila ku tshilejelu tshipepele bua kubaka dipatula dia mathematics ne intuition bidi ku munyi mua AI wa lelu.\n\nVidéo ewu udi mua kuikala umue wa ma introductions a kumpala a technical AI/Machine Learning mu Tshiluba, ne tuditumikila bua kulundisha technical education mu miyuki yetu ya Afrika.",
+    "topics": [],
+    "featured": false
+  },
+  {
+    "id": "2MUHPPKWwWA",
+    "title": "Hello World to AI | Machine Learning From Scratch: Teach a Computer to Add",
+    "published": "2026-08-15T17:30:30+00:00",
+    "channel": "en",
+    "thumbnail": "https://img.youtube.com/vi/2MUHPPKWwWA/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=2MUHPPKWwWA",
+    "description": "What does it actually mean for a computer to learn?\n\nIn this one-hour introduction to Artificial Intelligence and Machine Learning, we start with one of the simplest things a computer can do: addition.\n\nBut instead of programming the rule of addition directly, we take it away.\n\nThe computer is not told that:\n\n2 + 3 = 5\n\nInstead, it receives examples and must gradually rediscover the mathematical relationship on its own.\n\nAnd we build the entire learning process from scratch.\n\nNo PyTorch.\nNo TensorFlow.\nNo scikit-learn.\nNo machine-learning training library hiding the mathematics.\n\nWe derive the calculations by hand, implement the learning process ourselves, and follow the model from randomly initialized parameters to a function that can approximate addition.\n\nThis is the “Hello World” of AI: a simple problem used to understand the fundamental ideas behind much more sophisticated machine-learning systems.\n\nWhat you will learn\n\nIn this video, we explore:\n\nWhat Artificial Intelligence and Machine Learning actually mean\nTraditional programming vs. machine learning\nTraining examples, inputs, and targets\nParameters, weights, and bias\nHow a model makes a prediction\nError and loss\nWhy we need a loss function\nDerivatives and partial derivatives\nHow gradients tell us which direction to move\nGradient descent\nThe role of the learning rate\nUpdating model parameters manually\nTraining over multiple examples\nHow a model gradually learns a mathematical relationship\nHow these ideas connect to neural networks and modern AI\n\nThe objective is not simply to write code that produces the correct answer.\n\nThe objective is to understand why learning works.\n\nIf terms such as weights, bias, loss, derivatives, gradients, gradient descent, learning rate, training, and optimization have ever seemed mysterious, this tutorial builds them from first principles.\n\nBy the end, the goal is for Machine Learning to feel less like magic and more like a mathematical process that can be understood step by step.\n\n💬 Join the Dr. Kabongo Community\n\nHave a question about the lesson? Want to discuss AI, Machine Learning, mathematics, programming, or future tutorials?\n\n💬 Discord Community: https://discord.gg/PUbkyrUcaa \n\n📱 WhatsApp Channel: https://whatsapp.com/channel/0029VbDR33v6hENldqLbRe24\n\n🌐 Website: https://www.drkabongo.com \n\nThis is the beginning of the Hello World to AI series, where we build Artificial Intelligence and Machine Learning concepts from first principles before moving to increasingly advanced systems.\n\nFuture videos will explore topics including neural networks using Pytorch, deep learning, LLMs, NLP, Computer Vision, RAG, AI agents, MCP, and the mathematics behind modern AI.\n\nIf you find this approach useful, subscribe to Dr. Kabongo and join the community so you do not miss the next lesson.\n\n#ArtificialIntelligence #MachineLearning #AI #MachineLearningFromScratch #GradientDescent #NeuralNetworks #DeepLearning #LearnAI #Programming",
+    "topics": [],
+    "featured": false
+  },
+  {
     "id": "ZlEEXpedJWk",
     "title": "Poster 21 Black in AI Workshop @ NeurIPS 2021 by Salomon Kabongo",
     "published": "2021-11-29T14:56:58+00:00",
@@ -62,17 +128,6 @@
     "thumbnail": "https://img.youtube.com/vi/CCRV43RKZ2g/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=CCRV43RKZ2g",
     "description": "Session 2 of a series of live video on Zoom, on the Introduction to Deep Learning with PyTorch. \n\nThis notebook as other in this series can be found here : https://github.com/Kabongosalomon/Secure-and-Private-AI-Scholarship-Challenge-from-Facebook/tree/master/intro-to-pytorch",
-    "topics": [],
-    "featured": false
-  },
-  {
-    "id": "4Jp6ZtiYd2M",
-    "title": "2018 ACM Turing Award (Yoshua Bengio, Geoffrey Hinton, and Yann LeCun)",
-    "published": "2019-05-25T14:01:09+00:00",
-    "channel": "en",
-    "thumbnail": "https://img.youtube.com/vi/4Jp6ZtiYd2M/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=4Jp6ZtiYd2M",
-    "description": "Yoshua Bengio, Geoffrey Hinton, and Yann LeCun discuss their work and the 2018 ACM A.M. Turing Award.",
     "topics": [],
     "featured": false
   },

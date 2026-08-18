@@ -20,6 +20,7 @@ export type TopicKey =
  * Remove an ID (or empty the array) and ordering falls back to newest-first.
  */
 export const FEATURED: string[] = [
+  '2MUHPPKWwWA', // Hello World to AI — the course lecture for /courses/ai_machine_learning_hello_world
   'rC_DDhMhVc8', // The Transformer, From RNN to Attention
   'jOKy_AnyLic', // Masakhane MT. How to get started?
   'ZlEEXpedJWk', // Black in AI Workshop @ NeurIPS 2021 — LiSTra spotlight
@@ -29,6 +30,22 @@ export const FEATURED: string[] = [
 export const HIDDEN: string[] = [
   '8FxfFZXpMWI', // "Kabongo Live Stream" — untitled test stream, no content
   '4Jp6ZtiYd2M', // 2018 ACM Turing Award — no longer public on the channel
+]
+
+/**
+ * YouTube Shorts, kept out of the listings.
+ *
+ * Shorts are promo clips for the full videos, so they crowd out the real
+ * lectures on a grid sorted newest-first. The RSS feed gives no duration or
+ * type, so they cannot be detected from the feed alone — regenerate this list
+ * with the probe documented in `content/VIDEOS.md` whenever you publish one.
+ * (Separate from HIDDEN on purpose: these are excluded as a category, not
+ * retired individually.)
+ */
+export const SHORTS: string[] = [
+  'L5Svx0iZ1Ds', // EN  — Train Your Own AI, Master AI Concepts Simply
+  '2fYzxqUyHw8', // FR  — IA vs Programmation, La Vraie Différence Expliquée
+  'r-6ovZ34IPk', // TSH — Programmation wa pa tshibidilu VS IA
 ]
 
 /**

@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Accueil",
+    "courses": "Cours",
     "videos": "Vidéos",
     "speaking": "Conférences",
     "consulting": "Conseil",
@@ -27,7 +28,6 @@
     "cta_work": "Découvrir mon travail",
     "now_label": "En bref",
     "now_role": "Lead Software Engineer, Innovation Group chez State Farm",
-    "now_phd": "Doctorat en informatique · obtenu en novembre 2025",
     "now_darakili": "Dr. Kabongo · éducation à l'IA et contribution à DarAkili",
     "portrait_alt": "Salomon Kabongo"
   },
@@ -62,7 +62,7 @@
     "channel_ln_label": "Lingála",
     "channel_ln_desc": "L'IA, la recherche et la technologie expliquées en lingala — pour Kinshasa, Brazzaville et la diaspora.",
     "channel_lua_label": "Tshiluba",
-    "channel_lua_desc": "L'IA, la recherche et la technologie expliquées en tshiluba — parce qu'une idée technique ne devrait pas exiger d'abord une langue coloniale.",
+    "channel_lua_desc": "L'IA, la recherche et la technologie expliquées en tshiluba — pour Kananga, Mbuji-Mayi et la diaspora.",
     "empty_subtitle": "Les chaînes sont récentes et les premières vidéos arrivent. Abonnez-vous pour ne pas les manquer.",
     "empty_title": "Rien n'est encore publié",
     "empty_body": "J'enregistre les premières vidéos en ce moment. Les quatre chaînes ci-dessous enseignent l'IA en anglais, français, lingala et tshiluba ; le site propose aussi des contenus pédagogiques en swahili."
@@ -70,7 +70,7 @@
   "about": {
     "section_label": "Recherche",
     "title": "De la compréhension de l'IA à sa mise en pratique",
-    "bio1": "Je suis docteur en informatique de la Leibniz Universität Hannover. Mes recherches étudient comment les systèmes d'IA trouvent, relient et évaluent des éléments probants dans le langage, les documents, les images et la littérature scientifique.",
+    "bio1": "Mes recherches étudient comment les systèmes d'IA trouvent, relient et évaluent des éléments probants dans le langage, les documents, les images et la littérature scientifique.",
     "bio2": "Je relie la recherche évaluée par les pairs à l'ingénierie de terrain autour des modèles de fondation, de l'IA multimodale, de la vision par ordinateur, de l'intelligence documentaire et de l'évaluation fiable. Ces travaux comprennent un brevet américain délivré sur la confidentialité et la désidentification des images.",
     "bio3": "La recherche et l'éducation font partie d'un même projet : un savoir utile sur l'IA doit être rigoureux, pratique et accessible au-delà de l'anglais. Avec Dr. Kabongo, j'enseigne en anglais, français, lingala, tshiluba et swahili.",
     "closing": "La recherche découvre ce qui est possible. L'ingénierie le met à l'épreuve du réel. L'enseignement fait circuler le savoir.",
@@ -187,6 +187,24 @@
     "boundary_body": "Les missions s'appuient sur des informations publiques ou appartenant au client et excluent tout travail confidentiel, propriétaire ou lié à mon employeur. Chaque demande fait l'objet d'une vérification des conflits et des autorisations requises.",
     "cta_title": "Demander un accompagnement",
     "cta_body": "Précisez votre organisation ou secteur, la question, le livrable souhaité, le calendrier et les conflits potentiels. Je n'accepte qu'un nombre limité de missions clairement délimitées."
+  },
+  "courses": {
+    "section_label": "Cours",
+    "title": "Cours interactifs",
+    "subtitle": "Parcourez du vrai code ligne par ligne, dans votre langue. Chaque leçon exécute le programme et montre ce que devient chaque variable.",
+    "no_courses": "Rien de publié pour l'instant. Revenez bientôt.",
+    "lessons": "Leçons",
+    "lesson_count": "{count, plural, =0 {Aucune leçon} one {# leçon} other {# leçons}}",
+    "lesson_number": "Leçon {number}",
+    "start_lesson": "Commencer la leçon",
+    "available_in": "Disponible en",
+    "lecture_video": "Cours enregistré",
+    "watch_on_youtube": "Regarder sur YouTube",
+    "play_lecture": "Lire le cours enregistré",
+    "video_language_note": "Cet enregistrement est en {language}.",
+    "fallback_notice": "Cette leçon n'est pas encore disponible en {requested} — vous lisez la version en {shown}.",
+    "dismiss": "Fermer",
+    "back_to_courses": "Tous les cours"
   },
   "blog": {
     "section_label": "Écrits",

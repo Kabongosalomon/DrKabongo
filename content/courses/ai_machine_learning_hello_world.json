@@ -1,0 +1,92 @@
+{
+  "asset_version": "186af1e1d2735186",
+  "course": {
+    "id": "ai_machine_learning_hello_world",
+    "titles": {
+      "en": "AI & Machine Learning: Hello World",
+      "fr": "IA et Machine Learning : Hello World",
+      "ln": "AI mpe Machine Learning: Hello World",
+      "lua": "AI ne Machine Learning: Hello World"
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "label": "English"
+    },
+    {
+      "code": "fr",
+      "label": "Français"
+    },
+    {
+      "code": "ln",
+      "label": "Lingála"
+    },
+    {
+      "code": "lua",
+      "label": "Tshiluba"
+    }
+  ],
+  "lessons": [
+    {
+      "default_step": 5,
+      "id": "from_scratch",
+      "titles": {
+        "en": "Learning Addition: A Neural Network from Scratch",
+        "fr": "Apprendre l'addition : un réseau de neurones à partir de zéro",
+        "ln": "Koyekola kobakisa : réseau neuronal kobanda na ebandeli",
+        "lua": "Kulongesha kubakisa : réseau neuronal kubanga ku zéro"
+      }
+    }
+  ],
+  "videos": [
+    {
+      "id": "traditional_vs_learning",
+      "lessons": [
+        "from_scratch"
+      ],
+      "section": "motivation-and-classical",
+      "youtube_ids": {}
+    },
+    {
+      "id": "mathematical_function_bridge",
+      "lessons": [
+        "from_scratch"
+      ],
+      "section": "mathematical-function-bridge",
+      "youtube_ids": {}
+    },
+    {
+      "id": "inside_the_neuron",
+      "lessons": [
+        "from_scratch"
+      ],
+      "section": "inside-the-neuron",
+      "youtube_ids": {}
+    },
+    {
+      "id": "gradient_descent",
+      "lessons": [
+        "from_scratch"
+      ],
+      "section": "gradient-descent",
+      "youtube_ids": {}
+    },
+    {
+      "id": "addition_vs_multiplication",
+      "lessons": [
+        "from_scratch"
+      ],
+      "section": "addition-vs-multiplication",
+      "youtube_ids": {}
+    },
+    {
+      "id": "scaling_and_takeaway",
+      "lessons": [
+        "from_scratch"
+      ],
+      "section": "scaling-and-takeaway",
+      "youtube_ids": {}
+    }
+  ]
+}
