@@ -33,12 +33,10 @@ const PUBLICATIONS: Publication[] = [
   {
     type: 'patent',
     title: 'Systems and Methods for Image Privacy and De-identification',
-    venue: 'U.S. Patent No. 12,613,996 · Issued April 28, 2026',
+    venue: 'U.S. Patent No. 12,613,996 · Issued April 28, 2026 · Assignee: State Farm',
     year: 2026,
     authors: 'Salomon Kabongo · Co-inventor',
-    abstract:
-      'Co-invented a computer-vision system for detecting and obscuring people and personally identifiable text in images.',
-    tags: ['Computer Vision', 'Image Privacy', 'De-identification', 'AI/ML'],
+    tags: ['Publicly Disclosed Invention'],
   },
   {
     type: 'conference',
@@ -74,12 +72,10 @@ const PUBLICATIONS: Publication[] = [
     type: 'patent_application',
     title: 'Systems and Methods for Advanced Duplicate Image Search and Analysis',
     venue:
-      'Pending U.S. Published Patent Application · App. 18/652,500 · Publication No. US20240411724A1',
+      'Pending U.S. Published Patent Application · App. 18/652,500 · Publication No. US20240411724A1 · Assignee: State Farm',
     year: 2024,
     authors: 'Salomon Kabongo · Co-inventor',
-    abstract:
-      'Co-invented a system combining hash-based exact matching with visual-similarity analysis to identify duplicate and near-duplicate images.',
-    tags: ['Computer Vision', 'Vector Embeddings', 'Similarity Hashing', 'AI/ML'],
+    tags: ['Publicly Disclosed Invention'],
   },
   {
     type: 'conference',

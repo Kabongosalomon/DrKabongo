@@ -237,12 +237,14 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                 org="State Farm — Innovation Group"
                 period={`Feb 2022 – ${t('present')}`}
                 bullets={[
-                  'Led applied research and development on synthetic-media detection, video understanding, and vision-language models to inform technical decisions.',
-                  'Designed embedding-based pre-labeling pipelines to accelerate data annotation and model-development workflows.',
-                  'Architected a document deduplication system combining exact hashing and visual-similarity search to identify near-duplicate content at scale.',
-                  'Co-invented computer-vision systems for privacy and document analysis, including an issued U.S. patent and a pending published patent application.',
+                  'Work on applied artificial intelligence, machine learning, computer vision, and large-scale software systems in an enterprise innovation environment.',
+                  'Lead and contribute to applied research and development, including the evaluation of AI models, technical approaches, and emerging technologies for real-world applications.',
+                  'Design machine-learning-enabled workflows and scalable software solutions that support data-intensive and AI-assisted applications.',
+                  'Apply experimental evaluation, benchmarking, and software engineering practices to assess the capabilities and limitations of modern AI systems.',
+                  'Collaborate across research, engineering, and business teams to translate emerging AI capabilities into practical technical solutions.',
+                  'Co-inventor on publicly disclosed intellectual property involving computer vision and image-analysis technologies, including one issued U.S. patent.',
                 ]}
-                highlight="Applied AI research and engineering"
+                highlight="Applied AI, machine learning, and software systems"
               />
 
               <ExperienceItem

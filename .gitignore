@@ -224,3 +224,7 @@ tsconfig.tsbuildinfo
 # macOS
 .DS_Store
 **/.DS_Store
+
+# Private CV exports (may include employer-related details)
+archive/CV_Salomon.pdf
+archive/CV_Salomon_v1.pdf
