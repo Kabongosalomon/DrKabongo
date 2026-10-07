@@ -184,7 +184,7 @@
     "format_3_title": "Atelier to sprint ya conseil",
     "format_3_desc": "Mission ya tango mokuse na question, public, livrable pe date ya suka oyo e définir.",
     "boundary_title": "Ba limite ya polele",
-    "boundary_body": "Ba mission esalelaka information ya public to ya client pe elongolaka mosala confidentiel, propriétaire to oyo etali employeur na ngai. Demande nionso eleki na vérification ya conflit pe na ba autorisation oyo esengeli.",
+    "boundary_body": "Ba mission esalelaka information ya public to ya client pe elongolaka mosala confidentiel, propriétaire to oyo etali employeur na ngai. Demande nionso eleki na vérification ya conflit pe na ba autorisation oyo esengeli. Conseil epesamaka kaka na capacité na ngai ya personnel : ezali service ya société moko te oyo nabandaki to ya ba produits na yango, pe efutamaka na nzela na yango te.",
     "cta_title": "Senga lisungi ya conseil",
     "cta_body": "Tinda organisation to industrie na yo, question, résultat oyo olingi, calendrier pe conflit nionso oyo ekoki kozala. Nandimaka kaka ba mission moke oyo ezali na limite ya polele."
   },
@@ -262,7 +262,7 @@
     "speaking_body": "Baconférence, bacours pe ba panel na Anglais to Français mpo na public ya recherche, technique pe général.",
     "speaking_cta": "Tinda demande ya conférence",
     "advisory_title": "Conseil sélectif na AI",
-    "advisory_body": "Ba consultation ya mbala moko, revue oyo ekomami pe atelier mpo na ba question ya AI oyo e définir malamu.",
+    "advisory_body": "Ba consultation ya mbala moko, revue oyo ekomami pe atelier mpo na ba question ya AI oyo e définir malamu, na capacité na ngai ya personnel.",
     "advisory_cta": "Tinda demande ya conseil",
     "speaking_email_subject": "Invitation ya conférence — [organisation to événement]",
     "speaking_email_body": "Mbote Dr. Kabongo,\n\nNalingi kobenga yo mpo oloba na événement na biso.\n\nOrganisation to événement:\nPublic:\nDate pe esika oyo e proposer:\nFormat (à distance to sur place):\nSujet to objectifs:\n\nContexte mosusu:",
@@ -294,6 +294,6 @@
     "rights": "Tous droits réservés.",
     "connect_whatsapp": "Chaîne WhatsApp",
     "connect_discord": "Serveur Discord",
-    "disclaimer": "Makanisi oyo elobami awa ezali ya ngai moko. Ba affiliation etyami kaka mpo na identification pe elingi koloba endorsement te. Ba engagement ya libanda etalelami na capacité na ngai ya personnel pe esengeli eleka na vérification ya conflit pe na ba autorisation oyo esengeli."
+    "disclaimer": "Makanisi oyo elobami awa ezali ya ngai moko. Ba affiliation etyami kaka mpo na identification pe elingi koloba endorsement te. Ba engagement ya libanda etalelami na capacité na ngai ya personnel, ekabwani na société nionso oyo nabandaki, pe esengeli eleka na vérification ya conflit pe na ba autorisation oyo esengeli."
   }
 }

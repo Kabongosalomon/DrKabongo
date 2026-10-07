@@ -184,7 +184,7 @@
     "format_3_title": "Atelier ao sprint ya ushauri",
     "format_3_desc": "Mission ya mda yenye iko na question, public, livrable na date ya mwisho yenye ilifafanuliwa.",
     "boundary_title": "Ba limite wazi",
-    "boundary_body": "Ba mission inatumia information ya public ao ya client na haikubali kazi confidentiel, propriétaire ao yenye iko na uhusiano na employeur wangu. Kila demande inapitia vérification ya conflit na autorisation yote yenye inahitajika.",
+    "boundary_body": "Ba mission inatumia information ya public ao ya client na haikubali kazi confidentiel, propriétaire ao yenye iko na uhusiano na employeur wangu. Kila demande inapitia vérification ya conflit na autorisation yote yenye inahitajika. Ushauri unatolewa tu mu capacité yangu ya personnel: si huduma ya kampuni yoyote niliyoanzisha wala ya bidhaa zake, na haulipwi kupitia kampuni hiyo.",
     "cta_title": "Omba musaada ya ushauri",
     "cta_body": "Tuma organisation ao industrie yako, question, résultat yenye unataka, calendrier na conflit yoyote possible. Nakubali tu ba mission chache yenye iko na limite wazi."
   },
@@ -262,7 +262,7 @@
     "speaking_body": "Baconférence, bacours na ba panel mu Anglais ao Français juu ya public ya recherche, technique na général.",
     "speaking_cta": "Tuma demande ya conférence",
     "advisory_title": "Ushauri sélectif mu AI",
-    "advisory_body": "Ba consultation ya mara moya, revue yenye iliandikwa na atelier juu ya ba question ya AI yenye iko wazi.",
+    "advisory_body": "Ba consultation ya mara moya, revue yenye iliandikwa na atelier juu ya ba question ya AI yenye iko wazi, mu capacité yangu ya personnel.",
     "advisory_cta": "Tuma demande ya ushauri",
     "speaking_email_subject": "Invitation ya conférence — [organisation ao événement]",
     "speaking_email_body": "Habari Dr. Kabongo,\n\nNingependa kukualika uongee.\n\nOrganisation ao événement:\nPublic:\nDate na fasi yenye inapendekezwa:\nFormat (à distance ao sur place):\nSujet ao objectifs:\n\nContexte ingine:",
@@ -294,6 +294,6 @@
     "rights": "Tous droits réservés.",
     "connect_whatsapp": "Chaîne WhatsApp",
     "connect_discord": "Serveur Discord",
-    "disclaimer": "Maoni yenye iko hapa ni yangu mwenyewe. Ba affiliation inatajwa tu juu ya identification na haimaanishe endorsement. Ba engagement ya inje inaangaliwa mu capacité yangu ya personnel na inapitia vérification ya conflit pamoja na autorisation yote yenye inahitajika."
+    "disclaimer": "Maoni yenye iko hapa ni yangu mwenyewe. Ba affiliation inatajwa tu juu ya identification na haimaanishe endorsement. Ba engagement ya inje inaangaliwa mu capacité yangu ya personnel, iko tofauti na kampuni yoyote niliyoanzisha, na inapitia vérification ya conflit pamoja na autorisation yote yenye inahitajika."
   }
 }

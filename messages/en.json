@@ -184,7 +184,7 @@
     "format_3_title": "Workshop or advisory sprint",
     "format_3_desc": "A time-boxed engagement with a defined question, audience, deliverable, and end date.",
     "boundary_title": "Clear boundaries",
-    "boundary_body": "Engagements use public or client-owned information and exclude confidential, proprietary, or employer-related work. Every enquiry is subject to conflict review and any required approvals.",
+    "boundary_body": "Engagements use public or client-owned information and exclude confidential, proprietary, or employer-related work. Every enquiry is subject to conflict review and any required approvals. Advisory is offered in a personal capacity only: it is not offered, contracted, or billed through any company I founded or its products.",
     "cta_title": "Request advisory support",
     "cta_body": "Share your organization or industry, the question, desired output, timing, and any potential conflicts. I accept only a limited number of clearly bounded engagements."
   },
@@ -262,7 +262,7 @@
     "speaking_body": "Talks, lectures, and panels in English or French for research, technical, and general audiences.",
     "speaking_cta": "Send a speaking enquiry",
     "advisory_title": "Selective AI advisory",
-    "advisory_body": "Bounded consultations, written reviews, and workshops for clearly defined AI questions.",
+    "advisory_body": "Bounded consultations, written reviews, and workshops for clearly defined AI questions, offered in a personal capacity.",
     "advisory_cta": "Send an advisory enquiry",
     "speaking_email_subject": "Speaking invitation — [organization or event]",
     "speaking_email_body": "Hello Dr. Kabongo,\n\nI would like to invite you to speak.\n\nOrganization or event:\nAudience:\nProposed date and location:\nFormat (remote or in person):\nTopic or goals:\n\nAdditional context:",
@@ -294,6 +294,6 @@
     "rights": "All rights reserved.",
     "connect_whatsapp": "WhatsApp channel",
     "connect_discord": "Discord server",
-    "disclaimer": "Views expressed here are my own. Affiliations are provided for identification only and do not imply endorsement. Outside engagements are considered in a personal capacity and are subject to conflict review and any required approvals."
+    "disclaimer": "Views expressed here are my own. Affiliations are provided for identification only and do not imply endorsement. Outside engagements are considered in a personal capacity, are separate from any company I founded, and are subject to conflict review and any required approvals."
   }
 }

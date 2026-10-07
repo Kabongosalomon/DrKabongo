@@ -184,7 +184,7 @@
     "format_3_title": "Atelier ou sprint de conseil",
     "format_3_desc": "Une mission limitée dans le temps, avec une question, un public, un livrable et une date de fin définis.",
     "boundary_title": "Un cadre clair",
-    "boundary_body": "Les missions s'appuient sur des informations publiques ou appartenant au client et excluent tout travail confidentiel, propriétaire ou lié à mon employeur. Chaque demande fait l'objet d'une vérification des conflits et des autorisations requises.",
+    "boundary_body": "Les missions s'appuient sur des informations publiques ou appartenant au client et excluent tout travail confidentiel, propriétaire ou lié à mon employeur. Chaque demande fait l'objet d'une vérification des conflits et des autorisations requises. Ce conseil est proposé à titre strictement personnel : il n'est ni proposé, ni contracté, ni facturé par l'intermédiaire d'une entreprise que j'ai fondée ou de ses produits.",
     "cta_title": "Demander un accompagnement",
     "cta_body": "Précisez votre organisation ou secteur, la question, le livrable souhaité, le calendrier et les conflits potentiels. Je n'accepte qu'un nombre limité de missions clairement délimitées."
   },
@@ -262,7 +262,7 @@
     "speaking_body": "Conférences, cours et tables rondes en anglais ou en français pour des publics scientifiques, techniques et généralistes.",
     "speaking_cta": "Envoyer une demande d'intervention",
     "advisory_title": "Conseil sélectif en IA",
-    "advisory_body": "Consultations ponctuelles, revues écrites et ateliers pour des questions d'IA clairement définies.",
+    "advisory_body": "Consultations ponctuelles, revues écrites et ateliers pour des questions d'IA clairement définies, à titre personnel.",
     "advisory_cta": "Envoyer une demande de conseil",
     "speaking_email_subject": "Invitation à intervenir — [organisation ou événement]",
     "speaking_email_body": "Bonjour Dr. Kabongo,\n\nJe souhaite vous inviter à intervenir.\n\nOrganisation ou événement :\nPublic :\nDate et lieu envisagés :\nFormat (à distance ou sur place) :\nThème ou objectifs :\n\nContexte complémentaire :",
@@ -294,6 +294,6 @@
     "rights": "Tous droits réservés.",
     "connect_whatsapp": "Chaîne WhatsApp",
     "connect_discord": "Serveur Discord",
-    "disclaimer": "Les opinions exprimées ici sont les miennes. Les affiliations sont indiquées à des fins d'identification uniquement et n'impliquent aucun soutien. Les activités extérieures sont envisagées à titre personnel et restent soumises à une vérification des conflits ainsi qu'aux autorisations requises."
+    "disclaimer": "Les opinions exprimées ici sont les miennes. Les affiliations sont indiquées à des fins d'identification uniquement et n'impliquent aucun soutien. Les activités extérieures sont envisagées à titre personnel, sont distinctes de toute entreprise que j'ai fondée, et restent soumises à une vérification des conflits ainsi qu'aux autorisations requises."
   }
 }
