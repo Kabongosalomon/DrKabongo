@@ -6,10 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:rules": "npx --yes firebase-tools@15.34.1 emulators:exec --only firestore --project demo-drkabongo 'node --test tests/firestore.rules.test.mjs'"
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
+    "firebase": "^13.1.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.12.0",
     "marked": "^15.0.12",
@@ -27,6 +29,7 @@
     "vega-lite": "^6.4.3"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
     "@tailwindcss/postcss": "^4.1.5",
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^22.15.0",

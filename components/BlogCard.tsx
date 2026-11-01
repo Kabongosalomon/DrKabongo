@@ -33,7 +33,13 @@ export default function BlogCard({ post, locale, minReadLabel }: BlogCardProps) 
 
       {date && !Number.isNaN(date.getTime()) && (
         <time dateTime={post.date} className="mt-3 block text-xs text-ink-3">
-          {date.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })}
+          {/* UTC: front-matter dates are bare days, which JS parses as UTC midnight. */}
+          {date.toLocaleDateString(locale, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            timeZone: 'UTC',
+          })}
         </time>
       )}
     </article>

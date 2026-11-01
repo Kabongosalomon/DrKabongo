@@ -1,7 +1,8 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-import { alternatesFor } from '@/lib/metadata'
+import { SITE_URL, alternatesFor } from '@/lib/metadata'
 import BlogCard from '@/components/BlogCard'
+import Subscribe from '@/components/Subscribe'
 import { getAllPosts } from '@/lib/blog'
 
 export function generateStaticParams() {
@@ -14,7 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: t('title'),
     description: t('subtitle'),
-    alternates: alternatesFor(locale, '/blog'),
+    alternates: {
+      ...alternatesFor(locale, '/blog'),
+      types: { 'application/rss+xml': `${SITE_URL}/feed.xml` },
+    },
   }
 }
 
@@ -33,6 +37,10 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
           {t('title')}
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">{t('subtitle')}</p>
+
+        <div className="mt-10 max-w-2xl">
+          <Subscribe emailEnabled={Boolean(process.env.KIT_API_KEY && process.env.KIT_FORM_ID)} />
+        </div>
 
         {posts.length === 0 ? (
           <p className="mt-14 border-t border-rule pt-6 text-base text-ink-2">{t('no_posts')}</p>

@@ -1,0 +1,63 @@
+# Emails newsletter subscribers when a new blog post lands on main.
+# Free: public-repo Actions minutes + Kit's free plan API. See
+# scripts/notify-subscribers.mjs for what it does and its safety checks.
+name: Notify subscribers
+
+on:
+  push:
+    branches: [main]
+    paths: ['content/blog/*.mdx']
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: Post slug to (re)announce, e.g. hlf
+        required: true
+
+# Never two runs at once, so a quick second push can't double-send.
+concurrency:
+  group: notify-subscribers
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+
+      - name: Find new posts
+        id: posts
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          SLUG: ${{ inputs.slug }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            files="content/blog/${SLUG}.mdx"
+            [ -f "$files" ] || { echo "No such post: $files"; exit 1; }
+          elif [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            files=""   # brand-new branch: no reliable "before" to diff against
+          else
+            files=$(git diff --name-only --diff-filter=A "$BEFORE" "$GITHUB_SHA" -- 'content/blog/*.mdx' | tr '\n' ' ')
+          fi
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+          echo "New posts: ${files:-none}"
+
+      - name: Schedule Kit broadcast
+        if: steps.posts.outputs.files != ''
+        env:
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+          FILES: ${{ steps.posts.outputs.files }}
+        run: node scripts/notify-subscribers.mjs $FILES

@@ -1,13 +1,16 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { Link } from '@/i18n/navigation'
-import { alternatesFor } from '@/lib/metadata'
+import { SITE_URL, alternatesFor } from '@/lib/metadata'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeHighlight from 'rehype-highlight'
+import BlogComments from '@/components/BlogComments'
+import ShareButton from '@/components/ShareButton'
+import Subscribe from '@/components/Subscribe'
 
 export function generateStaticParams() {
   const posts = getAllPosts()
@@ -25,7 +28,10 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: alternatesFor(locale, `/blog/${slug}`),
+    alternates: {
+      ...alternatesFor(locale, `/blog/${slug}`),
+      types: { 'application/rss+xml': `${SITE_URL}/feed.xml` },
+    },
     openGraph: {
       type: 'article',
       title: post.title,
@@ -57,6 +63,7 @@ export default async function BlogPostPage({
   setRequestLocale(locale)
 
   const t = await getTranslations({ locale, namespace: 'blog' })
+  const tc = await getTranslations({ locale, namespace: 'comments' })
   const post = getPostBySlug(slug)
   if (!post) notFound()
 
@@ -97,10 +104,13 @@ export default async function BlogPostPage({
 
           {date && !Number.isNaN(date.getTime()) && (
             <time dateTime={post.date} className="mt-4 block text-sm text-ink-3">
+              {/* UTC: front-matter dates are bare days, parsed as UTC midnight —
+                  in a reader's local zone west of UTC they'd show the day before. */}
               {date.toLocaleDateString(locale, {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
+                timeZone: 'UTC',
               })}
             </time>
           )}
@@ -108,6 +118,30 @@ export default async function BlogPostPage({
           {post.tags.length > 0 && (
             <p className="mt-3 text-xs text-ink-3">{post.tags.map((tag) => `#${tag}`).join(' ')}</p>
           )}
+
+          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+            <ShareButton title={post.title} />
+            <a
+              href="#comments"
+              className="inline-flex items-center gap-1.5 text-sm text-ink-2 transition-colors hover:text-accent"
+            >
+              <svg
+                className="h-3.5 w-3.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.8}
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"
+                />
+              </svg>
+              {tc('join')}
+            </a>
+          </div>
         </header>
 
         {/* No prose-sm step-down: article text is what people read longest, so it should never sit below the site's 16px baseline, mobile included. */}
@@ -123,6 +157,12 @@ export default async function BlogPostPage({
             }}
           />
         </article>
+
+        <div className="mt-16">
+          <Subscribe emailEnabled={Boolean(process.env.KIT_API_KEY && process.env.KIT_FORM_ID)} />
+        </div>
+
+        <BlogComments slug={post.slug} locale={locale} />
       </div>
     </div>
   )

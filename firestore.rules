@@ -1,0 +1,115 @@
+rules_version = '2';
+
+// Blog comments. The browser writes to Firestore directly (lib/comments.ts),
+// so these rules are the only thing standing between the comment box and the
+// database — keep them in sync with that file.
+//
+// Deploy: npx firebase-tools deploy --only firestore   (rules + index settings)
+// Tests:  npm run test:rules   (runs against the Firestore emulator)
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedInWithGoogle() {
+      return request.auth != null
+        && request.auth.token.firebase.sign_in_provider == 'google.com';
+    }
+
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Moderators. Created by hand in the Firebase console (doc id = the
+    // moderator's Auth uid); never writable from a browser. A user may read
+    // only their own entry, which is how the UI learns to show "Delete" on
+    // everyone's comments.
+    match /admins/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Rate-limit marker: one comment per user per 20 seconds
+    // (COMMENT_COOLDOWN_SECONDS in lib/comments.ts). Only ever moved forward
+    // to the current request time, and only once the cooldown has passed.
+    match /commenters/{uid} {
+      allow create: if signedInWithGoogle()
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['lastCommentAt'])
+        && request.resource.data.lastCommentAt == request.time;
+      allow update: if signedInWithGoogle()
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['lastCommentAt'])
+        && request.resource.data.lastCommentAt == request.time
+        && request.time > resource.data.lastCommentAt + duration.value(20, 's');
+    }
+
+    // A post's comments, packed up to 100 per page document so that showing a
+    // thread costs one read however long it is (COMMENTS_PER_PAGE in
+    // lib/comments.ts). Each page is { n, comments: { <id>: comment } }.
+    match /posts/{slug}/pages/{pageId} {
+      allow read: if true;
+
+      function commenterMarker() {
+        return /databases/$(database)/documents/commenters/$(request.auth.uid);
+      }
+
+      // The single comment being added under key `id`. Author fields must be
+      // the caller's own Google identity, taken from the ID token, so nobody
+      // can post under someone else's name or photo; the same transaction
+      // must advance the caller's rate-limit marker.
+      function isNewComment(id) {
+        let c = request.resource.data.comments[id];
+        return signedInWithGoogle()
+          && id.matches('^[A-Za-z0-9]{20}$')
+          && c.keys().hasOnly(['authorUid', 'authorName', 'authorPhoto', 'body', 'createdAt'])
+          && c.keys().hasAll(['authorUid', 'authorName', 'authorPhoto', 'body', 'createdAt'])
+          && c.authorUid == request.auth.uid
+          && c.authorName == request.auth.token.get('name', '')
+          && c.authorPhoto == request.auth.token.get('picture', '')
+          && c.body is string
+          && c.body.trim().size() > 0
+          && c.body.size() <= 2000
+          && c.createdAt == request.time
+          && getAfter(commenterMarker()).data.lastCommentAt == request.time;
+      }
+
+      // Exactly one comment added, nothing else touched, page not yet full.
+      function isAppend() {
+        let diff = request.resource.data.comments.diff(resource.data.comments);
+        let added = request.resource.data.comments.keys().removeAll(resource.data.comments.keys());
+        return resource.data.comments.size() < 100
+          && diff.addedKeys().size() == 1
+          && diff.affectedKeys().size() == 1
+          && isNewComment(added[0]);
+      }
+
+      // Exactly one comment removed, by its author or a moderator. There is no
+      // editing: what was said stays as said.
+      function isRemoval() {
+        let diff = request.resource.data.comments.diff(resource.data.comments);
+        let removed = resource.data.comments.keys().removeAll(request.resource.data.comments.keys());
+        return request.auth != null
+          && diff.removedKeys().size() == 1
+          && diff.affectedKeys().size() == 1
+          && (resource.data.comments[removed[0]].authorUid == request.auth.uid || isAdmin());
+      }
+
+      // Pages are numbered 0, 1, 2… and a new one may only follow a full one,
+      // so nobody can jump ahead to an empty "latest" page and hide a thread.
+      function followsFullPage(n) {
+        return n == 0
+          || get(/databases/$(database)/documents/posts/$(slug)/pages/$(string(n - 1)))
+               .data.comments.size() >= 100;
+      }
+
+      allow create: if request.resource.data.keys().hasOnly(['n', 'comments'])
+        && request.resource.data.n is int
+        && pageId == string(request.resource.data.n)
+        && followsFullPage(request.resource.data.n)
+        && request.resource.data.comments.size() == 1
+        && isNewComment(request.resource.data.comments.keys()[0]);
+
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['comments'])
+        && (isAppend() || isRemoval());
+    }
+  }
+}
