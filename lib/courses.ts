@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { routing } from '@/i18n/routing'
 import { LESSON_VIDEOS } from '@/content/courses.videos'
+import { COURSE_META } from '@/content/courses.meta'
 
 const COURSES_DIR = path.join(process.cwd(), 'content', 'courses')
 const TRACES_DIR = path.join(process.cwd(), 'public', 'edtrace', 'traces')
@@ -53,7 +54,12 @@ export function getAllCourses(): CourseCatalog[] {
     .readdirSync(COURSES_DIR)
     .filter((f) => f.endsWith('.json'))
     .map((f) => JSON.parse(fs.readFileSync(path.join(COURSES_DIR, f), 'utf-8')) as CourseCatalog)
-    .sort((a, b) => a.course.id.localeCompare(b.course.id))
+    .sort((a, b) => {
+      // Newest first by the date in content/courses.meta.ts; undated ones last.
+      const dateA = COURSE_META[a.course.id]?.published ?? ''
+      const dateB = COURSE_META[b.course.id]?.published ?? ''
+      return dateB.localeCompare(dateA) || a.course.id.localeCompare(b.course.id)
+    })
 }
 
 export function getCourse(courseId: string): CourseCatalog | null {

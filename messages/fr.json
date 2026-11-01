@@ -5,7 +5,7 @@
     "videos": "Vidéos",
     "speaking": "Conférences",
     "consulting": "Conseil",
-    "blog": "Écrits",
+    "blog": "Blog",
     "projects": "Projets",
     "publications": "Publications",
     "cv": "CV",
@@ -207,15 +207,25 @@
     "back_to_courses": "Tous les cours"
   },
   "blog": {
-    "section_label": "Écrits",
+    "section_label": "Blog",
     "title": "Notes et essais",
-    "home_title": "Écrits",
+    "home_title": "Blog",
     "subtitle": "Quelques notes sur la recherche, la programmation et le chemin parcouru.",
     "read_more": "Lire",
-    "all_posts": "Tous les écrits",
+    "all_posts": "Tous les articles",
     "min_read": "min de lecture",
-    "back": "Retour aux écrits",
-    "no_posts": "Rien de publié pour l'instant. Revenez bientôt."
+    "back": "Retour au blog",
+    "no_posts": "Rien de publié pour l'instant. Revenez bientôt.",
+    "fallback_notice": "Cet article n'est disponible qu'en {language}.",
+    "search": "Rechercher un article",
+    "all_topics": "Tous",
+    "topics": "Sujets",
+    "sort": "Trier",
+    "newest": "Plus récents",
+    "oldest": "Plus anciens",
+    "no_matches": "Aucun article ne correspond.",
+    "clear_filters": "Effacer les filtres",
+    "show_more": "Afficher plus"
   },
   "comments": {
     "title": "Commentaires",
@@ -241,7 +251,10 @@
     "too_fast": "Veuillez patienter quelques secondes avant de publier à nouveau.",
     "join": "Participer à la discussion",
     "author_badge": "Auteur",
-    "show_older": "Afficher les commentaires précédents"
+    "show_older": "Afficher les commentaires précédents",
+    "delete_body": "Cette action est irréversible.",
+    "cancel": "Annuler",
+    "deleting": "Suppression…"
   },
   "subscribe": {
     "title": "Recevez les nouveaux articles par e-mail",

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { useTranslations } from 'next-intl'
+import ConfirmDialog from '@/components/ConfirmDialog'
 import type { Comment, Page, Viewer } from '@/lib/comments'
 
 type CommentsLib = typeof import('@/lib/comments')
@@ -26,6 +27,24 @@ function errorCode(err: unknown): string {
   return typeof err === 'object' && err !== null && 'code' in err
     ? String((err as { code: unknown }).code)
     : ''
+}
+
+// When this browser last posted, kept across reloads so the cooldown message
+// still shows after a refresh. Storage can be blocked, so it is only a hint.
+const LAST_POST_KEY = 'blog-last-comment-at'
+
+function readLastPostedAt(): number {
+  try {
+    return Number(localStorage.getItem(LAST_POST_KEY)) || 0
+  } catch {
+    return 0
+  }
+}
+
+function rememberPostedAt(at: number) {
+  try {
+    localStorage.setItem(LAST_POST_KEY, String(at))
+  } catch {}
 }
 
 function Avatar({ name, photo }: { name: string; photo: string }) {
@@ -73,6 +92,8 @@ export default function BlogComments({ slug, locale }: { slug: string; locale: s
   const [draft, setDraft] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [pendingDelete, setPendingDelete] = useState<Comment | null>(null)
+  const [deleting, setDeleting] = useState(false)
   const lastPostedAt = useRef(0)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const sectionRef = useRef<HTMLElement>(null)
@@ -188,13 +209,15 @@ export default function BlogComments({ slug, locale }: { slug: string; locale: s
     try {
       await lib.postComment(slug, latest ?? 0, draft)
       lastPostedAt.current = Date.now()
+      rememberPostedAt(lastPostedAt.current)
       setDraft('')
     } catch (err) {
       // The rules answer a too-soon second comment with a bare
       // permission-denied; inside the cooldown that is almost certainly why.
       const tooSoon =
         errorCode(err) === 'permission-denied' &&
-        Date.now() - lastPostedAt.current < lib.COMMENT_COOLDOWN_SECONDS * 1000
+        Date.now() - Math.max(lastPostedAt.current, readLastPostedAt()) <
+          lib.COMMENT_COOLDOWN_SECONDS * 1000
       setError(t(tooSoon ? 'too_fast' : 'error_post'))
     } finally {
       setBusy(false)
@@ -205,9 +228,11 @@ export default function BlogComments({ slug, locale }: { slug: string; locale: s
     if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) void submit()
   }
 
-  async function remove(comment: Comment) {
-    if (!lib || !window.confirm(t('confirm_delete'))) return
+  async function confirmRemove() {
+    const comment = pendingDelete
+    if (!lib || !comment) return
     setError(null)
+    setDeleting(true)
     try {
       await lib.deleteComment(slug, comment)
       // Older pages aren't live; drop it from what's on screen directly.
@@ -219,6 +244,9 @@ export default function BlogComments({ slug, locale }: { slug: string; locale: s
       })
     } catch {
       setError(t('error_delete'))
+    } finally {
+      setDeleting(false)
+      setPendingDelete(null)
     }
   }
 
@@ -249,7 +277,7 @@ export default function BlogComments({ slug, locale }: { slug: string; locale: s
             <button
               type="button"
               onClick={showOlder}
-            disabled={loadingOlder}
+              disabled={loadingOlder}
               className="mt-6 text-sm text-ink-2 underline-offset-4 hover:text-accent hover:underline"
             >
               {t('show_older')}
@@ -284,7 +312,7 @@ export default function BlogComments({ slug, locale }: { slug: string; locale: s
                       {mayDelete && (
                         <button
                           type="button"
-                          onClick={() => remove(comment)}
+                          onClick={() => setPendingDelete(comment)}
                           className="text-xs text-ink-3 underline-offset-4 hover:text-accent hover:underline"
                         >
                           {t('delete')}
@@ -375,6 +403,17 @@ export default function BlogComments({ slug, locale }: { slug: string; locale: s
           {error}
         </p>
       )}
+
+      <ConfirmDialog
+        open={pendingDelete !== null}
+        title={t('confirm_delete')}
+        description={t('delete_body')}
+        confirmLabel={deleting ? t('deleting') : t('delete')}
+        cancelLabel={t('cancel')}
+        busy={deleting}
+        onConfirm={confirmRemove}
+        onCancel={() => setPendingDelete(null)}
+      />
     </section>
   )
 }

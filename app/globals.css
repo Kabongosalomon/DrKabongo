@@ -315,3 +315,19 @@ h4 {
 .hljs-strong {
   font-weight: 600;
 }
+
+/* Confirmation modal (components/ConfirmDialog.tsx): a short fade-and-rise. */
+.confirm-dialog[open] {
+  animation: confirm-in 140ms ease-out;
+}
+@keyframes confirm-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .confirm-dialog[open] {
+    animation: none;
+  }
+}

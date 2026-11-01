@@ -5,7 +5,7 @@
     "videos": "Bavideo",
     "speaking": "Baconférence",
     "consulting": "Toli",
-    "blog": "Makomi",
+    "blog": "Blog",
     "projects": "Baprojet",
     "publications": "Bapublication",
     "cv": "CV",
@@ -207,15 +207,25 @@
     "back_to_courses": "Bacours nionso"
   },
   "blog": {
-    "section_label": "Makomi",
+    "section_label": "Blog",
     "title": "Ba note pe ba essai",
-    "home_title": "Makomi",
+    "home_title": "Blog",
     "subtitle": "Ba note mokemoke mpo na recherche, programmation pe nzela oyo elekaki.",
     "read_more": "Tanga",
-    "all_posts": "Makomi nionso",
+    "all_posts": "Ba post nionso",
     "min_read": "min ya kotanga",
-    "back": "Zonga na makomi",
-    "no_posts": "Eloko ebimi naino te. Zonga kala mingi te."
+    "back": "Zonga na blog",
+    "no_posts": "Eloko ebimi naino te. Zonga kala mingi te.",
+    "fallback_notice": "Post oyo ezali kaka na {language}.",
+    "search": "Luka post",
+    "all_topics": "Nionso",
+    "topics": "Ba sujet",
+    "sort": "Kosala ordre",
+    "newest": "Ya sika liboso",
+    "oldest": "Ya kala liboso",
+    "no_matches": "Post moko te ekokani.",
+    "clear_filters": "Longola ba filtre",
+    "show_more": "Komonisa lisusu"
   },
   "comments": {
     "title": "Makanisi",
@@ -241,7 +251,10 @@
     "too_fast": "Zela ba seconde moke liboso ya kotinda lisusu.",
     "join": "Sangana na lisolo",
     "author_badge": "Mokomi",
-    "show_older": "Lakisa makanisi ya kala"
+    "show_older": "Lakisa makanisi ya kala",
+    "delete_body": "Okoki kozongisa yango te.",
+    "cancel": "Kozonga",
+    "deleting": "Ezali kolongola…"
   },
   "subscribe": {
     "title": "Zwa makomi ya sika na email",

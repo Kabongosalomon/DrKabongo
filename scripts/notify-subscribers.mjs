@@ -8,7 +8,11 @@
 //   4. schedules a Kit broadcast to all subscribers SEND_DELAY_MINUTES out —
 //      a window to cancel it in Kit (Broadcasts → Scheduled) if needed.
 //
-// Usage: node scripts/notify-subscribers.mjs [--dry-run] content/blog/<slug>.mdx ...
+// Posts live at content/blog/<language>/<slug>.mdx. One email goes out per post
+// (slug), in the language of the first version published; translations added
+// later do not send again.
+//
+// Usage: node scripts/notify-subscribers.mjs [--dry-run] content/blog/<language>/<slug>.mdx ...
 // Env:   KIT_API_KEY (not needed for --dry-run)
 
 import fs from 'node:fs'
@@ -51,6 +55,34 @@ async function kit(method, pathname, body) {
   return res.json()
 }
 
+/**
+ * The email's own wording, by the post's language. Only English and French are
+ * written out; Swahili posts get the English wording and Lingala/Tshiluba the
+ * French, the same fallback the site uses.
+ */
+const COPY = {
+  en: {
+    intro: 'I just published a new post:',
+    cta: 'Read the post →',
+    outro:
+      'Comments are open at the end of the post, or just reply to this email — it comes straight to me.',
+  },
+  fr: {
+    intro: 'Je viens de publier un nouvel article :',
+    cta: 'Lire l’article →',
+    outro:
+      'Les commentaires sont ouverts à la fin de l’article, ou répondez simplement à cet e-mail — il m’arrive directement.',
+  },
+}
+const COPY_LANGUAGE = { en: 'en', fr: 'fr', sw: 'en', ln: 'fr', lua: 'fr' }
+
+/** Where a language's version of a post lives (English is unprefixed). */
+const urlFor = (locale, slug) =>
+  `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/blog/${slug}`
+
+/** When one push adds several languages of a post, announce this one first. */
+const LANGUAGE_ORDER = ['en', 'fr', 'sw', 'ln', 'lua']
+
 /** The broadcast's internal description doubles as a per-post marker. */
 const markerFor = (slug) => `blog:${slug}`
 
@@ -76,15 +108,16 @@ async function waitUntilLive(url) {
   throw new Error(`${url} was not live after ${LIVE_TIMEOUT_MINUTES} minutes`)
 }
 
-function broadcastFor(slug, data) {
-  const url = `${SITE_URL}/blog/${slug}`
+function broadcastFor(locale, slug, data) {
+  const url = urlFor(locale, slug)
+  const copy = COPY[COPY_LANGUAGE[locale] ?? 'en']
   // Kit's classic template wraps this body and adds the unsubscribe footer.
   const content = [
-    `<p>I just published a new post:</p>`,
+    `<p>${copy.intro}</p>`,
     `<h2><a href="${url}">${escapeHtml(data.title)}</a></h2>`,
     data.excerpt ? `<p>${escapeHtml(data.excerpt)}</p>` : '',
-    `<p><a href="${url}"><strong>Read the post →</strong></a></p>`,
-    `<p>Comments are open at the end of the post, or just reply to this email — it comes straight to me.</p>`,
+    `<p><a href="${url}"><strong>${copy.cta}</strong></a></p>`,
+    `<p>${copy.outro}</p>`,
     `<p>— Salomon</p>`,
   ].join('\n')
 
@@ -99,17 +132,30 @@ function broadcastFor(slug, data) {
   }
 }
 
-let failed = false
+// One post per slug: when a push adds several languages, take the first by LANGUAGE_ORDER.
+const posts = new Map()
 for (const file of files) {
   const slug = path.basename(file, '.mdx')
+  const locale = path.basename(path.dirname(file))
+  const rank = LANGUAGE_ORDER.indexOf(locale)
+  const current = posts.get(slug)
+  if (rank === -1) {
+    console.error(`${file}: "${locale}" is not a language folder — skipped`)
+    continue
+  }
+  if (!current || rank < LANGUAGE_ORDER.indexOf(current.locale)) posts.set(slug, { slug, locale, file })
+}
+
+let failed = false
+for (const { slug, locale, file } of posts.values()) {
   try {
     const { data } = matter(fs.readFileSync(file, 'utf8'))
-    console.log(`• ${slug}`)
+    console.log(`• ${slug} (${locale})`)
     if (data.notify === false) {
       console.log('  front matter says notify: false — skipped')
       continue
     }
-    const broadcast = broadcastFor(slug, data)
+    const broadcast = broadcastFor(locale, slug, data)
     if (dryRun) {
       console.log(JSON.stringify(broadcast, null, 2))
       continue
@@ -118,7 +164,7 @@ for (const file of files) {
       console.log('  a broadcast for this post already exists — skipped')
       continue
     }
-    await waitUntilLive(`${SITE_URL}/blog/${slug}`)
+    await waitUntilLive(urlFor(locale, slug))
     const { broadcast: created } = await kit('POST', '/broadcasts', broadcast)
     console.log(`  scheduled broadcast ${created.id} for ${broadcast.send_at}`)
   } catch (err) {

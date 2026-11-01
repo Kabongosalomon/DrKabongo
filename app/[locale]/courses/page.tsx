@@ -3,6 +3,7 @@ import { routing, LOCALE_NAMES } from '@/i18n/routing'
 import { Link } from '@/i18n/navigation'
 import { alternatesFor } from '@/lib/metadata'
 import { getAllCourses, pickLocalized } from '@/lib/courses'
+import { COURSE_META } from '@/content/courses.meta'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -41,6 +42,7 @@ export default async function CoursesPage({ params }: { params: Promise<{ locale
             {courses.map((catalog) => {
               const id = catalog.course.id
               const languages = catalog.languages.map((language) => language.code)
+              const meta = COURSE_META[id]
 
               return (
                 <article key={id} className="border-t border-rule pt-5">
@@ -48,6 +50,18 @@ export default async function CoursesPage({ params }: { params: Promise<{ locale
                     <span className="eyebrow">{t('section_label')}</span>
                     <span aria-hidden="true">·</span>
                     <span>{t('lesson_count', { count: catalog.lessons.length })}</span>
+                    {meta && (
+                      <>
+                        <span aria-hidden="true">·</span>
+                        <time dateTime={meta.published}>
+                          {new Date(meta.published).toLocaleDateString(locale, {
+                            year: 'numeric',
+                            month: 'long',
+                            timeZone: 'UTC',
+                          })}
+                        </time>
+                      </>
+                    )}
                   </p>
 
                   <h2 className="mt-2 font-serif text-lg font-medium text-balance">
@@ -66,6 +80,12 @@ export default async function CoursesPage({ params }: { params: Promise<{ locale
                       </li>
                     ))}
                   </ul>
+
+                  {meta && meta.topics.length > 0 && (
+                    <p className="mt-3 text-xs text-ink-3">
+                      {meta.topics.map((topic) => `#${topic.replace(/\s+/g, '-').toLowerCase()}`).join(' ')}
+                    </p>
+                  )}
 
                   <p className="mt-3 text-xs text-ink-3">
                     {t('available_in')}{' '}

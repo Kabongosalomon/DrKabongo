@@ -1,9 +1,9 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { SITE_URL, alternatesFor } from '@/lib/metadata'
-import BlogCard from '@/components/BlogCard'
+import BlogIndex from '@/components/BlogIndex'
 import Subscribe from '@/components/Subscribe'
-import { getAllPosts } from '@/lib/blog'
+import { getPostsForLocale } from '@/lib/blog'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -27,7 +27,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale)
 
   const t = await getTranslations({ locale, namespace: 'blog' })
-  const posts = getAllPosts()
+  const posts = getPostsForLocale(locale)
 
   return (
     <div className="min-h-dvh">
@@ -45,15 +45,23 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
         {posts.length === 0 ? (
           <p className="mt-14 border-t border-rule pt-6 text-base text-ink-2">{t('no_posts')}</p>
         ) : (
-          <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2">
-            {posts.map((post) => (
-              <BlogCard
-                key={post.slug}
-                post={post}
-                locale={locale}
-                minReadLabel={t('min_read')}
-              />
-            ))}
+          <div className="mt-14">
+            <BlogIndex
+              posts={posts}
+              locale={locale}
+              labels={{
+                minRead: t('min_read'),
+                search: t('search'),
+                allTopics: t('all_topics'),
+                topics: t('topics'),
+                sort: t('sort'),
+                newest: t('newest'),
+                oldest: t('oldest'),
+                noMatches: t('no_matches'),
+                clear: t('clear_filters'),
+                showMore: t('show_more'),
+              }}
+            />
           </div>
         )}
       </div>

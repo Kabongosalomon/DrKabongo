@@ -10,7 +10,7 @@ import {
 } from '@/lib/metadata'
 import { BOOKING_URL, emailEnquiryHref } from '@/lib/contact'
 import { getAllVideos, countByChannel, CHANNEL_KEYS } from '@/lib/videos'
-import { getAllPosts } from '@/lib/blog'
+import { getPostsForLocale } from '@/lib/blog'
 import { COMMUNITY } from '@/content/community'
 import { LanguageStrip } from '@/components/LanguageSwitcher'
 import VideoCard from '@/components/VideoCard'
@@ -72,7 +72,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const recent = rest.slice(0, 6)
   const counts = countByChannel(videos)
 
-  const posts = getAllPosts().slice(0, 3)
+  const posts = getPostsForLocale(locale).slice(0, 3)
 
   const figures = ts.raw('items') as Array<{
     value: string

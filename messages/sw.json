@@ -5,7 +5,7 @@
     "videos": "Bavideo",
     "speaking": "Baconférence",
     "consulting": "Ushauri",
-    "blog": "Maandishi",
+    "blog": "Blogu",
     "projects": "Baprojet",
     "publications": "Bapublication",
     "cv": "CV",
@@ -207,15 +207,25 @@
     "back_to_courses": "Masomo yote"
   },
   "blog": {
-    "section_label": "Maandishi",
+    "section_label": "Blogu",
     "title": "Ba note na ba essai",
-    "home_title": "Maandishi",
+    "home_title": "Blogu",
     "subtitle": "Ba note ya mara kwa mara juu ya recherche, programmation na njia yenye ilipita.",
     "read_more": "Soma",
-    "all_posts": "Maandishi yote",
+    "all_posts": "Machapisho yote",
     "min_read": "min ya kusoma",
-    "back": "Rudia ku maandishi",
-    "no_posts": "Hakuna kitu ilichapishwa bado. Rudia hivi karibuni."
+    "back": "Rudia ku blogu",
+    "no_posts": "Hakuna kitu ilichapishwa bado. Rudia hivi karibuni.",
+    "fallback_notice": "Chapisho hili lipo kwa {language} tu.",
+    "search": "Tafuta chapisho",
+    "all_topics": "Yote",
+    "topics": "Mada",
+    "sort": "Panga",
+    "newest": "Mpya kwanza",
+    "oldest": "Za zamani kwanza",
+    "no_matches": "Hakuna chapisho linalolingana.",
+    "clear_filters": "Futa vichujio",
+    "show_more": "Onyesha zaidi"
   },
   "comments": {
     "title": "Maoni",
@@ -241,7 +251,10 @@
     "too_fast": "Ngoja sekunde chache kabla ya kutuma tena.",
     "join": "Shiriki mazungumzo",
     "author_badge": "Mwandishi",
-    "show_older": "Onyesha maoni ya zamani"
+    "show_older": "Onyesha maoni ya zamani",
+    "delete_body": "Haiwezi kurudishwa.",
+    "cancel": "Ghairi",
+    "deleting": "Inafuta…"
   },
   "subscribe": {
     "title": "Pokea maandishi mapya kwa email",

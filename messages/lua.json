@@ -5,7 +5,7 @@
     "videos": "Bavidéo",
     "speaking": "Baconférence",
     "consulting": "Mibelu",
-    "blog": "Mifundu",
+    "blog": "Blog",
     "projects": "Baprojet",
     "publications": "Bapublication",
     "cv": "CV",
@@ -207,15 +207,25 @@
     "back_to_courses": "Bacours yonso"
   },
   "blog": {
-    "section_label": "Mifundu",
+    "section_label": "Blog",
     "title": "Ba note ne ba essai",
-    "home_title": "Mifundu",
+    "home_title": "Blog",
     "subtitle": "Ba note ya misangu bua recherche, programmation ne njila uvua mupite.",
     "read_more": "Bala",
-    "all_posts": "Mifundu yonso",
+    "all_posts": "Ba post yonso",
     "min_read": "min ya dibala",
-    "back": "Pingana ku mifundu",
-    "no_posts": "Kakuena tshintu tshidi tshipatuke to. Pingana kaayi kule."
+    "back": "Pingana ku blog",
+    "no_posts": "Kakuena tshintu tshidi tshipatuke to. Pingana kaayi kule.",
+    "fallback_notice": "Post eu udi kaka mu {language}.",
+    "search": "Sungila post",
+    "all_topics": "Yonso",
+    "topics": "Ba sujet",
+    "sort": "Pangisha",
+    "newest": "Ya mushya kumpala",
+    "oldest": "Ya kale kumpala",
+    "no_matches": "Kakuena post udi ulonda to.",
+    "clear_filters": "Umbusha ba filtre",
+    "show_more": "Leja bualu bukuabu"
   },
   "comments": {
     "title": "Meji",
@@ -241,7 +251,10 @@
     "too_fast": "Indila ba seconde bikese kumpala kua kutuma kabidi.",
     "join": "Buela mu muyuki",
     "author_badge": "Mufundi",
-    "show_older": "Leja meji a kale"
+    "show_older": "Leja meji a kale",
+    "delete_body": "Kakuena mua kupingaja to.",
+    "cancel": "Dipisha",
+    "deleting": "Mudi mumbusha…"
   },
   "subscribe": {
     "title": "Angata mifundu mipiamipia ku email",

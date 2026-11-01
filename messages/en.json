@@ -5,7 +5,7 @@
     "videos": "Videos",
     "speaking": "Speaking",
     "consulting": "Consulting",
-    "blog": "Writing",
+    "blog": "Blog",
     "projects": "Projects",
     "publications": "Publications",
     "cv": "CV",
@@ -207,15 +207,25 @@
     "back_to_courses": "All courses"
   },
   "blog": {
-    "section_label": "Writing",
+    "section_label": "Blog",
     "title": "Notes & essays",
-    "home_title": "Writing",
+    "home_title": "Blog",
     "subtitle": "Occasional notes on research, programming and the road here.",
     "read_more": "Read",
-    "all_posts": "All writing",
+    "all_posts": "All posts",
     "min_read": "min read",
-    "back": "Back to writing",
-    "no_posts": "Nothing published yet. Check back soon."
+    "back": "Back to blog",
+    "no_posts": "Nothing published yet. Check back soon.",
+    "fallback_notice": "This post is available in {language} only.",
+    "search": "Search posts",
+    "all_topics": "All",
+    "topics": "Topics",
+    "sort": "Sort",
+    "newest": "Newest first",
+    "oldest": "Oldest first",
+    "no_matches": "No posts match.",
+    "clear_filters": "Clear filters",
+    "show_more": "Show more"
   },
   "comments": {
     "title": "Comments",
@@ -241,7 +251,10 @@
     "too_fast": "Please wait a few seconds before posting again.",
     "join": "Join the discussion",
     "author_badge": "Author",
-    "show_older": "Show earlier comments"
+    "show_older": "Show earlier comments",
+    "delete_body": "This can't be undone.",
+    "cancel": "Cancel",
+    "deleting": "Deleting…"
   },
   "subscribe": {
     "title": "Get new posts by email",

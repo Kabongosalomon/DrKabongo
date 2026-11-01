@@ -71,12 +71,13 @@ export default function Nav() {
   }, [open])
 
   const links = [
+    // Things to learn from and read first, then the work behind them.
     { href: '/courses', label: t('courses') },
     { href: '/videos', label: t('videos') },
-    { href: '/speaking', label: t('speaking') },
+    { href: '/blog', label: t('blog') },
     { href: '/publications', label: t('publications') },
     { href: '/projects', label: t('projects') },
-    { href: '/blog', label: t('blog') },
+    { href: '/speaking', label: t('speaking') },
   ]
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`)

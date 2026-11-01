@@ -1,14 +1,19 @@
 import { Link } from '@/i18n/navigation'
 import type { PostMeta } from '@/lib/blog'
+import { LOCALE_NAMES } from '@/i18n/routing'
 
 interface BlogCardProps {
   post: PostMeta
   locale: string
   minReadLabel: string
+  /** When given (blog index), the post's #keywords become filter buttons. */
+  onTagClick?: (tag: string) => void
 }
 
-export default function BlogCard({ post, locale, minReadLabel }: BlogCardProps) {
+export default function BlogCard({ post, locale, minReadLabel, onTagClick }: BlogCardProps) {
   const date = post.date ? new Date(post.date) : null
+  // A post shown through a language fallback says which language it is in.
+  const otherLanguage = post.locale !== locale ? LOCALE_NAMES[post.locale] : null
 
   return (
     <article className="border-t border-rule pt-5">
@@ -18,18 +23,44 @@ export default function BlogCard({ post, locale, minReadLabel }: BlogCardProps) 
         <span>
           {post.readingTime} {minReadLabel}
         </span>
+        {otherLanguage && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span lang={post.locale} className="rounded-sm bg-raised px-1.5 py-px text-ink-2">
+              {otherLanguage}
+            </span>
+          </>
+        )}
       </p>
 
       <h3 className="mt-2 font-serif text-lg font-medium text-balance">
         <Link
           href={`/blog/${post.slug}`}
+          lang={post.locale}
           className="text-ink decoration-accent decoration-1 underline-offset-4 hover:underline"
         >
           {post.title}
         </Link>
       </h3>
 
-      <p className="mt-2 text-sm leading-relaxed text-ink-2 line-clamp-3">{post.excerpt}</p>
+      <p lang={post.locale} className="mt-2 text-sm leading-relaxed text-ink-2 line-clamp-3">
+        {post.excerpt}
+      </p>
+
+      {onTagClick && post.tags.length > 0 && (
+        <p className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
+          {post.tags.map((tag) => (
+            <button
+              key={tag}
+              type="button"
+              onClick={() => onTagClick(tag)}
+              className="text-xs text-ink-3 underline-offset-4 hover:text-accent hover:underline"
+            >
+              #{tag}
+            </button>
+          ))}
+        </p>
+      )}
 
       {date && !Number.isNaN(date.getTime()) && (
         <time dateTime={post.date} className="mt-3 block text-xs text-ink-3">

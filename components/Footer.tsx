@@ -17,6 +17,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   const explore = [
+    { href: '/courses', label: tn('courses') },
     { href: '/videos', label: tn('videos') },
     { href: '/blog', label: tn('blog') },
     { href: '/publications', label: tn('publications') },

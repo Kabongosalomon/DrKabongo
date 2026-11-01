@@ -1,9 +1,10 @@
-import { getAllPosts } from '@/lib/blog'
+import { getAllPostFiles } from '@/lib/blog'
 import { SITE_URL, absoluteUrl } from '@/lib/metadata'
 import { routing } from '@/i18n/routing'
 
 /**
- * RSS 2.0 feed of the blog, built at deploy time.
+ * RSS 2.0 feed of the blog, built at deploy time. Every post appears once per
+ * language it is written in, with its own title and link.
  *
  * For readers who follow blogs in a feed reader. Email subscribers are
  * notified separately, by .github/workflows/notify-subscribers.yml.
@@ -22,12 +23,12 @@ function escapeXml(value: string) {
 }
 
 export function GET() {
-  const posts = getAllPosts()
+  const posts = getAllPostFiles()
   const feedUrl = `${SITE_URL}/feed.xml`
 
   const items = posts
     .map((post) => {
-      const url = absoluteUrl(routing.defaultLocale, `/blog/${post.slug}`)
+      const url = absoluteUrl(post.locale, `/blog/${post.slug}`)
       const date = post.date ? new Date(post.date) : null
       return [
         '    <item>',
@@ -37,6 +38,7 @@ export function GET() {
         date && !Number.isNaN(date.getTime()) ? `      <pubDate>${date.toUTCString()}</pubDate>` : '',
         `      <description>${escapeXml(post.excerpt)}</description>`,
         `      <category>${escapeXml(post.category)}</category>`,
+        `      <dc:language>${post.locale}</dc:language>`,
         '    </item>',
       ]
         .filter(Boolean)
@@ -45,9 +47,9 @@ export function GET() {
     .join('\n')
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>Dr. Kabongo — Writing</title>
+    <title>Dr. Kabongo — Blog</title>
     <link>${absoluteUrl(routing.defaultLocale, '/blog')}</link>
     <description>Notes on AI research, programming and the road here, by Salomon Kabongo.</description>
     <language>en</language>

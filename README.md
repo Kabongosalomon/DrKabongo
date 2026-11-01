@@ -35,8 +35,25 @@ npm run build      # Production build
 
 ## Content
 
-- **Blog posts:** `content/blog/*.mdx` — adding a file and deploying is all it takes; the RSS feed and newsletter pick it up
-- **Translations:** `messages/{en,fr,ln}.json`
+- **Blog posts:** one folder per language — `content/blog/<language>/<slug>.mdx`, with
+  `<language>` one of `en`, `fr`, `sw`, `ln`, `lua`. Adding a file and deploying is all it
+  takes; the RSS feed and newsletter pick it up.
+  - A post appears **only in the languages it is written in.** English-only → not on the
+    French side, and vice versa.
+  - The same slug in two folders is the same post in two languages (one shared comment
+    thread, and the language switcher moves between them).
+  - Fallbacks, so Swahili, Lingala and Tshiluba readers aren't left empty: **Swahili** shows
+    English posts it has no version of, **Lingala and Tshiluba** show French ones. These are
+    labelled with the language they're in and kept out of search engines (the original is the
+    canonical page). English and French never borrow from each other.
+  - Front matter: `title`, `date` (YYYY-MM-DD), `excerpt`, `category` (the topic filter on the
+    blog page) and `tags` (keywords — searchable, and clickable on each card). The list is
+    sorted newest first, with search, topic filter, keyword filter and an oldest-first toggle.
+  - A file placed directly in `content/blog/`, or in a folder that isn't a language code,
+    fails the build with a message saying where it belongs.
+- **Courses:** catalogs are generated (edtrace-studio); add each course's publish date and
+  keywords in `content/courses.meta.ts` so the index lists the newest first.
+- **Translations:** `messages/{en,fr,sw,ln,lua}.json`
 - **Images:** `public/images/`
 
 ## Deployment (Vercel)
@@ -112,8 +129,10 @@ and start the site with `NEXT_PUBLIC_FIREBASE_EMULATORS=1` and
   then schedules a Kit broadcast (title, summary, link) to go out 15 minutes later — cancel
   it in Kit under **Broadcasts** if needed. Editing a post never re-sends. To publish a post
   silently, add `notify: false` to its front matter; to announce one by hand, run the
-  workflow from the Actions tab with its slug. `node scripts/notify-subscribers.mjs --dry-run
-  content/blog/<slug>.mdx` previews the email.
+  workflow from the Actions tab with its language and slug. One email goes out per post, in
+  the language it was first published in (translations added later don't re-send; all
+  subscribers get it — there is no per-language list yet). `node scripts/notify-subscribers.mjs
+  --dry-run content/blog/<language>/<slug>.mdx` previews the email.
 - `/feed.xml` is the RSS feed for people who use feed readers.
 
 One-time setup:

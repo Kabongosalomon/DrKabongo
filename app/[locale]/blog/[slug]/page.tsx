@@ -1,8 +1,9 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-import { Link } from '@/i18n/navigation'
-import { SITE_URL, alternatesFor } from '@/lib/metadata'
-import { getAllPosts, getPostBySlug } from '@/lib/blog'
+import { Link, redirect } from '@/i18n/navigation'
+import { LOCALE_NAMES } from '@/i18n/routing'
+import { SITE_URL, absoluteUrl, alternatesFor } from '@/lib/metadata'
+import { getPostForLocale, getPostLanguages, getPostsForLocale } from '@/lib/blog'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import remarkGfm from 'remark-gfm'
@@ -13,8 +14,9 @@ import ShareButton from '@/components/ShareButton'
 import Subscribe from '@/components/Subscribe'
 
 export function generateStaticParams() {
-  const posts = getAllPosts()
-  return routing.locales.flatMap((locale) => posts.map((post) => ({ locale, slug: post.slug })))
+  return routing.locales.flatMap((locale) =>
+    getPostsForLocale(locale).map((post) => ({ locale, slug: post.slug })),
+  )
 }
 
 export async function generateMetadata({
@@ -23,13 +25,18 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const post = getPostBySlug(slug)
+  const post = getPostForLocale(locale, slug)
   if (!post) return {}
+  // Shown through a language fallback: the original is the one to index.
+  const isFallback = post.locale !== locale
   return {
     title: post.title,
     description: post.excerpt,
+    robots: isFallback ? { index: false } : undefined,
     alternates: {
-      ...alternatesFor(locale, `/blog/${slug}`),
+      ...(isFallback
+        ? { canonical: absoluteUrl(post.locale, `/blog/${slug}`) }
+        : alternatesFor(locale, `/blog/${slug}`, getPostLanguages(slug))),
       types: { 'application/rss+xml': `${SITE_URL}/feed.xml` },
     },
     openGraph: {
@@ -64,8 +71,14 @@ export default async function BlogPostPage({
 
   const t = await getTranslations({ locale, namespace: 'blog' })
   const tc = await getTranslations({ locale, namespace: 'comments' })
-  const post = getPostBySlug(slug)
-  if (!post) notFound()
+  const post = getPostForLocale(locale, slug)
+  if (!post) {
+    // Exists, but not in this language (e.g. switched language on an
+    // English-only post): send them to this language's own list.
+    if (getPostLanguages(slug).length > 0) redirect({ href: '/blog', locale })
+    notFound()
+  }
+  const fallbackLanguage = post.locale !== locale ? LOCALE_NAMES[post.locale] : null
 
   const date = post.date ? new Date(post.date) : null
 
@@ -89,6 +102,12 @@ export default async function BlogPostPage({
           {t('back')}
         </Link>
 
+        {fallbackLanguage && (
+          <p className="mt-6 rounded-md border border-rule bg-raised px-3 py-2 text-sm text-ink-2">
+            {t('fallback_notice', { language: fallbackLanguage })}
+          </p>
+        )}
+
         <header className="mt-8 border-b border-rule pb-8">
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-3">
             <span className="eyebrow">{post.category}</span>
@@ -98,7 +117,10 @@ export default async function BlogPostPage({
             </span>
           </p>
 
-          <h1 className="mt-3 font-serif text-3xl leading-tight font-medium text-balance text-ink sm:text-4xl">
+          <h1
+            lang={post.locale}
+            className="mt-3 font-serif text-3xl leading-tight font-medium text-balance text-ink sm:text-4xl"
+          >
             {post.title}
           </h1>
 
@@ -145,7 +167,7 @@ export default async function BlogPostPage({
         </header>
 
         {/* No prose-sm step-down: article text is what people read longest, so it should never sit below the site's 16px baseline, mobile included. */}
-        <article className="prose mt-10 max-w-none">
+        <article lang={post.locale} className="prose mt-10 max-w-none">
           <MDXRemote
             source={post.content}
             components={mdxComponents}

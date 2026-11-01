@@ -30,12 +30,21 @@ export function absoluteUrl(locale: string, path = '') {
   return `${SITE_URL}${prefix}${clean}`
 }
 
-/** Canonical + hreflang block, previously duplicated across 5 pages. */
-export function alternatesFor(locale: string, path = '') {
+/**
+ * Canonical + hreflang block, previously duplicated across 5 pages. `locales`
+ * limits the hreflang list to the languages a page really exists in (blog
+ * posts are not translated into every language).
+ */
+export function alternatesFor(
+  locale: string,
+  path = '',
+  locales: readonly string[] = routing.locales,
+) {
   return {
     canonical: absoluteUrl(locale, path),
-    languages: Object.fromEntries(
-      routing.locales.map((l) => [l, absoluteUrl(l, path)]),
-    ) as Record<string, string>,
+    languages: Object.fromEntries(locales.map((l) => [l, absoluteUrl(l, path)])) as Record<
+      string,
+      string
+    >,
   }
 }

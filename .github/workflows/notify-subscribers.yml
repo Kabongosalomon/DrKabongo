@@ -6,9 +6,13 @@ name: Notify subscribers
 on:
   push:
     branches: [main]
-    paths: ['content/blog/*.mdx']
+    paths: ['content/blog/*/*.mdx']
   workflow_dispatch:
     inputs:
+      locale:
+        description: Language folder of the post, e.g. en or fr
+        required: true
+        default: en
       slug:
         description: Post slug to (re)announce, e.g. hlf
         required: true
@@ -43,14 +47,18 @@ jobs:
           EVENT: ${{ github.event_name }}
           BEFORE: ${{ github.event.before }}
           SLUG: ${{ inputs.slug }}
+          LOCALE: ${{ inputs.locale }}
         run: |
           if [ "$EVENT" = "workflow_dispatch" ]; then
-            files="content/blog/${SLUG}.mdx"
+            files="content/blog/${LOCALE}/${SLUG}.mdx"
             [ -f "$files" ] || { echo "No such post: $files"; exit 1; }
           elif [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
             files=""   # brand-new branch: no reliable "before" to diff against
           else
-            files=$(git diff --name-only --diff-filter=A "$BEFORE" "$GITHUB_SHA" -- 'content/blog/*.mdx' | tr '\n' ' ')
+            # No pathspec on the diff: git must see a moved file's old path to
+            # report it as a rename (R) rather than a brand-new post (A).
+            files=$(git diff --name-only --diff-filter=A "$BEFORE" "$GITHUB_SHA" \
+              | grep -E '^content/blog/[^/]+/[^/]+\.mdx$' | tr '\n' ' ' || true)
           fi
           echo "files=$files" >> "$GITHUB_OUTPUT"
           echo "New posts: ${files:-none}"
