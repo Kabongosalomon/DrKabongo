@@ -1,0 +1,64 @@
+---
+title: "Les LLM sont des machines à probabilités conditionnelles"
+date: "2026-11-01"
+category: "IA"
+tags: ["llm", "ia-generative", "prompt-engineering", "machine-learning"]
+excerpt: "« Prédicteur du token suivant » est techniquement vrai, mais ne raconte que la moitié de l’histoire. Le mot qui compte, c’est « conditionnelle » — et il décrit ce que vous contrôlez."
+---
+
+« Les LLM ne sont que des prédicteurs de tokens. »
+
+Techniquement vrai. Mais je pense que cela ne raconte que la moitié de l’histoire.
+
+Je préfère un autre nom : des **machines à probabilités conditionnelles**.
+
+Cela sonne plus technique, je sais. Mais un mot change la façon d’utiliser ces outils : _conditionnelles_.
+
+Quand un modèle écrit son prochain mot, il ne se demande pas « quel mot vient habituellement ensuite ? »
+Il se demande « quel mot vient ensuite, sachant tout ce que j’ai vu jusqu’ici ? »
+
+En mathématiques, on l’écrit ainsi :
+
+```
+P(mot suivant | tout ce qui précède)
+```
+
+Cette petite barre verticale signifie « sachant que ». Et c’est elle qui fait tout le travail.
+
+« Tout ce qui précède », c’est bien plus que votre dernière question :
+
+- les instructions que vous avez saisies
+- les instructions système cachées de l’application
+- les fichiers et documents que vous avez importés
+- tout l’historique de la conversation
+- les résultats de recherche et les sorties d’outils
+- les mots que le modèle a déjà écrits dans sa propre réponse
+
+![La même demande, « Propose un nom. », sous deux conditions. Après « Je viens d’adopter un chiot golden retriever », Max est la réponse la plus probable à 34 %. Après « On lance une startup de cybersécurité », Max tombe à 1 % et Sentinelle arrive en tête à 29 %. Probabilités illustratives.](/images/llm-conditional/fr.png)
+
+Regardez l’image. La demande est la même : « Propose un nom. » Dites au modèle que vous venez d’adopter un chiot, et « Max » devient l’une des réponses les plus probables. Dites-lui que vous lancez une startup de cybersécurité, et « Max » disparaît presque.
+
+Le modèle n’a pas changé. La condition, si.
+
+C’est vrai pour tous les LLM : Gemini, GPT, Claude, Llama, tous. Le modèle décide comment il réagit au contexte. Vous décidez de ce qu’est le contexte.
+
+Cela explique aussi trois choses que nous rencontrons tous :
+
+**Les requêtes vagues donnent des réponses génériques.** Donnez peu de matière au modèle, et il retombe sur la réponse la plus moyenne.
+
+**Les longues conversations dérivent.** Des informations périmées ou fausses restent dans le contexte et continuent de tirer chaque prédiction.
+
+**Une erreur au début fait boule de neige.** Les mots du modèle deviennent eux-mêmes une partie de la condition de tout ce qui suit.
+
+## Ce que je fais en pratique
+
+- Donner le contexte dont un collègue avisé aurait besoin : pour qui, l’objectif, les contraintes
+- Coller le texte source au lieu d’espérer que le modèle « le connaît »
+- Quand une conversation devient confuse, repartir de zéro avec un résumé propre
+
+Ne vous contentez pas de poser une meilleure question. Construisez une meilleure condition.
+
+« La prédiction du token suivant » décrit ce que fait le modèle.
+« La probabilité conditionnelle » décrit ce que vous contrôlez.
+
+Comment gérez-vous le contexte dans votre travail : longues conversations, ou nouveaux départs ? Dites-le-moi dans les commentaires ci-dessous.

@@ -1,0 +1,64 @@
+---
+title: "LLMs Are Conditional Probability Machines"
+date: "2026-11-01"
+category: "AI"
+tags: ["llm", "generative-ai", "prompt-engineering", "machine-learning"]
+excerpt: "“Next-token predictor” is technically true, but it only tells half the story. The word that matters is conditional — and it describes what you control."
+---
+
+“LLMs are just next-token predictors.”
+
+Technically true. But I think it only tells half the story.
+
+I prefer another name: **conditional probability machines**.
+
+It sounds more technical, I know. But one word in there changes how you use these tools: _conditional_.
+
+When a model writes its next word, it isn’t asking “what word usually comes next?”
+It’s asking “what word comes next, given everything I’ve seen so far?”
+
+In math, we write it like this:
+
+```
+P(next word | everything before it)
+```
+
+That little vertical bar means “given.” And it’s doing all the work.
+
+“Everything before it” is much more than your last question:
+
+- the instructions you typed
+- hidden system instructions from the app
+- the files and documents you uploaded
+- the full chat history
+- search results and tool outputs
+- the words the model has already written in its own answer
+
+![The same request, “Suggest a name.”, under two conditions. After “I just adopted a golden retriever puppy”, Max is the likeliest answer at 34%. After “We’re launching a cybersecurity startup”, Max falls to 1% and Sentinel leads at 29%. Illustrative probabilities.](/images/llm-conditional/en.png)
+
+Look at the image. The request is the same: “Suggest a name.” Tell the model you just adopted a puppy, and “Max” is one of the most likely answers. Tell it you’re launching a cybersecurity startup, and “Max” almost disappears.
+
+The model didn’t change. The condition did.
+
+This holds for every LLM: Gemini, GPT, Claude, Llama, all of them. The model decides how it reacts to context. You decide what the context is.
+
+It also explains three things we all run into:
+
+**Vague prompts get generic answers.** Give the model little to condition on, and it falls back on the most average reply.
+
+**Long chats drift.** Outdated or wrong information is still sitting in the context, still pulling on every prediction.
+
+**One early mistake snowballs.** The model’s own words become part of the condition for everything that follows.
+
+## What I do in practice
+
+- Give the context a smart colleague would need: who it’s for, the goal, the constraints
+- Paste the source material instead of hoping the model “knows” it
+- When a chat gets messy, start fresh with a clean summary
+
+Don’t just ask a better question. Build a better condition.
+
+“Next-token prediction” describes what the model does.
+“Conditional probability” describes what you control.
+
+How do you handle context in your own work: long running chats, or fresh starts? Tell me in the comments below.
