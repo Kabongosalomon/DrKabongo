@@ -165,6 +165,34 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      {/* ─── WRITING ─── */}
+      {posts.length > 0 && (
+        <section className="border-t border-rule">
+          <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div className="min-w-0">
+                <p className="eyebrow">{tb('section_label')}</p>
+                <h2 className="mt-2 font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+                  {tb('home_title')}
+                </h2>
+              </div>
+              <ArrowLink href="/blog">{tb('all_posts')}</ArrowLink>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {posts.map((post) => (
+                <BlogCard
+                  key={post.slug}
+                  post={post}
+                  locale={locale}
+                  minReadLabel={tb('min_read')}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ─── RESEARCH & ENGINEERING ─── */}
       <section id="research" className="scroll-mt-24 border-t border-rule bg-surface">
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
@@ -308,34 +336,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
       </section>
-
-      {/* ─── WRITING ─── */}
-      {posts.length > 0 && (
-        <section className="border-t border-rule bg-surface">
-          <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div className="min-w-0">
-                <p className="eyebrow">{tb('section_label')}</p>
-                <h2 className="mt-2 font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
-                  {tb('home_title')}
-                </h2>
-              </div>
-              <ArrowLink href="/blog">{tb('all_posts')}</ArrowLink>
-            </div>
-
-            <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
-                <BlogCard
-                  key={post.slug}
-                  post={post}
-                  locale={locale}
-                  minReadLabel={tb('min_read')}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ─── WORK WITH ME ─── */}
       <section id="contact" className="scroll-mt-24 border-t border-rule">
