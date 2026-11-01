@@ -249,6 +249,25 @@ h4 {
   white-space: nowrap;
 }
 
+/* Pull-quote: the line a reader should take away. */
+.prose blockquote {
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.3125em;
+  line-height: 1.4;
+  color: var(--ink);
+  border-inline-start-width: 3px;
+  padding-inline-start: 1.25em;
+}
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none;
+}
+.prose blockquote strong {
+  font-weight: 600;
+}
+
 .prose :is(img, video) {
   border-radius: 8px;
   border: 1px solid var(--rule);
