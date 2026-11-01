@@ -118,9 +118,13 @@ and start the site with `NEXT_PUBLIC_FIREBASE_EMULATORS=1` and
 
 One-time setup:
 
-1. Create a free account at [kit.com](https://kit.com). Under **Settings → Email → Sending
-   addresses**, add and confirm `kabongosalomon@gmail.com` — new-post emails are sent from it
-   (`SENDER_EMAIL` in `scripts/notify-subscribers.mjs`), so replies reach that inbox.
+1. Create a free account at [kit.com](https://kit.com). Under **Settings → Email**, verify the
+   sending domain `drkabongo.com` (add Kit's CNAME/TXT records in Vercel DNS) and add and confirm
+   `newsletter@drkabongo.com` — new-post emails are sent from it (`SENDER_EMAIL` in
+   `scripts/notify-subscribers.mjs`). The domain has no mailbox, so receive mail there with free
+   forwarding: [ImprovMX](https://improvmx.com) (1 domain, free) with MX records `mx1.improvmx.com`
+   (10) and `mx2.improvmx.com` (20) plus an alias `newsletter` → your inbox. Kit's confirmation
+   email and subscribers' replies arrive through it.
 2. **Grow → Landing pages & forms →** create an inline form (its design doesn't matter; the
    site has its own). In its **Settings → Incentive**, keep **"Send incentive email"** on —
    that's the confirmation email. Note the form id from its URL.

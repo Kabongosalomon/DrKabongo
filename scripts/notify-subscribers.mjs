@@ -16,9 +16,10 @@ import path from 'node:path'
 import matter from 'gray-matter'
 
 const SITE_URL = 'https://drkabongo.com'
-// Sender, so replies land in this inbox. Must be a confirmed sending address
-// in Kit (Settings → Email → Sending addresses) or Kit rejects the broadcast.
-const SENDER_EMAIL = 'kabongosalomon@gmail.com'
+// Sender. Must be a confirmed sending address in Kit (Settings → Email) or Kit
+// rejects the broadcast. drkabongo.com has no mailbox: ImprovMX's free plan
+// forwards mail for this address to the owner's inbox, so replies still arrive.
+const SENDER_EMAIL = 'newsletter@drkabongo.com'
 const KIT_API = 'https://api.kit.com/v4'
 const SEND_DELAY_MINUTES = 15
 const LIVE_TIMEOUT_MINUTES = 20
