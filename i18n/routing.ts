@@ -15,6 +15,13 @@ export const routing = defineRouting({
    * The URL is now the only thing that decides the language.
    */
   localeDetection: false,
+  /**
+   * Off on purpose. next-intl would add an HTTP `Link: …hreflang` header
+   * listing all five languages for every URL. Each page already declares its
+   * own hreflang tags (lib/metadata.ts), and blog posts exist in only some
+   * languages — the header would advertise URLs that are fallbacks or missing.
+   */
+  alternateLinks: false,
 })
 
 /** Names are shown in their own language, never translated. */
