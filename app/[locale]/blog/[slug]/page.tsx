@@ -12,6 +12,8 @@ import rehypeHighlight from 'rehype-highlight'
 import BlogComments from '@/components/BlogComments'
 import ShareButton from '@/components/ShareButton'
 import Subscribe from '@/components/Subscribe'
+import ConditionLab from '@/components/blog/labs/ConditionLab'
+import GivenLab from '@/components/blog/labs/GivenLab'
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -50,16 +52,20 @@ export async function generateMetadata({
 }
 
 /**
- * Wraps tables in a scroll container so a wide table scrolls inside its own box
- * instead of widening the page on narrow viewports.
+ * Components a post's MDX can use. Tables get a scroll container so a wide one
+ * scrolls inside its own box instead of widening the page on narrow viewports.
+ * The interactive labs are bound to the post's own language, so the MDX just
+ * writes `<ConditionLab />`.
  */
-const mdxComponents = {
+const mdxComponentsFor = (language: string) => ({
   table: (props: React.ComponentPropsWithoutRef<'table'>) => (
     <div className="table-scroll my-6">
       <table {...props} />
     </div>
   ),
-}
+  ConditionLab: () => <ConditionLab locale={language} />,
+  GivenLab: () => <GivenLab locale={language} />,
+})
 
 export default async function BlogPostPage({
   params,
@@ -170,7 +176,7 @@ export default async function BlogPostPage({
         <article lang={post.locale} className="prose mt-10 max-w-none">
           <MDXRemote
             source={post.content}
-            components={mdxComponents}
+            components={mdxComponentsFor(post.locale)}
             options={{
               mdxOptions: {
                 remarkPlugins: [remarkGfm],

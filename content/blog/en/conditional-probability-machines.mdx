@@ -2,7 +2,7 @@
 title: "LLMs Are Conditional Probability Machines"
 date: "2026-11-01"
 category: "AI"
-tags: ["llm", "generative-ai", "prompt-engineering", "machine-learning"]
+tags: ["llm", "generative-ai", "prompt-engineering", "ai-agents", "machine-learning"]
 excerpt: "“Next-token predictor” is technically true, but it only tells half the story. The word that matters is conditional — and it describes what you control."
 ---
 
@@ -34,26 +34,101 @@ That little vertical bar means “given.” **And it’s doing all the work.**
 - search results and tool outputs
 - the words the model has already written in its own answer
 
-![The same request, “Suggest a name.”, under two conditions. After “I just adopted a golden retriever puppy”, Max is the likeliest answer at 34%. After “We’re launching a cybersecurity startup”, Max falls to 1% and Sentinel leads at 29%. Illustrative probabilities.](/images/llm-conditional/en.png)
+## Try it: same request, different conditions
 
-Look at the image. The request is the same: “Suggest a name.” Tell the model you just adopted a puppy, and “Max” is one of the most likely answers. Tell it you’re launching a cybersecurity startup, and “Max” almost disappears.
+Below, the request is always “Suggest a name.” You can’t edit it. What you _can_ do is add lines earlier in the conversation, and watch the model’s probabilities move.
 
-**The model didn’t change. The condition did.**
+<ConditionLab />
+
+Three things to try:
+
+- **Add the puppy line.** “Max” and “Bella” take over. Now swap it for the cybersecurity startup: “Max” drops to 1%, and “Sentinel” and “Bastion” take over.
+- **Remove everything.** With nothing to go on, no name gets more than 12%. The model falls back on the most average answers.
+- **Add the puppy and the startup together.** The condition now pulls two ways, so the answer blurs. Add the branding consultant on top of the startup and it sharpens.
+
+**The request never changed. The model didn’t change. The condition did.**
 
 This holds for every LLM: Gemini, GPT, Claude, Llama, all of them. **The model decides how it reacts to context. You decide what the context is.**
 
-It also explains three things we all run into:
+## What “given” really means
 
-**Vague prompts get generic answers.** Give the model little to condition on, and it falls back on the most average reply.
+The vertical bar in `P(A | B)` is the slippery part. Here is the intuition: conditioning means **narrowing the world, then recounting**.
 
-**Long chats drift.** Outdated or wrong information is still sitting in the context, still pulling on every prediction.
+1. Start with every conversation you could imagine.
+2. Throw away the ones where the condition (B) isn’t true.
+3. In what’s left, count how often the event (A) happens.
 
-**One early mistake snowballs.** The model’s own words become part of the condition for everything that follows.
+That’s all. The denominator shrinks, and so the probability changes. Try it on 200 imagined conversations:
+
+<GivenLab />
+
+Two things worth noticing:
+
+- **“Max” is 12% likely in general, but 34% likely given a puppy, and 1% given a startup.** Same event, three different worlds, three different answers.
+- **`P(A | B)` is not `P(B | A)`.** Given a puppy, the answer is “Max” 34% of the time. But given that the answer was “Max”, there’s a puppy in the context 71% of the time. The lab shows both numbers, and “Swap the two” turns the flipped question into the main one. Mixing up the two is one of the most common mistakes in probability.
+
+An LLM does this at every single word. It has learned which words tend to follow contexts like yours. Your context decides which part of the world it is counting in.
+
+## Three things this explains
+
+**Vague prompts get generic answers.** Give the model little to condition on, and the distribution stays wide: that’s the flat “no context” bars above. The likeliest continuation of almost nothing is the most average text.
+
+**Long chats drift.** Everything in the conversation keeps counting: the outdated plan, the idea you abandoned, the assumption you never confirmed. Old information is still sitting in the condition, still pulling on every prediction.
+
+**One early mistake snowballs.** The model’s own words become part of the condition for everything that follows. A wrong assumption in step two is now “given” in steps three, four and five, and each step builds on it as if it were true.
+
+## “You’re right, I missed that.”
+
+Many of us have lived this moment with a coding agent.
+
+The code is written. All the unit tests pass. The deploy shows no errors. Then something breaks in production, and there’s real downtime. You paste the logs into the chat, and the agent replies:
+
+> **“You’re right, I missed that. Here’s the fix.”**
+
+And the fix works. So why didn’t it get it right the first time?
+
+Through this lens, the answer is simple: **it didn’t miss it. It never had it.**
+
+When the code was written, the production logs weren’t part of the condition. What _was_ there: your request, the code, and a green test run. Given all that, “done, everything looks good” was the most likely thing to say. Then you pasted the log. The condition changed, so the output changed.
+
+“I missed that” isn’t a memory of a failure. There was no earlier moment where the model saw the problem and looked away. It’s simply a very likely thing to say when a user pastes an error under a message that said “done.” **The model didn’t know until it was finally told.**
+
+And in a new chat, it won’t remember being told either, unless something puts the lesson back into the condition.
+
+## Harnesses and skills build the condition for you
+
+If the condition is everything, then the real work of using AI is building it, and building it reliably, not from memory at 6 pm on a Friday.
+
+That’s what the software around the model is for. A **harness**, the agent tool wrapped around the model, decides what goes into the context before the model says a word: the system instructions, which files get read, which tools can be called, what the test runner and the logs send back, and the project’s instruction file.
+
+**Skills** are packaged conditions. A skill is a reusable bundle of instructions (and sometimes scripts) that the harness loads when a task calls for it. For example, a deploy skill that says: after deploying, read the logs for ten minutes, check the error rate, and report back before calling it done.
+
+Apply that to the downtime story:
+
+- Give the agent a tool that reads production logs and metrics, so they _can_ be in the condition.
+- Put the post-deploy check into a skill or a hook, so that _every_ deploy carries it.
+- Write the incident’s lesson into the project’s instruction file, so the next session starts with it.
+
+None of this makes the model smarter. It makes the condition better, on every run.
+
+## Why engineers stay in the loop
+
+A model can only condition on what it’s given. And it can’t notice what’s missing, because from the inside, missing information doesn’t look like anything.
+
+Engineers are the ones who know what is _not_ in the window: how production really behaves, what the customer was promised, what “done” means here, and what an outage costs. That’s why we stay in the loop:
+
+- **We decide which conditions matter**, and notice when one is missing.
+- **We verify against the real world** (logs, metrics, users), not just against the green tests the model could see.
+- **We own the consequences.** The model produces the most probable continuation. Accountability can’t be probable.
+
+The point isn’t that AI needs babysitting. It’s that someone has to design the conditions, and check them against reality.
 
 ## What I do in practice
 
 - Give the context a smart colleague would need: who it’s for, the goal, the constraints
 - Paste the source material instead of hoping the model “knows” it
+- Give agents the same signals I’d look at myself: logs, metrics, test output
+- Turn lessons into reusable conditions: instruction files, skills, hooks
 - When a chat gets messy, start fresh with a clean summary
 
 **Don’t just ask a better question. Build a better condition.**
@@ -62,4 +137,4 @@ It also explains three things we all run into:
 >
 > **“Conditional probability” describes what you control.**
 
-How do you handle context in your own work: long running chats, or fresh starts? Tell me in the comments below.
+Have you had an “I missed that” moment with a coding agent? What was missing from its context? Tell me in the comments below.

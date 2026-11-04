@@ -2,7 +2,7 @@
 title: "Les LLM sont des machines à probabilités conditionnelles"
 date: "2026-11-01"
 category: "IA"
-tags: ["llm", "ia-generative", "prompt-engineering", "machine-learning"]
+tags: ["llm", "ia-generative", "prompt-engineering", "agents-ia", "machine-learning"]
 excerpt: "« Prédicteur du mot (token) suivant » est techniquement vrai, mais ne raconte que la moitié de l’histoire. Le mot qui compte, c’est « conditionnelle » — et il décrit ce que vous contrôlez."
 ---
 
@@ -34,26 +34,101 @@ Cette petite barre verticale signifie « sachant que ». **Et c’est elle qui f
 - les résultats de recherche et les sorties d’outils
 - les mots que le modèle a déjà écrits dans sa propre réponse
 
-![La même demande, « Suggérez un nom. », sous deux conditions. Après « Je viens d’adopter un chiot golden retriever », Max est la réponse la plus probable à 34 %. Après « On lance une startup de cybersécurité », Max tombe à 1 % et Sentinelle arrive en tête à 29 %. Probabilités illustratives.](/images/llm-conditional/fr.png)
+## Essayez : la même demande, des conditions différentes
 
-Regardez l’image. La demande est la même : « Suggérez un nom. » Dites au modèle que vous venez d’adopter un chiot, et « Max » devient l’une des réponses les plus probables. Dites-lui que vous lancez une startup de cybersécurité, et « Max » disparaît presque.
+Ci-dessous, la demande est toujours « Suggérez un nom. » Vous ne pouvez pas la modifier. Ce que vous _pouvez_ faire, c’est ajouter des lignes plus tôt dans la conversation, et regarder bouger les probabilités du modèle.
 
-**Le modèle n’a pas changé. La condition, si.**
+<ConditionLab />
+
+Trois choses à essayer :
+
+- **Ajoutez la ligne du chiot.** « Max » et « Bella » prennent la tête. Remplacez-la par la startup de cybersécurité : « Max » tombe à 1 %, et « Sentinelle » et « Bastion » prennent le relais.
+- **Retirez tout.** Sans rien d’autre, aucun nom ne dépasse 12 %. Le modèle retombe sur les réponses les plus moyennes.
+- **Ajoutez le chiot et la startup ensemble.** La condition tire dans deux directions, donc la réponse devient floue. Ajoutez le consultant en marque à la startup, et elle se précise.
+
+**La demande n’a pas changé. Le modèle n’a pas changé. La condition, si.**
 
 C’est vrai pour tous les LLM : Gemini, GPT, Claude, Llama, tous. **Le modèle décide comment il réagit au contexte. Vous décidez de ce qu’est le contexte.**
 
-Cela explique aussi trois choses que nous rencontrons tous :
+## Ce que « sachant que » veut vraiment dire
 
-**Les requêtes vagues donnent des réponses génériques.** Donnez peu de matière au modèle, et il retombe sur la réponse la plus moyenne.
+La barre verticale de `P(A | B)` est la partie qui glisse entre les doigts. Voici l’intuition : conditionner, c’est **réduire le monde, puis recompter**.
 
-**Les longues conversations dérivent.** Des informations périmées ou fausses restent dans le contexte et continuent de tirer chaque prédiction.
+1. Partez de toutes les conversations imaginables.
+2. Écartez celles où la condition (B) n’est pas vraie.
+3. Dans ce qui reste, comptez combien de fois l’événement (A) se produit.
 
-**Une erreur au début fait boule de neige.** Les mots du modèle deviennent eux-mêmes une partie de la condition de tout ce qui suit.
+C’est tout. Le dénominateur rétrécit, donc la probabilité change. Essayez sur 200 conversations imaginées :
+
+<GivenLab />
+
+Deux choses à remarquer :
+
+- **« Max » a 12 % de chances en général, 34 % avec un chiot, et 1 % avec une startup.** Le même événement, trois mondes différents, trois réponses différentes.
+- **`P(A | B)` n’est pas `P(B | A)`.** Avec un chiot dans le contexte, la réponse est « Max » dans 34 % des cas. Mais quand la réponse est « Max », il y a un chiot dans le contexte dans 71 % des cas. La démo montre les deux nombres, et « Échanger les deux » fait de la question inversée la question principale. Confondre les deux est l’une des erreurs les plus courantes en probabilités.
+
+Un LLM fait cela à chaque mot. Il a appris quels mots suivent d’ordinaire des contextes comme le vôtre. Votre contexte décide dans quelle partie du monde il compte.
+
+## Trois choses que cela explique
+
+**Les requêtes vagues donnent des réponses génériques.** Donnez peu de matière au modèle, et la distribution reste large : ce sont les barres plates de « Aucun contexte » ci-dessus. La suite la plus probable de presque rien, c’est le texte le plus moyen.
+
+**Les longues conversations dérivent.** Tout ce qui est dans la conversation continue de compter : le plan périmé, l’idée abandonnée, l’hypothèse jamais confirmée. Ces informations restent dans la condition et continuent de tirer chaque prédiction.
+
+**Une erreur au début fait boule de neige.** Les mots du modèle deviennent eux-mêmes une partie de la condition de tout ce qui suit. Une mauvaise hypothèse à l’étape deux est désormais « donnée » aux étapes trois, quatre et cinq, et chaque étape s’appuie dessus comme si elle était vraie.
+
+## « Vous avez raison, je suis passé à côté. »
+
+Beaucoup d’entre nous ont vécu ce moment avec un agent de code.
+
+Le code est écrit. Tous les tests unitaires passent. Le déploiement ne signale aucune erreur. Puis quelque chose casse en production, et c’est une vraie interruption de service. Vous collez les logs dans la conversation, et l’agent répond :
+
+> **« Vous avez raison, je suis passé à côté. Voici le correctif. »**
+
+Et le correctif fonctionne. Alors pourquoi ne l’a-t-il pas trouvé du premier coup ?
+
+Avec cette lentille, la réponse est simple : **il n’est pas passé à côté. Il ne l’a jamais eu.**
+
+Quand le code a été écrit, les logs de production ne faisaient pas partie de la condition. Ce qui y était : votre demande, le code, et une série de tests au vert. Sachant tout cela, « c’est fait, tout est bon » était la chose la plus probable à dire. Puis vous avez collé le log. La condition a changé, donc la sortie a changé.
+
+« Je suis passé à côté » n’est pas le souvenir d’un échec. Il n’y a pas eu de moment antérieur où le modèle a vu le problème et détourné les yeux. C’est simplement une phrase très probable quand un utilisateur colle une erreur sous un message qui disait « terminé ». **Le modèle ne savait pas, jusqu’à ce qu’on le lui dise enfin.**
+
+Et dans une nouvelle conversation, il ne se souviendra pas non plus qu’on le lui a dit, sauf si quelque chose remet la leçon dans la condition.
+
+## Harnais et compétences construisent la condition pour vous
+
+Si la condition est tout, alors le vrai travail avec l’IA consiste à la construire, et à la construire de façon fiable, pas de mémoire à 18 h un vendredi.
+
+C’est à cela que sert le logiciel autour du modèle. Un **harnais** (_harness_), l’outil d’agent qui enveloppe le modèle, décide de ce qui entre dans le contexte avant que le modèle dise un mot : les instructions système, les fichiers lus, les outils appelables, ce que renvoient l’exécuteur de tests et les logs, et le fichier d’instructions du projet.
+
+Les **compétences** (_skills_) sont des conditions empaquetées. Une compétence est un ensemble réutilisable d’instructions (et parfois de scripts) que le harnais charge quand une tâche l’exige. Par exemple, une compétence de déploiement qui dit : après le déploiement, lire les logs pendant dix minutes, vérifier le taux d’erreur, et faire un retour avant de déclarer que c’est terminé.
+
+Appliquons cela à l’histoire de l’interruption :
+
+- Donnez à l’agent un outil qui lit les logs et les métriques de production, pour qu’ils _puissent_ faire partie de la condition.
+- Mettez la vérification après déploiement dans une compétence ou un hook, pour que _chaque_ déploiement la porte.
+- Écrivez la leçon de l’incident dans le fichier d’instructions du projet, pour que la prochaine session démarre avec elle.
+
+Rien de tout cela ne rend le modèle plus intelligent. Cela rend la condition meilleure, à chaque exécution.
+
+## Pourquoi les ingénieurs restent dans la boucle
+
+Un modèle ne peut se conditionner que sur ce qu’on lui donne. Et il ne peut pas remarquer ce qui manque, car vu de l’intérieur, une information absente ne ressemble à rien.
+
+Les ingénieurs sont ceux qui savent ce qui n’est _pas_ dans la fenêtre : comment la production se comporte vraiment, ce qui a été promis au client, ce que « terminé » veut dire ici, et ce que coûte une interruption. C’est pourquoi nous restons dans la boucle :
+
+- **Nous décidons quelles conditions comptent**, et nous remarquons quand l’une d’elles manque.
+- **Nous vérifions face au monde réel** (logs, métriques, utilisateurs), pas seulement face aux tests au vert que le modèle pouvait voir.
+- **Nous assumons les conséquences.** Le modèle produit la suite la plus probable. La responsabilité, elle, ne peut pas être probable.
+
+Il ne s’agit pas de dire que l’IA a besoin d’être surveillée. Il s’agit de rappeler que quelqu’un doit concevoir les conditions, et les confronter à la réalité.
 
 ## Ce que je fais en pratique
 
 - Donner le contexte dont un collègue avisé aurait besoin : pour qui, l’objectif, les contraintes
 - Coller le texte source au lieu d’espérer que le modèle « le connaît »
+- Donner aux agents les mêmes signaux que je regarderais moi-même : logs, métriques, sorties de tests
+- Transformer les leçons en conditions réutilisables : fichiers d’instructions, compétences, hooks
 - Quand une conversation devient confuse, repartir de zéro avec un résumé propre
 
 **Ne vous contentez pas de poser une meilleure question. Construisez une meilleure condition.**
@@ -62,4 +137,4 @@ Cela explique aussi trois choses que nous rencontrons tous :
 >
 > **« La probabilité conditionnelle » décrit ce que vous contrôlez.**
 
-Comment gérez-vous le contexte dans votre travail : longues conversations, ou nouveaux départs ? Dites-le-moi dans les commentaires ci-dessous.
+Avez-vous vécu un moment « je suis passé à côté » avec un agent de code ? Qu’est-ce qui manquait à son contexte ? Dites-le-moi dans les commentaires ci-dessous.
