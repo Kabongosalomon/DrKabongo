@@ -12,6 +12,25 @@ import { routing } from '@/i18n/routing'
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
 
 /**
+ * Every post has a cover image, drawn by `npm run covers` into
+ * public/images/covers/<slug>.<language>.png (or .jpg). It heads the post, its
+ * card in every list, and the preview shown when the link is shared.
+ */
+const COVER_DIR = path.join(process.cwd(), 'public', 'images', 'covers')
+export const COVER_SIZE = { width: 1200, height: 630 } as const
+
+/** The public path of a post's cover. A post without one fails the build. */
+function coverFor(locale: string, slug: string): string {
+  for (const extension of ['png', 'jpg']) {
+    const name = `${slug}.${locale}.${extension}`
+    if (fs.existsSync(path.join(COVER_DIR, name))) return `/images/covers/${name}`
+  }
+  throw new Error(
+    `content/blog/${locale}/${slug}.mdx has no cover image. Run "npm run covers" and commit public/images/covers/${slug}.${locale}.png`,
+  )
+}
+
+/**
  * What a reader sees when a post has no version in their own language: the
  * language most of that audience reads. English and French have no fallback —
  * a post written in one is never shown on the other's side.
@@ -32,10 +51,33 @@ export interface PostMeta {
   category: string
   tags: string[]
   readingTime: number
+  /** Public path of the cover image, 1200 × 630 in proportion. */
+  cover: string
 }
 
 export interface Post extends PostMeta {
   content: string
+}
+
+/**
+ * A post's closing list of sources, split off so the page can set it smaller
+ * and fold it away: the comments then sit right under the article instead of
+ * below a long reference list. Matches a final "## Sources" / "## References"
+ * section; a post without one comes back whole.
+ */
+export function splitSources(content: string): {
+  body: string
+  sources: { heading: string; list: string; count: number } | null
+} {
+  const match = /^##[ \t]+(Sources?|References?|Références?)[ \t]*$/im.exec(content)
+  if (!match) return { body: content, sources: null }
+  const list = content.slice(match.index + match[0].length).trim()
+  // Only a closing section: anything with a later heading is ordinary content.
+  if (/^#{1,6}[ \t]/m.test(list)) return { body: content, sources: null }
+  return {
+    body: content.slice(0, match.index).trimEnd(),
+    sources: { heading: match[1], list, count: (list.match(/^\s*(?:[-*]|\d+\.)\s/gm) ?? []).length },
+  }
 }
 
 function estimateReadingTime(content: string): number {
@@ -55,6 +97,7 @@ function readPost(locale: string, slug: string): Post {
     category: data.category ?? 'General',
     tags: data.tags ?? [],
     readingTime: estimateReadingTime(content),
+    cover: coverFor(locale, slug),
     content,
   }
 }

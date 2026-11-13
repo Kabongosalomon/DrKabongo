@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "covers": "node scripts/covers/build.mjs",
     "test:labs": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test tests/labs.test.mjs",
     "test:rules": "npx --yes firebase-tools@15.34.1 emulators:exec --only firestore --project demo-drkabongo 'node --test tests/firestore.rules.test.mjs'"
   },
@@ -15,6 +16,7 @@
     "firebase": "^13.1.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.12.0",
+    "katex": "^0.16.47",
     "marked": "^15.0.12",
     "next": "^15.3.2",
     "next-intl": "^3.26.3",
@@ -23,8 +25,10 @@
     "react-dom": "^19.0.0",
     "react-vega": "^8.0.0",
     "rehype-highlight": "^7.0.2",
+    "rehype-katex": "^7.0.1",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
     "vega": "^6.4.0",
     "vega-embed": "^7.1.0",
     "vega-lite": "^6.4.3"

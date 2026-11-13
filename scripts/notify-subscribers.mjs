@@ -80,6 +80,15 @@ const COPY_LANGUAGE = { en: 'en', fr: 'fr', sw: 'en', ln: 'fr', lua: 'fr' }
 const urlFor = (locale, slug) =>
   `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/blog/${slug}`
 
+/** The post's cover as drawn by `npm run covers`, or null if there is none. */
+function coverUrlFor(locale, slug) {
+  for (const extension of ['png', 'jpg']) {
+    const file = `images/covers/${slug}.${locale}.${extension}`
+    if (fs.existsSync(path.join('public', file))) return `${SITE_URL}/${file}`
+  }
+  return null
+}
+
 /** When one push adds several languages of a post, announce this one first. */
 const LANGUAGE_ORDER = ['en', 'fr', 'sw', 'ln', 'lua']
 
@@ -112,8 +121,12 @@ function broadcastFor(locale, slug, data) {
   const url = urlFor(locale, slug)
   const copy = COPY[COPY_LANGUAGE[locale] ?? 'en']
   // Kit's classic template wraps this body and adds the unsubscribe footer.
+  const cover = coverUrlFor(locale, slug)
   const content = [
     `<p>${copy.intro}</p>`,
+    cover
+      ? `<p><a href="${url}"><img src="${cover}" alt="${escapeHtml(data.title)}" width="600" style="display:block;width:100%;max-width:600px;height:auto;border:0;border-radius:8px"></a></p>`
+      : '',
     `<h2><a href="${url}">${escapeHtml(data.title)}</a></h2>`,
     data.excerpt ? `<p>${escapeHtml(data.excerpt)}</p>` : '',
     `<p><a href="${url}"><strong>${copy.cta}</strong></a></p>`,

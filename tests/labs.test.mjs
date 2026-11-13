@@ -1,5 +1,4 @@
-// The blog post "LLMs are conditional probability machines" quotes numbers that
-// its two interactive labs must reproduce. Run: `npm run test:labs`.
+// The blog posts quote numbers that their interactive labs must reproduce. Run: `npm run test:labs`.
 
 import assert from 'node:assert/strict'
 import { describe, test } from 'node:test'
@@ -12,6 +11,25 @@ import {
   sample,
 } from '../components/blog/labs/conditionModel.ts'
 import { DOTS, count, percent } from '../components/blog/labs/givenModel.ts'
+import {
+  FROZEN,
+  MONTHS,
+  SHIPPED,
+  SHOWN,
+  advance,
+  modelAngle,
+  realityAngle,
+  retrain,
+  start,
+} from '../components/blog/labs/driftModel.ts'
+import {
+  ALL_CONTEXT,
+  ALL_WEIGHTS,
+  BY_KIND,
+  ITEMS,
+  tokensPerCall,
+  wellPlaced,
+} from '../components/blog/labs/memoryModel.ts'
 
 const sum = (distribution) => NAMES.reduce((total, name) => total + distribution[name], 0)
 
@@ -93,5 +111,76 @@ describe('GivenLab model', () => {
   test('the scatter is deterministic, so the server and browser agree', async () => {
     const again = await import('../components/blog/labs/givenModel.ts?again')
     assert.deepEqual(again.DOTS, DOTS)
+  })
+})
+
+// ── Post: "Your LLM has two memories" ──
+
+const months = (world, count, auto) => {
+  for (let i = 0; i < count; i++) world = advance(world, auto)
+  return world
+}
+
+describe('DriftLab model', () => {
+  test('the shipped model is right 96% of the time, on 200 customers it never trained on', () => {
+    assert.equal(SHOWN.length, 200)
+    assert.equal(FROZEN[0], 96)
+    assert.ok(Math.abs(modelAngle(SHIPPED) - realityAngle(0)) < 1)
+  })
+
+  test('left frozen it falls to 68% after a year and to a coin flip after 18 months', () => {
+    assert.equal(Math.round(FROZEN[12]), 68)
+    assert.equal(FROZEN[MONTHS], 52)
+    for (let month = 1; month <= MONTHS; month++) assert.ok(FROZEN[month] <= FROZEN[month - 1])
+  })
+
+  test('never retraining reproduces the frozen line', () => {
+    assert.deepEqual(months(start(), MONTHS, false).history, FROZEN)
+  })
+
+  test('one retraining at month 12 takes it from 68% back to 94%', () => {
+    const before = months(start(), 12, false)
+    const after = retrain(before)
+    assert.equal(Math.round(before.history.at(-1)), 68)
+    assert.equal(after.history.at(-1), 94)
+    assert.deepEqual(after.retrained, [12])
+    assert.ok(Math.abs(modelAngle(after.weights) - realityAngle(12)) < 2)
+  })
+
+  test('retrained every month it never drops below 90%', () => {
+    const world = months(start(), MONTHS, true)
+    assert.equal(world.history.length, MONTHS + 1)
+    assert.ok(Math.min(...world.history) >= 90)
+  })
+
+  test('time stops at the last month', () => {
+    const end = months(start(), MONTHS + 5, false)
+    assert.equal(end.month, MONTHS)
+  })
+})
+
+describe('MemoryLab model', () => {
+  test('everything in the context costs 15,200 tokens on every call', () => {
+    assert.equal(tokensPerCall(ALL_CONTEXT), 15200)
+    assert.equal(wellPlaced(ALL_CONTEXT), 3)
+  })
+
+  test('everything in the weights empties the prompt and misplaces three lessons', () => {
+    assert.equal(tokensPerCall(ALL_WEIGHTS), 0)
+    assert.equal(wellPlaced(ALL_WEIGHTS), 3)
+    assert.equal(ITEMS.filter((item) => item.fit.weights !== 'good').length, 3)
+  })
+
+  test('split by kind: all six fit, and the prompt is seven times shorter', () => {
+    assert.equal(wellPlaced(BY_KIND), ITEMS.length)
+    assert.equal(tokensPerCall(BY_KIND), 2200)
+    assert.equal(Math.round(tokensPerCall(ALL_CONTEXT) / tokensPerCall(BY_KIND)), 7)
+  })
+
+  test('no lesson suits both homes, and none suits neither', () => {
+    for (const item of ITEMS) {
+      const good = ['context', 'weights'].filter((home) => item.fit[home] === 'good')
+      assert.equal(good.length, 1, item.id)
+    }
   })
 })

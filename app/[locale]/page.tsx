@@ -179,13 +179,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <ArrowLink href="/blog">{tb('all_posts')}</ArrowLink>
             </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
+            {/* The newest post leads with a large cover; the rest sit two to a
+                row, so every cover is wide enough for its figure to be read. */}
+            <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+              {posts.map((post, index) => (
                 <BlogCard
                   key={post.slug}
                   post={post}
                   locale={locale}
                   minReadLabel={tb('min_read')}
+                  featured={index === 0}
                 />
               ))}
             </div>

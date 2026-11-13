@@ -1,8 +1,9 @@
-// Every word the two labs show, in both languages the post is written in.
+// Every word the labs show, in both languages the post is written in.
 // `Record<LabLocale, …>` makes a missing French string a type error.
 
 import type { ContextId, Name } from './conditionModel'
 import type { Context, EventId } from './givenModel'
+import type { Fit, Home, ItemId } from './memoryModel'
 
 export type LabLocale = 'en' | 'fr'
 
@@ -296,5 +297,348 @@ export const givenCopy: Record<LabLocale, GivenCopy> = {
     pct: (value) => (value > 0 && value < 1 ? '< 1 %' : `${Math.round(value)} %`),
     disclaimer:
       'Un ensemble imaginaire de 200 conversations, construit pour coller aux chiffres de la première démo. C’est une image de l’idée, pas des données d’un vrai modèle.',
+  },
+}
+
+// ── Post: "Your LLM has two memories" ──────────────────────────────────────
+
+interface DriftCopy {
+  eyebrow: string
+  title: string
+  intro: string
+  worldLabel: string
+  worldHint: string
+  month: (month: number, total: number) => string
+  play: string
+  pause: string
+  replay: string
+  retrain: string
+  auto: string
+  reset: string
+  legendBuys: string
+  legendNot: string
+  legendWrong: string
+  legendModel: string
+  legendReality: string
+  scoreLabel: string
+  accuracyNow: string
+  frozenWouldBe: string
+  retrainCount: string
+  chartLabel: string
+  chartYours: string
+  chartFrozen: string
+  /** One line under the score, chosen by what just happened. */
+  status: {
+    start: string
+    drifting: (lost: number) => string
+    retrained: (from: string, to: string) => string
+    auto: string
+    end: (yours: string, frozen: string) => string
+  }
+  pct: (value: number) => string
+  disclaimer: string
+}
+
+interface MemoryCopy {
+  eyebrow: string
+  title: string
+  intro: string
+  presetsLabel: string
+  presets: Record<'allContext' | 'allWeights' | 'byKind', string>
+  homes: Record<Home, { name: string; note: string }>
+  empty: string
+  itemsLabel: string
+  items: Record<ItemId, { name: string; short: string; verdict: Record<Home, string> }>
+  fit: Record<Fit, string>
+  tokensLabel: string
+  tokensUnit: string
+  placedLabel: string
+  placedOf: (n: number, total: number) => string
+  summary: Record<'allContext' | 'allWeights' | 'byKind' | 'mixed', string>
+  number: (value: number) => string
+  disclaimer: string
+}
+
+export const driftCopy: Record<LabLocale, DriftCopy> = {
+  en: {
+    eyebrow: 'Interactive · a real model, a toy world',
+    title: 'The world moves. Does the model?',
+    intro:
+      'Each dot is a customer. The model drew one line to separate those who buy from those who don’t, and it was right 96% of the time. Now let time pass.',
+    worldLabel: '1 · Watch behaviour drift',
+    worldHint:
+      'The customers stay where they are. What they do changes a little every month. The model’s line only moves if you retrain it.',
+    month: (month, total) => `Month ${month} of ${total}`,
+    play: 'Let time pass',
+    pause: 'Pause',
+    replay: 'Play again',
+    retrain: 'Retrain on this month’s data',
+    auto: 'Retrain every month',
+    reset: 'Start over',
+    legendBuys: 'Buys',
+    legendNot: 'Doesn’t buy',
+    legendWrong: 'The model gets this one wrong',
+    legendModel: 'Where the model draws the line',
+    legendReality: 'Where the line really is today',
+    scoreLabel: '2 · Keep score',
+    accuracyNow: 'Right this month',
+    frozenWouldBe: 'Never retrained',
+    retrainCount: 'Times retrained',
+    chartLabel: 'Accuracy, month by month',
+    chartYours: 'Your model',
+    chartFrozen: 'Never retrained',
+    status: {
+      start: 'Month 0. The model was trained on today’s customers, so the two lines agree.',
+      drifting: (lost) =>
+        `Nothing in the model changed. The customers did, and it has lost ${lost} points since it shipped.`,
+      retrained: (from, to) =>
+        `Retrained: ${from} → ${to}. Same code, same customers. The weights were adjusted to what people do now.`,
+      auto: 'Retrained every month on the month that just ended. It is always a step behind, and it stays good.',
+      end: (yours, frozen) =>
+        yours === frozen
+          ? `After 18 months without retraining: ${frozen}. For a yes-or-no question, that is a coin flip.`
+          : `After 18 months: ${yours} with retraining, ${frozen} without.`,
+    },
+    pct: (value) => `${Math.round(value)}%`,
+    disclaimer:
+      'The world is a toy: two features, and behaviour that turns 5 degrees a month. The model is real: a logistic regression, trained in your browser by gradient descent on 400 customers and scored on the 200 you see, which it never trained on.',
+  },
+  fr: {
+    eyebrow: 'Interactif · un vrai modèle, un monde jouet',
+    title: 'Le monde bouge. Et le modèle ?',
+    intro:
+      'Chaque point est un client. Le modèle a tracé une ligne pour séparer ceux qui achètent de ceux qui n’achètent pas, et il avait raison 96 % du temps. Laissez maintenant passer le temps.',
+    worldLabel: '1 · Regardez les comportements dériver',
+    worldHint:
+      'Les clients ne bougent pas. Ce qu’ils font change un peu chaque mois. La ligne du modèle ne bouge que si vous le réentraînez.',
+    month: (month, total) => `Mois ${month} sur ${total}`,
+    play: 'Laisser passer le temps',
+    pause: 'Pause',
+    replay: 'Rejouer',
+    retrain: 'Réentraîner sur les données du mois',
+    auto: 'Réentraîner chaque mois',
+    reset: 'Recommencer',
+    legendBuys: 'Achète',
+    legendNot: 'N’achète pas',
+    legendWrong: 'Le modèle se trompe sur celui-ci',
+    legendModel: 'Là où le modèle trace la ligne',
+    legendReality: 'Là où la ligne se trouve vraiment aujourd’hui',
+    scoreLabel: '2 · Tenez le score',
+    accuracyNow: 'Juste ce mois-ci',
+    frozenWouldBe: 'Jamais réentraîné',
+    retrainCount: 'Réentraînements',
+    chartLabel: 'Précision, mois après mois',
+    chartYours: 'Votre modèle',
+    chartFrozen: 'Jamais réentraîné',
+    status: {
+      start:
+        'Mois 0. Le modèle a été entraîné sur les clients d’aujourd’hui : les deux lignes coïncident.',
+      drifting: (lost) =>
+        `Rien n’a changé dans le modèle. Les clients, si : il a perdu ${lost} points depuis sa mise en service.`,
+      retrained: (from, to) =>
+        `Réentraîné : ${from} → ${to}. Même code, mêmes clients. Les poids ont été ajustés à ce que les gens font maintenant.`,
+      auto: 'Réentraîné chaque mois sur le mois qui vient de finir. Il a toujours un temps de retard, et il reste bon.',
+      end: (yours, frozen) =>
+        yours === frozen
+          ? `Après 18 mois sans réentraînement : ${frozen}. Pour une question à deux réponses, c’est pile ou face.`
+          : `Après 18 mois : ${yours} avec réentraînement, ${frozen} sans.`,
+    },
+    pct: (value) => `${Math.round(value)} %`,
+    disclaimer:
+      'Le monde est un jouet : deux variables, et des comportements qui tournent de 5 degrés par mois. Le modèle est réel : une régression logistique, entraînée dans votre navigateur par descente de gradient sur 400 clients et évaluée sur les 200 que vous voyez, qu’elle n’a jamais vus à l’entraînement.',
+  },
+}
+
+export const memoryCopy: Record<LabLocale, MemoryCopy> = {
+  en: {
+    eyebrow: 'Interactive · illustrative demo',
+    title: 'Six lessons. Two memories. Where does each one go?',
+    intro:
+      'A support assistant for an online shop. Six things the business has learned. Most teams put all six in the context, because the weights are frozen. Move them around and see what each choice costs.',
+    presetsLabel: 'Quick starts',
+    presets: {
+      allContext: 'All in the context (today)',
+      allWeights: 'All in the weights',
+      byKind: 'Split by kind',
+    },
+    homes: {
+      context: { name: 'Context', note: 'Read again on every call' },
+      weights: { name: 'Weights', note: 'Learned once, by training' },
+    },
+    empty: 'Nothing here',
+    itemsLabel: 'The six lessons',
+    items: {
+      prices: {
+        name: 'This week’s price list',
+        short: 'Prices',
+        verdict: {
+          context:
+            'Change the file and the next answer is right. The model can also show where the price came from.',
+          weights:
+            'Out of date by next week, and changing one number means a training run. The old price can still come out.',
+        },
+      },
+      order: {
+        name: 'One customer’s order status',
+        short: 'Order status',
+        verdict: {
+          context: 'Fetched by a tool at the moment it is needed, for this customer only.',
+          weights:
+            'Live and private. Train on it and you bake one customer’s data into a model that everyone else uses.',
+        },
+      },
+      policy: {
+        name: 'The returns policy that changed on Monday',
+        short: 'Returns policy',
+        verdict: {
+          context: 'In force the minute you update the document. Easy to audit, easy to roll back.',
+          weights:
+            'Fine-tuning is poor at overwriting a fact. The old rule and the new one end up competing.',
+        },
+      },
+      tone: {
+        name: 'The house style: how a reply should sound',
+        short: 'House style',
+        verdict: {
+          context:
+            'A style rule is easy to state and hard to follow. So you paste 40 example replies, and pay for them on every call.',
+          weights:
+            'Stable, and learned by imitation. A few hundred approved replies teach it once. The prompt gets short again.',
+        },
+      },
+      routing: {
+        name: 'Which of 40 teams gets a ticket, from 20,000 past tickets',
+        short: 'Ticket routing',
+        verdict: {
+          context:
+            'You can retrieve ten similar tickets per call. The other 19,990 teach the model nothing.',
+          weights:
+            'This is plain supervised learning. Every resolved ticket is a labelled example, and all 20,000 count.',
+        },
+      },
+      edits: {
+        name: '3,000 drafts your reviewers corrected last quarter',
+        short: 'Reviewer edits',
+        verdict: {
+          context:
+            'You can boil them down to a page of rules. The page keeps what was easy to say and loses the rest.',
+          weights:
+            'Draft in, corrected version out: that is training data. It is the feedback loop classic ML always had.',
+        },
+      },
+    },
+    fit: { good: 'Fits', strained: 'Strained', wrong: 'Wrong place' },
+    tokensLabel: 'Re-read on every call',
+    tokensUnit: 'tokens',
+    placedLabel: 'In a home that suits them',
+    placedOf: (n, total) => `${n} of ${total}`,
+    summary: {
+      allContext:
+        'Today’s default. It works, and the facts are where they belong. But three lessons that need thousands of examples are squeezed into a few pages, and you pay for those pages on every call.',
+      allWeights:
+        'The prompt is empty, and three things are now wrong: prices go stale, a rule can’t be changed by Monday, and private data is inside the model.',
+      byKind:
+        'Facts that change stay in the context. Behaviour learned from examples moves into the weights. The prompt is seven times shorter and nothing is in the wrong place.',
+      mixed: 'Keep going: try to get all six into a home that suits them.',
+    },
+    number: (value) => value.toLocaleString('en-US'),
+    disclaimer:
+      'An illustration. The token counts are rough, round figures and the verdicts are simplified. The split itself follows published comparisons: retrieval is the better home for facts, training for behaviour learned from many examples.',
+  },
+  fr: {
+    eyebrow: 'Interactif · démo illustrative',
+    title: 'Six leçons. Deux mémoires. Où ranger chacune ?',
+    intro:
+      'Un assistant de support pour une boutique en ligne. Six choses que l’entreprise a apprises. La plupart des équipes mettent les six dans le contexte, parce que les poids sont gelés. Déplacez-les et voyez ce que coûte chaque choix.',
+    presetsLabel: 'Départs rapides',
+    presets: {
+      allContext: 'Tout dans le contexte (aujourd’hui)',
+      allWeights: 'Tout dans les poids',
+      byKind: 'Répartir par nature',
+    },
+    homes: {
+      context: { name: 'Contexte', note: 'Relu à chaque appel' },
+      weights: { name: 'Poids', note: 'Appris une fois, par entraînement' },
+    },
+    empty: 'Rien ici',
+    itemsLabel: 'Les six leçons',
+    items: {
+      prices: {
+        name: 'La liste de prix de la semaine',
+        short: 'Prix',
+        verdict: {
+          context:
+            'Modifiez le fichier et la réponse suivante est juste. Le modèle peut aussi montrer d’où vient le prix.',
+          weights:
+            'Périmée dès la semaine prochaine, et changer un chiffre demande un entraînement. L’ancien prix peut encore ressortir.',
+        },
+      },
+      order: {
+        name: 'Le statut de la commande d’un client',
+        short: 'Statut de commande',
+        verdict: {
+          context: 'Récupéré par un outil au moment où on en a besoin, pour ce client seulement.',
+          weights:
+            'Vivant et privé. L’entraîner, c’est graver les données d’un client dans un modèle que tous les autres utilisent.',
+        },
+      },
+      policy: {
+        name: 'La politique de retour, modifiée lundi',
+        short: 'Politique de retour',
+        verdict: {
+          context:
+            'En vigueur dès que vous mettez le document à jour. Facile à auditer, facile à annuler.',
+          weights:
+            'Le fine-tuning écrase mal un fait. L’ancienne règle et la nouvelle se retrouvent en concurrence.',
+        },
+      },
+      tone: {
+        name: 'Le style maison : le ton d’une réponse',
+        short: 'Style maison',
+        verdict: {
+          context:
+            'Une règle de style est facile à énoncer et difficile à suivre. On colle donc 40 réponses modèles, et on les paie à chaque appel.',
+          weights:
+            'Stable, et appris par imitation. Quelques centaines de réponses validées l’enseignent une fois. Le prompt redevient court.',
+        },
+      },
+      routing: {
+        name: 'Laquelle des 40 équipes reçoit un ticket, d’après 20 000 tickets passés',
+        short: 'Routage des tickets',
+        verdict: {
+          context:
+            'On peut retrouver dix tickets similaires par appel. Les 19 990 autres n’apprennent rien au modèle.',
+          weights:
+            'C’est de l’apprentissage supervisé classique. Chaque ticket résolu est un exemple étiqueté, et les 20 000 comptent.',
+        },
+      },
+      edits: {
+        name: '3 000 brouillons corrigés par vos relecteurs le trimestre dernier',
+        short: 'Corrections',
+        verdict: {
+          context:
+            'On peut les résumer en une page de règles. La page garde ce qui était facile à dire et perd le reste.',
+          weights:
+            'Brouillon en entrée, version corrigée en sortie : ce sont des données d’entraînement. C’est la boucle de retour que le ML classique a toujours eue.',
+        },
+      },
+    },
+    fit: { good: 'À sa place', strained: 'À l’étroit', wrong: 'Mauvais endroit' },
+    tokensLabel: 'Relu à chaque appel',
+    tokensUnit: 'tokens',
+    placedLabel: 'Rangées au bon endroit',
+    placedOf: (n, total) => `${n} sur ${total}`,
+    summary: {
+      allContext:
+        'Le choix par défaut aujourd’hui. Cela fonctionne, et les faits sont à leur place. Mais trois leçons qui demandent des milliers d’exemples sont compressées en quelques pages, et ces pages se paient à chaque appel.',
+      allWeights:
+        'Le prompt est vide, et trois choses ne vont plus : les prix se périment, une règle ne peut pas changer pour lundi, et des données privées sont dans le modèle.',
+      byKind:
+        'Les faits qui changent restent dans le contexte. Les comportements appris par l’exemple passent dans les poids. Le prompt est sept fois plus court et rien n’est au mauvais endroit.',
+      mixed: 'Continuez : essayez de ranger les six au bon endroit.',
+    },
+    number: (value) => value.toLocaleString('fr-FR'),
+    disclaimer:
+      'Une illustration. Les nombres de tokens sont des ordres de grandeur arrondis et les verdicts sont simplifiés. La répartition, elle, suit les comparaisons publiées : la recherche documentaire convient mieux aux faits, l’entraînement aux comportements appris à partir de nombreux exemples.',
   },
 }

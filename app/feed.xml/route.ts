@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import { getAllPostFiles } from '@/lib/blog'
 import { SITE_URL, absoluteUrl } from '@/lib/metadata'
 import { routing } from '@/i18n/routing'
@@ -30,6 +32,9 @@ export function GET() {
     .map((post) => {
       const url = absoluteUrl(post.locale, `/blog/${post.slug}`)
       const date = post.date ? new Date(post.date) : null
+      // The cover, for feed readers that show a picture beside each item.
+      const coverBytes = fs.statSync(path.join(process.cwd(), 'public', post.cover)).size
+      const coverType = post.cover.endsWith('.jpg') ? 'image/jpeg' : 'image/png'
       return [
         '    <item>',
         `      <title>${escapeXml(post.title)}</title>`,
@@ -37,6 +42,7 @@ export function GET() {
         `      <guid isPermaLink="true">${url}</guid>`,
         date && !Number.isNaN(date.getTime()) ? `      <pubDate>${date.toUTCString()}</pubDate>` : '',
         `      <description>${escapeXml(post.excerpt)}</description>`,
+        `      <enclosure url="${SITE_URL}${post.cover}" length="${coverBytes}" type="${coverType}" />`,
         `      <category>${escapeXml(post.category)}</category>`,
         `      <dc:language>${post.locale}</dc:language>`,
         '    </item>',

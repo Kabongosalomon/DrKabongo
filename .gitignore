@@ -231,3 +231,13 @@ archive/CV_Salomon_v1.pdf
 
 # Firestore emulator logs (npm run test:rules)
 firestore-debug.log
+
+# Social plan, its card builder and its drawn cards. This repository is public:
+# unposted copy and the launch schedule stay on this machine.
+/marketing/
+
+# HELD BACK: part 2 of the "two memories" series. While these lines are here the
+# post cannot be committed, so it cannot go live or be emailed by accident; it
+# still shows on localhost. To publish it, delete these lines, then commit.
+/content/blog/*/llm-two-memories-part-2.mdx
+/public/images/covers/llm-two-memories-part-2.*

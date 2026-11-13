@@ -51,6 +51,16 @@ npm run build      # Production build
     sorted newest first, with search, topic filter, keyword filter and an oldest-first toggle.
   - A file placed directly in `content/blog/`, or in a folder that isn't a language code,
     fails the build with a message saying where it belongs.
+  - **Every post needs a cover image**, `public/images/covers/<slug>.<language>.png`. It heads
+    the post, its card in every list, the link preview on social networks, the RSS item and the
+    newsletter email. Run `npm run covers` after adding a post and commit the file it draws; a
+    post without one fails the build. A cover is the site's own frame around a headline and one
+    figure, laid out in HTML and photographed by a local Chrome (`scripts/covers/build.mjs`).
+    Give a post its own figure and wording in `scripts/covers/designs.mjs`; without an entry
+    there it gets its title and summary in the same frame. `npm run covers -- <slug>` redraws
+    one post, `npm run covers -- --all` redraws them all.
+  - A closing `## Sources` (or `## References`) section is shown folded and in small type, so
+    the comments sit right under the article. Nothing to do in the post itself.
 - **Courses:** catalogs are generated (edtrace-studio); add each course's publish date and
   keywords in `content/courses.meta.ts` so the index lists the newest first.
 - **Translations:** `messages/{en,fr,sw,ln,lua}.json`

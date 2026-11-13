@@ -1,0 +1,217 @@
+---
+title: "Your LLM Has Two Memories. You’re Only Using One."
+date: "2026-11-13"
+category: "AI"
+tags: ["llm", "fine-tuning", "rag", "context-engineering", "machine-learning", "open-models"]
+excerpt: "Classic machine learning kept learning: when customers changed, we retrained. Most LLM systems freeze the weights and push every lesson into the prompt. RAG, MCP, agents, memory: take away the names and they all do the same thing."
+---
+
+An online shop trains a model to predict which visitors will buy. In January it is excellent. By December it is mediocre.
+
+**Nobody touched the code**. *The customers changed. Tastes shifted, prices moved, a competitor arrived, a new app changed how people shop.*
+
+In classic machine learning we call this **drift**. The model learned a relationship between inputs $x$ and outcomes $y$ at training time, and the world has since moved:
+
+$$
+P_{\text{today}}(y \mid x) \;\neq\; P_{\text{train}}(y \mid x)
+$$
+
+We also had a routine answer: collect what just happened, retrain, redeploy. In symbols, each cycle takes the old weights $\theta_t$ and a fresh batch of data $\mathcal{D}_t$ and nudges them:
+
+$$
+\theta_{t+1} \;=\; \theta_t \;-\; \eta\, \nabla_\theta\, \mathcal{L}\big(\theta_t;\, \mathcal{D}_t\big)
+$$
+
+**A model was never a thing you finished. It was a loop.**
+
+**That loop is what kept machine learning valuable in production.** The first model was rarely the point. The point was that the tenth version knew things about your customers that nobody had ever written down.
+
+## Watch a model go stale
+
+Below is a small real model, a logistic regression, $p(\text{buy} \mid x) = \sigma(w^\top x)$. It learned to separate customers who buy from customers who don’t. Let time pass and watch what happens when it stops learning.
+
+Three experiments, a few seconds each. Do them in order:
+
+1. **Press “Let time pass”** and touch nothing else. Watch the two lines inside the circle, and the score next to it.
+2. **Press “Pause” around month 12, then press “Retrain on this month’s data”.** Watch what the solid line does.
+3. **Press “Start over”, tick “Retrain every month”, then press “Let time pass” again.** Compare the two curves in the chart.
+
+<DriftLab />
+
+What you should have seen:
+
+- **Left alone, the model decays.** It starts at 96%. After a year it is at 68%. After 18 months it is at 52%, which for a yes-or-no question is a coin flip. Not one line of code changed.
+- **One retraining brings it back.** At month 12 it goes from 68% to 94% in one step. The retraining didn’t add a rule. It moved the weights to where the customers are now.
+- **Retrained every month, it holds.** The model is always one month behind, and it never drops below 90%.
+
+Keep that picture in mind. Now look at how we deploy LLMs.
+
+## Two memories
+
+In 2020, Patrick Lewis and his colleagues published the paper that gave us the word RAG: [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401). It also gave us a very useful pair of words. A system like this has two memories:
+
+- **Parametric memory**: what is stored in the model’s weights. It got there by training.
+- **Non-parametric memory**: what is stored outside the weights and looked up when needed. In the paper, that was a searchable index of Wikipedia.
+
+One line of notation makes the difference exact. An LLM produces an answer from a distribution:
+
+$$
+p_\theta(\text{answer} \mid \text{context})
+$$
+
+There are only two things in that expression you can change. **The weights**, $\theta$. And **the context**, everything to the right of the bar. I’ll use “non-parametric” for that whole right-hand side.
+
+## What the RAG paper actually trained
+
+One detail of that paper is easy to forget. **The authors trained both sides.**
+
+Their system had two parts. A retriever scored 21 million Wikipedia passages against the question $x$. A generator wrote the answer $y$ from the passages it was handed. The retrieved passage $z$ was treated as a hidden variable, and the whole system was trained on one objective:
+
+$$
+p(y \mid x) \;\approx\; \sum_{z \,\in\, \text{top-}k} \underbrace{p_\eta(z \mid x)}_{\text{retriever}} \; \underbrace{p_\theta(y \mid x, z)}_{\text{generator}}
+$$
+
+Read it like this. The probability of the right answer is a sum over the passages that were retrieved, each one weighted by how much the retriever liked it. Training pushes that probability up, so the error flows back into **both** terms:
+
+- **The generator learns to read retrieval.** It practises writing answers from the passages this retriever really returns, the good ones and the bad ones.
+- **The retriever learns what “useful” means.** If a passage helped produce the right answer, its score goes up next time. Nobody had to label which passage was the right one. The generator’s success was the label.
+
+It mattered. When the authors froze the retriever and trained only the generator, exact-match accuracy on Natural Questions fell from 43.5 to 37.8.
+
+They did not train everything, though. The document encoder and the index stayed fixed, because re-encoding 21 million passages after every update was too expensive. And they showed what a fixed, replaceable index buys you: they swapped a 2016 Wikipedia index for a 2018 one, and the model’s answers about world leaders followed the index. About 70% correct with the matching year, 12% or less with the wrong one. No retraining.
+
+So the original RAG had two ideas, not one:
+
+1. **Swap the index** to change what the model knows.
+2. **Train the two parts together** so that each learns to work with the other.
+
+### What today’s RAG kept, and what it dropped
+
+Today’s RAG kept the first idea and dropped the second. A typical pipeline is a general-purpose embedding model, a vector database, a frozen LLM, and code to connect them. Nothing in it was trained on your task.
+
+There were good reasons for this, and I don’t want to pretend otherwise:
+
+- **Models learned to read.** In 2020, the generator had to be fine-tuned before it could use a passage at all. A modern LLM uses a pasted passage with no training. That one change made training look optional.
+- **You can’t send a gradient through an API.** With a closed model, there is nothing to backpropagate into.
+- **Separate parts are easy to replace.** New model, new index, new embeddings: each can change without touching the others.
+- **Engineers can build it in a week.** No training data, no GPUs, no loss curves.
+
+But here is what was dropped along with the training:
+
+- **A retriever that knows your task.** A general-purpose embedding ranks passages by “similar in meaning to the question.” The trained retriever ranked them by “helped produce the right answer.” Those are different things. Rerankers, hybrid search and query rewriting are all patches for that gap.
+- **A generator that knows your retriever.** A frozen LLM has never practised on what your retriever returns. It doesn’t know how often the top passage is wrong, or when to ignore it. [RAFT](https://arxiv.org/abs/2403.10131) trains exactly this: ignore the passages that don’t help, and quote the one that does.
+- **The loop.** In the paper, every training example made both parts better. In a frozen pipeline, a wrong answer improves nothing, unless an engineer reads the log and edits a prompt. It is the drift demo again: the system has stopped learning from its own outcomes.
+
+And the gain is still there for those who train. [RA-DIT](https://arxiv.org/abs/2310.01352) fine-tuned the language model to use retrieved text, then the retriever to return what the model prefers, and beat retrieval-in-context baselines by up to 8.9 points on average with no examples in the prompt. [REPLUG](https://arxiv.org/abs/2301.12652) is the result I find most practical: it treats the language model as a black box, trains only the retriever from the model’s own feedback, and still improved GPT-3 by 6.3%. **Even with a closed model, half of the loop is open to you.**
+
+This is the whole argument of this two-part series in miniature. Inside RAG itself, the original design had learning in it. We kept the plumbing and dropped the learning.
+
+## Take away the names
+
+RAG. GraphRAG. Agents. Tools. MCP. Skills. “Memory.” Context engineering.
+
+Each of these is real engineering, and I use most of them. But take away the names and look at what reaches the model. **Every one of them ends the same way: as tokens placed in the context window.**
+
+- RAG finds passages of text and pastes them in.
+- GraphRAG walks a knowledge graph, then writes the facts it found as text and pastes them in.
+- A tool call or an MCP server runs something, and its result is pasted in as text.
+- A “memory” feature saves notes to a store, and pastes some of them back in next time.
+
+Then the model does the only thing it does: it predicts the next token given all of that. (I wrote about that mechanism in [LLMs are conditional probability machines](/blog/conditional-probability-machines).)
+
+Notice what we never get: a guarantee. We choose what goes on the right of the bar. We do not choose how the model uses it. It may lean on the passage, ignore it, or blend it with something half-remembered from training.
+
+And in every one of these techniques, $\theta$ does not move.
+
+## Why we ended up here
+
+Most teams today freeze one memory and work entirely in the other.
+
+The numbers agree. In Menlo Ventures’ 2024 survey of 600 enterprise IT leaders, RAG adoption stood at 51%, and only 9% of production models were fine-tuned. Their 2025 survey calls fine-tuning “still niche”, and finds open-source models falling from 19% to 11% of enterprise usage.
+
+**I think the reason is mostly about people, not about what works best.**
+
+There are far more software engineers than machine learning scientists. One widely repeated estimate from 2023 put it at about 5,000 LLM researchers in the world against about 50 million software engineers. It is a rough figure, but the proportion is the point. Changing the context is an engineering job: an API call, a database, a pipeline. Changing the weights is a machine learning job: data, loss curves, evaluation. **The progress of the last three years happened where the people were.**
+
+That is not a criticism. The engineering has been remarkable. But it means the context side has received nearly all of the effort, and the weights side nearly none. When one of two levers has been pulled that hard for that long, the next big gain is more likely to come from the other one.
+
+Meanwhile the door to the weights is closing. In May 2026, OpenAI began winding down its self-serve fine-tuning platform: no new customers, and no new training jobs for anyone after January 6, 2027. Google’s Gemini API no longer offers a tunable model.
+
+So compare with the lab above. In classic ML, what the business learned flowed back into the weights. **In most LLM systems, it has nowhere to go but the prompt.**
+
+## A brilliant expert with a binder
+
+Here is the picture I find most accurate.
+
+You hire a brilliant expert. They have read almost everything. They also have one odd condition: **they cannot form new memories.** Every morning they wake up knowing exactly what they knew on their first day.
+
+So you give them a binder. Before each task, they read the relevant pages: your prices, your policies, your procedures, notes from last week’s incident. They read fast and they are very good, so this works surprisingly well.
+
+Then the business grows and changes, and three things happen:
+
+- **The binder gets thicker,** and they re-read it for every single task. You pay for that reading every time.
+- **Someone has to find the right pages.** If the wrong pages are pulled, the expert works confidently from the wrong pages.
+- **Some lessons don’t fit on a page.** “Reply the way our best agent does.” “Recognise the customer who is about to leave.” You can’t write those down. People learn them from hundreds of cases.
+
+That last one is the heart of it. **Context holds what you can write down. Weights hold what you can only show by example.**
+
+(I first pictured this as a pie with one half frozen. But slices of a pie are shares of a fixed whole, and these two memories are not shares of anything. They hold different kinds of things, and they multiply each other.)
+
+## The custom GPT lesson
+
+We have already run this experiment at a very large scale.
+
+In late 2023, OpenAI let anyone build a “custom GPT”, and in January 2024 it opened a store for them. The idea was a specialised assistant for every job: the tax GPT, the legal GPT, the recipe GPT. Many people expected these to pull users away from plain ChatGPT.
+
+They didn’t. And OpenAI is now retiring custom GPTs altogether, with the shutdown scheduled for sometime in December 2026.
+
+Look at what a custom GPT was made of: written instructions, a few uploaded files, and some connections to outside services. **It was a binder, and nothing else.** The model underneath was the same ChatGPT everyone already had.
+
+Was something being trained quietly behind the scenes, a small adapter per GPT? OpenAI has not published the internals, so I can’t prove a negative. But everything visible says no:
+
+- **A custom GPT was ready the moment you saved it.** Even a small fine-tuning run needs data preparation and GPU time.
+- **Its builder could change which base model it ran on.** Trained weights are tied to one model. A set of instructions is not.
+- **The uploaded files were kept and searched at answer time.** OpenAI’s own help pages describe them as reference material: part is placed in the context window, the rest goes into a search index. If the model had learned the files, there would be nothing to search.
+- **The files could be extracted word for word.** That only works if they are sitting there as text.
+- **When custom GPTs were migrated, the instructions and the files moved.** There were no weights to move.
+
+That is also why builders had to upload documents at all. With no training, the only way your knowledge reaches the model is by being read again, on every question.
+
+Seen that way, three things follow:
+
+- **It never learned.** After ten thousand conversations, a custom GPT knew exactly what it knew after the first. No correction, no outcome, no pattern of use ever came back into it.
+- **It was easy to copy.** If all your expertise is text in a prompt, it can be read. Researchers tested more than 200 custom GPTs and could extract both the hidden instructions and the uploaded files.
+- **There was nothing to replace ChatGPT with.** Every custom GPT _was_ ChatGPT, with a note attached. Each time the base model improved, the note mattered less.
+
+The lesson I take is narrower, and I think it holds: **a specialist that differs from the generalist only by its context is not a different model. It is the same model, reading a note.**
+
+## So what do we do about it?
+
+First, what this does **not** mean. RAG is not a mistake. For facts that change, retrieval is the right tool, and the evidence for that is strong. I’ll show it in Part 2.
+
+The problem is narrower. **We took a technology that learns, and we deployed it so that it only reads**:
+
+- **The drift demo:** a model that stops learning goes stale, however good it was on day one.
+- **The RAG paper:** the original design trained both memories. We kept the half that needs no training.
+- **Custom GPTs:** a specialist made only of context is the generalist, reading a note.
+
+> **We built systems that read.**
+>
+> **We stopped building systems that learn.**
+
+In Part 2, **“Beyond the Context Window: Teaching the Model Your Business”**, I look at *how far the context window can really go, what context poisoning is and why it is so hard to fix*, and then I get practical: which lessons belong in the context and which in the weights (with a second demo), why **your own data is the one thing a competitor can’t copy**, what efficient fine-tuning really costs, and why I think the next step is open models.
+
+Before you go: where does what your team learns end up today? In a prompt, in a model, or nowhere? Tell me in the comments.
+
+## Sources
+
+- Lewis et al., [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401), NeurIPS 2020
+- Lin et al., [RA-DIT: Retrieval-Augmented Dual Instruction Tuning](https://arxiv.org/abs/2310.01352), ICLR 2024
+- Shi et al., [REPLUG: Retrieval-Augmented Black-Box Language Models](https://arxiv.org/abs/2301.12652), 2023
+- Zhang et al., [RAFT: Adapting Language Model to Domain Specific RAG](https://arxiv.org/abs/2403.10131), 2024
+- Yu et al., [Assessing Prompt Injection Risks in 200+ Custom GPTs](https://arxiv.org/abs/2311.11538), 2023
+- Latent Space, [The Rise of the AI Engineer](https://www.latent.space/p/ai-engineer), 2023
+- Menlo Ventures, The State of Generative AI in the Enterprise, [2024](https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/) and [2025](https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/)
+- OpenAI, [API deprecations: update to self-serve fine-tuning](https://developers.openai.com/api/docs/deprecations), May 2026
+- OpenAI, [Knowledge in GPTs](https://help.openai.com/en/articles/8843948-knowledge-in-gpts) and [Optimizing file uploads in ChatGPT Enterprise](https://help.openai.com/en/articles/10029836-optimizing-file-uploads-in-chatgpt-enterprise)
+- OpenAI, [Custom GPT retirement and migration FAQ](https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq), 2026

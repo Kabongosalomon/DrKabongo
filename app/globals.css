@@ -350,3 +350,72 @@ h4 {
     animation: none;
   }
 }
+
+/* Math in posts (KaTeX): follow the text colour, and let a wide equation scroll
+   inside its own box instead of widening the page on a phone. */
+.prose .katex {
+  color: var(--ink);
+  font-size: 1.1em;
+}
+.prose .katex-display {
+  margin: 1.5rem 0;
+  padding: 0.25rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* A post's sources: folded by default, and set as reference matter (small,
+   tight, quiet) so the list is short when open. Links stay ordinary links. */
+.sources {
+  border-block: 1px solid var(--rule);
+}
+.sources > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+.sources > summary::-webkit-details-marker {
+  display: none;
+}
+.sources > summary::after {
+  content: '+';
+  margin-inline-start: auto;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--ink-3);
+}
+.sources[open] > summary::after {
+  content: '–';
+}
+.sources > summary:hover .eyebrow {
+  color: var(--ink);
+}
+.sources-count {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-3);
+}
+.sources .prose {
+  padding-bottom: 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.sources .prose :is(ul, ol) {
+  margin-block: 0;
+  padding-inline-start: 1.1em;
+}
+.sources .prose li {
+  margin-block: 0.3em;
+}
+.sources .prose a {
+  color: var(--ink-2);
+  text-decoration-color: var(--rule);
+}
+.sources .prose a:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}

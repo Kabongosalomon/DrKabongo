@@ -3,10 +3,20 @@ import { routing } from '@/i18n/routing'
 import { Link, redirect } from '@/i18n/navigation'
 import { LOCALE_NAMES } from '@/i18n/routing'
 import { SITE_URL, absoluteUrl, alternatesFor } from '@/lib/metadata'
-import { getPostForLocale, getPostLanguages, getPostsForLocale } from '@/lib/blog'
+import {
+  COVER_SIZE,
+  getPostForLocale,
+  getPostLanguages,
+  getPostsForLocale,
+  splitSources,
+} from '@/lib/blog'
+import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import 'katex/dist/katex.min.css'
 import rehypeSlug from 'rehype-slug'
 import rehypeHighlight from 'rehype-highlight'
 import BlogComments from '@/components/BlogComments'
@@ -14,6 +24,8 @@ import ShareButton from '@/components/ShareButton'
 import Subscribe from '@/components/Subscribe'
 import ConditionLab from '@/components/blog/labs/ConditionLab'
 import GivenLab from '@/components/blog/labs/GivenLab'
+import DriftLab from '@/components/blog/labs/DriftLab'
+import MemoryLab from '@/components/blog/labs/MemoryLab'
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -31,6 +43,8 @@ export async function generateMetadata({
   if (!post) return {}
   // Shown through a language fallback: the original is the one to index.
   const isFallback = post.locale !== locale
+  // The post's own cover is what a shared link shows, not the site-wide card.
+  const cover = { url: `${SITE_URL}${post.cover}`, ...COVER_SIZE, alt: post.title }
   return {
     title: post.title,
     description: post.excerpt,
@@ -47,6 +61,13 @@ export async function generateMetadata({
       description: post.excerpt,
       publishedTime: post.date || undefined,
       tags: post.tags,
+      images: [cover],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [cover],
     },
   }
 }
@@ -65,6 +86,8 @@ const mdxComponentsFor = (language: string) => ({
   ),
   ConditionLab: () => <ConditionLab locale={language} />,
   GivenLab: () => <GivenLab locale={language} />,
+  DriftLab: () => <DriftLab locale={language} />,
+  MemoryLab: () => <MemoryLab locale={language} />,
 })
 
 export default async function BlogPostPage({
@@ -87,6 +110,13 @@ export default async function BlogPostPage({
   const fallbackLanguage = post.locale !== locale ? LOCALE_NAMES[post.locale] : null
 
   const date = post.date ? new Date(post.date) : null
+  const { body, sources } = splitSources(post.content)
+  const mdxOptions = {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm, remarkMath],
+      rehypePlugins: [rehypeSlug, [rehypeKatex, { throwOnError: false }], rehypeHighlight],
+    },
+  } as React.ComponentProps<typeof MDXRemote>['options']
 
   return (
     <div className="min-h-dvh">
@@ -115,6 +145,20 @@ export default async function BlogPostPage({
         )}
 
         <header className="mt-8 border-b border-rule pb-8">
+          {/* The cover comes first and runs wider than the text column on large
+              screens, so its figure is read at close to the size it was drawn. */}
+          <div className="mb-8 overflow-hidden rounded-lg border border-rule bg-raised lg:-mx-24">
+            <Image
+              src={post.cover}
+              alt={post.title}
+              width={COVER_SIZE.width}
+              height={COVER_SIZE.height}
+              sizes="(min-width: 1024px) 864px, 100vw"
+              className="block h-auto w-full"
+              priority
+            />
+          </div>
+
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-3">
             <span className="eyebrow">{post.category}</span>
             <span aria-hidden="true">·</span>
@@ -174,17 +218,26 @@ export default async function BlogPostPage({
 
         {/* No prose-sm step-down: article text is what people read longest, so it should never sit below the site's 16px baseline, mobile included. */}
         <article lang={post.locale} className="prose mt-10 max-w-none">
-          <MDXRemote
-            source={post.content}
-            components={mdxComponentsFor(post.locale)}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-                rehypePlugins: [rehypeSlug, rehypeHighlight],
-              },
-            }}
-          />
+          <MDXRemote source={body} components={mdxComponentsFor(post.locale)} options={mdxOptions} />
         </article>
+
+        {/* Sources stay with the article, but folded and set small: a reader who
+            wants to reply reaches the comments without scrolling past them. */}
+        {sources && (
+          <details lang={post.locale} className="sources mt-12">
+            <summary>
+              <span className="eyebrow">{sources.heading}</span>
+              {sources.count > 0 && <span className="sources-count">{sources.count}</span>}
+            </summary>
+            <div className="prose max-w-none">
+              <MDXRemote
+                source={sources.list}
+                components={mdxComponentsFor(post.locale)}
+                options={mdxOptions}
+              />
+            </div>
+          </details>
+        )}
 
         <div className="mt-16">
           <Subscribe emailEnabled={Boolean(process.env.KIT_API_KEY && process.env.KIT_FORM_ID)} />
