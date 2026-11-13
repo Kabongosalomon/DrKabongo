@@ -72,6 +72,9 @@
 
   /* 375px — the narrowest phone we lay out for beyond the 320px floor. */
   --breakpoint-xs: 23.4375rem;
+  /* 1920px — full-HD monitors and laptops set to "more space", where a
+     column sized for a 1280px screen looks small and lost in the middle. */
+  --breakpoint-3xl: 120rem;
 }
 
 /* ─────────────────────────────────────────────────────────────

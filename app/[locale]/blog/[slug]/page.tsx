@@ -120,10 +120,14 @@ export default async function BlogPostPage({
 
   return (
     <div className="min-h-dvh">
-      <div className="mx-auto max-w-2xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
+      {/* The reading column grows with the screen, and the type grows with it
+          (see the article below), so a line stays about 85 characters long:
+          on a wide laptop the post fills the page instead of sitting small
+          in the middle of it. */}
+      <div className="mx-auto max-w-2xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24 xl:max-w-3xl 2xl:max-w-[54rem] 3xl:max-w-[60rem]">
         <Link
           href="/blog"
-          className="inline-flex min-w-0 items-center gap-1.5 text-sm text-ink-2 transition-colors hover:text-accent"
+          className="inline-flex min-w-0 items-center gap-1.5 text-sm text-ink-2 transition-colors hover:text-accent xl:text-base"
         >
           <svg
             className="h-3.5 w-3.5 shrink-0"
@@ -147,19 +151,19 @@ export default async function BlogPostPage({
         <header className="mt-8 border-b border-rule pb-8">
           {/* The cover comes first and runs wider than the text column on large
               screens, so its figure is read at close to the size it was drawn. */}
-          <div className="mb-8 overflow-hidden rounded-lg border border-rule bg-raised lg:-mx-24">
+          <div className="mb-8 overflow-hidden rounded-lg border border-rule bg-raised lg:-mx-24 xl:-mx-32 2xl:-mx-40 3xl:-mx-44">
             <Image
               src={post.cover}
               alt={post.title}
               width={COVER_SIZE.width}
               height={COVER_SIZE.height}
-              sizes="(min-width: 1024px) 864px, 100vw"
+              sizes="(min-width: 1920px) 1264px, (min-width: 1536px) 1136px, (min-width: 1280px) 976px, (min-width: 1024px) 816px, 100vw"
               className="block h-auto w-full"
               priority
             />
           </div>
 
-          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-3">
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-3 xl:text-sm">
             <span className="eyebrow">{post.category}</span>
             <span aria-hidden="true">·</span>
             <span>
@@ -169,13 +173,13 @@ export default async function BlogPostPage({
 
           <h1
             lang={post.locale}
-            className="mt-3 font-serif text-3xl leading-tight font-medium text-balance text-ink sm:text-4xl"
+            className="mt-3 font-serif text-3xl leading-tight font-medium text-balance text-ink sm:text-4xl xl:text-5xl xl:leading-[1.1] 3xl:text-[3.5rem]"
           >
             {post.title}
           </h1>
 
           {date && !Number.isNaN(date.getTime()) && (
-            <time dateTime={post.date} className="mt-4 block text-sm text-ink-3">
+            <time dateTime={post.date} className="mt-4 block text-sm text-ink-3 xl:text-base">
               {/* UTC: front-matter dates are bare days, parsed as UTC midnight —
                   in a reader's local zone west of UTC they'd show the day before. */}
               {date.toLocaleDateString(locale, {
@@ -188,7 +192,7 @@ export default async function BlogPostPage({
           )}
 
           {post.tags.length > 0 && (
-            <p className="mt-3 text-xs text-ink-3">{post.tags.map((tag) => `#${tag}`).join(' ')}</p>
+            <p className="mt-3 text-xs text-ink-3 xl:text-sm">{post.tags.map((tag) => `#${tag}`).join(' ')}</p>
           )}
 
           <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
@@ -217,7 +221,7 @@ export default async function BlogPostPage({
         </header>
 
         {/* No prose-sm step-down: article text is what people read longest, so it should never sit below the site's 16px baseline, mobile included. */}
-        <article lang={post.locale} className="prose mt-10 max-w-none">
+        <article lang={post.locale} className="prose mt-10 max-w-none xl:prose-lg 2xl:prose-xl 3xl:text-[1.375rem]">
           <MDXRemote source={body} components={mdxComponentsFor(post.locale)} options={mdxOptions} />
         </article>
 
