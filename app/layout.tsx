@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import {
-  IS_PRODUCTION_DEPLOYMENT,
+  IS_DEV_DEPLOYMENT,
   NOINDEX_ROBOTS,
   SITE_URL,
   alternateOpenGraphLocales,
@@ -10,7 +10,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  ...(!IS_PRODUCTION_DEPLOYMENT ? { robots: NOINDEX_ROBOTS } : {}),
+  ...(IS_DEV_DEPLOYMENT ? { robots: NOINDEX_ROBOTS } : {}),
   title: {
     default: 'Salomon Kabongo, PhD — AI Researcher, Engineer & Educator',
     template: '%s | Dr. Kabongo',

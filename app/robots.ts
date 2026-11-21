@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next'
-import { IS_PRODUCTION_DEPLOYMENT } from '@/lib/metadata'
+import { IS_DEV_DEPLOYMENT } from '@/lib/metadata'
 
 export default function robots(): MetadataRoute.Robots {
-  if (!IS_PRODUCTION_DEPLOYMENT) {
+  if (IS_DEV_DEPLOYMENT) {
     return {
       rules: { userAgent: '*', disallow: '/' },
     }

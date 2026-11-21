@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
-import { IS_PRODUCTION_DEPLOYMENT } from './lib/metadata'
+import { IS_DEV_DEPLOYMENT } from './lib/metadata'
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
-    if (IS_PRODUCTION_DEPLOYMENT) return []
+    if (!IS_DEV_DEPLOYMENT) return []
     return [
       {
         source: '/:path*',

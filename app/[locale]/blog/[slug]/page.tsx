@@ -3,7 +3,7 @@ import { routing } from '@/i18n/routing'
 import { Link, redirect } from '@/i18n/navigation'
 import { LOCALE_NAMES } from '@/i18n/routing'
 import {
-  IS_PRODUCTION_DEPLOYMENT,
+  IS_DEV_DEPLOYMENT,
   NOINDEX_ROBOTS,
   SITE_URL,
   absoluteUrl,
@@ -54,7 +54,7 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
-    robots: !IS_PRODUCTION_DEPLOYMENT
+    robots: IS_DEV_DEPLOYMENT
       ? NOINDEX_ROBOTS
       : isFallback
         ? { index: false }

@@ -4,14 +4,12 @@ import { routing } from '../i18n/routing'
 export const SITE_URL = 'https://drkabongo.com'
 
 /**
- * True only on the live production deployment (`main` → drkabongo.com).
- * Any Vercel preview branch (`dev` → dev.drkabongo.com) sets
- * `VERCEL_ENV="preview"` and/or `VERCEL_GIT_COMMIT_REF="dev"`, which must
- * never be indexed by search engines.
+ * True only on the `dev` branch deployment (`dev` → dev.drkabongo.com).
+ * Production (`main` → drkabongo.com) is never affected.
  */
-export const IS_PRODUCTION_DEPLOYMENT =
-  (process.env.VERCEL_ENV ?? 'production') === 'production' &&
-  process.env.VERCEL_GIT_COMMIT_REF !== 'dev'
+export const IS_DEV_DEPLOYMENT =
+  process.env.VERCEL_GIT_COMMIT_REF === 'dev' ||
+  (process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? '').startsWith('dev.')
 
 export const NOINDEX_ROBOTS: NonNullable<Metadata['robots']> = {
   index: false,
