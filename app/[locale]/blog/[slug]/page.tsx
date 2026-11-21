@@ -2,7 +2,13 @@ import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { Link, redirect } from '@/i18n/navigation'
 import { LOCALE_NAMES } from '@/i18n/routing'
-import { SITE_URL, absoluteUrl, alternatesFor } from '@/lib/metadata'
+import {
+  IS_PRODUCTION_DEPLOYMENT,
+  NOINDEX_ROBOTS,
+  SITE_URL,
+  absoluteUrl,
+  alternatesFor,
+} from '@/lib/metadata'
 import {
   COVER_SIZE,
   getPostForLocale,
@@ -48,7 +54,11 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
-    robots: isFallback ? { index: false } : undefined,
+    robots: !IS_PRODUCTION_DEPLOYMENT
+      ? NOINDEX_ROBOTS
+      : isFallback
+        ? { index: false }
+        : undefined,
     alternates: {
       ...(isFallback
         ? { canonical: absoluteUrl(post.locale, `/blog/${slug}`) }

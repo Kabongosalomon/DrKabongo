@@ -1,9 +1,16 @@
 import type { Metadata } from 'next'
-import { SITE_URL, alternateOpenGraphLocales, alternatesFor } from '@/lib/metadata'
+import {
+  IS_PRODUCTION_DEPLOYMENT,
+  NOINDEX_ROBOTS,
+  SITE_URL,
+  alternateOpenGraphLocales,
+  alternatesFor,
+} from '@/lib/metadata'
 import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  ...(!IS_PRODUCTION_DEPLOYMENT ? { robots: NOINDEX_ROBOTS } : {}),
   title: {
     default: 'Salomon Kabongo, PhD — AI Researcher, Engineer & Educator',
     template: '%s | Dr. Kabongo',

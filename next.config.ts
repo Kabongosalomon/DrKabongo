@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
+import { IS_PRODUCTION_DEPLOYMENT } from './lib/metadata'
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
@@ -9,6 +10,20 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'img.youtube.com' },
     ],
+  },
+  async headers() {
+    if (IS_PRODUCTION_DEPLOYMENT) return []
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow, noarchive',
+          },
+        ],
+      },
+    ]
   },
   /**
    * `vega-canvas` ships a Node build that optionally requires the native

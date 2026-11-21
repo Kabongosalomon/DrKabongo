@@ -1,6 +1,28 @@
-import { routing } from '@/i18n/routing'
+import type { Metadata } from 'next'
+import { routing } from '../i18n/routing'
 
 export const SITE_URL = 'https://drkabongo.com'
+
+/**
+ * True only on the live production deployment (`main` → drkabongo.com).
+ * Any Vercel preview branch (`dev` → dev.drkabongo.com) sets
+ * `VERCEL_ENV="preview"` and/or `VERCEL_GIT_COMMIT_REF="dev"`, which must
+ * never be indexed by search engines.
+ */
+export const IS_PRODUCTION_DEPLOYMENT =
+  (process.env.VERCEL_ENV ?? 'production') === 'production' &&
+  process.env.VERCEL_GIT_COMMIT_REF !== 'dev'
+
+export const NOINDEX_ROBOTS: NonNullable<Metadata['robots']> = {
+  index: false,
+  follow: false,
+  nocache: true,
+  googleBot: {
+    index: false,
+    follow: false,
+    noimageindex: true,
+  },
+}
 
 export const OPEN_GRAPH_LOCALES: Record<string, string> = {
   en: 'en_US',
