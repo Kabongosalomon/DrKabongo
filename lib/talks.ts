@@ -1,14 +1,19 @@
 import { TALKS, type InteractiveTalkSpec, type Talk } from '@/content/talks'
 import { lessonLanguages, pickLocalized, resolveLessonLanguage } from '@/lib/courses'
+import { IS_DEV_DEPLOYMENT } from '@/lib/metadata'
 
 /**
- * Draft talks stay visible during local development (`npm run dev`) or when
- * explicitly opted in via `SHOW_DRAFT_TALKS=1` (e.g., when promoting a talk to
- * `dev.drkabongo.com` before `drkabongo.com`), and are omitted from default
- * production/staging builds.
+ * Draft talks stay visible during local development (`npm run dev`), on the
+ * `dev` branch deployment (`dev.drkabongo.com`, which is already `noindex`),
+ * or when explicitly opted in via `SHOW_DRAFT_TALKS=1`, and stay hidden on
+ * production (`main` -> `drkabongo.com`) until `draft` is set to `false`.
  */
 export function showDraftTalks(): boolean {
-  return process.env.NODE_ENV !== 'production' || process.env.SHOW_DRAFT_TALKS === '1'
+  return (
+    process.env.NODE_ENV !== 'production' ||
+    IS_DEV_DEPLOYMENT ||
+    process.env.SHOW_DRAFT_TALKS === '1'
+  )
 }
 
 export function getVisibleTalks(): Talk[] {
