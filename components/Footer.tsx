@@ -18,6 +18,7 @@ export default function Footer() {
 
   const explore = [
     { href: '/courses', label: tn('courses') },
+    { href: '/speaking', label: tn('speaking') },
     { href: '/videos', label: tn('videos') },
     { href: '/blog', label: tn('blog') },
     { href: '/publications', label: tn('publications') },
@@ -26,7 +27,7 @@ export default function Footer() {
   ]
 
   const work = [
-    { href: '/speaking', label: tn('speaking') },
+    { href: '/speaking#invite', label: tn('speaking_invitations') },
     { href: '/consulting', label: tn('consulting') },
   ]
 

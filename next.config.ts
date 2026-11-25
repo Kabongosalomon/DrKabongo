@@ -1,29 +1,22 @@
 import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
-import { IS_DEV_DEPLOYMENT } from './lib/metadata'
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
 const nextConfig: NextConfig = {
+  /**
+   * Static export (`out/`) hosted on AWS S3 + CloudFront (matching DarAkili).
+   * Clean URLs, `as-needed` locale routing (`/` -> `/en.html`), `www` redirect,
+   * and `X-Robots-Tag: noindex` on `dev` are handled at the edge by the
+   * CloudFront Function & Response Headers Policy in `infrastructure/`.
+   */
+  output: 'export',
   pageExtensions: ['ts', 'tsx', 'mdx'],
   images: {
+    unoptimized: true,
     remotePatterns: [
       { protocol: 'https', hostname: 'img.youtube.com' },
     ],
-  },
-  async headers() {
-    if (!IS_DEV_DEPLOYMENT) return []
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex, nofollow, noarchive',
-          },
-        ],
-      },
-    ]
   },
   /**
    * `vega-canvas` ships a Node build that optionally requires the native

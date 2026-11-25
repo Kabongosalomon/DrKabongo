@@ -31,11 +31,11 @@ const PROJECTS: Project[] = [
   {
     name: 'DarAkili',
     description:
-      'A multilingual STEM education platform where African professionals share free mini-courses in the languages their communities use, connecting expertise across the diaspora and the continent.',
-    tags: ['STEM Education', 'African Languages', 'Community', 'Platform'],
+      "Built under SALELA BONGO LLC alongside N'Dah Jean Kouagou, PhD: an audio-first multilingual STEM and AI education platform where African professionals share free mini-courses in Lingala, Tshiluba, and Swahili so language is never a gate to knowledge.",
+    tags: ['STEM & AI Education', 'African Languages', 'Audio-First', 'SALELA BONGO LLC'],
     demo: 'https://darakili.com',
     youtube: 'https://www.youtube.com/@DarAkili',
-    highlight: 'STEM education platform',
+    highlight: 'SALELA BONGO LLC · STEM & AI education platform',
   },
   {
     name: 'IrokoBench',

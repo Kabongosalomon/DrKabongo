@@ -39,7 +39,12 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">{t('subtitle')}</p>
 
         <div className="mt-10 max-w-2xl">
-          <Subscribe emailEnabled={Boolean(process.env.KIT_API_KEY && process.env.KIT_FORM_ID)} />
+          <Subscribe
+            emailEnabled={Boolean(
+              process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED === 'true' ||
+                (process.env.KIT_API_KEY && process.env.KIT_FORM_ID),
+            )}
+          />
         </div>
 
         {posts.length === 0 ? (

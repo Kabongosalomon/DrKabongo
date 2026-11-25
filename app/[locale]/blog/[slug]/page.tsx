@@ -254,7 +254,12 @@ export default async function BlogPostPage({
         )}
 
         <div className="mt-16">
-          <Subscribe emailEnabled={Boolean(process.env.KIT_API_KEY && process.env.KIT_FORM_ID)} />
+          <Subscribe
+            emailEnabled={Boolean(
+              process.env.NEXT_PUBLIC_SUBSCRIBE_ENABLED === 'true' ||
+                (process.env.KIT_API_KEY && process.env.KIT_FORM_ID),
+            )}
+          />
         </div>
 
         <BlogComments slug={post.slug} locale={locale} />

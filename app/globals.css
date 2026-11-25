@@ -287,7 +287,7 @@ h4 {
  * environment panel parks underneath the nav.
  */
 .edtrace-host .edtrace-viewer {
-  --et-sticky-top: 4rem;
+  --et-sticky-top: calc(var(--et-host-top, 4rem) + var(--et-toolbar-height, 0px));
 }
 
 /* ─────────────────────────────────────────────────────────────

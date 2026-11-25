@@ -1,0 +1,122 @@
+name: Deploy to AWS (S3 + CloudFront)
+
+on:
+  push:
+    branches: [dev, main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target AWS environment
+        required: true
+        default: dev
+        type: choice
+        options: [dev, prod]
+      show_draft_talks:
+        description: Include draft talks in this build (dev preview only)
+        required: false
+        default: false
+        type: boolean
+
+env:
+  AWS_REGION: us-east-1
+
+concurrency:
+  group: deploy-drkabongo-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify tests, lint, and types
+        run: |
+          npm run test:edtrace
+          npm run test:labs
+          npm run lint
+          npx tsc --noEmit
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::519025701026:role/github-deployer
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: '1.9.0'
+          terraform_wrapper: false
+
+      - name: Resolve target environment
+        id: env
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "value=${{ github.event.inputs.environment }}" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ github.ref_name }}" == "main" ]]; then
+            echo "value=prod" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=dev" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Terraform Init
+        working-directory: infrastructure
+        run: terraform init -backend-config="backends/${{ steps.env.outputs.value }}.s3.tfbackend"
+
+      - name: Terraform Validate
+        working-directory: infrastructure
+        run: terraform validate
+
+      - name: Terraform Plan & Apply
+        working-directory: infrastructure
+        env:
+          TF_VAR_kit_api_key: ${{ secrets.KIT_API_KEY }}
+          TF_VAR_kit_form_id: ${{ secrets.KIT_FORM_ID }}
+        run: |
+          terraform plan -var-file="vars/${{ steps.env.outputs.value }}.tfvars" -out=tfplan
+          terraform apply -auto-approve tfplan
+
+      - name: Read Terraform Outputs
+        id: tf
+        working-directory: infrastructure
+        run: |
+          echo "bucket=$(terraform output -raw frontend_s3_bucket_name)" >> "$GITHUB_OUTPUT"
+          echo "dist_id=$(terraform output -raw frontend_cloudfront_distribution_id)" >> "$GITHUB_OUTPUT"
+          echo "cf_domain=$(terraform output -raw frontend_cloudfront_domain_name)" >> "$GITHUB_OUTPUT"
+          echo "subscribe_url=$(terraform output -raw subscribe_lambda_url 2>/dev/null || echo '')" >> "$GITHUB_OUTPUT"
+
+      - name: Build and Deploy Static Site to S3 + CloudFront
+        env:
+          FRONTEND_S3_BUCKET: ${{ steps.tf.outputs.bucket }}
+          FRONTEND_CLOUDFRONT_DISTRIBUTION_ID: ${{ steps.tf.outputs.dist_id }}
+          NEXT_PUBLIC_APP_ENV: ${{ steps.env.outputs.value }}
+          NEXT_PUBLIC_ROOT_DOMAIN: ${{ steps.env.outputs.value == 'prod' && 'drkabongo.com' || 'dev.drkabongo.com' }}
+          NEXT_PUBLIC_SUBSCRIBE_ENABLED: ${{ steps.tf.outputs.subscribe_url != '' && 'true' || 'false' }}
+          SHOW_DRAFT_TALKS: ${{ (steps.env.outputs.value == 'dev' && github.event.inputs.show_draft_talks == 'true') && '1' || '0' }}
+        run: |
+          chmod +x scripts/deploy_frontend.sh
+          ./scripts/deploy_frontend.sh "${{ steps.env.outputs.value }}"
+
+      - name: Deployment Summary
+        run: |
+          echo "## Dr. Kabongo AWS Deployment Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Environment:** ${{ steps.env.outputs.value }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **S3 Bucket:** \`${{ steps.tf.outputs.bucket }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **CloudFront Distribution ID:** \`${{ steps.tf.outputs.dist_id }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **CloudFront Target Domain:** \`${{ steps.tf.outputs.cf_domain }}\`" >> "$GITHUB_STEP_SUMMARY"

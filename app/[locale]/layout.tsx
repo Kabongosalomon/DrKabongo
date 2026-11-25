@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { Newsreader, Inter, JetBrains_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/react'
 import { routing } from '@/i18n/routing'
 import { alternateOpenGraphLocales, openGraphLocaleFor } from '@/lib/metadata'
 import Nav from '@/components/Nav'
@@ -91,7 +90,6 @@ export default async function LocaleLayout({
           <main id="main">{children}</main>
           <Footer />
         </NextIntlClientProvider>
-        <Analytics />
       </body>
     </html>
   )

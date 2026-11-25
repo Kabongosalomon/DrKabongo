@@ -4,6 +4,7 @@
     "courses": "Cours",
     "videos": "Vidéos",
     "speaking": "Conférences",
+    "speaking_invitations": "Invitations à intervenir",
     "consulting": "Conseil",
     "blog": "Blog",
     "projects": "Projets",
@@ -28,7 +29,8 @@
     "cta_work": "Découvrir mon travail",
     "now_label": "En bref",
     "now_role": "Lead Software Engineer, Innovation Group chez State Farm",
-    "now_darakili": "Dr. Kabongo · éducation à l'IA et contribution à DarAkili",
+    "now_darakili": "Fondateur, SALELA BONGO LLC · développement de DarAkili (STEM & IA en langues africaines)",
+    "now_recognition": "Africa AI 100 (2026) · Oxford Global Think Tank — Portrait 24/100, « Computing in Tshiluba »",
     "portrait_alt": "Salomon Kabongo"
   },
   "videos": {
@@ -104,7 +106,7 @@
     "figures_label": "Quelques repères",
     "read_cv": "Lire le CV complet",
     "see_publications": "Voir les publications",
-    "darakili": "Cette conviction guide aussi mon travail sur DarAkili, une plateforme d'éducation scientifique où des professionnels africains publient de courtes formations gratuites dans leurs propres langues.",
+    "darakili": "Cette conviction guide aussi SALELA BONGO LLC et DarAkili (co-créé avec N'Dah Jean Kouagou, PhD), une plateforme audio d'éducation aux STEM et à l'IA en lingala, tshiluba et swahili.",
     "see_projects": "Voir les projets"
   },
   "stats": {
@@ -115,6 +117,11 @@
         "detail": "Leibniz Universität Hannover · obtenu en novembre 2025"
       },
       {
+        "value": "Africa AI 100",
+        "label": "Lauréat inaugural 2026 · Portrait 24/100",
+        "detail": "« Computing in Tshiluba » (The Languages) · Oxford Global Think Tank"
+      },
+      {
         "value": "Brevet américain 12 613 996",
         "label": "Confidentialité et désidentification des images",
         "detail": "Délivré le 28 avril 2026"
@@ -123,11 +130,6 @@
         "value": "Meilleur article",
         "label": "Travaux reconnus en premier auteur",
         "detail": "ICADL 2021"
-      },
-      {
-        "value": "IA appliquée",
-        "label": "De la recherche aux systèmes réels",
-        "detail": "Expérience en IA multimodale, documentaire et générative"
       },
       {
         "value": "Ancien membre du conseil",
@@ -142,11 +144,16 @@
     ]
   },
   "speaking": {
-    "section_label": "Conférences",
-    "home_title": "Conférences, cours et tables rondes",
-    "home_subtitle": "J'interviens en anglais ou en français auprès de publics scientifiques, techniques et généralistes sur l'IA moderne, les systèmes appliqués, les langues africaines et les carrières techniques.",
-    "title": "Conférences",
-    "subtitle": "J'interviens auprès d'universités, de groupes de recherche, de conférences et d'entreprises — en anglais ou en français, à distance ou sur place.",
+    "section_label": "Conférences & Présentations",
+    "home_title": "Conférences, cours universitaires et présentations",
+    "home_subtitle": "Conférences invitées, cours universitaires et présentations interactives EdTrace en anglais et en français sur l'IA moderne, ses fondations, les langues africaines et les carrières techniques.",
+    "title": "Conférences, cours et présentations",
+    "subtitle": "Cours universitaires, keynotes et présentations interactives EdTrace en anglais et en français — accompagnés d'enregistrements, de posters et d'invitations.",
+    "presentations_label": "Présentations interactives",
+    "interactive_badge": "Présentation interactive EdTrace",
+    "open_presentation": "Ouvrir la présentation interactive",
+    "back_to_talks": "Toutes les conférences",
+    "all_talks": "Toutes les conférences",
     "topics_title": "Mes sujets d'intervention",
     "topic_1_title": "Ce que l'IA moderne peut — et ne peut pas — faire",
     "topic_1_desc": "Une lecture claire des capacités actuelles, des modes d'échec fréquents et des moyens d'évaluer les affirmations sans céder au battage médiatique.",
@@ -204,7 +211,24 @@
     "video_language_note": "Cet enregistrement est en {language}.",
     "fallback_notice": "Cette leçon n'est pas encore disponible en {requested} — vous lisez la version en {shown}.",
     "dismiss": "Fermer",
-    "back_to_courses": "Tous les cours"
+    "back_to_courses": "Tous les cours",
+    "present_fullscreen": "Présenter en plein écran",
+    "present_button": "Présenter",
+    "fullscreen": "Plein écran",
+    "exit_fullscreen": "Quitter le plein écran",
+    "table_of_contents": "Table des matières",
+    "toc_overview": "Plan de la leçon et sections",
+    "veil_upcoming": "Masquer la suite",
+    "slide_layout": "Vue diapo",
+    "restart_lesson": "Retour au début",
+    "presentation_controls": "Commandes de présentation",
+    "shortcuts": "Raccourcis clavier",
+    "shortcut_next": "Étape suivante",
+    "shortcut_prev": "Étape précédente",
+    "shortcut_step_over": "Passer la fonction",
+    "shortcut_step_out": "Sortir de la fonction",
+    "shortcut_updates": "Mise à jour précédente / suivante",
+    "shortcut_toggles": "Code brut / environnement / notes"
   },
   "blog": {
     "section_label": "Blog",

@@ -218,6 +218,13 @@ __marimo__/
 
 node_modules/
 .next/
+/out/
+# Terraform & Lambda build artifacts
+infrastructure/.terraform/
+infrastructure/.build/
+infrastructure/tfplan
+infrastructure/*.tfstate
+infrastructure/*.tfstate.*
 # typescript incremental build info
 tsconfig.tsbuildinfo
 

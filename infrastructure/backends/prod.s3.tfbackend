@@ -1,0 +1,3 @@
+bucket = "salela-bongo-tf-states"
+key    = "drkabongo/prod_drkabongo_web.tfstate"
+region = "us-east-1"

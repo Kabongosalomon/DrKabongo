@@ -3,7 +3,8 @@
     "home": "Ebandeli",
     "courses": "Bacours",
     "videos": "Bavideo",
-    "speaking": "Baconférence",
+    "speaking": "Masolo",
+    "speaking_invitations": "Kobenga mpo na conférence",
     "consulting": "Toli",
     "blog": "Blog",
     "projects": "Baprojet",
@@ -28,7 +29,8 @@
     "cta_work": "Tala mosala na ngai",
     "now_label": "Na mokuse",
     "now_role": "Lead Software Engineer, Innovation Group na State Farm",
-    "now_darakili": "Dr. Kabongo · éducation ya AI pe mosala na DarAkili",
+    "now_darakili": "Mokeli, SALELA BONGO LLC · kotonga DarAkili (STEM & AI na minoko ya Afrika)",
+    "now_recognition": "Africa AI 100 (2026) · Oxford Global Think Tank — Portrait 24/100, « Computing in Tshiluba »",
     "portrait_alt": "Salomon Kabongo"
   },
   "videos": {
@@ -104,7 +106,7 @@
     "figures_label": "Ndakisa ya mosala",
     "read_cv": "Tanga CV mobimba",
     "see_publications": "Tala bapublication",
-    "darakili": "Conviction wana ekambaka mpe mosala na ngai na DarAkili, plateforme ya éducation STEM esika ba professionnel ya Afrique babimisaka minicours ofele na minoko na bango moko.",
+    "darakili": "Conviction wana ekambaka mpe SALELA BONGO LLC pe DarAkili (elongo na N'Dah Jean Kouagou, PhD), plateforme ya éducation STEM pe AI na Lingala, Tshiluba pe Swahili.",
     "see_projects": "Tala baprojet"
   },
   "stats": {
@@ -115,6 +117,11 @@
         "detail": "Leibniz Universität Hannover · esilaki na novembre 2025"
       },
       {
+        "value": "Africa AI 100",
+        "label": "Lokumu ya 2026 · Portrait 24/100",
+        "detail": "« Computing in Tshiluba » (The Languages) · Oxford Global Think Tank"
+      },
+      {
         "value": "Brevet US 12,613,996",
         "label": "Confidentialité pe désidentification ya ba image",
         "detail": "Epesami le 28 avril 2026"
@@ -123,11 +130,6 @@
         "value": "Best Paper",
         "label": "Recherche ya premier auteur oyo e reconnu",
         "detail": "ICADL 2021"
-      },
-      {
-        "value": "AI appliquée",
-        "label": "Uta recherche kino ba système ya solo",
-        "detail": "Expérience na AI multimodale, documentaire pe générative"
       },
       {
         "value": "Ancien membre ya conseil",
@@ -142,11 +144,16 @@
     ]
   },
   "speaking": {
-    "section_label": "Baconférence",
-    "home_title": "Baconférence, bacours pe ba table ronde",
-    "home_subtitle": "Nalobaka na Anglais to Français liboso ya public ya recherche, technique pe général mpo na AI ya sika, ba système appliqué, technologie ya minoko ya Afrique pe carrière technique.",
-    "title": "Baconférence",
-    "subtitle": "Nalobaka na ba université, ba groupe ya recherche, baconférence pe ba entreprise — na Anglais to Français, en ligne to na présentiel.",
+    "section_label": "Masolo & Baconférence",
+    "home_title": "Baconférence, mateya ya université pe ba présentation",
+    "home_subtitle": "Baconférence, mateya ya université pe ba présentation ya interactif EdTrace mpo na AI ya sika, miboko na yango, pe minoko ya Afrika.",
+    "title": "Masolo, mateya pe ba présentation",
+    "subtitle": "Mateya ya université, baconférence pe ba présentation ya interactif EdTrace na Anglais pe Français.",
+    "presentations_label": "Ba présentation ya interactif",
+    "interactive_badge": "Présentation ya interactif EdTrace",
+    "open_presentation": "Fungola présentation",
+    "back_to_talks": "Baconférence nionso",
+    "all_talks": "Baconférence nionso",
     "topics_title": "Makambo oyo nalobelaka",
     "topic_1_title": "Nini AI ya sika ekoki — pe ekoki te — kosala",
     "topic_1_desc": "Explication ya polele ya ba capacité ya lelo, ndenge ekweyaka mbala mingi, pe ndenge ya ko évaluer ba déclaration kozanga hype.",
@@ -204,7 +211,24 @@
     "video_language_note": "Enregistrement oyo ezali na {language}.",
     "fallback_notice": "Leçon oyo ezali naino te na {requested} — ozali kotanga version ya {shown}.",
     "dismiss": "Kanga",
-    "back_to_courses": "Bacours nionso"
+    "back_to_courses": "Bacours nionso",
+    "present_fullscreen": "Lakisa na écran mobimba",
+    "present_button": "Lakisa",
+    "fullscreen": "Écran mobimba",
+    "exit_fullscreen": "Bima na écran mobimba",
+    "table_of_contents": "Ndimbu ya malako",
+    "toc_overview": "Plan ya leçon pe ba section",
+    "veil_upcoming": "Zipa oyo elandi",
+    "slide_layout": "Vue diapo",
+    "restart_lesson": "Zonga na ebandeli",
+    "presentation_controls": "Ba commande ya présentation",
+    "shortcuts": "Ba raccourci ya clavier",
+    "shortcut_next": "Etape oyo elandi",
+    "shortcut_prev": "Etape ya liboso",
+    "shortcut_step_over": "Leka fonction",
+    "shortcut_step_out": "Bima na fonction",
+    "shortcut_updates": "Update ya liboso / oyo elandi",
+    "shortcut_toggles": "Code / environnement / ba note"
   },
   "blog": {
     "section_label": "Blog",
