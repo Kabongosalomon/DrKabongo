@@ -1,0 +1,422 @@
+/*
+ * Host presentation enhancements for the vendored EdTrace viewer.
+ *
+ * Kept outside `components/edtrace/vendor/` so `sync_web_bundle.py` can update
+ * vendored viewer files and course traces without overwriting fullscreen mode,
+ * Table of Contents navigation, or host layout rules.
+ */
+
+.edtrace-host {
+  --et-host-top: 4rem;
+  --et-toolbar-height: 48px;
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .edtrace-host {
+  background-color: #141312;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Fullscreen presentation mode (both native Fullscreen API and viewport fallback). */
+.edtrace-host.is-fullscreen,
+.edtrace-host:fullscreen,
+.edtrace-host:-webkit-full-screen {
+  --et-host-top: 0px;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  overflow-y: auto;
+  overflow-x: clip;
+  overscroll-behavior: contain;
+}
+
+/* Offset the vendored viewer's sticky header below the site nav + host toolbar. */
+.edtrace-host .edtrace-viewer.edtrace-viewer {
+  --et-sticky-top: calc(var(--et-host-top) + var(--et-toolbar-height));
+  border-radius: 0 0 12px 12px;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer,
+.edtrace-host:fullscreen .edtrace-viewer,
+.edtrace-host:-webkit-full-screen .edtrace-viewer {
+  min-height: calc(100dvh - var(--et-toolbar-height));
+  border-radius: 0;
+}
+
+/*
+ * CRITICAL FIX: Never hide unvisited lines with `display: none`.
+ *
+ * The vendored stylesheet sets `.present-mode .cloaked { display: none }`,
+ * which collapses a 1200-step presentation down to 2 lines and hides the
+ * remaining `table_of_contents()` calls when `animate` is enabled. Dimming
+ * with opacity matches the local EdTrace presentation behavior across both
+ * classic and slide layouts while keeping the full lesson structure navigable.
+ */
+.edtrace-host .edtrace-viewer .cloaked,
+.edtrace-host .edtrace-viewer .present-mode .cloaked {
+  display: block;
+  opacity: 0.2;
+  transition: opacity 0.15s ease;
+}
+
+/* Prevent horizontal overflow in classic (non-present) mode on medium viewports. */
+.edtrace-host .edtrace-viewer .trace-viewer-container {
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0 clamp(12px, 2.5vw, 32px) 32px;
+}
+
+.edtrace-host .edtrace-viewer .lines-panel {
+  min-width: 0;
+  width: 100%;
+}
+
+.edtrace-host .edtrace-viewer .header {
+  margin: 0 calc(-1 * clamp(12px, 2.5vw, 32px)) 12px;
+  padding: 12px clamp(12px, 2.5vw, 32px);
+}
+
+.edtrace-host .edtrace-viewer .present-mode .header {
+  margin: 0 calc(-1 * clamp(12px, 2.5vw, 32px)) 12px;
+  padding: 12px clamp(12px, 2.5vw, 32px) 14px;
+}
+
+/* Keep scrollIntoView targets clear of the sticky presentation chrome. */
+.edtrace-host .edtrace-viewer .line {
+  scroll-margin-top: calc(var(--et-sticky-top) + 96px);
+  scroll-margin-bottom: 72px;
+}
+
+/* Hide orphan line numbers on blank visual spacer lines and pure-rendering (prose/math/plot) lines. */
+.edtrace-host .edtrace-viewer .line.et-empty-line .line-number {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.edtrace-host .edtrace-viewer .line.et-rendering-line .line-number,
+.edtrace-host .edtrace-viewer .line.et-rendering-line > span > .code-container,
+.edtrace-host .edtrace-viewer .line:has(.renderings) .line-number,
+.edtrace-host .edtrace-viewer .line:has(.renderings) > span > .code-container {
+  display: none;
+}
+
+.edtrace-host .edtrace-viewer .line.et-rendering-line,
+.edtrace-host .edtrace-viewer .line:has(.renderings) {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/*
+ * MathJax SVG layout fix: Tailwind v4 Preflight sets `svg { display: block }`
+ * globally, which breaks every inline `$...$` formula onto its own line.
+ * Restore inline-block for inline math and center display `$$...$$` formulas.
+ */
+.edtrace-host .edtrace-viewer mjx-container,
+.edtrace-host .edtrace-viewer mjx-container > svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.edtrace-host .edtrace-viewer mjx-container {
+  margin: 0 0.12em;
+}
+
+.edtrace-host .edtrace-viewer .renderings > span:has(mjx-container[display="true"]),
+.edtrace-host .edtrace-viewer .renderings .markdown:has(mjx-container[display="true"]) {
+  display: block;
+  width: 100%;
+}
+
+.edtrace-host .edtrace-viewer mjx-container[display="true"] {
+  display: block;
+  width: 100%;
+  margin: 1rem auto;
+  text-align: center;
+  font-size: 1.2em;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.edtrace-host .edtrace-viewer mjx-container[display="true"] > svg {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/*
+ * Park the floating environment panel on the top-right below the sticky header
+ * before the presenter drags it, so it never covers `table_of_contents()` or
+ * the site's top navigation bar on first appearance. Once dragged, inline
+ * pixel coordinates differ from `20px` and take over seamlessly.
+ */
+@media (min-width: 761px) {
+  .edtrace-host
+    .edtrace-viewer
+    .trace-viewer-container:not(.present-mode)
+    .env-panel[style*="left: 20px"][style*="top: 20px"] {
+    left: auto !important;
+    right: 28px !important;
+    top: calc(var(--et-sticky-top) + 86px) !important;
+  }
+}
+
+/* Interactive `def table_of_contents()` lines in the source display. */
+.edtrace-host .edtrace-viewer .line.et-toc-header-line,
+.edtrace-host .edtrace-viewer .line.et-toc-call-line {
+  cursor: pointer;
+  border-radius: 6px;
+  transition:
+    background-color 0.14s ease,
+    opacity 0.14s ease;
+}
+
+.edtrace-host .edtrace-viewer .line.et-toc-call-line.cloaked:hover,
+.edtrace-host .edtrace-viewer .line.et-toc-header-line.cloaked:hover {
+  opacity: 0.9;
+}
+
+.edtrace-host .edtrace-viewer .line.et-toc-header-line:hover,
+.edtrace-host .edtrace-viewer .line.et-toc-call-line:hover {
+  background-color: rgba(99, 102, 241, 0.09);
+}
+
+[data-theme="dark"] .edtrace-host .edtrace-viewer .line.et-toc-header-line:hover,
+[data-theme="dark"] .edtrace-host .edtrace-viewer .line.et-toc-call-line:hover {
+  background-color: rgba(129, 140, 248, 0.14);
+}
+
+.edtrace-host .edtrace-viewer .line.et-toc-call-line:hover .code-container:not(.line-number) {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.edtrace-host .edtrace-viewer .line.et-toc-active-section:not(.current-line) {
+  box-shadow: inset 3px 0 rgba(99, 102, 241, 0.45);
+}
+
+/* Sticky presentation control bar above the viewer header. */
+.edtrace-toolbar {
+  position: sticky;
+  top: var(--et-host-top);
+  z-index: 130;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  min-height: 48px;
+  padding: 8px clamp(12px, 2.5vw, 24px);
+  border-bottom: 1px solid var(--rule);
+  border-radius: 12px 12px 0 0;
+  background-color: color-mix(in oklab, var(--surface) 96%, transparent);
+  backdrop-filter: blur(8px);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+
+.edtrace-host.is-fullscreen .edtrace-toolbar,
+.edtrace-host:fullscreen .edtrace-toolbar,
+.edtrace-host:-webkit-full-screen .edtrace-toolbar {
+  border-radius: 0;
+}
+
+.edtrace-toolbar-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.edtrace-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  background-color: var(--paper);
+  color: var(--ink-2);
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.14s ease,
+    border-color 0.14s ease,
+    color 0.14s ease;
+}
+
+.edtrace-btn:hover:not(:disabled) {
+  border-color: var(--ink-3);
+  color: var(--ink);
+}
+
+.edtrace-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.edtrace-btn[aria-pressed="true"],
+.edtrace-btn[aria-expanded="true"] {
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
+  color: var(--ink);
+}
+
+.edtrace-btn-primary {
+  border-color: var(--ink);
+  background-color: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.edtrace-btn-primary:hover:not(:disabled) {
+  opacity: 0.9;
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.edtrace-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background-color: var(--raised);
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+}
+
+.edtrace-step-pill {
+  padding: 0 8px;
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Table of Contents & Shortcuts popovers. */
+.edtrace-popover-anchor {
+  position: relative;
+}
+
+.edtrace-toc-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 200;
+  width: min(440px, calc(100vw - 24px));
+  max-height: min(72vh, 560px);
+  overflow-y: auto;
+  padding: 8px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background-color: var(--surface);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.edtrace-shortcuts-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 200;
+  width: min(340px, calc(100vw - 24px));
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background-color: var(--surface);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.edtrace-toc-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+
+.edtrace-toc-item:hover {
+  background-color: var(--raised);
+}
+
+.edtrace-toc-item.is-active {
+  background-color: var(--accent-soft);
+}
+
+.edtrace-toc-item-code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.edtrace-toc-item-heading {
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.edtrace-toc-sublist {
+  margin: 2px 0 6px 18px;
+  padding-left: 10px;
+  border-left: 1px solid var(--rule);
+}
+
+.edtrace-toc-subitem {
+  display: block;
+  width: 100%;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.edtrace-toc-subitem:hover {
+  background-color: var(--raised);
+  color: var(--ink);
+}
+
+.edtrace-toc-subitem.is-active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .edtrace-hide-mobile {
+    display: none;
+  }
+}

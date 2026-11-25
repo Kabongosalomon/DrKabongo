@@ -3,7 +3,8 @@
     "home": "Pa mbelu",
     "courses": "Bacours",
     "videos": "Bavidéo",
-    "speaking": "Baconférence",
+    "speaking": "Miyuki",
+    "speaking_invitations": "Dibikila bua conférence",
     "consulting": "Mibelu",
     "blog": "Blog",
     "projects": "Baprojet",
@@ -28,7 +29,8 @@
     "cta_work": "Tangila mudimu wanyi",
     "now_label": "Mu tshikoso",
     "now_role": "Lead Software Engineer, Innovation Group wa State Farm",
-    "now_darakili": "Dr. Kabongo · éducation wa AI ne mudimu ku DarAkili",
+    "now_darakili": "Mufuki, SALELA BONGO LLC · kuibaka DarAkili (STEM & AI mu miakulu ya Afrika)",
+    "now_recognition": "Africa AI 100 (2026) · Oxford Global Think Tank — Portrait 24/100, « Computing in Tshiluba »",
     "portrait_alt": "Salomon Kabongo"
   },
   "videos": {
@@ -104,7 +106,7 @@
     "figures_label": "Bimanyinu bia mudimu",
     "read_cv": "Bala CV mujima",
     "see_publications": "Tangila bapublication",
-    "darakili": "Dilaya edi didi dilombola kabidi mudimu wanyi ku DarAkili, plateforme wa éducation STEM muaba badi ba professionnel ba Afrika bapatula ba minicours ya ofele mu miakulu yabu.",
+    "darakili": "Dilaya edi didi dilombola kabidi SALELA BONGO LLC ne DarAkili (pamue ne N'Dah Jean Kouagou, PhD), plateforme wa éducation STEM ne AI mu Lingala, Tshiluba ne Swahili.",
     "see_projects": "Tangila baprojet"
   },
   "stats": {
@@ -115,6 +117,11 @@
         "detail": "Leibniz Universität Hannover · mujikija mu novembre 2025"
       },
       {
+        "value": "Africa AI 100",
+        "label": "Buneme bua 2026 · Portrait 24/100",
+        "detail": "« Computing in Tshiluba » (The Languages) · Oxford Global Think Tank"
+      },
+      {
         "value": "Brevet US 12,613,996",
         "label": "Confidentialité ne désidentification ya ba image",
         "detail": "Mupeshibue le 28 avril 2026"
@@ -123,11 +130,6 @@
         "value": "Best Paper",
         "label": "Recherche wa premier auteur udi bamanye",
         "detail": "ICADL 2021"
-      },
-      {
-        "value": "AI appliquée",
-        "label": "Fuma ku recherche kufika ku ba système ya bushuwa",
-        "detail": "Expérience mu AI multimodale, documentaire ne générative"
       },
       {
         "value": "Ancien membre wa conseil",
@@ -142,11 +144,16 @@
     ]
   },
   "speaking": {
-    "section_label": "Baconférence",
-    "home_title": "Baconférence, malongesha ne ba table ronde",
-    "home_subtitle": "Ndi ngakula mu Anglais anyi Français kumpala kua public ya recherche, technique ne général bua AI wa mpindieu, ba système appliqué, technologie wa miakulu ya Afrika ne carrière technique.",
-    "title": "Baconférence",
-    "subtitle": "Ndi ngakula ku ba université, ba groupe ya recherche, baconférence ne ba entreprise — mu Anglais anyi Français, ku ligne anyi ku présentiel.",
+    "section_label": "Miyuki & Baconférence",
+    "home_title": "Baconférence, malongesha a université ne ba présentation",
+    "home_subtitle": "Baconférence, malongesha a université ne ba présentation ya interactif EdTrace bua AI wa mpindieu, miboko yende ne miakulu ya Afrika.",
+    "title": "Miyuki, malongesha ne ba présentation",
+    "subtitle": "Malongesha a université, baconférence ne ba présentation ya interactif EdTrace mu Anglais ne Français.",
+    "presentations_label": "Ba présentation ya interactif",
+    "interactive_badge": "Présentation ya interactif EdTrace",
+    "open_presentation": "Zulula présentation",
+    "back_to_talks": "Baconférence yonso",
+    "all_talks": "Baconférence yonso",
     "topics_title": "Malu andi ngakula",
     "topic_1_title": "Tshidi AI wa mpindieu mua kuenza — ne tshidi kayi mua kuenza",
     "topic_1_desc": "Explication patoke ya ba capacité ya lelu, mushindu udi upona misangu ya bungi, ne mushindu wa ku évaluer ba déclaration kakuyi hype.",
@@ -204,7 +211,24 @@
     "video_language_note": "Enregistrement eu udi mu {language}.",
     "fallback_notice": "Leçon eu kayidi mu {requested} to — udi ubala version wa {shown}.",
     "dismiss": "Kanga",
-    "back_to_courses": "Bacours yonso"
+    "back_to_courses": "Bacours yonso",
+    "present_fullscreen": "Leja mu écran mujima",
+    "present_button": "Leja",
+    "fullscreen": "Écran mujima",
+    "exit_fullscreen": "Patuka mu écran mujima",
+    "table_of_contents": "Mukanda wa bintu",
+    "toc_overview": "Plan wa leçon ne ba section",
+    "veil_upcoming": "Buikila bidi bilonda",
+    "slide_layout": "Vue diapo",
+    "restart_lesson": "Pingana ku mbandilu",
+    "presentation_controls": "Ba commande ya présentation",
+    "shortcuts": "Ba raccourci ya clavier",
+    "shortcut_next": "Etape udi ulonda",
+    "shortcut_prev": "Etape wa kumpala",
+    "shortcut_step_over": "Pita fonction",
+    "shortcut_step_out": "Patuka mu fonction",
+    "shortcut_updates": "Update wa kumpala / udi ulonda",
+    "shortcut_toggles": "Code / environnement / ba note"
   },
   "blog": {
     "section_label": "Blog",

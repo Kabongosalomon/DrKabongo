@@ -3,7 +3,8 @@
     "home": "Mwanzo",
     "courses": "Masomo",
     "videos": "Bavideo",
-    "speaking": "Baconférence",
+    "speaking": "Mihadhara",
+    "speaking_invitations": "Mialiko ya kuzungumza",
     "consulting": "Ushauri",
     "blog": "Blogu",
     "projects": "Baprojet",
@@ -28,7 +29,8 @@
     "cta_work": "Chunguza kazi yangu",
     "now_label": "Kwa kifupi",
     "now_role": "Lead Software Engineer, Innovation Group ku State Farm",
-    "now_darakili": "Dr. Kabongo · elimu ya AI na kazi juu ya DarAkili",
+    "now_darakili": "Mwanzilishi, SALELA BONGO LLC · kujenga DarAkili (STEM & AI kwa lugha za Kiafrika)",
+    "now_recognition": "Africa AI 100 (2026) · Oxford Global Think Tank — Portrait 24/100, \"Computing in Tshiluba\"",
     "portrait_alt": "Salomon Kabongo"
   },
   "videos": {
@@ -104,7 +106,7 @@
     "figures_label": "Mifano ya kazi",
     "read_cv": "Soma CV yote",
     "see_publications": "Ona bapublication",
-    "darakili": "Hii conviction inaongoza pia kazi yangu juu ya DarAkili, plateforme ya elimu STEM kwenye ba professionnel wa Afrika wanachapisha ba minicours ya bure mu lugha zao wenyewe.",
+    "darakili": "Imani hiyo inaongoza pia SALELA BONGO LLC na DarAkili (pamoja na N'Dah Jean Kouagou, PhD), jukwaa la elimu ya STEM na AI kwa Lingala, Tshiluba na Kiswahili.",
     "see_projects": "Ona baprojet"
   },
   "stats": {
@@ -115,6 +117,11 @@
         "detail": "Leibniz Universität Hannover · ilimalizika Novemba 2025"
       },
       {
+        "value": "Africa AI 100",
+        "label": "Tuzo ya uzinduzi 2026 · Portrait 24/100",
+        "detail": "\"Computing in Tshiluba\" (The Languages) · Oxford Global Think Tank"
+      },
+      {
         "value": "Brevet US 12,613,996",
         "label": "Confidentialité na désidentification ya ba image",
         "detail": "Ilitolewa tarehe 28 Aprili 2026"
@@ -123,11 +130,6 @@
         "value": "Best Paper",
         "label": "Recherche ya premier auteur yenye ilitambuliwa",
         "detail": "ICADL 2021"
-      },
-      {
-        "value": "AI appliquée",
-        "label": "Kutoka recherche mpaka ba système ya kweli",
-        "detail": "Expérience mu AI multimodale, documentaire na générative"
       },
       {
         "value": "Ancien membre ya conseil",
@@ -142,11 +144,16 @@
     ]
   },
   "speaking": {
-    "section_label": "Baconférence",
-    "home_title": "Baconférence, masomo na ba table ronde",
-    "home_subtitle": "Naongeaka mu Anglais ao Français mbele ya public ya recherche, technique na général juu ya AI ya sasa, ba système appliqué, technologie ya lugha za Afrika na carrière technique.",
-    "title": "Baconférence",
-    "subtitle": "Nafanyaka baconférence ku ba université, ba groupe ya recherche, baconférence na ba entreprise — mu Anglais ao mu Français, ku ligne ao mu présentiel.",
+    "section_label": "Mihadhara na Mawasilisho",
+    "home_title": "Mihadhara, masomo ya chuo kikuu na mawasilisho",
+    "home_subtitle": "Mihadhara, masomo ya vyuo vikuu na mawasilisho shirikishi ya EdTrace kwa Kiingereza na Kifaransa kuhusu misingi ya AI na lugha za Kiafrika.",
+    "title": "Mihadhara, masomo na mawasilisho",
+    "subtitle": "Masomo ya vyuo vikuu, mikutano mikuu na mawasilisho shirikishi ya EdTrace kwa Kiingereza na Kifaransa.",
+    "presentations_label": "Mawasilisho shirikishi",
+    "interactive_badge": "Wasilisho shirikishi la EdTrace",
+    "open_presentation": "Fungua wasilisho",
+    "back_to_talks": "Mihadhara yote",
+    "all_talks": "Mihadhara yote",
     "topics_title": "Vitu yenye ninasemaka juu yayo",
     "topic_1_title": "Kile AI ya sasa inaweza — na haiwezi — kufanya",
     "topic_1_desc": "Mafasirio wazi ya capacités ya sasa, namna inashindwaka mara mingi, na jinsi ya kutathmini ba déclaration bila hype.",
@@ -204,7 +211,24 @@
     "video_language_note": "Hii enregistrement iko mu {language}.",
     "fallback_notice": "Somo hii haipatikane mu {requested} bado — unasoma version ya {shown}.",
     "dismiss": "Funga",
-    "back_to_courses": "Masomo yote"
+    "back_to_courses": "Masomo yote",
+    "present_fullscreen": "Onyesha kwenye skrini nzima",
+    "present_button": "Wasilisha",
+    "fullscreen": "Skrini nzima",
+    "exit_fullscreen": "Ondoka skrini nzima",
+    "table_of_contents": "Yaliyomo",
+    "toc_overview": "Mpangilio wa somo na sehemu",
+    "veil_upcoming": "Fifisha yanayofuata",
+    "slide_layout": "Mwonekano wa slaidi",
+    "restart_lesson": "Rudi mwanzo",
+    "presentation_controls": "Vidhibiti vya uwasilishaji",
+    "shortcuts": "Njia za mkato",
+    "shortcut_next": "Hatua inayofuata",
+    "shortcut_prev": "Hatua iliyotangulia",
+    "shortcut_step_over": "Ruka chaguo-kukokotoa",
+    "shortcut_step_out": "Toka kwenye chaguo-kukokotoa",
+    "shortcut_updates": "Sasisho lililotangulia / linalofuata",
+    "shortcut_toggles": "Msimbo / mazingira / madokezo"
   },
   "blog": {
     "section_label": "Blogu",

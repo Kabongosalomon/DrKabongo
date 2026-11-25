@@ -15,6 +15,8 @@ interface LanguageNoticeProps {
   courseId: string
   lessonId: string
   isFallback: boolean
+  /** Optional route override when hosting standalone talks under `/speaking/[slug]`. */
+  basePath?: string
 }
 
 /**
@@ -32,9 +34,11 @@ export default function LanguageNotice({
   courseId,
   lessonId,
   isFallback,
+  basePath,
 }: LanguageNoticeProps) {
   const t = useTranslations('courses')
   const [dismissed, setDismissed] = useState(false)
+  const targetHref = basePath ?? `/courses/${courseId}/${lessonId}`
 
   if (available.length === 0) return null
 
@@ -76,7 +80,7 @@ export default function LanguageNotice({
             return (
               <Link
                 key={lang}
-                href={`/courses/${courseId}/${lessonId}`}
+                href={targetHref}
                 locale={lang}
                 aria-current={active ? 'true' : undefined}
                 title={LOCALE_NAMES[lang] ?? lang}

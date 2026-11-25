@@ -3,7 +3,8 @@
     "home": "Home",
     "courses": "Courses",
     "videos": "Videos",
-    "speaking": "Speaking",
+    "speaking": "Talks",
+    "speaking_invitations": "Speaking invitations",
     "consulting": "Consulting",
     "blog": "Blog",
     "projects": "Projects",
@@ -28,7 +29,8 @@
     "cta_work": "Explore my work",
     "now_label": "At a glance",
     "now_role": "Lead Software Engineer, Innovation Group at State Farm",
-    "now_darakili": "Dr. Kabongo · building DarAkili and AI education",
+    "now_darakili": "Founder, SALELA BONGO LLC · building DarAkili (STEM & AI in African languages)",
+    "now_recognition": "Africa AI 100 (2026) · Oxford Global Think Tank — Portrait 24/100, \"Computing in Tshiluba\"",
     "portrait_alt": "Salomon Kabongo"
   },
   "videos": {
@@ -104,7 +106,7 @@
     "figures_label": "Selected record",
     "read_cv": "Read the full CV",
     "see_publications": "See publications",
-    "darakili": "That conviction also guides my work on DarAkili, a STEM education platform where African professionals publish free mini-courses in their own languages.",
+    "darakili": "That conviction also guides SALELA BONGO LLC and DarAkili (built alongside N'Dah Jean Kouagou, PhD), an audio-first STEM and AI education platform where African professionals teach in Lingala, Tshiluba, and Swahili.",
     "see_projects": "See projects"
   },
   "stats": {
@@ -115,6 +117,11 @@
         "detail": "Leibniz Universität Hannover · completed November 2025"
       },
       {
+        "value": "Africa AI 100",
+        "label": "Inaugural 2026 honouree · Portrait 24/100",
+        "detail": "\"Computing in Tshiluba\" (The Languages) · Oxford Global Think Tank"
+      },
+      {
         "value": "U.S. Patent 12,613,996",
         "label": "Image privacy & de-identification",
         "detail": "Issued April 28, 2026"
@@ -123,11 +130,6 @@
         "value": "Best Paper",
         "label": "First-author research recognition",
         "detail": "ICADL 2021"
-      },
-      {
-        "value": "Applied AI",
-        "label": "Research to real-world systems",
-        "detail": "Experience across multimodal, document, and generative AI"
       },
       {
         "value": "Former board member",
@@ -142,11 +144,16 @@
     ]
   },
   "speaking": {
-    "section_label": "Speaking",
-    "home_title": "Talks, lectures and panels",
-    "home_subtitle": "I speak in English or French to research, technical, and general audiences about modern AI, applied systems, African-language technology, and technical careers.",
-    "title": "Speaking",
-    "subtitle": "I give talks to universities, research groups, conferences and companies — in English or French, remote or in person.",
+    "section_label": "Talks & Speaking",
+    "home_title": "Talks, university lectures & presentations",
+    "home_subtitle": "Invited talks, university lectures, and interactive EdTrace presentations in English and French on modern AI, foundations, African-language technology, and technical careers.",
+    "title": "Talks, lectures & presentations",
+    "subtitle": "University lectures, conference keynotes, and interactive EdTrace presentations delivered in English and French — alongside recordings, posters, and speaking invitations.",
+    "presentations_label": "Interactive presentations",
+    "interactive_badge": "Interactive EdTrace presentation",
+    "open_presentation": "Open interactive presentation",
+    "back_to_talks": "All talks & presentations",
+    "all_talks": "All talks & presentations",
     "topics_title": "What I speak about",
     "topic_1_title": "What modern AI can — and cannot — do",
     "topic_1_desc": "A clear account of current capabilities, common failure modes, and how to evaluate claims without hype.",
@@ -204,7 +211,24 @@
     "video_language_note": "This recording is in {language}.",
     "fallback_notice": "This lesson is not available in {requested} yet — you are reading the {shown} version.",
     "dismiss": "Dismiss",
-    "back_to_courses": "All courses"
+    "back_to_courses": "All courses",
+    "present_fullscreen": "Present in full screen",
+    "present_button": "Present",
+    "fullscreen": "Full screen",
+    "exit_fullscreen": "Exit full screen",
+    "table_of_contents": "Table of contents",
+    "toc_overview": "Lesson roadmap & sections",
+    "veil_upcoming": "Veil upcoming",
+    "slide_layout": "Slide view",
+    "restart_lesson": "Jump to start",
+    "presentation_controls": "Presentation controls",
+    "shortcuts": "Keyboard shortcuts",
+    "shortcut_next": "Next step",
+    "shortcut_prev": "Previous step",
+    "shortcut_step_over": "Step over function",
+    "shortcut_step_out": "Step out of function",
+    "shortcut_updates": "Previous / next training update",
+    "shortcut_toggles": "Raw code / environment / notes"
   },
   "blog": {
     "section_label": "Blog",

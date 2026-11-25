@@ -11,6 +11,7 @@ import {
 import { BOOKING_URL, emailEnquiryHref } from '@/lib/contact'
 import { getAllVideos, countByChannel, CHANNEL_KEYS } from '@/lib/videos'
 import { getPostsForLocale } from '@/lib/blog'
+import { getInteractiveTalks, pickLocalized } from '@/lib/talks'
 import { COMMUNITY } from '@/content/community'
 import { LanguageStrip } from '@/components/LanguageSwitcher'
 import VideoCard from '@/components/VideoCard'
@@ -86,7 +87,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   // The doctorate is stated in full by the stats tile below (and signed in the
   // footer), so "At a glance" stays about what is current.
-  const now = [t('now_role'), t('now_darakili')]
+  const now = [t('now_role'), t('now_darakili'), t('now_recognition')]
+  const featuredTalk = getInteractiveTalks()[0] ?? null
 
   const topics = [1, 2, 3, 4].map((n) => ({
     title: tsp(`topic_${n}_title`),
@@ -322,12 +324,47 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {tsp('home_title')}
               </h2>
             </div>
-            <ArrowLink href="/speaking">{tsp('invite_title')}</ArrowLink>
+            <ArrowLink href="/speaking">{tsp('all_talks')}</ArrowLink>
           </div>
 
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">
             {tsp('home_subtitle')}
           </p>
+
+          {featuredTalk && (
+            <article className="mt-10 rounded-xl border border-rule bg-surface p-6 sm:p-7">
+              <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-ink-3">
+                <span className="eyebrow text-accent">{tsp('interactive_badge')}</span>
+                <span aria-hidden="true">·</span>
+                <span>{featuredTalk.date}</span>
+                <span aria-hidden="true">·</span>
+                <span>{featuredTalk.edtrace.location}</span>
+              </p>
+              <h3 className="mt-2 font-serif text-xl font-medium text-balance text-ink sm:text-2xl">
+                <Link
+                  href={`/speaking/${featuredTalk.edtrace.slug}`}
+                  className="decoration-accent decoration-1 underline-offset-4 hover:underline"
+                >
+                  {pickLocalized(featuredTalk.edtrace.titles, locale)}
+                </Link>
+              </h3>
+              <p className="mt-1.5 text-sm font-medium text-ink-2">
+                {pickLocalized(featuredTalk.edtrace.venues, locale)}
+              </p>
+              <p className="mt-2.5 max-w-3xl text-sm leading-relaxed text-ink-2">
+                {pickLocalized(featuredTalk.edtrace.summaries, locale)}
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-4">
+                <Link
+                  href={`/speaking/${featuredTalk.edtrace.slug}`}
+                  className="inline-flex items-center gap-1.5 rounded-md bg-ink px-4 py-2 text-xs font-medium text-paper transition-opacity hover:opacity-90"
+                >
+                  {tsp('open_presentation')} →
+                </Link>
+                <ArrowLink href="/speaking#invite">{tsp('invite_title')}</ArrowLink>
+              </div>
+            </article>
+          )}
 
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {topics.map(({ title, desc }) => (

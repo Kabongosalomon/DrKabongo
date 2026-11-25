@@ -93,6 +93,11 @@ const PUBLICATIONS = [
 const AWARDS = [
   {
     year: '2026',
+    award: 'Africa AI 100 (Inaugural Cohort) — Portrait 24/100, "Computing in Tshiluba"',
+    org: 'Oxford Global Think Tank · Field: The Languages',
+  },
+  {
+    year: '2026',
     award: 'U.S. Patent No. 12,613,996 issued',
     org: 'Systems and Methods for Image Privacy and De-identification · Assignee: State Farm',
   },

@@ -1,8 +1,11 @@
 import type { MetadataRoute } from 'next'
 import { getAllPostFiles } from '@/lib/blog'
 import { getAllCourses, allCourseLessonPairs } from '@/lib/courses'
+import { getInteractiveTalks } from '@/lib/talks'
 import { routing } from '@/i18n/routing'
 import { absoluteUrl } from '@/lib/metadata'
+
+export const dynamic = 'force-static'
 
 function buildEntry(
   path: string,
@@ -56,5 +59,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     buildEntry(`/courses/${course}/${lesson}`),
   )
 
-  return [...staticEntries, ...blogEntries, ...courseEntries, ...lessonEntries]
+  const talkEntries = getInteractiveTalks().map((talk) =>
+    buildEntry(`/speaking/${talk.edtrace.slug}`, new Date(`${talk.date}T12:00:00Z`)),
+  )
+
+  return [...staticEntries, ...blogEntries, ...courseEntries, ...lessonEntries, ...talkEntries]
 }

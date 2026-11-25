@@ -10,11 +10,11 @@ import {
   pickLocalized,
   resolveLessonLanguage,
   resolveLessonVideo,
-  traceUrl,
 } from '@/lib/courses'
 import LessonViewer from '@/components/edtrace/LessonViewer'
 import LessonVideo from '@/components/edtrace/LessonVideo'
 import LanguageNotice from '@/components/edtrace/LanguageNotice'
+import PresentTrigger from '@/components/edtrace/PresentTrigger'
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -62,12 +62,7 @@ export default async function LessonPage({
 
   return (
     <div className="min-h-dvh">
-      {/*
-        Wider than the reading pages: the viewer runs its own two-column
-        present-mode layout (prose beside the live environment panel) and
-        collapses to one column itself below 1250px.
-      */}
-      <div className="mx-auto max-w-6xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
+      <div className="mx-auto max-w-5xl px-4 pt-28 sm:px-6 sm:pt-36">
         <Link href={`/courses/${course}`} className="link text-sm">
           ← {pickLocalized(catalog.course.titles, locale)}
         </Link>
@@ -77,14 +72,17 @@ export default async function LessonPage({
           {pickLocalized(entry.titles, locale)}
         </h1>
 
-        <LanguageNotice
-          requested={locale}
-          shown={language}
-          available={available}
-          courseId={course}
-          lessonId={lesson}
-          isFallback={isFallback}
-        />
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <LanguageNotice
+            requested={locale}
+            shown={language}
+            available={available}
+            courseId={course}
+            lessonId={lesson}
+            isFallback={isFallback}
+          />
+          <PresentTrigger />
+        </div>
 
         {video && (
           <LessonVideo
@@ -94,13 +92,22 @@ export default async function LessonPage({
             title={pickLocalized(entry.titles, locale)}
           />
         )}
+      </div>
 
-        <div className="edtrace-host mt-10">
-          <LessonViewer
-            traceUrl={traceUrl(course, language, lesson)}
-            minimumStep={entry.default_step ?? 0}
-          />
-        </div>
+      {/*
+        Wide presentation canvas (`max-w-[92rem]`) so the EdTrace code, visuals,
+        and live environment panel have full desktop breathing room even before
+        entering 100vw full-screen presentation mode. `minimumStep={0}` keeps
+        `def table_of_contents()` reachable at the top of every lesson.
+      */}
+      <div className="mx-auto mt-10 max-w-[92rem] px-3 pb-16 sm:px-6 sm:pb-24">
+        <LessonViewer
+          courseId={course}
+          lessonId={lesson}
+          language={language}
+          availableLanguages={available}
+          minimumStep={0}
+        />
       </div>
     </div>
   )

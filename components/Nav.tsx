@@ -71,13 +71,13 @@ export default function Nav() {
   }, [open])
 
   const links = [
-    // Things to learn from and read first, then the work behind them.
+    // Courses and interactive talks/lectures first, then videos, essays, and research.
     { href: '/courses', label: t('courses') },
+    { href: '/speaking', label: t('speaking') },
     { href: '/videos', label: t('videos') },
     { href: '/blog', label: t('blog') },
     { href: '/publications', label: t('publications') },
     { href: '/projects', label: t('projects') },
-    { href: '/speaking', label: t('speaking') },
   ]
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`)
