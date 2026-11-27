@@ -197,7 +197,7 @@ export default function BlogIndex({ posts, locale, labels }: BlogIndexProps) {
                 post={post}
                 locale={locale}
                 minReadLabel={labels.minRead}
-                coverSizes="(min-width: 640px) 420px, 100vw"
+                coverSizes="(min-width: 1920px) 520px, (min-width: 640px) 420px, 100vw"
                 onTagClick={(name) => {
                   setTag(tag === name ? '' : name)
                   setShown(PAGE_SIZE)

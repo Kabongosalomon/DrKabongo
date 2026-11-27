@@ -45,7 +45,7 @@ export default async function CoursePage({
 
   return (
     <div className="min-h-dvh">
-      <div className="mx-auto max-w-4xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
+      <div className="mx-auto max-w-5xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24 lg:pr-[9.5rem]">
         <Link href="/courses" className="link text-sm">
           ← {t('back_to_courses')}
         </Link>

@@ -72,9 +72,6 @@
 
   /* 375px — the narrowest phone we lay out for beyond the 320px floor. */
   --breakpoint-xs: 23.4375rem;
-  /* 1920px — full-HD monitors and laptops set to "more space", where a
-     column sized for a 1280px screen looks small and lost in the middle. */
-  --breakpoint-3xl: 120rem;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -85,6 +82,13 @@ html {
   scroll-behavior: smooth;
   /* `clip` rather than `hidden` so position:sticky still works. */
   overflow-x: clip;
+}
+
+/* Above 1440px wide, grow text, spacing and columns together, so a page sized for a
+   laptop does not sit small in the middle of a large screen: 16px at 1440px, 18px at
+   1920px, 19px from about 2200px. A full-screen presentation keeps its own sizing. */
+html:not(:has(.edtrace-host.is-fullscreen)) {
+  font-size: clamp(100%, calc(100% + (100vw - 90rem) * 0.004), 118.75%);
 }
 
 body {

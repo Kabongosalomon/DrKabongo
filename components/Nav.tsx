@@ -71,11 +71,11 @@ export default function Nav() {
   }, [open])
 
   const links = [
-    // Courses and interactive talks/lectures first, then videos, essays, and research.
-    { href: '/courses', label: t('courses') },
+    // Talks, essays and videos first, then courses and research. Same order as the footer.
     { href: '/speaking', label: t('speaking') },
-    { href: '/videos', label: t('videos') },
     { href: '/blog', label: t('blog') },
+    { href: '/videos', label: t('videos') },
+    { href: '/courses', label: t('courses') },
     { href: '/publications', label: t('publications') },
     { href: '/projects', label: t('projects') },
   ]
@@ -95,7 +95,7 @@ export default function Nav() {
         <Link
           href="/"
           aria-label={`Dr. Kabongo — ${t('home')}`}
-          className="shrink-0 font-serif text-lg font-medium tracking-tight text-ink transition-colors hover:text-accent"
+          className="shrink-0 font-serif text-xl font-medium tracking-tight text-ink transition-colors hover:text-accent"
         >
           <span className="md:hidden lg:inline">Dr. Kabongo</span>
           <span className="hidden md:inline lg:hidden">DK</span>
@@ -107,7 +107,7 @@ export default function Nav() {
               key={href}
               href={href}
               aria-current={isActive(href) ? 'page' : undefined}
-              className={`text-xs transition-colors lg:text-sm ${
+              className={`text-[0.8125rem] transition-colors lg:text-[0.9375rem] ${
                 isActive(href)
                   ? 'font-medium text-ink underline decoration-accent decoration-2 underline-offset-[6px]'
                   : 'text-ink-2 hover:text-ink'
@@ -123,7 +123,7 @@ export default function Nav() {
           <LanguageSwitcher />
           <Link
             href="/#contact"
-            className="hidden shrink-0 items-center rounded-md border border-ink px-2 py-1.5 text-xs font-medium text-ink transition-colors hover:bg-ink hover:text-paper md:inline-flex lg:px-3 lg:text-sm"
+            className="hidden h-9 shrink-0 items-center rounded-md border border-ink px-2 text-[0.8125rem] font-medium text-ink transition-colors hover:bg-ink hover:text-paper md:inline-flex lg:px-3 lg:text-[0.9375rem]"
           >
             {t('work_with_me')}
           </Link>
@@ -156,7 +156,7 @@ export default function Nav() {
         <Link
           href="/"
           aria-current={pathname === '/' ? 'page' : undefined}
-          className="block border-b border-rule py-3 text-sm text-ink-2 transition-colors hover:text-ink"
+          className="block border-b border-rule py-3 text-base text-ink-2 transition-colors hover:text-ink"
         >
           {t('home')}
         </Link>
@@ -165,7 +165,7 @@ export default function Nav() {
             key={href}
             href={href}
             aria-current={isActive(href) ? 'page' : undefined}
-            className={`block border-b border-rule py-3 text-sm transition-colors ${
+            className={`block border-b border-rule py-3 text-base transition-colors ${
               isActive(href) ? 'font-medium text-accent' : 'text-ink-2 hover:text-ink'
             }`}
           >
@@ -174,7 +174,7 @@ export default function Nav() {
         ))}
         <Link
           href="/#contact"
-          className="mt-4 mb-1 flex items-center justify-center rounded-md border border-ink px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
+          className="mt-4 mb-1 flex items-center justify-center rounded-md border border-ink px-4 py-2.5 text-base font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
         >
           {t('work_with_me')}
         </Link>

@@ -30,7 +30,7 @@ export default function BlogCard({
   locale,
   minReadLabel,
   onTagClick,
-  coverSizes = '(min-width: 1024px) 480px, (min-width: 640px) 50vw, 100vw',
+  coverSizes = '(min-width: 1920px) 580px, (min-width: 1024px) 480px, (min-width: 640px) 50vw, 100vw',
   featured = false,
 }: BlogCardProps) {
   const date = post.date ? new Date(post.date) : null
@@ -51,7 +51,7 @@ export default function BlogCard({
           alt=""
           width={1200}
           height={630}
-          sizes={featured ? '(min-width: 1024px) 600px, 100vw' : coverSizes}
+          sizes={featured ? '(min-width: 1920px) 720px, (min-width: 1024px) 600px, 100vw' : coverSizes}
           className="block h-auto w-full transition-transform duration-300 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           priority={featured}
         />

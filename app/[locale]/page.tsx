@@ -108,8 +108,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       {/* ─── HERO ─── */}
       <section className="mx-auto max-w-5xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
-        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-16">
-          <div className="min-w-0 order-2 lg:order-1">
+        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,1fr)_14rem] lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-16">
+          <div className="min-w-0 order-2 md:order-1">
             <p className="eyebrow">{t('eyebrow')}</p>
             <h1 className="mt-3 font-serif text-4xl leading-[1.08] font-medium text-balance text-ink sm:text-5xl">
               {t('name')}
@@ -135,14 +135,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </div>
           </div>
 
-          <div className="order-1 w-40 shrink-0 sm:w-48 lg:order-2 lg:w-full">
+          <div className="order-1 mx-auto w-44 shrink-0 sm:w-52 md:order-2 md:mx-0 md:w-full">
             <div className="relative aspect-4/5 w-full overflow-hidden rounded-lg border border-rule bg-raised">
               <Image
                 src="/images/dr-kabongo.jpg"
                 alt={t('portrait_alt')}
                 fill
                 className="object-cover"
-                sizes="(min-width: 1024px) 256px, 192px"
+                sizes="(min-width: 1920px) 304px, (min-width: 768px) 256px, 208px"
                 priority
               />
             </div>
@@ -164,153 +164,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </dl>
 
           <LanguageStrip />
-        </div>
-      </section>
-
-      {/* ─── WRITING ─── */}
-      {posts.length > 0 && (
-        <section className="border-t border-rule">
-          <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div className="min-w-0">
-                <p className="eyebrow">{tb('section_label')}</p>
-                <h2 className="mt-2 font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
-                  {tb('home_title')}
-                </h2>
-              </div>
-              <ArrowLink href="/blog">{tb('all_posts')}</ArrowLink>
-            </div>
-
-            {/* The newest post leads with a large cover; the rest sit two to a
-                row, so every cover is wide enough for its figure to be read. */}
-            <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
-              {posts.map((post, index) => (
-                <BlogCard
-                  key={post.slug}
-                  post={post}
-                  locale={locale}
-                  minReadLabel={tb('min_read')}
-                  featured={index === 0}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ─── RESEARCH & ENGINEERING ─── */}
-      <section id="research" className="scroll-mt-24 border-t border-rule bg-surface">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
-          <p className="eyebrow">{ta('section_label')}</p>
-          <h2 className="mt-2 max-w-3xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
-            {ta('title')}
-          </h2>
-
-          <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
-            <div className="min-w-0 space-y-4 text-base leading-relaxed text-ink-2">
-              <p>{ta('bio1')}</p>
-              <p>{ta('bio2')}</p>
-              <p>{ta('bio3')}</p>
-              <p>{ta('darakili')}</p>
-              <p className="border-l-2 border-accent pl-4 font-serif text-lg leading-relaxed text-ink">
-                {ta('closing')}
-              </p>
-              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
-                <ArrowLink href="/publications">{ta('see_publications')}</ArrowLink>
-                <ArrowLink href="/projects">{ta('see_projects')}</ArrowLink>
-                <ArrowLink href="/cv">{ta('read_cv')}</ArrowLink>
-              </div>
-            </div>
-
-            <div className="min-w-0">
-              <h3 className="eyebrow">{ta('research_title')}</h3>
-              <ul className="mt-3 grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:grid-cols-1">
-                {researchItems.map(({ title, description }) => (
-                  <li key={title} className="border-t border-rule py-3">
-                    <h4 className="font-serif text-base text-ink">{title}</h4>
-                    <p className="mt-1 text-sm leading-relaxed text-ink-2">{description}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-16 border-t border-rule pt-10">
-            <h3 className="eyebrow">{ta('figures_label')}</h3>
-            <dl className="mt-4 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
-              {figures.map(({ value, label, detail }) => (
-                <div key={`${value}-${label}`} className="border-t border-rule pt-3">
-                  <dt className="font-serif text-lg leading-snug text-balance text-ink">{value}</dt>
-                  <dd className="mt-1 text-sm font-medium text-ink-2">{label}</dd>
-                  <dd className="mt-1 text-xs leading-relaxed text-ink-3">{detail}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── VIDEOS ─── */}
-      {videos.length > 0 && (
-        <section className="border-t border-rule">
-          <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div className="min-w-0">
-                <p className="eyebrow">{tv('section_label')}</p>
-                <h2 className="mt-2 font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
-                  {tv('home_title')}
-                </h2>
-              </div>
-              <ArrowLink href="/videos">{tv('all_videos')}</ArrowLink>
-            </div>
-
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">
-              {tv('home_subtitle')}
-            </p>
-
-            {featured && (
-              <div className="mt-10 max-w-3xl">
-                <p className="eyebrow mb-3">{tv('featured')}</p>
-                <VideoCard video={featured} locale={locale} featured priority />
-              </div>
-            )}
-
-            {recent.length > 0 && (
-              <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-                {recent.map((video) => (
-                  <VideoCard key={video.id} video={video} locale={locale} />
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-      )}
-
-      {/* ─── CHANNELS ─── */}
-      <section className="border-t border-rule bg-surface">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
-          <p className="eyebrow">{tv('channels_label')}</p>
-          <h2 className="mt-2 max-w-2xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
-            {tv('channels_title')}
-          </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">
-            {tv('channels_subtitle')}
-          </p>
-
-          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {CHANNEL_KEYS.map((key) => (
-              <ChannelCard
-                key={key}
-                channelKey={key}
-                label={tv(`channel_${key}_label`)}
-                description={tv(`channel_${key}_desc`)}
-                videoCount={counts[key]}
-                countLabel={tv('count', { count: counts[key] })}
-                subscribeLabel={tv('subscribe')}
-                comingSoonLabel={tv('coming_soon')}
-              />
-            ))}
-          </div>
         </div>
       </section>
 
@@ -377,6 +230,153 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      {/* ─── WRITING ─── */}
+      {posts.length > 0 && (
+        <section className="border-t border-rule bg-surface">
+          <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div className="min-w-0">
+                <p className="eyebrow">{tb('section_label')}</p>
+                <h2 className="mt-2 font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+                  {tb('home_title')}
+                </h2>
+              </div>
+              <ArrowLink href="/blog">{tb('all_posts')}</ArrowLink>
+            </div>
+
+            {/* The newest post leads with a large cover; the rest sit two to a
+                row, so every cover is wide enough for its figure to be read. */}
+            <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+              {posts.map((post, index) => (
+                <BlogCard
+                  key={post.slug}
+                  post={post}
+                  locale={locale}
+                  minReadLabel={tb('min_read')}
+                  featured={index === 0}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── VIDEOS ─── */}
+      {videos.length > 0 && (
+        <section className="border-t border-rule">
+          <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div className="min-w-0">
+                <p className="eyebrow">{tv('section_label')}</p>
+                <h2 className="mt-2 font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+                  {tv('home_title')}
+                </h2>
+              </div>
+              <ArrowLink href="/videos">{tv('all_videos')}</ArrowLink>
+            </div>
+
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">
+              {tv('home_subtitle')}
+            </p>
+
+            {featured && (
+              <div className="mt-10 max-w-3xl">
+                <p className="eyebrow mb-3">{tv('featured')}</p>
+                <VideoCard video={featured} locale={locale} featured priority />
+              </div>
+            )}
+
+            {recent.length > 0 && (
+              <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                {recent.map((video) => (
+                  <VideoCard key={video.id} video={video} locale={locale} />
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ─── CHANNELS ─── */}
+      <section className="border-t border-rule bg-surface">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+          <p className="eyebrow">{tv('channels_label')}</p>
+          <h2 className="mt-2 max-w-2xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+            {tv('channels_title')}
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">
+            {tv('channels_subtitle')}
+          </p>
+
+          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {CHANNEL_KEYS.map((key) => (
+              <ChannelCard
+                key={key}
+                channelKey={key}
+                label={tv(`channel_${key}_label`)}
+                description={tv(`channel_${key}_desc`)}
+                videoCount={counts[key]}
+                countLabel={tv('count', { count: counts[key] })}
+                subscribeLabel={tv('subscribe')}
+                comingSoonLabel={tv('coming_soon')}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── RESEARCH & ENGINEERING ─── */}
+      <section id="research" className="scroll-mt-24 border-t border-rule">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+          <p className="eyebrow">{ta('section_label')}</p>
+          <h2 className="mt-2 max-w-3xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
+            {ta('title')}
+          </h2>
+
+          <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+            <div className="min-w-0 space-y-4 text-base leading-relaxed text-ink-2">
+              <p>{ta('bio1')}</p>
+              <p>{ta('bio2')}</p>
+              <p>{ta('bio3')}</p>
+              <p>{ta('darakili')}</p>
+              <p className="border-l-2 border-accent pl-4 font-serif text-lg leading-relaxed text-ink">
+                {ta('closing')}
+              </p>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+                <ArrowLink href="/publications">{ta('see_publications')}</ArrowLink>
+                <ArrowLink href="/projects">{ta('see_projects')}</ArrowLink>
+                <ArrowLink href="/cv">{ta('read_cv')}</ArrowLink>
+              </div>
+            </div>
+
+            <div className="min-w-0">
+              <h3 className="eyebrow">{ta('research_title')}</h3>
+              <ul className="mt-3 grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:grid-cols-1">
+                {researchItems.map(({ title, description }) => (
+                  <li key={title} className="border-t border-rule py-3">
+                    <h4 className="font-serif text-base text-ink">{title}</h4>
+                    <p className="mt-1 text-sm leading-relaxed text-ink-2">{description}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-16 border-t border-rule pt-10">
+            <h3 className="eyebrow">{ta('figures_label')}</h3>
+            <dl className="mt-4 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+              {figures.map(({ value, label, detail }) => (
+                <div key={`${value}-${label}`} className="border-t border-rule pt-3">
+                  <dt className="font-serif text-lg leading-snug text-balance text-ink">{value}</dt>
+                  <dd className="mt-1 text-sm font-medium text-ink-2">{label}</dd>
+                  <dd className="mt-1 text-xs leading-relaxed text-ink-3">{detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
       {/* ─── WORK WITH ME ─── */}
       <section id="contact" className="scroll-mt-24 border-t border-rule">
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
@@ -384,9 +384,28 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <h2 className="mt-2 max-w-2xl font-serif text-3xl font-medium text-balance text-ink sm:text-4xl">
             {tc('title')}
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">{tc('subtitle')}</p>
+          <aside className="mt-8 rounded-lg border border-rule bg-surface p-5 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-6">
+            <div className="min-w-0">
+              <h3 className="font-serif text-xl font-medium text-ink">
+                {tc('conversation_title')}
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-2">
+                {tc('conversation_body')}
+              </p>
+            </div>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex shrink-0 items-center rounded-md bg-ink px-4 py-2 text-sm font-medium text-paper transition-opacity hover:opacity-90 sm:mt-0"
+            >
+              {tc('conversation_cta')}
+            </a>
+          </aside>
 
-          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+          <p className="mt-12 max-w-2xl text-base leading-relaxed text-ink-2">{tc('subtitle')}</p>
+
+          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
             <article className="border-t border-rule pt-5">
               <h3 className="font-serif text-xl font-medium text-ink">{tc('speaking_title')}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-2">{tc('speaking_body')}</p>
@@ -415,25 +434,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </div>
             </article>
           </div>
-
-          <aside className="mt-8 rounded-lg border border-rule bg-surface p-5 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-6">
-            <div className="min-w-0">
-              <h3 className="font-serif text-xl font-medium text-ink">
-                {tc('conversation_title')}
-              </h3>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-2">
-                {tc('conversation_body')}
-              </p>
-            </div>
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex shrink-0 items-center rounded-md border border-ink px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper sm:mt-0"
-            >
-              {tc('conversation_cta')}
-            </a>
-          </aside>
 
           {/* Community */}
           <div className="mt-16">

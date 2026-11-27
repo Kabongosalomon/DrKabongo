@@ -198,7 +198,7 @@ export default async function SpeakingPage({ params }: { params: Promise<{ local
                           alt={venue}
                           fill
                           className="object-cover transition-transform duration-200 group-hover:scale-[1.02]"
-                          sizes="(min-width: 1024px) 240px, 192px"
+                          sizes="(min-width: 1920px) 290px, (min-width: 1024px) 240px, 192px"
                         />
                       </Link>
                     )}

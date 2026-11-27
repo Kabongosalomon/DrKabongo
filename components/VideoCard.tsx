@@ -37,8 +37,8 @@ export default function VideoCard({
           className="object-cover transition-opacity duration-200 group-hover:opacity-90"
           sizes={
             featured
-              ? '(min-width: 1024px) 640px, 100vw'
-              : '(min-width: 1024px) 320px, (min-width: 640px) 45vw, 100vw'
+              ? '(min-width: 1920px) 920px, (min-width: 1024px) 640px, 100vw'
+              : '(min-width: 1920px) 390px, (min-width: 1024px) 320px, (min-width: 640px) 45vw, 100vw'
           }
           priority={priority}
         />

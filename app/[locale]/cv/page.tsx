@@ -209,7 +209,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
 
   return (
     <div className="min-h-dvh">
-      <div className="mx-auto max-w-4xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
+      <div className="mx-auto max-w-5xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24 lg:pr-[9.5rem]">
         <p className="eyebrow">{t('section_label')}</p>
         <h1 className="mt-3 font-serif text-4xl font-medium text-balance text-ink sm:text-5xl">
           Salomon Kabongo

@@ -63,7 +63,7 @@ export default function LanguageSwitcher() {
         aria-expanded={open}
         aria-controls={MENU_ID}
         aria-haspopup="menu"
-        className="flex h-9 items-center gap-1 rounded-md border border-rule pr-1.5 pl-2 text-xs font-medium text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
+        className="flex h-9 items-center gap-1 rounded-md border border-rule pr-1.5 pl-2 text-[0.8125rem] font-medium lg:text-sm text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
       >
         <TranslateIcon className="h-4 w-4 shrink-0" />
         <span>{LOCALE_SHORT[locale] ?? locale.toUpperCase()}</span>

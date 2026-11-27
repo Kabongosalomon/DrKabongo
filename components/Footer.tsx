@@ -17,10 +17,10 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   const explore = [
-    { href: '/courses', label: tn('courses') },
     { href: '/speaking', label: tn('speaking') },
-    { href: '/videos', label: tn('videos') },
     { href: '/blog', label: tn('blog') },
+    { href: '/videos', label: tn('videos') },
+    { href: '/courses', label: tn('courses') },
     { href: '/publications', label: tn('publications') },
     { href: '/projects', label: tn('projects') },
     { href: '/cv', label: tn('cv') },
