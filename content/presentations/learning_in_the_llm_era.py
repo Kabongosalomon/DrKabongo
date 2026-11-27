@@ -37,7 +37,6 @@ from talk_kit import (
     bpe_step,
     chrf_score,
     cosine,
-    memory_chart,
     t,
     together,
     token_tax_chart,
@@ -221,8 +220,6 @@ def models_learn_by_counting() -> None:
         $$\mathrm{SE}(\hat{p}) = \sqrt{\frac{p(1 - p)}{n}}, \qquad \text{relative error} = \frac{\mathrm{SE}(\hat{p})}{p} = \sqrt{\frac{1 - p}{n\,p}}$$
 
         *Note: this assumes each occurrence is independent. Web text repeats itself (copied pages, one phrase many times in a document), so the true error is **usually larger**.*
-
-        Because the error shrinks as $1/\sqrt{n}$, **cutting the error in half requires $4\times$ more data** (and $10\times$ less error requires $100\times$ more data):
     """))
     p = 0.2  # true P("nyumba" | "Niko naenda ku")
     for n in (10, 100, 10_000, 1_000_000):
@@ -323,9 +320,12 @@ def embeddings_and_cosine_similarity() -> None:
 
         **What we often see** in models that saw little Lingala (toy vectors, chosen to show the pattern):
     """))
-    ln = [0.9, 0.3, 0.3]         # "Lokota esengeli kozala epekiseli ya boyebi te."
-    en = [0.3, 0.9, 0.3]         # "Language should never be a gate to knowledge."
-    ln_other = [0.85, 0.2, 0.45] # "Lelo mbula ezali konoka." (it is raining today)
+    ln_text = "Lokota esengeli kozala epekiseli ya boyebi te."
+    ln = [0.9, 0.3, 0.3]                 # @inspect ln_text ln  # @latex ln_text=x_{\text{ln}} ln=\mathbf{e}_{\text{ln}}
+    en_text = "Language should never be a gate to knowledge."
+    en = [0.3, 0.9, 0.3]                 # @inspect en_text en  # @latex en_text=x_{\text{en}} en=\mathbf{e}_{\text{en}}
+    other_text = "Lelo mbula ezali konoka."  # Lingala: it is raining today
+    ln_other = [0.85, 0.2, 0.45]         # @inspect other_text ln_other  # @latex other_text=x_{\text{ln}'} ln_other=\mathbf{e}_{\text{ln}'}
     sim_translation = cosine(ln, en)     # @inspect sim_translation  # @latex sim_translation=\cos(\text{ln},\text{en})
     sim_unrelated = cosine(ln, ln_other) # @inspect sim_unrelated  # @latex sim_unrelated=\cos(\text{ln},\text{ln}')
     text(t("embedding_limits", """
@@ -382,25 +382,6 @@ def local_llms_on_your_own_machine() -> None:
         - **No per-token bill:** the token tax becomes compute you own
         - **Open weights:** you can adapt the model to our languages
     """))
-    text(t("memory_rule", """
-        **How much memory?** Weights take about **parameters × bits ÷ 8** bytes, plus room for the context (often 1–2 GB, more for long ones):
-    """))
-    for params_b in (1, 3, 8, 70):  # billions of parameters
-        gb_16bit = params_b * 16 / 8  # @inspect params_b gb_16bit  # @latex params_b=N_{\text{params}}(10^9) gb_16bit=\text{GB at 16 bits}
-        gb_4bit = params_b * 4 / 8    # @inspect gb_4bit  # @latex gb_4bit=\text{GB at 4 bits}
-    plot(memory_chart(
-        t("memory_chart_title", "Memory needed for the weights"),
-        t("memory_chart_full", "16 bits"),
-        t("memory_chart_quantised", "4 bits (quantised)"),
-    ))
-    text(t("what_fits", """
-        | Your machine | Models that fit (4 bits, rule of thumb) |
-        | --- | --- |
-        | Laptop, 8 GB RAM | Up to about 3–4 B parameters |
-        | Laptop, 16 GB RAM | Up to about 8 B |
-        | GPU, 24 GB | Up to about 30 B |
-        | 48 GB or more | About 70 B |
-    """))
     text(t("tools_to_run", """
         | Tool | Best for |
         | --- | --- |
@@ -428,10 +409,6 @@ def local_llms_on_your_own_machine() -> None:
             $$W' = W + BA, \qquad B \in \mathbb{R}^{d \times r},\quad A \in \mathbb{R}^{r \times k},\quad r \ll \min(d, k)$$
         """))
         link(LORA)
-    d, k, r = 4096, 4096, 8
-    full_params = d * k                      # @inspect full_params  # @latex full_params=d{\times}k
-    lora_params = r * (d + k)                # @inspect lora_params  # @latex lora_params=r(d+k)
-    compression = full_params / lora_params  # @inspect compression  # @latex compression=\frac{dk}{r(d+k)}
     text(t("be_honest", """
         **Observation:** small open models are still weak in Lingala and Tshiluba. Adapting and evaluating them is open work, and it needs our data.
     """))

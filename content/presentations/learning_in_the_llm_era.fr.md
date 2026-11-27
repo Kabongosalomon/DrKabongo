@@ -143,8 +143,6 @@ $$\mathrm{SE}(\hat{p}) = \sqrt{\frac{p(1 - p)}{n}}, \qquad \text{erreur relative
 
 *Remarque : la formule suppose que les occurrences sont indépendantes. Les textes du web se répètent (pages copiées, une même phrase de nombreuses fois dans un document) : l’erreur réelle est donc **généralement plus grande**.*
 
-Comme l’erreur diminue en $1/\sqrt{n}$, **diviser l’erreur par 2 demande $4\times$ plus de données** (et la diviser par 10 demande $100\times$ plus de données) :
-
 <!-- @zero_counts -->
 **Quand les comptes sont faibles ou nuls :** même pour un mot valide de vraie probabilité $p$, la probabilité de ne jamais le voir en $n$ exemples est $P(k = 0) = (1 - p)^n$ (à $n = 10$, $\approx 11\%$ pour $p = 0{,}2$, et $\approx 60\%$ pour un mot plus rare comme *« hospitali »* (hôpital) à $p = 0{,}05$).
 
@@ -264,26 +262,6 @@ Deux réponses en tshiluba, notées contre la référence :
 - **Hors ligne :** fonctionne sans bonne connexion
 - **Pas de facture au token :** la taxe de tokenisation devient du calcul qui vous appartient
 - **Poids ouverts :** vous pouvez adapter le modèle à nos langues
-
-<!-- @memory_rule -->
-**Combien de mémoire ?** Les poids prennent environ **paramètres × bits ÷ 8** octets, plus de la place pour le contexte (souvent 1 à 2 Go, davantage s’il est long) :
-
-<!-- @memory_chart_title -->
-Mémoire nécessaire pour les poids
-
-<!-- @memory_chart_full -->
-16 bits
-
-<!-- @memory_chart_quantised -->
-4 bits (quantifié)
-
-<!-- @what_fits -->
-| Votre machine | Modèles qui tiennent (4 bits, ordre de grandeur) |
-| --- | --- |
-| Portable, 8 Go de RAM | Jusqu’à environ 3–4 milliards de paramètres |
-| Portable, 16 Go de RAM | Jusqu’à environ 8 milliards |
-| GPU, 24 Go | Jusqu’à environ 30 milliards |
-| 48 Go ou plus | Environ 70 milliards |
 
 <!-- @tools_to_run -->
 | Outil | Idéal pour |

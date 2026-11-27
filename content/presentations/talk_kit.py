@@ -112,7 +112,6 @@ TOKEN_COUNTS = [
     ("Lingála", 7, 16),
     ("Tshiluba", 9, 20),
 ]
-MODEL_SIZES_B = [1, 3, 8, 70]
 CHART_INK = "#77716a"  # readable on both the light and the dark background
 
 
@@ -187,15 +186,4 @@ def token_tax_chart(title: str, tokens_label: str, attention_label: str) -> dict
     return _grouped_bars(
         title, values, [row[0] for row in TOKEN_COUNTS], [tokens_label, attention_label],
         "×", ["#2f6f8f", "#b4472f"], ".2f",
-    )
-
-
-def memory_chart(title: str, full_label: str, quantised_label: str) -> dict:
-    values = []
-    for size in MODEL_SIZES_B:
-        values.append({"group": f"{size} B", "series": full_label, "value": size * 2})
-        values.append({"group": f"{size} B", "series": quantised_label, "value": size * 0.5})
-    return _grouped_bars(
-        title, values, [f"{size} B" for size in MODEL_SIZES_B], [full_label, quantised_label],
-        "GB", ["#8a8278", "#0b7f78"], ".1f",
     )

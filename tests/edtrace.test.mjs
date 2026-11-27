@@ -239,18 +239,37 @@ describe('IndabaX DRC 2026 presentation (learning_in_the_llm_era) & i18n parity'
     assert.equal(tocFr.entries[0].displayName, 'la_plupart_des_inventions_repondent_a_une_limite')
     assert.equal(tocFr.entries[9].displayName, 'une_science_derriere_chaque_limite')
 
-    // Token tax and local-model memory charts.
+    // The token tax chart.
     const plots = en.steps.flatMap((s) => (s.renderings || []).filter((r) => r.type === 'plot'))
-    assert.equal(plots.length, 2)
+    assert.equal(plots.length, 1)
+
+    // Results stay on screen: each run of code ends on a slide that still shows all of them.
+    const kept = en.steps.filter((s) => s.keep_values)
+    assert.deepEqual(kept.map((s) => s.stack.at(-1).function_name), [
+      'models_learn_by_counting',
+      'the_tokenization_tax',
+      'embeddings_and_cosine_similarity',
+      'metrics_that_miss_our_languages',
+    ])
+    assert.ok(kept.every((s) => s.renderings.length > 0))
+    const [counting, bpe, cosines, metrics] = kept.map((s) => s.env)
+    const values = (entry) => entry.contents.map((value) => value.contents)
+    assert.deepEqual(values(counting.n), [10, 100, 10000, 1000000])
 
     // BPE adds exactly one symbol to the vocabulary per merge: 9 characters, then 4 merges.
-    const vocab = en.steps.flatMap((s) => (s.env?.vocab_size ? [s.env.vocab_size.contents] : []))
-    assert.deepEqual(vocab, [10, 11, 12, 13])
+    assert.deepEqual(values(bpe.vocab_size), [10, 11, 12, 13])
+    assert.equal(bpe.pair.contents.length, 4)
+
+    // Both similarities and their sentences are visible together.
+    assert.deepEqual(Object.keys(cosines), [
+      'ln_text', 'ln', 'en_text', 'en', 'other_text', 'ln_other', 'sim_translation', 'sim_unrelated',
+    ])
 
     // The metrics demo must show the wrong-meaning answer outscoring the right one.
-    const chrf = en.steps.flatMap((s) => (s.env?.chrf ? [s.env.chrf.contents] : []))
+    const chrf = values(metrics.chrf)
     assert.equal(chrf.length, 2)
     assert.ok(chrf[1] > chrf[0])
+    assert.equal(values(metrics.exact).length, 2)
 
     // No slide prose may be missing from a language.
     for (const trace of [en, fr, ln, lua]) {

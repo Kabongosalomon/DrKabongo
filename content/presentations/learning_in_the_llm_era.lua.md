@@ -143,8 +143,6 @@ $$\mathrm{SE}(\hat{p}) = \sqrt{\frac{p(1 - p)}{n}}, \qquad \text{erreur relative
 
 *Note: formule eu udi uangata ne musangu wonso udi pa nkayawu (indépendant). Mifundu ya internet idi ipingaja malu (ba pages ba copie, phrase umue misangu ya bungi mu document umue), nunku erreur wa bushuwa utu **misangu ya bungi mupite bunene**.*
 
-Bualu erreur udi ukepela ne $1/\sqrt{n}$, **kukosolola erreur mu bitupa bibidi kudi kukengela ba données misangu $4\times$ kupita** (ne kumukepesha misangu $10\times$ kudi kukengela ba données misangu $100\times$ kupita):
-
 <!-- @zero_counts -->
 **Padi bungi buikala bukese anyi zéro:** nansha bua muaku muimpe udi ne probabilité wa bushuwa $p$, mushindu wa kupanga kuwumona mu bilejilu $n$ udi $P(k = 0) = (1 - p)^n$ (pa $n = 10$, $\approx 11\%$ bua $p = 0.2$, ne $\approx 60\%$ bua muaku udi kawuyi umueneka misangu ya bungi bu *« hospitali »* (lupitadi) pa $p = 0.05$).
 
@@ -264,26 +262,6 @@ Mandamuna abidi mu Tshiluba, ne note yawu:
 - **Hors ligne:** udi wenza mudimu nansha connexion kayi muimpe
 - **Kufuta token to:** mulambu wa token udi ulua calcul webe nkayebe
 - **Ba poids patoke:** udi mua kulongolola modèle bua miakulu yetu
-
-<!-- @memory_rule -->
-**Mémoire bungi kayi?** Ba poids badi bangata pabuipi ne **paramètres × bits ÷ 8** octets, ne muaba bua contexte (misangu ya bungi 1–2 Go, kupita padiye mule):
-
-<!-- @memory_chart_title -->
-Mémoire udi ukengela bua ba poids
-
-<!-- @memory_chart_full -->
-16 bits
-
-<!-- @memory_chart_quantised -->
-4 bits (quantisé)
-
-<!-- @what_fits -->
-| Machine webe | Ba modèles badi babuela (4 bits, pabuipi) |
-| --- | --- |
-| Laptop, RAM 8 Go | Too ne pabuipi 3–4 B a paramètres |
-| Laptop, RAM 16 Go | Too ne pabuipi 8 B |
-| GPU, 24 Go | Too ne pabuipi 30 B |
-| 48 Go anyi kupita | Pabuipi 70 B |
 
 <!-- @tools_to_run -->
 | Tshia mudimu | Tshimpe bua |

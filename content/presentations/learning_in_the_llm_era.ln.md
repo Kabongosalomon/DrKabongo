@@ -143,8 +143,6 @@ $$\mathrm{SE}(\hat{p}) = \sqrt{\frac{p(1 - p)}{n}}, \qquad \text{erreur relative
 
 *Note: formule oyo ezwi ete mbala nyonso ezali ya kokabwana (indépendante). Makomi ya internet ezongelaka (ba pages ya copie, fraze moko mbala ebele na document), yango wana erreur ya solo ezalaka **mbala mingi monene koleka**.*
 
-Mpo erreur ekitaka na $1/\sqrt{n}$, **kokata erreur na katikati esengaka ba données mbala $4\times$ mingi** (mpe kokitisa yango mbala $10\times$ esengaka ba données mbala $100\times$ mingi):
-
 <!-- @zero_counts -->
 **Ntango mitango ezali moke to zéro:** ata mpo na liloba ya malamu oyo ezali na probabilité ya solo $p$, likoki ya kozanga komona yango na bandakisa $n$ ezali $P(k = 0) = (1 - p)^n$ (na $n = 10$, $\approx 11\%$ mpo na $p = 0.2$, mpe $\approx 60\%$ mpo na liloba oyo ebimaka mingi te lokola *« hospitali »* (lopitalo) na $p = 0.05$).
 
@@ -264,26 +262,6 @@ Biyano mibale na Tshiluba, na note na yango:
 - **Hors ligne:** esalaka ata connexion ezali malamu te
 - **Kofuta token te:** mpako ya token ekomaka calcul ya yo moko
 - **Ba poids ya polele:** okoki kobongisa modèle mpo na minoko na biso
-
-<!-- @memory_rule -->
-**Mémoire boni?** Ba poids ezwaka pene **paramètres × bits ÷ 8** octets, na esika mpo na contexte (mbala mingi 1–2 Go, mingi koleka soki ezali molai):
-
-<!-- @memory_chart_title -->
-Mémoire oyo esengeli mpo na ba poids
-
-<!-- @memory_chart_full -->
-16 bits
-
-<!-- @memory_chart_quantised -->
-4 bits (quantisé)
-
-<!-- @what_fits -->
-| Machine na yo | Ba modèles oyo ekoti (4 bits, pene) |
-| --- | --- |
-| Laptop, RAM 8 Go | Tii pene 3–4 B ya paramètres |
-| Laptop, RAM 16 Go | Tii pene 8 B |
-| GPU, 24 Go | Tii pene 30 B |
-| 48 Go to koleka | Pene 70 B |
 
 <!-- @tools_to_run -->
 | Esaleli | Malamu mpo na |

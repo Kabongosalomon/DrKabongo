@@ -24,6 +24,8 @@ export interface TraceStep {
   stack?: TraceStackFrame[]
   renderings?: TraceRendering[]
   env?: Record<string, unknown>
+  /** A slide that discusses the results of the code above it, which stay visible. */
+  keep_values?: boolean
 }
 
 export interface TraceMetadataRaw {

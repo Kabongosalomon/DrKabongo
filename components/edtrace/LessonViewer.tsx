@@ -787,6 +787,9 @@ export default function LessonViewer({
     <div
       ref={hostRef}
       className={`edtrace-host${isFullscreen ? ' is-fullscreen' : ''}`}
+      data-keep-values={
+        (currentStepIndex !== null && trace?.steps?.[currentStepIndex]?.keep_values) || undefined
+      }
       onClickCapture={handleViewerClickCapture}
     >
       <div ref={toolbarRef} className="edtrace-toolbar" role="toolbar" aria-label={t('presentation_controls')}>

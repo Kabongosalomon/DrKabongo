@@ -155,6 +155,48 @@ def tidy(trace: dict, path: str) -> None:
     trace["hidden_line_numbers"][path] = sorted(hidden)
 
 
+def side_by_side(values: list[dict]) -> dict:
+    """One value as it is; the values of a loop together, in a row or, if long, stacked."""
+    if len(values) == 1:
+        return values[0]
+    contents = [value["contents"] for value in values]
+    if all(isinstance(item, list) for item in contents):  # a list per pass: one line each
+        rows = [[part.get("contents", part) if isinstance(part, dict) else part for part in item] for item in contents]
+    elif sum(len(item) for item in contents if isinstance(item, str)) > 32:
+        rows = [[item] for item in contents]
+    else:
+        return {"type": "list", "contents": values}
+    # The viewer draws a two-dimensional array as a table.
+    return {"type": "numpy.ndarray", "contents": rows, "shape": [len(rows), len(rows[0])]}
+
+
+def keep_results(trace: dict) -> None:
+    """Keep what the code has computed on screen.
+
+    The viewer shows only the values of the current line. Here each line of a run of
+    code shows everything the run has computed so far, and so does the slide that
+    follows it, where the results are discussed (`keep_values` marks that slide).
+    """
+    results: dict[str, list[dict]] = {}
+    section = None
+    for step in trace["steps"]:
+        function = step["stack"][-1]["function_name"]
+        if function != section:
+            results, section = {}, function
+        if step["renderings"]:
+            if results:
+                step["env"] = {name: side_by_side(values) for name, values in results.items()}
+                step["keep_values"] = True
+                results = {}
+            continue
+        for name, value in step["env"].items():
+            if value["type"] == "float":  # 0.19999999999999998 reads as 0.2
+                value = {**value, "contents": round(value["contents"], 10)}
+            results.setdefault(name, []).append(value)
+        if results:
+            step["env"] = {name: side_by_side(values) for name, values in results.items()}
+
+
 def inspect_math(source: str) -> dict[str, str]:
     """`# @inspect x  # @latex x=\\hat{x}` shows the value of `x` under that formula."""
     aliases: dict[str, str] = {}
@@ -229,6 +271,7 @@ def build(config_path: Path) -> None:
     for language, label in labels.items():
         trace = trace_talk(name, language)
         tidy(trace, path)
+        keep_results(trace)
         for step in trace["steps"]:
             for rendering in step["renderings"]:
                 prepare(rendering)
