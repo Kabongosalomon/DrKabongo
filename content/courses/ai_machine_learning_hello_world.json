@@ -5,8 +5,9 @@
     "titles": {
       "en": "AI & Machine Learning: Hello World",
       "fr": "IA et Machine Learning : Hello World",
-      "ln": "AI mpe Machine Learning: Hello World",
-      "lua": "AI ne Machine Learning: Hello World"
+      "sw": "AI na Machine Learning: Hello World",
+      "ln": "AI mpe Machine Learning : Hello World",
+      "lua": "AI ne Machine Learning : Hello World"
     }
   },
   "languages": [
@@ -34,8 +35,9 @@
       "titles": {
         "en": "Learning Addition: A Neural Network from Scratch",
         "fr": "Apprendre l'addition : un réseau de neurones à partir de zéro",
+        "sw": "Kujifunza Kujumlisha: Mtandao wa Neva Kuanzia Mwanzo",
         "ln": "Koyekola kobakisa : réseau neuronal kobanda na ebandeli",
-        "lua": "Kulongesha kubakisa : réseau neuronal kubanga ku zéro"
+        "lua": "Kulonga kubakisa : réseau neuronal kubanga ku zéro"
       }
     }
   ],

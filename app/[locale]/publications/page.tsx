@@ -146,13 +146,13 @@ const PUBLICATIONS: Publication[] = [
   },
 ]
 
-const TYPE_LABELS: Record<Publication['type'], string> = {
-  patent: 'Patent',
-  patent_application: 'Patent application',
-  journal: 'Journal / Conference',
-  conference: 'Conference / Workshop',
-  workshop: 'Workshop',
-  thesis: 'Thesis',
+const TYPE_KEYS: Record<Publication['type'], string> = {
+  patent: 'type_patent',
+  patent_application: 'type_patent_application',
+  journal: 'type_journal',
+  conference: 'type_conference',
+  workshop: 'type_workshop',
+  thesis: 'type_thesis',
 }
 
 export default async function PublicationsPage({
@@ -202,7 +202,7 @@ export default async function PublicationsPage({
               {byYear[year].map((pub) => (
                 <li key={pub.title} className="border-t border-rule pt-5">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="eyebrow">{TYPE_LABELS[pub.type]}</span>
+                    <span className="eyebrow">{t(TYPE_KEYS[pub.type])}</span>
                   </div>
 
                   <h3 className="mt-2 font-serif text-lg font-medium text-balance text-ink">

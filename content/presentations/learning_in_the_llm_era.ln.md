@@ -8,6 +8,13 @@
 
 **Dr. Kabongo** · Deep Learning IndabaX R.D. Congo 2026 · UNH Lubumbashi · 27 novembre 2026
 
+<!-- @talk_qr_image -->
+images/qr-talk-ln.png
+
+<!-- @scan_title -->
+**Scanner mpo na kozwa mpe kotala lisolo oyo**  
+[drkabongo.com/ln/speaking/learning-in-the-llm-era](https://drkabongo.com/ln/speaking/learning-in-the-llm-era)
+
 <!-- @inventions -->
 ## Biloko mingi basali ezali eyano ya ingénierie na mokakatano
 
@@ -50,7 +57,7 @@
 
 Eyano ya LLM etali biloko mibale oyo okoki kobongola:
 
-$$p_{\theta}(\text{answer} \mid \text{context})$$
+$$p_{\theta}(\text{eyano} \mid \text{contexte})$$
 
 <!-- @levers -->
 |  | Contexte (loboko ya mobali ya elembo) | Ba poids θ |
@@ -149,7 +156,7 @@ Soki modèle emoni contexte yango **ata mbala moko te** ($n = 0$), $\frac{0}{0}$
 <!-- @token_tax -->
 ## Mpako ya tokenisation
 
-Liboso ya kotanga, makomi ekatamaka na **tokens**. BPE ebandaka na mikanda mpe esangisaka paire oyo ezongelaka mingi, mbala na mbala.
+Liboso ya kotanga, makomi ekatamaka na **tokens**. BPE ebandaka na ba lettres mpe esangisaka paire oyo ezongelaka mingi, mbala na mbala.
 
 <!-- @bpe_inside -->
 ### Na kati ya `bpe_step` moko
@@ -188,7 +195,7 @@ Mosala ya attention
 
 $$\mathrm{Attention}(Q, K, V) = \mathrm{softmax}\left(\frac{QK^{\top}}{\sqrt{d_k}}\right) V, \qquad Q, K \in \mathbb{R}^{T \times d_k}$$
 
-$QK^{\top}$ ekokisaka token nyonso na token nyonso: grille ya ba scores $T \times T$, $9 \times 9 = 81$ mpo na Anglais, $20 \times 20 = 400$ mpo na Tshiluba.
+$QK^{\top}$ ekokanisaka token nyonso na token nyonso: grille ya ba scores $T \times T$, $9 \times 9 = 81$ mpo na Anglais, $20 \times 20 = 400$ mpo na Tshiluba.
 
 $$\frac{400}{81} = \left(\frac{20}{9}\right)^2 \approx 4.94$$
 
@@ -200,7 +207,7 @@ $$\frac{400}{81} = \left(\frac{20}{9}\right)^2 \approx 4.94$$
 | BPE na biso ya ndakisa, bisangisi 4 | Maloba 4 ya Lingala | `ko · yekol · i · s · a` | eteni moko |
 | `o200k_base` | Makomi ya OpenAI (bosangani ebimisami te) | `k · oy · ek · ol · isa` | ekatani na biteni misato |
 
-Tokeniseur ebombaka mobimba oyo **ezongelaki mingi na makomi eyekoli**. *Ya biso ezali ndakisa; ya solo eyekolaka pene biteni 200 000 uta na ba octets.*
+Tokeniseur ebombaka mobimba oyo **ezongelaki mingi na makomi oyo eyekolaki**. *Ya biso ezali ndakisa; ya solo eyekolaka pene biteni 200 000 uta na ba octets.*
 
 Message moko na Tshiluba na `o200k_base`: **ba tokens mbala 2.2**, yango wana **ntalo mbala 2.2** esika bafutaka mpo na token, makomi **mbala 2.2 moke** na contexte, pe biyano ya malembe. *Fraze moko ezali kaka ndakisa; meka corpus liboso ya kosukisa.*
 
@@ -229,7 +236,7 @@ $$\mathbf{e} = \phi(x) \in \mathbb{R}^{d}, \qquad \cos(\mathbf{u}, \mathbf{v}) =
 <!-- @metrics -->
 ## Ba métriques oyo eyebi minoko na biso te
 
-Mbala mingi libongoli ezwaka note na oyo esangani na référence: **BLEU** ekokisaka milongo ya maloba, **chrF** milongo ya mikanda.
+Mbala mingi libongoli ezwaka note na oyo esangani na référence: **BLEU** ekokanisaka milongo ya maloba, **chrF** milongo ya ba lettres.
 
 <!-- @two_answers -->
 Biyano mibale na Tshiluba, na note na yango:
@@ -240,7 +247,7 @@ Biyano mibale na Tshiluba, na note na yango:
 
 **Métrique eponi eyano ya mabe.**
 
-*Mituya oyo ezali komonana ezali chrF ya pete (mikanda 1–3). Version standard (1–6) emonisi mpe bongo : 0.49 mpo na eyano ya mabe, 0.27 mpo na eyano ya malamu.*
+*Mituya oyo ezali komonana ezali chrF ya pete (ba lettres 1–3). Version standard (1–6) emonisi mpe bongo : 0.49 mpo na eyano ya mabe, 0.27 mpo na eyano ya malamu.*
 
 <!-- @why_metrics_fail -->
 - Ekomeli ezali moko te (*â* to *a*, *ɛ* to *e*, ba tons to te).
@@ -325,7 +332,7 @@ Tokomaki na mwa ba ressources mpo bomoi na minoko na biso elobamaki, kasi ebomba
 > **Komema bizaleli na biso ya mokolo na mokolo, na minoko na biso, na espace numérique:** koyekola, kolakisa, kokoma, ko-enregistrer pe kosolola na Lingala, Tshiluba pe Swahili.
 
 <!-- @what_we_build -->
-Na ntango na ngai ya bonsomi, nazali kosala na **DarAkili** (**SALELA BONGO LLC**): mateya ya STEM, mayele ya numérique mpe mosika te IA, na **Lingala, Tshiluba, Swahili** mpe mosusu ekoya.
+Na ntango na ngai ya bopemi, nazali kosala na **DarAkili** (**SALELA BONGO LLC**): mateya ya STEM, mayele ya numérique mpe mosika te IA, na **Lingala, Tshiluba, Swahili** mpe mosusu ekoya.
 
 Mateya mingi ezali **ya mongongo**, mpo ndenge wana nde bato mingi na biso basalelaka minoko na biso. Koyekola science esengeli kozala na ekuke ya Anglais to ya Français te.
 
@@ -368,6 +375,14 @@ Liteya nyonso oyo elakisami na minoko na biso ezali **makomi pe mongongo ya sika
 3. **Science** nini ezali na nse?
 
 Sima lakisa likambo moko na lokota na yo.
+
+<!-- @take_it_with_you -->
+### Kende na yango
+
+| Lisolo oyo | DarAkili · Android | DarAkili · iPhone |
+|:---:|:---:|:---:|
+| ![QR: Lisolo oyo](/edtrace/images/talks/qr-talk-ln.png) | ![QR: DarAkili, Google Play](/edtrace/images/talks/qr-darakili-android.png) | ![QR: DarAkili, App Store](/edtrace/images/talks/qr-darakili-ios.png) |
+| drkabongo.com | Google Play | App Store |
 
 <!-- @thank_you -->
 ## Matondo · Tuasakidila · Aksanti · Merci · Thank you

@@ -9,6 +9,7 @@
     "lint": "next lint",
     "covers": "node scripts/covers/build.mjs",
     "presentations": "uv run --no-project --python 3.12 --with edtrace==0.1.15 python scripts/build_presentations.py",
+    "qr": "uv run --no-project --python 3.12 --with segno==1.6.6 --with zxing-cpp --with pillow python scripts/make_qr_codes.py",
     "test:edtrace": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test tests/edtrace.test.mjs",
     "test:labs": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test tests/labs.test.mjs",
     "test:rules": "npx --yes firebase-tools@15.34.1 emulators:exec --only firestore --project demo-drkabongo 'node --test tests/firestore.rules.test.mjs'"

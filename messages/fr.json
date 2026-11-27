@@ -106,7 +106,7 @@
     "figures_label": "Quelques repères",
     "read_cv": "Lire le CV complet",
     "see_publications": "Voir les publications",
-    "darakili": "Cette conviction guide aussi SALELA BONGO LLC et DarAkili (co-créé avec N'Dah Jean Kouagou, PhD), une plateforme audio d'éducation aux STEM et à l'IA en lingala, tshiluba et swahili.",
+    "darakili": "Cette conviction guide aussi SALELA BONGO LLC et DarAkili (construit avec N'Dah Jean Kouagou, PhD), une plateforme éducative centrée sur l'audio pour les STEM et l'IA, où des professionnels africains enseignent en lingala, tshiluba et swahili.",
     "see_projects": "Voir les projets"
   },
   "stats": {
@@ -227,12 +227,12 @@
     "shortcut_prev": "Étape précédente",
     "shortcut_step_over": "Passer la fonction",
     "shortcut_step_out": "Sortir de la fonction",
-    "shortcut_updates": "Mise à jour précédente / suivante",
+    "shortcut_updates": "Mise à jour d'entraînement précédente / suivante",
     "shortcut_toggles": "Code brut / environnement / notes",
     "tip_veil": "Afficher / voiler la suite",
     "tip_raw": "Afficher le code brut",
     "tip_values": "Afficher / masquer les variables",
-    "tip_notes": "Afficher / masquer les notes",
+    "tip_notes": "Afficher / masquer les notes de l'intervenant",
     "tip_over_back": "Passer en arrière (même niveau)",
     "tip_over_next": "Passer en avant (même niveau)"
   },
@@ -309,7 +309,7 @@
     "title": "Projets sélectionnés",
     "subtitle": "Systèmes de recherche, contributions open source et outils pédagogiques dans différents domaines de l'IA moderne.",
     "github": "GitHub",
-    "demo": "Démo",
+    "demo": "Démo en ligne",
     "paper": "Article",
     "youtube": "YouTube"
   },
@@ -321,7 +321,13 @@
     "code": "Code",
     "award_label": "Distinction",
     "scholar": "Google Scholar",
-    "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ"
+    "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ",
+    "type_patent": "Brevet",
+    "type_patent_application": "Demande de brevet",
+    "type_journal": "Revue / Conférence",
+    "type_conference": "Conférence / Atelier",
+    "type_workshop": "Atelier",
+    "type_thesis": "Mémoire / Thèse"
   },
   "cv": {
     "section_label": "CV",

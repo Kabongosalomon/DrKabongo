@@ -17,7 +17,7 @@ lua = "Miyuki ne malongesha a ku université"
 en = "Learning in the Era of LLM: How Did Our Languages Become “Low-Resource”?"
 fr = "Apprendre à l'ère des LLM : Comment nos langues sont-elles devenues « peu dotées » ?"
 ln = "Koyekola na tango ya ba LLM : Ndenge nini minoko na biso ekomaki « na mwa ba ressources » ?"
-lua = "Kulongesha mu tshikondo tshia ba LLM : Mushindu kayi miakulu yetu milua « ne ba ressources bikese » ?"
+lua = "Kulonga mu tshikondo tshia ba LLM : Mushindu kayi miakulu yetu milua « ne ba ressources bikese » ?"
 
 # Names shown instead of the English function names. A function without one keeps its own.
 

@@ -87,9 +87,9 @@ Le code est écrit. Tous les tests unitaires passent. Le déploiement ne signale
 
 Et le correctif fonctionne. Alors pourquoi ne l’a-t-il pas trouvé du premier coup ?
 
-Avec cette lentille, la réponse est simple : **il n’est pas passé à côté. Il ne l’a jamais eu.**
+Sous cet angle, la réponse est simple : **il n’est pas passé à côté. Il ne l’a jamais eu.**
 
-Quand le code a été écrit, les logs de production ne faisaient pas partie de la condition. Ce qui y était : votre demande, le code, et une série de tests au vert. Sachant tout cela, « c’est fait, tout est bon » était la chose la plus probable à dire. Puis vous avez collé le log. La condition a changé, donc la sortie a changé.
+Quand le code a été écrit, les logs de production ne faisaient pas partie de la condition. Ce qui s’y trouvait : votre demande, le code, et une série de tests au vert. Sachant tout cela, « c’est fait, tout est bon » était la chose la plus probable à dire. Puis vous avez collé le log. La condition a changé, donc la sortie a changé.
 
 « Je suis passé à côté » n’est pas le souvenir d’un échec. Il n’y a pas eu de moment antérieur où le modèle a vu le problème et détourné les yeux. C’est simplement une phrase très probable quand un utilisateur colle une erreur sous un message qui disait « terminé ». **Le modèle ne savait pas, jusqu’à ce qu’on le lui dise enfin.**
 
@@ -118,7 +118,7 @@ Un modèle ne peut se conditionner que sur ce qu’on lui donne. Et il ne peut p
 Les ingénieurs sont ceux qui savent ce qui n’est _pas_ dans la fenêtre : comment la production se comporte vraiment, ce qui a été promis au client, ce que « terminé » veut dire ici, et ce que coûte une interruption. C’est pourquoi nous restons dans la boucle :
 
 - **Nous décidons quelles conditions comptent**, et nous remarquons quand l’une d’elles manque.
-- **Nous vérifions face au monde réel** (logs, métriques, utilisateurs), pas seulement face aux tests au vert que le modèle pouvait voir.
+- **Nous vérifions par rapport au monde réel** (logs, métriques, utilisateurs), pas seulement face aux tests au vert que le modèle pouvait voir.
 - **Nous assumons les conséquences.** Le modèle produit la suite la plus probable. La responsabilité, elle, ne peut pas être probable.
 
 Il ne s’agit pas de dire que l’IA a besoin d’être surveillée. Il s’agit de rappeler que quelqu’un doit concevoir les conditions, et les confronter à la réalité.

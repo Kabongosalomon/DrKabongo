@@ -321,7 +321,13 @@
     "code": "Code",
     "award_label": "Award",
     "scholar": "Google Scholar",
-    "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ"
+    "scholar_url": "https://scholar.google.com/citations?user=BPDma7YAAAAJ",
+    "type_patent": "Patent",
+    "type_patent_application": "Patent application",
+    "type_journal": "Journal / Conference",
+    "type_conference": "Conference / Workshop",
+    "type_workshop": "Workshop",
+    "type_thesis": "Thesis"
   },
   "cv": {
     "section_label": "CV",

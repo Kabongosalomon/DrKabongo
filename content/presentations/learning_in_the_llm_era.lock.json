@@ -134,7 +134,7 @@
   ],
   "people_title": [
    "7014c651acc9",
-   "6c0da349fa22"
+   "72c15b278001"
   ],
   "roadmap": [
    "999e99fce1be",
@@ -143,6 +143,18 @@
   "same_sentence": [
    "7903d6eb6546",
    "3e19eedd5196"
+  ],
+  "scan_title": [
+   "8ec59a0f1fbf",
+   "55ca2f748ebe"
+  ],
+  "take_it_with_you": [
+   "5936de17f3da",
+   "de5508e789c7"
+  ],
+  "talk_qr_image": [
+   "716fadaf446d",
+   "017451c74fc4"
   ],
   "tax_chart_attention": [
    "56a2837ca7ec",
@@ -364,7 +376,7 @@
   ],
   "metrics": [
    "f97b80d137ae",
-   "243194b98f41"
+   "b5d177f330dd"
   ],
   "metrics_open": [
    "de4f5c9a6766",
@@ -388,7 +400,7 @@
   ],
   "people_title": [
    "7014c651acc9",
-   "a0a8e3592680"
+   "59944e4e8420"
   ],
   "roadmap": [
    "999e99fce1be",
@@ -397,6 +409,18 @@
   "same_sentence": [
    "7903d6eb6546",
    "0628dbe7121d"
+  ],
+  "scan_title": [
+   "8ec59a0f1fbf",
+   "7243da5f96af"
+  ],
+  "take_it_with_you": [
+   "5936de17f3da",
+   "ecd1856855a0"
+  ],
+  "talk_qr_image": [
+   "716fadaf446d",
+   "c27269e146e0"
   ],
   "tax_chart_attention": [
    "56a2837ca7ec",
@@ -436,7 +460,7 @@
   ],
   "token_tax": [
    "b9e051578224",
-   "f07c0e3a357d"
+   "8f4855f866c9"
   ],
   "tools_to_run": [
    "bb5a78fcd0ea",
@@ -460,11 +484,11 @@
   ],
   "what_it_costs": [
    "f2e95c7b8e6e",
-   "e93ddc010dfb"
+   "1d79adbba6e9"
   ],
   "what_we_build": [
    "df1646ffd869",
-   "5cea75c196b9"
+   "d7580feb9633"
   ],
   "where_machines_learn": [
    "98eac9e37005",
@@ -488,11 +512,11 @@
   ],
   "why_square": [
    "454c05f28c2b",
-   "cef857077065"
+   "07d187270614"
   ],
   "wrong_answer_wins": [
    "451bb75f4122",
-   "559b4c2cc00a"
+   "364c8a9c49b0"
   ],
   "your_part": [
    "b9165dd22fd3",
@@ -518,7 +542,7 @@
   ],
   "beyond_data": [
    "00aa404cc7bd",
-   "c342ff333e6a"
+   "5ad40f4ebb06"
   ],
   "board": [
    "98796e670aa9",
@@ -530,7 +554,7 @@
   ],
   "counting": [
    "8d4754d27b36",
-   "cc4bd2186e60"
+   "6816226d84b4"
   ],
   "counting_example": [
    "28096758be65",
@@ -554,19 +578,19 @@
   ],
   "embedding_limits": [
    "8d6352d7f940",
-   "e84ad5f5db1c"
+   "42f247b82af6"
   ],
   "embedding_open": [
    "6b494e2eeda3",
-   "39e62c8720e5"
+   "78984d1ef1be"
   ],
   "embeddings": [
    "089647829da6",
-   "caa3a70f29b9"
+   "613a8dc50b16"
   ],
   "how_sure": [
    "4aac397637da",
-   "f53dd6a793f1"
+   "b21db9366784"
   ],
   "inventions": [
    "d04cbb6f2cbe",
@@ -582,7 +606,7 @@
   ],
   "llm_era": [
    "b262a8bbe466",
-   "5d5003e351d7"
+   "c0d29d3afc5a"
   ],
   "local_llms": [
    "28adfbaada2b",
@@ -642,7 +666,7 @@
   ],
   "people_title": [
    "7014c651acc9",
-   "71c5474570dc"
+   "96525fa0a306"
   ],
   "roadmap": [
    "999e99fce1be",
@@ -650,7 +674,19 @@
   ],
   "same_sentence": [
    "7903d6eb6546",
-   "5d896e4a2f7b"
+   "8025313e1570"
+  ],
+  "scan_title": [
+   "8ec59a0f1fbf",
+   "f56de82e022a"
+  ],
+  "take_it_with_you": [
+   "5936de17f3da",
+   "bb553c77de5e"
+  ],
+  "talk_qr_image": [
+   "716fadaf446d",
+   "6644a460ca1e"
   ],
   "tax_chart_attention": [
    "56a2837ca7ec",
@@ -678,7 +714,7 @@
   ],
   "theory_and_practice": [
    "07318c5ec344",
-   "70c1d18a8569"
+   "35440313ed5b"
   ],
   "three_questions": [
    "842eed8af113",
@@ -686,7 +722,7 @@
   ],
   "title": [
    "9bafa49963bd",
-   "ab1b2e81df1c"
+   "5b3a0c2c2f06"
   ],
   "token_tax": [
    "b9e051578224",
@@ -714,7 +750,7 @@
   ],
   "what_it_costs": [
    "f2e95c7b8e6e",
-   "bb6222359b4c"
+   "7b128d6107ea"
   ],
   "what_we_build": [
    "df1646ffd869",
@@ -730,7 +766,7 @@
   ],
   "where_we_wrote": [
    "8da60cd53b2a",
-   "98bb5124ddf2"
+   "2f53b14949db"
   ],
   "why_it_works": [
    "83ffa588e194",
@@ -738,7 +774,7 @@
   ],
   "why_metrics_fail": [
    "0c1d1ce353fb",
-   "fe135ad443f3"
+   "6af82f6da30c"
   ],
   "why_square": [
    "454c05f28c2b",

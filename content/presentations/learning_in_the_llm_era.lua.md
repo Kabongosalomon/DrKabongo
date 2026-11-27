@@ -2,11 +2,18 @@
      Delete a block to show the English text instead. -->
 
 <!-- @title -->
-# Kulongesha mu tshikondo tshia ba LLM
+# Kulonga mu tshikondo tshia ba LLM
 
 **Mushindu kayi miakulu yetu milua « ne ba ressources bikese » ?**
 
 **Dr. Kabongo** · Deep Learning IndabaX R.D. Congo 2026 · UNH Lubumbashi · 27 novembre 2026
+
+<!-- @talk_qr_image -->
+images/qr-talk-lua.png
+
+<!-- @scan_title -->
+**Scanner bua kupeta ne kutangila muyuki eu**  
+[drkabongo.com/lua/speaking/learning-in-the-llm-era](https://drkabongo.com/lua/speaking/learning-in-the-llm-era)
 
 <!-- @inventions -->
 ## Bintu bia bungi bidi diandamuna dia ingénierie ku lutatu
@@ -30,7 +37,7 @@
 
 | Dîna | Lutatu | Diandamuna dia ingénierie |
 | --- | --- | --- |
-| RAG | Dimanya didi dijalamu; mikanda yebe kayenamu | Kukeba, pashishe kuteka mu contexte |
+| RAG | Dimanya didi dikangama; mikanda yebe kayenamu | Kukeba, pashishe kuteka mu contexte |
 | Bia mudimu | Modèle udi ufunda anu mifundu; kena mua kuenza | Modèle udi ufunda dilomba, code webe udi udienza |
 | MCP | Application wonso udi ukengela kusuika ku tshia mudimu tshionso | Protocole umue patoke |
 | Skills, plugins, custom GPTs | Tudi tupingaja mikenji; contexte udi ne ndekelu | Mikenji ne ba fichiers bilama, bibala padi bikengela |
@@ -50,7 +57,7 @@
 
 Diandamuna dia LLM didi dilondela bintu bibidi biudi mua kushintulula:
 
-$$p_{\theta}(\text{answer} \mid \text{context})$$
+$$p_{\theta}(\text{diandamuna} \mid \text{contexte})$$
 
 <!-- @levers -->
 |  | Contexte (ku tshianza tshia balume tshia tshimanyinu) | Ba poids θ |
@@ -79,7 +86,7 @@ Mu IA, « ba ressources bikese » kabiena biumvuija ne bantu badi bakula mbakese
 > **88%** a miakulu ya pa buloba, idi bantu bu **milliard 1** bakula, idi anu **panyima** mu ba technologie a miakulu.
 
 <!-- @where_we_wrote -->
-Bua tshinyi? Mu bikondo bia bungi, malu « a mushinga » a muoyo avua enzeka mu Français, Anglais anyi Portugais: kalasa, science, mbulamatadi, mushinga ne mpindieu internet. Miakulu yetu yakashala ku nzubu, ku tshisalu, ku tshiendelu, ku telefone.
+Bua tshinyi? Mu bikondo bia bungi, malu « a mushinga » a muoyo avua enzeka mu Français, Anglais anyi Portugais: kalasa, science, mbulamatadi, mushinga ne mpindieu internet. Miakulu yetu yakashala ku nzubu, ku tshisalu, ku tshitendelelu, ku telefone.
 
 > **Biakula, kabiyi bilama. Bidi ne muoyo, kabiyi mu numérique.**
 
@@ -99,7 +106,7 @@ Anglais kêna ne ba ressources a bungi bualu muntu kampanda wakafuta bua ba donn
 <!-- @beyond_data -->
 Mu 2020, pamue ne Masakhane, tuakamba ne bualu ebu kabuena anu bua ba données to:
 
-> « Dikengela dia ba ressources ndilu lukunukunu ludi lupitshisha bualu bua ba données ne **dileja ntatu ya nsombelu wa bantu**. » *(bikudimuna ku Anglais)*
+> « Dikengela dia ba ressources ndi lutatu lukole ludi lupitshisha bualu bua ba données ne **dileja ntatu ya nsombelu wa bantu**. » *(bikudimuna ku Anglais)*
 
 Ntshidi mbuitabuja.
 
@@ -113,7 +120,7 @@ Mu tshikondo tshia **pré-entraînement**, LLM kena ulama tablo wa mibalu to : u
 
 $$\mathcal{L}(\theta) = -\frac{1}{N}\sum_{t=1}^{N} \log p_{\theta}(w_t \mid w_{<t})$$
 
-Bua contexte $c$ udi upingana misangu ya bungi, tshilema tshidi tshikala tshikese menemene padi $p_{\theta}$ muakangane ne ba fréquences ba mifundu ya dilongesha. Ba poids basangisha badi basemena anu pabuipi, ne badi benza kabidi généralisation ku ba contextes kabaayi banji kumona :
+Bua contexte $c$ udi upingana misangu ya bungi, tshilema tshidi tshikala tshikese menemene padi $p_{\theta}$ mufuane ne ba fréquences ba mifundu ya dilongesha. Ba poids basangisha badi basemena anu pabuipi, ne badi benza kabidi généralisation ku ba contextes kabaayi banji kumona :
 
 $$p_{\theta}(w \mid c) \approx \hat{p}(w \mid c) = \frac{\mathrm{count}(c,\ w)}{\mathrm{count}(c)} = \frac{k}{n}$$
 
@@ -134,7 +141,7 @@ Kusakidila paramètres kakuena kusakidila bijadiki to : mifundu ya pabuipi idi y
 
 $$\mathrm{SE}(\hat{p}) = \sqrt{\frac{p(1 - p)}{n}}, \qquad \text{erreur relative} = \frac{\mathrm{SE}(\hat{p})}{p} = \sqrt{\frac{1 - p}{n\,p}}$$
 
-*Note: formule eu udi uangata ne musangu wonso udi pa nkayawu (indépendant). Mifundu ya internet idi ipingaja malu (ba pages ba copie, muaku umue misangu ya bungi mu document umue), nunku erreur wa bushuwa utu **misangu ya bungi mupite bunene**.*
+*Note: formule eu udi uangata ne musangu wonso udi pa nkayawu (indépendant). Mifundu ya internet idi ipingaja malu (ba pages ba copie, phrase umue misangu ya bungi mu document umue), nunku erreur wa bushuwa utu **misangu ya bungi mupite bunene**.*
 
 Bualu erreur udi ukepela ne $1/\sqrt{n}$, **kukosolola erreur mu bitupa bibidi kudi kukengela ba données misangu $4\times$ kupita** (ne kumukepesha misangu $10\times$ kudi kukengela ba données misangu $100\times$ kupita):
 
@@ -169,7 +176,7 @@ vocab.add(left + right)
 ```
 
 <!-- @same_sentence -->
-Muaku wetu, *« Muakulu kawena ne bua kuikala tshibikilu tshia dimanya to »*, katataka ne tokeniseur wa bushuwa: `o200k_base`, udi **OpenAI** wenza nende mudimu bua **GPT-4o**, mu bibliothèque wende `tiktoken`. Bisumbu bikuabu bia ba modèles bidi bikosolola mifundu mu mushindu mukuabu.
+Phrase wetu, *« Muakulu kawena ne bua kuikala tshibikilu tshia dimanya to »*, katataka ne tokeniseur wa bushuwa: `o200k_base`, udi **OpenAI** wenza nende mudimu bua **GPT-4o**, mu bibliothèque wende `tiktoken`. Bisumbu bikuabu bia ba modèles bidi bikosolola mifundu mu mushindu mukuabu.
 
 <!-- @tax_headers -->
 | Muakulu | Miaku | Tokens | vs Anglais | Mudimu wa attention (∝ T²) |
@@ -202,7 +209,7 @@ $$\frac{400}{81} = \left(\frac{20}{9}\right)^2 \approx 4.94$$
 
 Tokeniseur udi ulama tshijima tshivua **tshipingana misangu ya bungi mu mifundu ivuaye mulonge**. *Wetu udi tshilejilu; ba bushuwa badi balonga pabuipi ne bitupa 200 000 kubangila ku ba octets.*
 
-Message umue mu Tshiluba ne `o200k_base`: **ba tokens misangu 2.2**, nunku **mushinga misangu 2.2** padibu bafuta bua token, mifundu **misangu 2.2 mikese** mu contexte, ne mandamuna a bitekete. *Muaku umue udi anu tshilejilu; pima corpus kumpala kua kujikija.*
+Message umue mu Tshiluba ne `o200k_base`: **ba tokens misangu 2.2**, nunku **mushinga misangu 2.2** padibu bafuta bua token, mifundu **misangu 2.2 mikese** mu contexte, ne mandamuna a bitekete. *Phrase umue udi anu tshilejilu; pima corpus kumpala kua kujikija.*
 
 <!-- @tax_open -->
 **Lutatu lua patoke:** ba tokeniseurs badi banemeka morphologie wa Bantu (`préfixe + muji + extension + voyelle wa ndekelu`).
@@ -210,21 +217,21 @@ Message umue mu Tshiluba ne `o200k_base`: **ba tokens misangu 2.2**, nunku **mus
 <!-- @embeddings -->
 ## Embeddings ne similarité cosinus
 
-Nimero wa token kena ne diumvuija to. **Embedding** udi upesha muaku anyi muaku mule vecteur; diumvuija dia pabuipi didi dilua angle mukese:
+Nimero wa token kena ne diumvuija to. **Embedding** udi upesha muaku anyi phrase vecteur; diumvuija dia pabuipi didi dilua angle mukese:
 
 $$\mathbf{e} = \phi(x) \in \mathbb{R}^{d}, \qquad \cos(\mathbf{u}, \mathbf{v}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|\,\|\mathbf{v}\|}$$
 
 <!-- @theory_and_practice -->
-**Mu théorie**, muaku wa Lingala ne dikudimuna diawu mu Anglais badi bapeta vecteur umue pabuipi.
+**Mu théorie**, phrase wa Lingala ne dikudimuna diawu mu Anglais badi bapeta vecteur umue pabuipi.
 
 **Tshitudi tumona misangu ya bungi** mu ba modèles bakamona Lingala mukese (ba vecteurs ba tshilejilu):
 
 <!-- @embedding_limits -->
-- Miaku idi mua kusangila bilondeshile **muakulu**, ki **diumvuija** to: nunku kukeba mu Lingala kudi kupingaja mifundu ya Lingala, ki diandamuna dimpe to.
+- Ba phrases bidi mua kusangila bilondeshile **muakulu**, ki **diumvuija** to: nunku kukeba mu Lingala kudi kupingaja mifundu ya Lingala, ki diandamuna dimpe to.
 - Score 0.8 kayi wumvuija bualu bumue mu Tshiluba ne mu Anglais: ba seuils balongolola mu Anglais badi banyanguka.
 
 <!-- @embedding_open -->
-**Lutatu lua patoke:** kupima ne kulongolola ba embeddings ba miakulu yetu, ne ba paires a miaku itangila kudi bena muakulu.
+**Lutatu lua patoke:** kupima ne kulongolola ba embeddings ba miakulu yetu, ne ba paires a ba phrases bitangila kudi bena muakulu.
 
 <!-- @metrics -->
 ## Ba métriques kabayi bamanya miakulu yetu
@@ -244,7 +251,7 @@ Mandamuna abidi mu Tshiluba, ne note yawu:
 
 <!-- @why_metrics_fail -->
 - Mufundilu kawena umue to (*â* anyi *a*, *ɛ* anyi *e*, ne ba tons anyi to).
-- Muaku umue mule udi ukuata muaku mujima: affixe umue mubi, BLEU udi ujimija muaku mujima.
+- Muaku umue mule udi ukuata phrase mujima: affixe umue mubi, BLEU udi ujimija muaku mujima.
 - LLM kayi umanya Tshiluba bimpe kena mua kupesha Tshiluba note to.
 
 <!-- @metrics_open -->
@@ -368,6 +375,14 @@ Dilongesha dionso dilongesha mu miakulu yetu ndi **mifundu ne diyi bipiabipia bi
 3. **Science** kayi udi munshi?
 
 Pashishe longesha bualu bumue mu muakulu webe.
+
+<!-- @take_it_with_you -->
+### Yaya nende
+
+| Muyuki eu | DarAkili · Android | DarAkili · iPhone |
+|:---:|:---:|:---:|
+| ![QR: Muyuki eu](/edtrace/images/talks/qr-talk-lua.png) | ![QR: DarAkili, Google Play](/edtrace/images/talks/qr-darakili-android.png) | ![QR: DarAkili, App Store](/edtrace/images/talks/qr-darakili-ios.png) |
+| drkabongo.com | Google Play | App Store |
 
 <!-- @thank_you -->
 ## Tuasakidila · Matondo · Aksanti · Merci · Thank you

@@ -68,6 +68,11 @@ def most_inventions_answer_a_limit() -> None:
 
             **Dr. Kabongo** · Deep Learning IndabaX D.R. Congo 2026 · UNH Lubumbashi · 27 November 2026
         """))
+        image(t("talk_qr_image", "images/qr-talk-en.png"), width="24%")
+        text(t("scan_title", """
+            **Scan to get and access this presentation**  
+            [drkabongo.com/speaking/learning-in-the-llm-era](https://drkabongo.com/speaking/learning-in-the-llm-era)
+        """))
     text(t("inventions", """
         ## Most invention is engineering’s answer to a limit
 
@@ -517,6 +522,14 @@ def a_science_behind_every_limit() -> None:
             Then teach one thing in your language.
         """))
         link(AFRICA_AI_100)
+    text(t("take_it_with_you", """
+        ### Take it with you
+
+        | This presentation | DarAkili · Android | DarAkili · iPhone |
+        |:---:|:---:|:---:|
+        | ![QR: This presentation](/edtrace/images/talks/qr-talk-en.png) | ![QR: DarAkili, Google Play](/edtrace/images/talks/qr-darakili-android.png) | ![QR: DarAkili, App Store](/edtrace/images/talks/qr-darakili-ios.png) |
+        | drkabongo.com | Google Play | App Store |
+    """))
     text(t("thank_you", """
         ## Tuasakidila · Matondo · Aksanti · Merci · Thank you
     """))

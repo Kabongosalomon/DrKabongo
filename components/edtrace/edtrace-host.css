@@ -587,6 +587,18 @@
   }
 }
 
+/* QR codes stay crisp and square, and sit evenly side by side in a table. */
+.edtrace-host .edtrace-viewer .renderings img[src*="/qr-"] {
+  image-rendering: pixelated;
+  border-radius: 0;
+}
+
+.edtrace-host .edtrace-viewer .renderings table img[src*="/qr-"] {
+  display: block;
+  width: min(100%, 17em) !important;
+  margin: 0 auto;
+}
+
 /* A slide's sources sit together on one small line under it. */
 .edtrace-host .edtrace-viewer .renderings > span:has(> .link-container) {
   display: inline-block;

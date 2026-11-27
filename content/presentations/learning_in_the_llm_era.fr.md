@@ -8,6 +8,13 @@
 
 **Dr. Kabongo** · Deep Learning IndabaX R.D. Congo 2026 · UNH Lubumbashi · 27 novembre 2026
 
+<!-- @talk_qr_image -->
+images/qr-talk-fr.png
+
+<!-- @scan_title -->
+**Scannez pour obtenir et consulter cette présentation**  
+[drkabongo.com/fr/speaking/learning-in-the-llm-era](https://drkabongo.com/fr/speaking/learning-in-the-llm-era)
+
 <!-- @inventions -->
 ## La plupart des inventions sont la réponse de l’ingénierie à une limite
 
@@ -50,7 +57,7 @@
 
 La réponse d’un LLM dépend de deux choses que vous pouvez changer :
 
-$$p_{\theta}(\text{answer} \mid \text{context})$$
+$$p_{\theta}(\text{réponse} \mid \text{contexte})$$
 
 <!-- @levers -->
 |  | Le contexte (à droite de la barre) | Les poids θ |
@@ -368,6 +375,14 @@ Chaque leçon donnée dans nos langues est du **nouveau texte et de la nouvelle 
 3. Quelle **science** y a-t-il en dessous ?
 
 Puis enseignez une chose dans votre langue.
+
+<!-- @take_it_with_you -->
+### Emportez-le avec vous
+
+| Cette présentation | DarAkili · Android | DarAkili · iPhone |
+|:---:|:---:|:---:|
+| ![QR: Cette présentation](/edtrace/images/talks/qr-talk-fr.png) | ![QR: DarAkili, Google Play](/edtrace/images/talks/qr-darakili-android.png) | ![QR: DarAkili, App Store](/edtrace/images/talks/qr-darakili-ios.png) |
+| drkabongo.com | Google Play | App Store |
 
 <!-- @thank_you -->
 ## Tuasakidila · Matondo · Aksanti · Thank you · Merci

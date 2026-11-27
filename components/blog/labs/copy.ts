@@ -161,7 +161,7 @@ export const conditionCopy: Record<LabLocale, ConditionCopy> = {
     wordsChanged: 'Mots de la demande modifiés',
     linesAdded: 'Lignes de contexte ajoutées',
     notYet: 'Pas encore dans la conversation',
-    resultLabel: '2 · Ce que le modèle risque de répondre',
+    resultLabel: '2 · Ce que le modèle est susceptible de répondre',
     resultHint: 'S’il répond par un nom, quelle est la probabilité de chacun ?',
     names: {
       max: 'Max',
