@@ -459,7 +459,8 @@ export default function LessonViewer({
           lineNode.classList.add('et-toc-call-line')
           if (activeTocEntry?.index === entry.index) {
             lineNode.classList.add('et-toc-active-section')
-          } else if (entry.index > (activeTocEntry?.index ?? 0)) {
+          } else if (state.animate && entry.index > (activeTocEntry?.index ?? 0)) {
+            // Greyed only while upcoming content is veiled; "show everything" shows it all.
             lineNode.classList.add('et-toc-upcoming')
           }
         }

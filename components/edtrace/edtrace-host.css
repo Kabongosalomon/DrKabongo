@@ -203,8 +203,8 @@
 }
 
 /*
- * The table of contents is the talk's agenda. Sections already covered and the
- * current one are full strength; those still to come are greyed, but readable.
+ * The table of contents is the talk's agenda. With upcoming content veiled, the
+ * sections still to come are greyed but readable; otherwise all are full strength.
  */
 .edtrace-host .edtrace-viewer .line.et-toc-header-line.cloaked,
 .edtrace-host .edtrace-viewer .line.et-toc-call-line.cloaked {
