@@ -25,10 +25,14 @@ CODES = {
     "qr-darakili-ios": "https://apps.apple.com/app/id6806669532",
 }
 
+# All codes use the grid of the longest address, so they have the same size and line up side by side.
+VERSION = max(segno.make(url, error="m", micro=False).version for url in CODES.values())
+
 for name, url in CODES.items():
     path = OUTPUT / f"{name}.png"
     # Black on white with the standard 4-module margin, readable in dark mode too.
-    segno.make(url, error="m", micro=False).save(path, scale=12, border=4, dark="#000000", light="#ffffff")
+    code = segno.make(url, error="m", micro=False, version=VERSION)
+    code.save(path, scale=12, border=4, dark="#000000", light="#ffffff")
     decoded = [result.text for result in zxingcpp.read_barcodes(Image.open(path))]
     if decoded != [url]:
         raise SystemExit(f"{path.name} does not read back as {url}: {decoded}")

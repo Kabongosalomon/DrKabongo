@@ -593,9 +593,17 @@
   border-radius: 0;
 }
 
+/* Equal columns: otherwise each column, and its code, is sized from its own content. */
+.edtrace-host .edtrace-viewer .renderings table:has(img[src*="/qr-"]) {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 54em;
+}
+
 .edtrace-host .edtrace-viewer .renderings table img[src*="/qr-"] {
   display: block;
-  width: min(100%, 17em) !important;
+  width: 100% !important;
+  max-width: 15em !important;
   margin: 0 auto;
 }
 
