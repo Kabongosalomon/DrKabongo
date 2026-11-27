@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import './vendor/viewer.css'
@@ -171,9 +171,15 @@ export default function LessonViewer({
   const tocAnchorRef = useRef<HTMLDivElement>(null)
   const shortcutsAnchorRef = useRef<HTMLDivElement>(null)
   const hasUserSteppedRef = useRef(false)
+  // Where the reader was just before the latest step (see the scroll effect below).
+  const scrollBeforeStepRef = useRef<{ host: number; page: number } | null>(null)
 
   // Keep activeLanguage synced if the visitor navigates via next-intl's locale links.
+  // Only on a real change: running on mount would overwrite a `?lang=` deep link.
+  const pageLanguageRef = useRef(language)
   useEffect(() => {
+    if (pageLanguageRef.current === language) return
+    pageLanguageRef.current = language
     setActiveLanguage(language)
   }, [language])
 
@@ -254,6 +260,7 @@ export default function LessonViewer({
 
   const updateState = useCallback((patch: Partial<ViewState>) => {
     hasUserSteppedRef.current = true
+    scrollBeforeStepRef.current = { host: hostRef.current?.scrollTop ?? 0, page: window.scrollY }
     setState((previous) => {
       const next = { ...previous }
       for (const [key, value] of Object.entries(patch)) {
@@ -428,6 +435,7 @@ export default function LessonViewer({
           'et-toc-header-line',
           'et-toc-call-line',
           'et-toc-active-section',
+          'et-toc-upcoming',
           'et-empty-line',
           'et-rendering-line',
         )
@@ -451,6 +459,8 @@ export default function LessonViewer({
           lineNode.classList.add('et-toc-call-line')
           if (activeTocEntry?.index === entry.index) {
             lineNode.classList.add('et-toc-active-section')
+          } else if (entry.index > (activeTocEntry?.index ?? 0)) {
+            lineNode.classList.add('et-toc-upcoming')
           }
         }
       })
@@ -462,28 +472,129 @@ export default function LessonViewer({
     return () => observer.disconnect()
   }, [toc, activeTocEntry, currentPath, state.raw, state.animate, state.present])
 
-  // Keep the highlighted line clear of the sticky presentation bars when stepping.
+  // The viewer's icon buttons only carry an English `title`, which browsers show
+  // late or (in full screen) not at all. Swap it for an instant, localized label
+  // naming the shortcut, drawn by `edtrace-host.css` from `data-tip`.
   useEffect(() => {
+    const host = hostRef.current
+    if (!host) return
+
+    // Same order as the viewer renders them, after the optional "update" buttons.
+    const tips = [
+      `${t('tip_veil')} · Shift+A`,
+      `${t('tip_raw')} · Shift+R`,
+      `${t('tip_values')} · Shift+E`,
+      `${t('tip_notes')} · Shift+N`,
+      `${t('shortcut_prev')} · ← / H`,
+      `${t('shortcut_next')} · → / L`,
+      `${t('tip_over_back')} · Shift+← / K`,
+      `${t('tip_over_next')} · Shift+→ / J`,
+      `${t('shortcut_step_out')} · U`,
+    ]
+
+    const applyTips = () => {
+      host
+        .querySelectorAll<HTMLButtonElement>(
+          '.edtrace-viewer .icon-buttons button:not(.update-navigation)',
+        )
+        .forEach((button, index) => {
+          const tip = tips[index]
+          if (!tip) return
+          if (button.dataset.tip !== tip) {
+            button.dataset.tip = tip
+            button.setAttribute('aria-label', tip)
+          }
+          button.removeAttribute('title')
+        })
+    }
+
+    applyTips()
+    const observer = new MutationObserver(applyTips)
+    observer.observe(host, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['title'],
+    })
+    return () => observer.disconnect()
+  }, [t])
+
+  // Scroll like turning a page: the screen stays still while the highlighted line is
+  // visible, and once the lesson runs past the bottom, that line moves to the top.
+  useLayoutEffect(() => {
+    const before = scrollBeforeStepRef.current
+    scrollBeforeStepRef.current = null
     if (!hasUserSteppedRef.current && state.step === null && state.line === null) return
     const host = hostRef.current
     if (!host) return
 
-    const currentLineEl = host.querySelector<HTMLElement>('.edtrace-viewer .current-line')
-    const viewerHeaderEl = host.querySelector<HTMLElement>('.edtrace-viewer .header')
-    if (!currentLineEl) return
-
-    const topCeiling = (viewerHeaderEl?.getBoundingClientRect().bottom ?? 96) + 16
-    const bottomFloor = window.innerHeight - 56
-    const rect = currentLineEl.getBoundingClientRect()
-
-    if (rect.top < topCeiling || rect.bottom > bottomFloor) {
-      const dist = Math.min(Math.abs(rect.top - topCeiling), Math.abs(rect.bottom - bottomFloor))
-      currentLineEl.scrollIntoView({
-        behavior: dist <= 180 ? 'smooth' : 'instant',
-        block: 'center',
-      })
+    // The vendored viewer has just centred the new line. Put the screen back first.
+    if (before) {
+      if (isFullscreen) host.scrollTo({ top: before.host, behavior: 'instant' })
+      else window.scrollTo({ top: before.page, behavior: 'instant' })
     }
-  }, [currentStepIndex, state.step, state.line])
+
+    const keepInView = () => {
+      // Looked up each time: the viewer may have redrawn the line since the last call.
+      const line = host.querySelector<HTMLElement>('.edtrace-viewer .current-line')
+      if (!line) return
+
+      // On the agenda itself, show it whole from the top.
+      if (isFullscreen && line.matches('.et-toc-header-line, .et-toc-call-line')) {
+        host.scrollTo({ top: 0, behavior: 'instant' })
+        return
+      }
+
+      // In full screen the viewer header floats at the bottom of the screen, so only the
+      // toolbar covers the top. On the page, the header sticks below the toolbar: measure
+      // where it ends once stuck, wherever it happens to be right now.
+      const header = host.querySelector<HTMLElement>('.edtrace-viewer .header')
+      const topCeiling =
+        isFullscreen || !header
+          ? (toolbarRef.current?.getBoundingClientRect().bottom ?? 0)
+          : (parseFloat(getComputedStyle(header).top) || 0) + header.offsetHeight
+      const bottomFloor = window.innerHeight - 56
+      const rect = line.getBoundingClientRect()
+
+      // A code line can also be hidden behind the floating panel of live values.
+      const code = line.querySelector<HTMLElement>('.code-container:not(.line-number)')
+      const values = host.querySelector<HTMLElement>('.edtrace-viewer .env-panel')
+      const panel = values?.getBoundingClientRect()
+      const behindValues =
+        !!code &&
+        !!panel?.height &&
+        code.getBoundingClientRect().right > panel.left &&
+        rect.bottom > panel.top &&
+        rect.top < panel.bottom
+
+      const above = rect.top < topCeiling
+      // A slide taller than the screen is left alone once it starts at the top.
+      const startsAtTop = rect.top < topCeiling + 120
+      const below = (rect.bottom > bottomFloor || behindValues) && !startsAtTop
+      if (!above && !below) return
+
+      // Stepping back up keeps some context around the line, as in EdTrace.
+      const spare = bottomFloor - topCeiling - rect.height
+      const gap = above && spare > 0 ? spare / 2 : 16
+      const move = { top: rect.top - topCeiling - gap, behavior: 'instant' as const }
+      if (isFullscreen) host.scrollBy(move)
+      else window.scrollBy(move)
+    }
+
+    // Wait a frame so the contents-menu classes are back on the redrawn lines.
+    const frame = requestAnimationFrame(keepInView)
+    // A slide grows when its images, charts or formulas arrive, so check again then.
+    // `load` does not bubble, hence the capture phase.
+    host.addEventListener('load', keepInView, true)
+    const content = host.querySelector('.edtrace-viewer .lines-panel')
+    const resize = content ? new ResizeObserver(keepInView) : null
+    if (content) resize?.observe(content)
+    return () => {
+      cancelAnimationFrame(frame)
+      host.removeEventListener('load', keepInView, true)
+      resize?.disconnect()
+    }
+  }, [currentStepIndex, state.step, state.line, isFullscreen])
 
   // Presentation keyboard & wireless presenter-remote shortcuts (non-overlapping with TraceViewer).
   useEffect(() => {
@@ -933,6 +1044,14 @@ export default function LessonViewer({
             </button>
           )}
         </div>
+
+        {isFullscreen && currentVisiblePos >= 0 && (
+          <div
+            className="edtrace-progress"
+            style={{ width: `${((currentVisiblePos + 1) / navigableSteps.length) * 100}%` }}
+            aria-hidden="true"
+          />
+        )}
       </div>
 
       <TraceViewer

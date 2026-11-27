@@ -108,38 +108,50 @@ export default async function InteractiveTalkPage({
           )}
         </p>
 
-        <h1 className="mt-3 font-serif text-3xl font-medium text-balance text-ink sm:text-5xl">
-          {title}
-        </h1>
+        <div className="flex flex-col gap-x-10 md:flex-row md:items-start">
+          <div className="min-w-0 flex-1">
+            <h1 className="mt-3 font-serif text-3xl font-medium text-balance text-ink sm:text-5xl">
+              {title}
+            </h1>
 
-        <p className="mt-3 text-sm font-medium text-ink-2">{venue}</p>
-        {eventTheme && <p className="mt-1 text-xs italic text-ink-3">{eventTheme}</p>}
+            <p className="mt-3 text-sm font-medium text-ink-2">{venue}</p>
+            {eventTheme && <p className="mt-1 text-xs italic text-ink-3">{eventTheme}</p>}
 
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-2">{summary}</p>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-2">{summary}</p>
 
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <LanguageNotice
-            requested={locale}
-            shown={language}
-            available={available}
-            courseId={edtrace.courseId}
-            lessonId={edtrace.lessonId}
-            isFallback={isFallback}
-            basePath={`/speaking/${edtrace.slug}`}
-          />
-          <div className="flex flex-wrap items-center gap-3">
-            {talk.poster && (
-              <a
-                href={talk.poster}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link text-xs font-medium"
-              >
-                {t('poster')} ↗
-              </a>
-            )}
-            <PresentTrigger />
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <LanguageNotice
+                requested={locale}
+                shown={language}
+                available={available}
+                courseId={edtrace.courseId}
+                lessonId={edtrace.lessonId}
+                isFallback={isFallback}
+                basePath={`/speaking/${edtrace.slug}`}
+              />
+              <div className="flex flex-wrap items-center gap-3">
+                <PresentTrigger />
+              </div>
+            </div>
           </div>
+
+          {talk.poster && (
+            <a
+              href={talk.poster}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 block w-full max-w-xs shrink-0 self-center md:mt-3 md:w-72 md:self-start"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={talk.poster}
+                alt={`${t('poster')}: ${venue}`}
+                width={682}
+                height={1024}
+                className="h-auto w-full rounded-lg border border-rule shadow-sm"
+              />
+            </a>
+          )}
         </div>
       </div>
 

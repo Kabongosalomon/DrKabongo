@@ -1,0 +1,764 @@
+{
+ "fr": {
+  "adapt_with_lora": [
+   "99a42c147440",
+   "94df8cbd4af7"
+  ],
+  "be_honest": [
+   "71f703fbfaa3",
+   "d102932d2a39"
+  ],
+  "beyond_data": [
+   "00aa404cc7bd",
+   "29a98f4e7d9d"
+  ],
+  "board": [
+   "98796e670aa9",
+   "67fef0ecf67d"
+  ],
+  "bpe_inside": [
+   "bb53c97f2941",
+   "d48f0c3cc092"
+  ],
+  "counting": [
+   "8d4754d27b36",
+   "020c0208fa99"
+  ],
+  "counting_example": [
+   "28096758be65",
+   "e59a0c842894"
+  ],
+  "counting_takeaway": [
+   "afcf1400916c",
+   "96b830a6a999"
+  ],
+  "daily_life_online": [
+   "718ab7aec17f",
+   "4e224fbb2fc1"
+  ],
+  "darakili": [
+   "72ea0e3700b6",
+   "09df76e05048"
+  ],
+  "data_classes": [
+   "07dd8bc7edf9",
+   "3ef3a5ef04f5"
+  ],
+  "embedding_limits": [
+   "8d6352d7f940",
+   "017a156e03db"
+  ],
+  "embedding_open": [
+   "6b494e2eeda3",
+   "5adc151d36ab"
+  ],
+  "embeddings": [
+   "089647829da6",
+   "048b23e52124"
+  ],
+  "how_sure": [
+   "4aac397637da",
+   "b9e5344e3594"
+  ],
+  "inventions": [
+   "d04cbb6f2cbe",
+   "e5dc3f9803ab"
+  ],
+  "levers": [
+   "c86ebffced57",
+   "97d7146b1074"
+  ],
+  "live_in_our_languages": [
+   "c1c7c01ea46b",
+   "7e9cb00aa77c"
+  ],
+  "llm_era": [
+   "b262a8bbe466",
+   "152f6665959d"
+  ],
+  "local_llms": [
+   "28adfbaada2b",
+   "3068f7c1ff16"
+  ],
+  "low_digitised": [
+   "caeb070f098d",
+   "804fe1c4c0b3"
+  ],
+  "low_resource": [
+   "0d811eb14b44",
+   "16c6828f8df5"
+  ],
+  "masakhane": [
+   "adff73de1fa7",
+   "0dc4cc07c33e"
+  ],
+  "memory_chart_full": [
+   "249a25296378",
+   "249a25296378"
+  ],
+  "memory_chart_quantised": [
+   "3b39f4d9a39b",
+   "f9cf8b0ae18e"
+  ],
+  "memory_chart_title": [
+   "0221723e4af2",
+   "ffe4c2ce5c4b"
+  ],
+  "memory_rule": [
+   "de4ce29ad551",
+   "e161b2f02939"
+  ],
+  "metrics": [
+   "f97b80d137ae",
+   "56d2586da77e"
+  ],
+  "metrics_open": [
+   "de4f5c9a6766",
+   "204a19e727d9"
+  ],
+  "my_work": [
+   "1cb2a2837676",
+   "e3dece4116b8"
+  ],
+  "not_magic": [
+   "4971ad040a95",
+   "4e8b74e8e071"
+  ],
+  "open_problems": [
+   "29c5b745df80",
+   "ec9f0e287092"
+  ],
+  "our_languages": [
+   "c0b51163ef78",
+   "aeba75274e61"
+  ],
+  "people_title": [
+   "7014c651acc9",
+   "6c0da349fa22"
+  ],
+  "roadmap": [
+   "999e99fce1be",
+   "172d9f301206"
+  ],
+  "same_sentence": [
+   "7903d6eb6546",
+   "3e19eedd5196"
+  ],
+  "tax_chart_attention": [
+   "56a2837ca7ec",
+   "a0a81175bd0a"
+  ],
+  "tax_chart_title": [
+   "98ecb9530692",
+   "e733aec52b4a"
+  ],
+  "tax_chart_tokens": [
+   "a039dfb9628b",
+   "a039dfb9628b"
+  ],
+  "tax_headers": [
+   "8fb2253d0e90",
+   "04673ae5cb47"
+  ],
+  "tax_open": [
+   "2e2b3c260792",
+   "590b261cee55"
+  ],
+  "thank_you": [
+   "3059fdb36993",
+   "15133fb2fa39"
+  ],
+  "theory_and_practice": [
+   "07318c5ec344",
+   "d0fd2f5d79a8"
+  ],
+  "three_questions": [
+   "842eed8af113",
+   "2b85aff0896c"
+  ],
+  "title": [
+   "9bafa49963bd",
+   "73797cacdd7a"
+  ],
+  "token_tax": [
+   "b9e051578224",
+   "064e61b53882"
+  ],
+  "tools_to_run": [
+   "bb5a78fcd0ea",
+   "1d2d5ed7d45f"
+  ],
+  "try_tonight": [
+   "d339f7862765",
+   "d339f7862765"
+  ],
+  "two_answers": [
+   "6f4d58c8e9d8",
+   "2a5046f25d55"
+  ],
+  "what_fits": [
+   "40e8bad8c676",
+   "a6d4bc5b3fed"
+  ],
+  "what_i_learned": [
+   "4b5340459762",
+   "fcf65853b85f"
+  ],
+  "what_it_costs": [
+   "f2e95c7b8e6e",
+   "51f464999cba"
+  ],
+  "what_we_build": [
+   "df1646ffd869",
+   "ec9bcc79de8c"
+  ],
+  "where_machines_learn": [
+   "98eac9e37005",
+   "d5421b8e2f96"
+  ],
+  "where_the_people_were": [
+   "c804e9216f61",
+   "d895046a337f"
+  ],
+  "where_we_wrote": [
+   "8da60cd53b2a",
+   "9d8b38738efa"
+  ],
+  "why_it_works": [
+   "83ffa588e194",
+   "4d944ca4aeab"
+  ],
+  "why_metrics_fail": [
+   "0c1d1ce353fb",
+   "2ceb87de6cd2"
+  ],
+  "why_square": [
+   "454c05f28c2b",
+   "b8752fa0040a"
+  ],
+  "wrong_answer_wins": [
+   "451bb75f4122",
+   "a95b1258239d"
+  ],
+  "your_part": [
+   "b9165dd22fd3",
+   "26194cfd354c"
+  ],
+  "your_turn": [
+   "56af6c23840b",
+   "58acc68bea2b"
+  ],
+  "zero_counts": [
+   "8456b6fe67f1",
+   "cddd6bc586bf"
+  ]
+ },
+ "ln": {
+  "adapt_with_lora": [
+   "99a42c147440",
+   "e929432040db"
+  ],
+  "be_honest": [
+   "71f703fbfaa3",
+   "ef70bc1e222f"
+  ],
+  "beyond_data": [
+   "00aa404cc7bd",
+   "be3b24284a82"
+  ],
+  "board": [
+   "98796e670aa9",
+   "9b90f3b2bfd8"
+  ],
+  "bpe_inside": [
+   "bb53c97f2941",
+   "a80c85f2090f"
+  ],
+  "counting": [
+   "8d4754d27b36",
+   "d66173b63431"
+  ],
+  "counting_example": [
+   "28096758be65",
+   "7d77a958dabb"
+  ],
+  "counting_takeaway": [
+   "afcf1400916c",
+   "7fc7317ccfa2"
+  ],
+  "daily_life_online": [
+   "718ab7aec17f",
+   "425ce6f9df67"
+  ],
+  "darakili": [
+   "72ea0e3700b6",
+   "e11c46daac05"
+  ],
+  "data_classes": [
+   "07dd8bc7edf9",
+   "2f9355ccc7f8"
+  ],
+  "embedding_limits": [
+   "8d6352d7f940",
+   "2ba8e81bb792"
+  ],
+  "embedding_open": [
+   "6b494e2eeda3",
+   "aa5226acceed"
+  ],
+  "embeddings": [
+   "089647829da6",
+   "0fb5d953fdd5"
+  ],
+  "how_sure": [
+   "4aac397637da",
+   "211bfad274e9"
+  ],
+  "inventions": [
+   "d04cbb6f2cbe",
+   "b7fecbbb6bf6"
+  ],
+  "levers": [
+   "c86ebffced57",
+   "27840558d13e"
+  ],
+  "live_in_our_languages": [
+   "c1c7c01ea46b",
+   "df9c17d4a427"
+  ],
+  "llm_era": [
+   "b262a8bbe466",
+   "137e8387ade0"
+  ],
+  "local_llms": [
+   "28adfbaada2b",
+   "04fe2cd232d3"
+  ],
+  "low_digitised": [
+   "caeb070f098d",
+   "75890fb29a4d"
+  ],
+  "low_resource": [
+   "0d811eb14b44",
+   "a19511a6bdb4"
+  ],
+  "masakhane": [
+   "adff73de1fa7",
+   "1918767e47a4"
+  ],
+  "memory_chart_full": [
+   "249a25296378",
+   "249a25296378"
+  ],
+  "memory_chart_quantised": [
+   "3b39f4d9a39b",
+   "b37c43bb6fff"
+  ],
+  "memory_chart_title": [
+   "0221723e4af2",
+   "6f94efe6e6d3"
+  ],
+  "memory_rule": [
+   "de4ce29ad551",
+   "b1207b0e8b47"
+  ],
+  "metrics": [
+   "f97b80d137ae",
+   "243194b98f41"
+  ],
+  "metrics_open": [
+   "de4f5c9a6766",
+   "2ad946116581"
+  ],
+  "my_work": [
+   "1cb2a2837676",
+   "b32e39be79e3"
+  ],
+  "not_magic": [
+   "4971ad040a95",
+   "378e40de5735"
+  ],
+  "open_problems": [
+   "29c5b745df80",
+   "003c1b3a72e4"
+  ],
+  "our_languages": [
+   "c0b51163ef78",
+   "5decf403429b"
+  ],
+  "people_title": [
+   "7014c651acc9",
+   "a0a8e3592680"
+  ],
+  "roadmap": [
+   "999e99fce1be",
+   "9f566c6a8f7e"
+  ],
+  "same_sentence": [
+   "7903d6eb6546",
+   "0628dbe7121d"
+  ],
+  "tax_chart_attention": [
+   "56a2837ca7ec",
+   "84d2852bd324"
+  ],
+  "tax_chart_title": [
+   "98ecb9530692",
+   "d4686547302d"
+  ],
+  "tax_chart_tokens": [
+   "a039dfb9628b",
+   "a039dfb9628b"
+  ],
+  "tax_headers": [
+   "8fb2253d0e90",
+   "315ada7f8161"
+  ],
+  "tax_open": [
+   "2e2b3c260792",
+   "7e0844c6ffcf"
+  ],
+  "thank_you": [
+   "3059fdb36993",
+   "2c84a649b93e"
+  ],
+  "theory_and_practice": [
+   "07318c5ec344",
+   "0bca1d54504b"
+  ],
+  "three_questions": [
+   "842eed8af113",
+   "12bb61e70a90"
+  ],
+  "title": [
+   "9bafa49963bd",
+   "317412269da8"
+  ],
+  "token_tax": [
+   "b9e051578224",
+   "f07c0e3a357d"
+  ],
+  "tools_to_run": [
+   "bb5a78fcd0ea",
+   "1ef601f9b6c4"
+  ],
+  "try_tonight": [
+   "d339f7862765",
+   "d339f7862765"
+  ],
+  "two_answers": [
+   "6f4d58c8e9d8",
+   "1c443cf29fa1"
+  ],
+  "what_fits": [
+   "40e8bad8c676",
+   "8fd57d35d6be"
+  ],
+  "what_i_learned": [
+   "4b5340459762",
+   "23d52cdf95b9"
+  ],
+  "what_it_costs": [
+   "f2e95c7b8e6e",
+   "e93ddc010dfb"
+  ],
+  "what_we_build": [
+   "df1646ffd869",
+   "5cea75c196b9"
+  ],
+  "where_machines_learn": [
+   "98eac9e37005",
+   "4f4a025e01d5"
+  ],
+  "where_the_people_were": [
+   "c804e9216f61",
+   "a1c724183ed5"
+  ],
+  "where_we_wrote": [
+   "8da60cd53b2a",
+   "eb17dc16ccb2"
+  ],
+  "why_it_works": [
+   "83ffa588e194",
+   "1d3e59675cf1"
+  ],
+  "why_metrics_fail": [
+   "0c1d1ce353fb",
+   "d061587404b2"
+  ],
+  "why_square": [
+   "454c05f28c2b",
+   "cef857077065"
+  ],
+  "wrong_answer_wins": [
+   "451bb75f4122",
+   "559b4c2cc00a"
+  ],
+  "your_part": [
+   "b9165dd22fd3",
+   "66b1005f8926"
+  ],
+  "your_turn": [
+   "56af6c23840b",
+   "155748a62182"
+  ],
+  "zero_counts": [
+   "8456b6fe67f1",
+   "624d1fa15df1"
+  ]
+ },
+ "lua": {
+  "adapt_with_lora": [
+   "99a42c147440",
+   "d2093d1f6127"
+  ],
+  "be_honest": [
+   "71f703fbfaa3",
+   "bb46a9d15ef3"
+  ],
+  "beyond_data": [
+   "00aa404cc7bd",
+   "c342ff333e6a"
+  ],
+  "board": [
+   "98796e670aa9",
+   "2a9693c37685"
+  ],
+  "bpe_inside": [
+   "bb53c97f2941",
+   "bb0649c78c6b"
+  ],
+  "counting": [
+   "8d4754d27b36",
+   "cc4bd2186e60"
+  ],
+  "counting_example": [
+   "28096758be65",
+   "8f54246943a5"
+  ],
+  "counting_takeaway": [
+   "afcf1400916c",
+   "0f1dbf0f809c"
+  ],
+  "daily_life_online": [
+   "718ab7aec17f",
+   "8258c10ef63b"
+  ],
+  "darakili": [
+   "72ea0e3700b6",
+   "78e2e0310bcf"
+  ],
+  "data_classes": [
+   "07dd8bc7edf9",
+   "7cade4b05429"
+  ],
+  "embedding_limits": [
+   "8d6352d7f940",
+   "e84ad5f5db1c"
+  ],
+  "embedding_open": [
+   "6b494e2eeda3",
+   "39e62c8720e5"
+  ],
+  "embeddings": [
+   "089647829da6",
+   "caa3a70f29b9"
+  ],
+  "how_sure": [
+   "4aac397637da",
+   "f53dd6a793f1"
+  ],
+  "inventions": [
+   "d04cbb6f2cbe",
+   "5ff8e5e62aee"
+  ],
+  "levers": [
+   "c86ebffced57",
+   "75809213f7df"
+  ],
+  "live_in_our_languages": [
+   "c1c7c01ea46b",
+   "3c2d9972e115"
+  ],
+  "llm_era": [
+   "b262a8bbe466",
+   "5d5003e351d7"
+  ],
+  "local_llms": [
+   "28adfbaada2b",
+   "84be30323cca"
+  ],
+  "low_digitised": [
+   "caeb070f098d",
+   "97081bd2428f"
+  ],
+  "low_resource": [
+   "0d811eb14b44",
+   "48c1425c46a3"
+  ],
+  "masakhane": [
+   "adff73de1fa7",
+   "2c5e544e8dc3"
+  ],
+  "memory_chart_full": [
+   "249a25296378",
+   "249a25296378"
+  ],
+  "memory_chart_quantised": [
+   "3b39f4d9a39b",
+   "b37c43bb6fff"
+  ],
+  "memory_chart_title": [
+   "0221723e4af2",
+   "36f7d6818438"
+  ],
+  "memory_rule": [
+   "de4ce29ad551",
+   "3bd44a7790ef"
+  ],
+  "metrics": [
+   "f97b80d137ae",
+   "3791bbaf4ed5"
+  ],
+  "metrics_open": [
+   "de4f5c9a6766",
+   "d0f3dd83da0f"
+  ],
+  "my_work": [
+   "1cb2a2837676",
+   "003800b1d818"
+  ],
+  "not_magic": [
+   "4971ad040a95",
+   "159b61262252"
+  ],
+  "open_problems": [
+   "29c5b745df80",
+   "4f0e4ffea1af"
+  ],
+  "our_languages": [
+   "c0b51163ef78",
+   "a1ee5db6c8a6"
+  ],
+  "people_title": [
+   "7014c651acc9",
+   "71c5474570dc"
+  ],
+  "roadmap": [
+   "999e99fce1be",
+   "f5c8a8fb28ae"
+  ],
+  "same_sentence": [
+   "7903d6eb6546",
+   "5d896e4a2f7b"
+  ],
+  "tax_chart_attention": [
+   "56a2837ca7ec",
+   "e17be682d397"
+  ],
+  "tax_chart_title": [
+   "98ecb9530692",
+   "314d05830ee7"
+  ],
+  "tax_chart_tokens": [
+   "a039dfb9628b",
+   "a039dfb9628b"
+  ],
+  "tax_headers": [
+   "8fb2253d0e90",
+   "4b1d1eefbd20"
+  ],
+  "tax_open": [
+   "2e2b3c260792",
+   "0689eacd8143"
+  ],
+  "thank_you": [
+   "3059fdb36993",
+   "3059fdb36993"
+  ],
+  "theory_and_practice": [
+   "07318c5ec344",
+   "70c1d18a8569"
+  ],
+  "three_questions": [
+   "842eed8af113",
+   "fb367503df43"
+  ],
+  "title": [
+   "9bafa49963bd",
+   "ab1b2e81df1c"
+  ],
+  "token_tax": [
+   "b9e051578224",
+   "1aaea4a626e7"
+  ],
+  "tools_to_run": [
+   "bb5a78fcd0ea",
+   "f92e8045feca"
+  ],
+  "try_tonight": [
+   "d339f7862765",
+   "d339f7862765"
+  ],
+  "two_answers": [
+   "6f4d58c8e9d8",
+   "53312a03c978"
+  ],
+  "what_fits": [
+   "40e8bad8c676",
+   "864ba4861fca"
+  ],
+  "what_i_learned": [
+   "4b5340459762",
+   "d32aabd78b1b"
+  ],
+  "what_it_costs": [
+   "f2e95c7b8e6e",
+   "bb6222359b4c"
+  ],
+  "what_we_build": [
+   "df1646ffd869",
+   "da5f83158339"
+  ],
+  "where_machines_learn": [
+   "98eac9e37005",
+   "cc18683d5a75"
+  ],
+  "where_the_people_were": [
+   "c804e9216f61",
+   "90716adb9c30"
+  ],
+  "where_we_wrote": [
+   "8da60cd53b2a",
+   "98bb5124ddf2"
+  ],
+  "why_it_works": [
+   "83ffa588e194",
+   "37297713adfa"
+  ],
+  "why_metrics_fail": [
+   "0c1d1ce353fb",
+   "fe135ad443f3"
+  ],
+  "why_square": [
+   "454c05f28c2b",
+   "265a33b70316"
+  ],
+  "wrong_answer_wins": [
+   "451bb75f4122",
+   "36c4ac1d21c5"
+  ],
+  "your_part": [
+   "b9165dd22fd3",
+   "135eb11a45ce"
+  ],
+  "your_turn": [
+   "56af6c23840b",
+   "010373b1de6c"
+  ],
+  "zero_counts": [
+   "8456b6fe67f1",
+   "65c2156e72c0"
+  ]
+ }
+}

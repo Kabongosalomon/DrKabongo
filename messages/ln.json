@@ -228,7 +228,13 @@
     "shortcut_step_over": "Leka fonction",
     "shortcut_step_out": "Bima na fonction",
     "shortcut_updates": "Update ya liboso / oyo elandi",
-    "shortcut_toggles": "Code / environnement / ba note"
+    "shortcut_toggles": "Code / environnement / ba note",
+    "tip_veil": "Lakisa / zipa oyo elandi",
+    "tip_raw": "Lakisa code",
+    "tip_values": "Lakisa / bomba ba valeurs",
+    "tip_notes": "Lakisa / bomba ba note",
+    "tip_over_back": "Leka, na sima",
+    "tip_over_next": "Leka, na liboso"
   },
   "blog": {
     "section_label": "Blog",

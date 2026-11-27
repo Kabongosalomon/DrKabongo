@@ -228,7 +228,13 @@
     "shortcut_step_over": "Passer la fonction",
     "shortcut_step_out": "Sortir de la fonction",
     "shortcut_updates": "Mise à jour précédente / suivante",
-    "shortcut_toggles": "Code brut / environnement / notes"
+    "shortcut_toggles": "Code brut / environnement / notes",
+    "tip_veil": "Afficher / voiler la suite",
+    "tip_raw": "Afficher le code brut",
+    "tip_values": "Afficher / masquer les variables",
+    "tip_notes": "Afficher / masquer les notes",
+    "tip_over_back": "Passer en arrière (même niveau)",
+    "tip_over_next": "Passer en avant (même niveau)"
   },
   "blog": {
     "section_label": "Blog",

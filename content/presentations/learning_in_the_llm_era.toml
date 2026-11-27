@@ -1,0 +1,67 @@
+# Settings for learning_in_the_llm_era.py
+course_id = "talks"
+
+[language_labels]
+en = "English"
+fr = "Français"
+ln = "Lingála"
+lua = "Tshiluba"
+
+[course_titles]
+en = "Invited Talks & University Lectures"
+fr = "Conférences invitées et cours universitaires"
+ln = "Masolo pe mateya ya université"
+lua = "Miyuki ne malongesha a ku université"
+
+[lesson_titles]
+en = "Learning in the Era of LLM: How Did Our Languages Become “Low-Resource”?"
+fr = "Apprendre à l'ère des LLM : Comment nos langues sont-elles devenues « peu dotées » ?"
+ln = "Koyekola na tango ya ba LLM : Ndenge nini minoko na biso ekomaki « na mwa ba ressources » ?"
+lua = "Kulongesha mu tshikondo tshia ba LLM : Mushindu kayi miakulu yetu milua « ne ba ressources bikese » ?"
+
+# Names shown instead of the English function names. A function without one keeps its own.
+
+[function_names.fr]
+main = "principal"
+table_of_contents = "table_des_matieres"
+most_inventions_answer_a_limit = "la_plupart_des_inventions_repondent_a_une_limite"
+engineering_went_where_the_people_were = "l_ingenierie_est_allee_ou_etaient_les_gens"
+how_our_languages_became_low_resource = "comment_nos_langues_sont_devenues_peu_dotees"
+models_learn_by_counting = "les_modeles_apprennent_en_comptant"
+the_tokenization_tax = "la_taxe_de_tokenisation"
+embeddings_and_cosine_similarity = "embeddings_et_similarite_cosinus"
+metrics_that_miss_our_languages = "des_metriques_qui_ratent_nos_langues"
+local_llms_on_your_own_machine = "des_llm_locaux_sur_votre_machine"
+masakhane_we_build_together = "masakhane_construire_ensemble"
+darakili_life_in_our_languages = "darakili_vivre_dans_nos_langues"
+a_science_behind_every_limit = "une_science_derriere_chaque_limite"
+
+[function_names.ln]
+main = "mosala_monene"
+table_of_contents = "ndimbu_ya_malako"
+most_inventions_answer_a_limit = "biloko_mingi_eyanolaka_na_mokakatano"
+engineering_went_where_the_people_were = "ingenierie_ekendaki_epai_bato_bazalaki"
+how_our_languages_became_low_resource = "ndenge_minoko_na_biso_ezangaki_makomi"
+models_learn_by_counting = "ba_modele_bayekolaka_na_kotanga"
+the_tokenization_tax = "mpako_ya_tokenisation"
+embeddings_and_cosine_similarity = "embeddings_pe_similarite_cosinus"
+metrics_that_miss_our_languages = "ba_metrique_oyo_eyebi_minoko_na_biso_te"
+local_llms_on_your_own_machine = "llm_na_ordinateur_na_yo"
+masakhane_we_build_together = "masakhane_totonga_elongo"
+darakili_life_in_our_languages = "darakili_kozala_na_minoko_na_biso"
+a_science_behind_every_limit = "science_nsima_ya_mokakatano"
+
+[function_names.lua]
+main = "mudimu_munene"
+table_of_contents = "mukanda_wa_bintu"
+most_inventions_answer_a_limit = "bintu_bia_bungi_biandamuna_lutatu"
+engineering_went_where_the_people_were = "ingenierie_wakaya_muaba_uvua_bantu"
+how_our_languages_became_low_resource = "mushindu_miakulu_yetu_mikabula_mifundu"
+models_learn_by_counting = "ba_modele_badi_balonga_ne_kubala"
+the_tokenization_tax = "mulambu_wa_tokenisation"
+embeddings_and_cosine_similarity = "embeddings_ne_similarite_cosinus"
+metrics_that_miss_our_languages = "ba_metrique_kabayi_bamanya_miakulu_yetu"
+local_llms_on_your_own_machine = "llm_mu_ordinateur_webe"
+masakhane_we_build_together = "masakhane_tuibakayi_pamue"
+darakili_life_in_our_languages = "darakili_kuikala_mu_miakulu_yetu"
+a_science_behind_every_limit = "science_panyima_pa_lutatu"

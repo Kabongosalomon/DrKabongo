@@ -228,7 +228,13 @@
     "shortcut_step_over": "Pita fonction",
     "shortcut_step_out": "Patuka mu fonction",
     "shortcut_updates": "Update wa kumpala / udi ulonda",
-    "shortcut_toggles": "Code / environnement / ba note"
+    "shortcut_toggles": "Code / environnement / ba note",
+    "tip_veil": "Leja / buikila bidi bilonda",
+    "tip_raw": "Leja code",
+    "tip_values": "Leja / sokoka ba valeurs",
+    "tip_notes": "Leja / sokoka ba note",
+    "tip_over_back": "Pita, panyima",
+    "tip_over_next": "Pita, kumpala"
   },
   "blog": {
     "section_label": "Blog",

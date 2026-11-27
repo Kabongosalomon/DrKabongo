@@ -49,11 +49,11 @@ export interface Talk {
 
 export const TALKS: Talk[] = [
   {
-    title: 'Learning in the Era of LLM: Crawl, Walk, Run, Fly — Shortcuts vs. Foundations',
+    title: 'Learning in the Era of LLM: How Did Our Languages Become “Low-Resource”?',
     venue: 'Deep Learning IndabaX D.R. Congo 2026 · Université Nouveaux Horizons, Lubumbashi',
     date: '2026-11-27',
     featured: true,
-    draft: true,
+    draft: false,
     poster: '/images/talks/indabax-drc-2026.jpg',
     edtrace: {
       slug: 'learning-in-the-llm-era',
@@ -62,18 +62,18 @@ export const TALKS: Talk[] = [
       location: 'Lubumbashi, D.R. Congo',
       affiliation: 'SALELA BONGO LLC · DarAkili',
       titles: {
-        en: 'Learning in the Era of LLM: Crawl, Walk, Run, Fly — Shortcuts vs. Foundations',
-        fr: "Apprendre à l'ère des LLM : Ramper, marcher, courir, voler — Raccourcis vs Fondations",
-        ln: 'Koyekola na tango ya ba LLM : Kolanda, kotambola, kopota, kopumbwa — Nzela ya mokuse vs Miboko',
-        lua: 'Kulongesha mu tshikondo tshia ba LLM : Kulandakana, kuenda, kunyema, kubuka — Njila wa tshikoso vs Miboko',
-        sw: 'Kujifunza katika Enzi ya LLM: Tambaa, Tembea, Kimbia, Paa — Njia za Mkato vs Misingi',
+        en: 'Learning in the Era of LLM: How Did Our Languages Become “Low-Resource”?',
+        fr: "Apprendre à l'ère des LLM : Comment nos langues sont-elles devenues « peu dotées » ?",
+        ln: 'Koyekola na tango ya ba LLM : Ndenge nini minoko na biso ekomaki « na mwa ba ressources » ?',
+        lua: 'Kulongesha mu tshikondo tshia ba LLM : Mushindu kayi miakulu yetu milua « ne ba ressources bikese » ?',
+        sw: 'Kujifunza katika Enzi ya LLM: Lugha Zetu Ziliwezaje Kuwa na “Rasilimali Chache”?',
       },
       summaries: {
-        en: 'Why fast execution makes deep fundamentals more valuable than ever: tokenization taxes beyond BPE on Congolese languages, embeddings before agents and multimodal hype, low-resource speech translation, and building open STEM & AI education through DarAkili (SALELA BONGO LLC).',
-        fr: "Pourquoi la rapidité d'exécution rend la maîtrise des fondamentaux indispensable : la taxe de tokenisation au-delà de BPE sur les langues congolaises, les embeddings avant les agents et le multimodal, la traduction vocale peu dotée, et l'éducation ouverte avec DarAkili (SALELA BONGO LLC).",
-        ln: 'Mpo na nini koyeba miboko ya AI ezali na ntina koleka: mokakatano ya tokenisation (BPE) na minoko ya Congo, ba embeddings liboso ya ba agents, traduction ya mongongo, pe mosala ya DarAkili (SALELA BONGO LLC).',
-        lua: 'Bua tshinyi kumanya miboko ya AI kudi ne mushinga: lutatu lua tokenisation (BPE) mu miakulu ya mu Congo, ba embeddings kumpala kua ba agents, traduction wa dîyi, ne mudimu wa DarAkili (SALELA BONGO LLC).',
-        sw: 'Kwa nini kuelewa misingi ya AI ni muhimu zaidi leo: changamoto za tokenisation (BPE) kwa lugha za Kiafrika, embeddings kabla ya mawakala, tafsiri ya sauti, na elimu huria kupitia DarAkili (SALELA BONGO LLC).',
+        en: 'Why are African languages “low-resource”, and what can we do about it? Probability, the tokenization tax, embeddings and metrics that miss our languages, running open models locally, Masakhane, and DarAkili: bringing everyday life in our languages into the digital space.',
+        fr: 'Pourquoi les langues africaines sont-elles « peu dotées », et que pouvons-nous y faire ? Probabilités, taxe de tokenisation, embeddings et métriques qui ratent nos langues, modèles ouverts en local, Masakhane, et DarAkili : faire entrer notre vie quotidienne, dans nos langues, dans l’espace numérique.',
+        ln: 'Mpo na nini minoko ya Afrika ezali na « mwa ba ressources », mpe tokoki kosala nini? Probabilité, mpako ya tokenisation, ba embeddings pe ba métriques oyo eyebi minoko na biso te, ba modèles ya polele na ordinateur na yo, Masakhane, pe DarAkili: komema bomoi na biso na minoko na biso na numérique.',
+        lua: 'Bua tshinyi miakulu ya mu Afrika idi ne « ba ressources bikese », ne tudi mua kuenza tshinyi? Probabilité, mulambu wa tokenisation, ba embeddings ne ba métriques kabayi bamanya miakulu yetu, ba modèles patoke mu ordinateur webe, Masakhane, ne DarAkili: kuambula muoyo wetu mu miakulu yetu mu numérique.',
+        sw: 'Kwa nini lugha za Kiafrika zina “rasilimali chache”, na tunaweza kufanya nini? Uwezekano, kodi ya tokenization, embeddings na vipimo visivyozielewa lugha zetu, kuendesha modeli huria kwenye kompyuta yako, Masakhane, na DarAkili: kuleta maisha yetu ya kila siku kwa lugha zetu katika ulimwengu wa kidijitali.',
       },
       venues: {
         en: 'Deep Learning IndabaX D.R. Congo 2026 · Université Nouveaux Horizons (UNH)',

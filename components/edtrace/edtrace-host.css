@@ -81,6 +81,9 @@
 .edtrace-host .edtrace-viewer .lines-panel {
   min-width: 0;
   width: 100%;
+  /* `auto` would make this the sticky header's scroll box and push the header
+     down by its own offset, leaving a blank band above the lesson. */
+  overflow-x: clip;
 }
 
 .edtrace-host .edtrace-viewer .header {
@@ -181,11 +184,6 @@
     opacity 0.14s ease;
 }
 
-.edtrace-host .edtrace-viewer .line.et-toc-call-line.cloaked:hover,
-.edtrace-host .edtrace-viewer .line.et-toc-header-line.cloaked:hover {
-  opacity: 0.9;
-}
-
 .edtrace-host .edtrace-viewer .line.et-toc-header-line:hover,
 .edtrace-host .edtrace-viewer .line.et-toc-call-line:hover {
   background-color: rgba(99, 102, 241, 0.09);
@@ -197,9 +195,29 @@
 }
 
 .edtrace-host .edtrace-viewer .line.et-toc-call-line:hover .code-container:not(.line-number) {
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 3px;
+  color: var(--et-link);
+}
+
+.edtrace-host .edtrace-viewer .line.et-toc-call-line:hover .code-container:not(.line-number) * {
+  color: inherit;
+}
+
+/*
+ * The table of contents is the talk's agenda. Sections already covered and the
+ * current one are full strength; those still to come are greyed, but readable.
+ */
+.edtrace-host .edtrace-viewer .line.et-toc-header-line.cloaked,
+.edtrace-host .edtrace-viewer .line.et-toc-call-line.cloaked {
+  opacity: 1;
+}
+
+.edtrace-host .edtrace-viewer .line.et-toc-call-line.et-toc-upcoming {
+  filter: grayscale(1);
+  opacity: 0.38;
+}
+
+.edtrace-host .edtrace-viewer .line.et-toc-call-line.et-toc-upcoming:hover {
+  opacity: 0.85;
 }
 
 .edtrace-host .edtrace-viewer .line.et-toc-active-section:not(.current-line) {
@@ -413,6 +431,350 @@
 .edtrace-toc-subitem.is-active {
   color: var(--accent);
   font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Slide typography. Tailwind Preflight flattens headings, lists
+   and tables inside rendered Markdown; restore them. Everything is
+   in `em`, so it follows the viewer's base size in both modes.
+   ───────────────────────────────────────────────────────────── */
+
+.edtrace-host .edtrace-viewer .renderings > span,
+.edtrace-host .edtrace-viewer .renderings .markdown {
+  display: block;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown :is(h1, h2, h3) {
+  display: block;
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+  color: var(--et-h2);
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown h1 {
+  padding-top: 0.35em;
+  font-size: 2.1em;
+  color: var(--et-h1);
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown h2 {
+  padding-top: 0.7em;
+  padding-bottom: 0.15em;
+  font-size: 1.55em;
+  color: var(--et-h1);
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown h3 {
+  padding-top: 0.5em;
+  font-size: 1.22em;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown p {
+  margin: 0.45em 0;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown :is(ul, ol) {
+  display: block;
+  margin: 0;
+  padding-left: 1.4em;
+  list-style-position: outside;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown ul {
+  list-style-type: disc;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown ol {
+  list-style-type: decimal;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown li {
+  margin: 0.3em 0;
+  padding-left: 0.2em;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown li::marker {
+  color: var(--et-present-current-line-marker);
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown blockquote {
+  margin: 0.5em 0;
+  padding: 0.5em 0.9em;
+  border-left: 4px solid var(--et-present-current-line-marker);
+  border-radius: 0 8px 8px 0;
+  background-color: var(--et-present-current-line);
+  font-size: 1.08em;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown table {
+  width: 100%;
+  margin: 0.4em 0;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown :is(th, td) {
+  padding: 0.42em 0.75em;
+  border-bottom: 1px solid var(--et-header-border);
+  vertical-align: top;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown th {
+  border-bottom: 2px solid var(--et-navbtn-border);
+  background-color: var(--et-pre-bg);
+  font-weight: 700;
+  color: var(--et-h1);
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown pre {
+  margin: 0.4em 0;
+  padding: 0.7em 1em;
+  overflow-x: auto;
+  border: 1px solid var(--et-pre-border);
+  border-radius: 8px;
+  background-color: var(--et-pre-bg);
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown :not(pre) > code {
+  padding: 0.05em 0.3em;
+  border-radius: 4px;
+  background-color: var(--et-pre-bg);
+  font-size: 0.9em;
+}
+
+.edtrace-host .edtrace-viewer .renderings img {
+  width: auto !important;
+  max-width: 100% !important;
+  max-height: 70vh;
+  border-radius: 8px;
+}
+
+/*
+ * `image(..., width="38%", style={"float": "right"})`: the vendored viewer forces
+ * width to 100%, so the build passes the author's width as `--et-width`.
+ */
+.edtrace-host .edtrace-viewer .renderings {
+  display: flow-root;
+}
+
+.edtrace-host .edtrace-viewer .renderings .markdown {
+  display: flow-root;
+}
+
+.edtrace-host .edtrace-viewer .renderings img[style*="--et-width"] {
+  width: var(--et-width) !important;
+  object-fit: contain; /* never stretch when the height limit applies */
+}
+
+.edtrace-host .edtrace-viewer .renderings img[style*="float: right"] {
+  float: right;
+  max-width: 50% !important;
+  margin: 0.4em 0 0.6em 1.6em;
+}
+
+@media (max-width: 760px) {
+  .edtrace-host .edtrace-viewer .renderings img[style] {
+    float: none !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin-left: 0;
+  }
+}
+
+/* A slide's sources sit together on one small line under it. */
+.edtrace-host .edtrace-viewer .renderings > span:has(> .link-container) {
+  display: inline-block;
+  margin-right: 1.2em;
+  font-size: 0.74em;
+}
+
+.edtrace-host .edtrace-viewer .renderings .vega-embed {
+  max-width: 100%;
+}
+
+.edtrace-host .edtrace-viewer .renderings .vega-embed :is(canvas, svg) {
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Full screen is read from the back of a room: scale type with
+   the display, keep one centred column, and drop the viewer's
+   own header (the toolbar already carries the controls, and the
+   second bar hid the top of the table of contents).
+   ───────────────────────────────────────────────────────────── */
+
+.edtrace-host.is-fullscreen .edtrace-viewer {
+  --et-slide-size: clamp(20px, min(1.75vw, 3.1vh), 40px);
+  font-size: var(--et-slide-size);
+  line-height: 1.5;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .trace-viewer-container.present-mode {
+  font-size: inherit;
+}
+
+/* The header shrinks to a control dock in the bottom-right corner. */
+.edtrace-host.is-fullscreen .edtrace-viewer .trace-viewer-container .header {
+  position: fixed;
+  top: auto;
+  right: 16px;
+  bottom: 16px;
+  left: auto;
+  z-index: 120;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--et-header-border);
+  border-radius: 12px;
+  background-color: var(--et-header-bg);
+  box-shadow: 0 4px 18px var(--et-hover-shadow);
+  backdrop-filter: none;
+  font-size: 15px;
+}
+
+/* Breadcrumb and the viewer's progress bar: the toolbar covers both. */
+.edtrace-host.is-fullscreen .edtrace-viewer .header .trace-identity,
+.edtrace-host.is-fullscreen .edtrace-viewer .header-title ~ div {
+  display: none;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .header .icon-buttons {
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .trace-viewer-container {
+  padding-top: 0.8em;
+  /* Room for any line, even near the end, to move to the top of the screen. */
+  padding-bottom: 85vh;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .trace-viewer-container:not(.present-mode) .lines-panel {
+  max-width: 50em;
+  margin: 0 auto;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .line {
+  scroll-margin-top: calc(var(--et-toolbar-height) + 1.5em);
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .code-container {
+  font-family: var(--font-mono), ui-monospace, Menlo, monospace;
+  font-size: 0.92em;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .line-number {
+  font-size: 0.65em;
+  line-height: 2.2;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .line.et-rendering-line,
+.edtrace-host.is-fullscreen .edtrace-viewer .line:has(.renderings) {
+  padding: 0.2em 0.9em;
+  border-radius: 8px;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .line.cloaked:not(.et-toc-call-line, .et-toc-header-line) {
+  opacity: 0.08;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .env-panel {
+  font-size: 0.8em;
+}
+
+/* Values belong to the code demos: step onto a slide and the panel gets out of the way. */
+.edtrace-host.is-fullscreen
+  .edtrace-viewer
+  .trace-viewer-container:has(.current-line .renderings)
+  .env-panel {
+  display: none;
+}
+
+/* Below the current line only veiled content is covered. */
+@media (min-width: 761px) {
+  .edtrace-host.is-fullscreen
+    .edtrace-viewer
+    .trace-viewer-container:not(.present-mode)
+    .env-panel[style*="left: 20px"][style*="top: 20px"] {
+    top: auto !important;
+    right: 16px !important;
+    bottom: 84px !important;
+    max-height: 40vh;
+  }
+}
+
+/* A highlighted slide needs a marker, not a coloured box behind charts and tables. */
+.edtrace-host.is-fullscreen .edtrace-viewer .line.current-line:has(.renderings) {
+  background-color: transparent;
+  box-shadow: inset 4px 0 var(--et-present-current-line-marker);
+}
+
+/* Table of contents as an agenda: roomy rows, one clear highlight. */
+.edtrace-host.is-fullscreen .edtrace-viewer .line.et-toc-header-line,
+.edtrace-host.is-fullscreen .edtrace-viewer .line.et-toc-call-line {
+  padding-top: 0.16em;
+  padding-bottom: 0.16em;
+  line-height: 1.5;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .line.et-toc-header-line {
+  margin-bottom: 0.2em;
+  font-weight: 700;
+}
+
+.edtrace-host .edtrace-viewer .line.et-toc-header-line.current-line,
+.edtrace-host .edtrace-viewer .line.et-toc-call-line.current-line {
+  background-color: var(--et-present-current-line);
+  box-shadow: inset 4px 0 var(--et-present-current-line-marker);
+  font-weight: 700;
+}
+
+.edtrace-progress {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 3px;
+  background-color: var(--accent);
+  transition: width 0.2s ease-out;
+}
+
+/* Instant labels for the viewer's icon buttons (`data-tip`, set by the host). */
+.edtrace-host .edtrace-viewer .icon-buttons button[data-tip] {
+  position: relative;
+}
+
+.edtrace-host .edtrace-viewer .icon-buttons button[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 300;
+  display: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.edtrace-host.is-fullscreen .edtrace-viewer .icon-buttons button[data-tip]::after {
+  top: auto;
+  bottom: calc(100% + 12px);
+}
+
+.edtrace-host .edtrace-viewer .icon-buttons button[data-tip]:is(:hover, :focus-visible)::after {
+  display: block;
 }
 
 @media (max-width: 760px) {

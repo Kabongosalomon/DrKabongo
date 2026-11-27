@@ -228,7 +228,13 @@
     "shortcut_step_over": "Ruka chaguo-kukokotoa",
     "shortcut_step_out": "Toka kwenye chaguo-kukokotoa",
     "shortcut_updates": "Sasisho lililotangulia / linalofuata",
-    "shortcut_toggles": "Msimbo / mazingira / madokezo"
+    "shortcut_toggles": "Msimbo / mazingira / madokezo",
+    "tip_veil": "Onyesha / fifisha yanayofuata",
+    "tip_raw": "Onyesha msimbo ghafi",
+    "tip_values": "Onyesha / ficha thamani",
+    "tip_notes": "Onyesha / ficha madokezo",
+    "tip_over_back": "Ruka kurudi nyuma",
+    "tip_over_next": "Ruka kwenda mbele"
   },
   "blog": {
     "section_label": "Blogu",

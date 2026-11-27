@@ -228,7 +228,13 @@
     "shortcut_step_over": "Step over function",
     "shortcut_step_out": "Step out of function",
     "shortcut_updates": "Previous / next training update",
-    "shortcut_toggles": "Raw code / environment / notes"
+    "shortcut_toggles": "Raw code / environment / notes",
+    "tip_veil": "Show / veil upcoming lines",
+    "tip_raw": "Show raw code",
+    "tip_values": "Show / hide variable values",
+    "tip_notes": "Show / hide speaker notes",
+    "tip_over_back": "Step over, backward",
+    "tip_over_next": "Step over, forward"
   },
   "blog": {
     "section_label": "Blog",

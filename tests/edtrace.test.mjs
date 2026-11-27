@@ -175,7 +175,7 @@ describe('IndabaX DRC 2026 presentation (learning_in_the_llm_era) & i18n parity'
       fs.readFileSync(path.join(talkTraceDir, lang, 'learning_in_the_llm_era.json'), 'utf-8'),
     )
 
-  test('compiles lock-step traces across en, fr, ln, and lua with all 7 sections, BPE/embedding loops, plots, and blog links', () => {
+  test('compiles lock-step traces across en, fr, ln, and lua with all 10 sections, plots, and sources', () => {
     const en = loadTalk('en')
     const fr = loadTalk('fr')
     const ln = loadTalk('ln')
@@ -192,43 +192,80 @@ describe('IndabaX DRC 2026 presentation (learning_in_the_llm_era) & i18n parity'
     assert.deepEqual(
       tocEn.entries.map((e) => e.functionName),
       [
-        'the_rise_of_llms_and_history',
-        'crawl_walk_run_fly',
-        'conditional_probability_machines',
-        'bpe_and_the_tokenization_tax',
-        'embeddings_across_all_modalities',
-        'two_memories_and_congolese_speech',
-        'recognition_darakili_and_building_together',
+        'most_inventions_answer_a_limit',
+        'how_our_languages_became_low_resource',
+        'models_learn_by_counting',
+        'the_tokenization_tax',
+        'embeddings_and_cosine_similarity',
+        'metrics_that_miss_our_languages',
+        'local_llms_on_your_own_machine',
+        'masakhane_we_build_together',
+        'darakili_life_in_our_languages',
+        'a_science_behind_every_limit',
       ],
     )
+    // The title text and the poster appear together, in one step.
+    const titleSteps = en.steps.filter((s) =>
+      JSON.stringify(s.renderings ?? []).includes('indabax-drc-2026.jpg'),
+    )
+    assert.equal(titleSteps.length, 1)
+    const [poster, titleSlide] = titleSteps[0].renderings
+    assert.equal(poster.type, 'image')
+    assert.equal(poster.data, 'images/talks/indabax-drc-2026.jpg')
+    assert.equal(poster.style.float, 'right')
+    assert.equal(poster.style['--et-width'], '38%')
+    assert.ok(fs.existsSync(path.join(process.cwd(), 'public', 'edtrace', poster.data)))
+    assert.match(titleSlide.data, /^# /)
+
+    // Multi-line calls and `with together():` blocks show their result, never their source.
+    const [source] = Object.values(en.files)
+    const hidden = new Set(Object.values(en.hidden_line_numbers)[0])
+    const closingLines = source
+      .split('\n')
+      .flatMap((line, i) => (/^\s+"""\)/.test(line) ? [i + 1] : []))
+    assert.ok(closingLines.length > 40)
+    assert.ok(closingLines.every((n) => hidden.has(n)))
+
+    // A slide and its sources arrive in the same click.
+    const joshi = en.steps.filter((s) => JSON.stringify(s.renderings).includes('2004.09095'))
+    assert.equal(joshi.length, 1)
+    assert.equal(joshi[0].renderings[0].type, 'markdown')
+
+    // Every section opens on a heading, so the contents menu can name it.
+    assert.ok(tocEn.entries.every((e) => e.heading))
 
     const tocFr = extractTableOfContents(fr, false, 0)
     assert.equal(tocFr.header?.displayName, 'table_des_matieres')
-    assert.equal(tocFr.entries[0].displayName, 'essor_des_llm_et_lecon_de_l_histoire')
-    assert.equal(tocFr.entries[2].displayName, 'machines_a_probabilite_conditionnelle')
-    assert.equal(tocFr.entries[3].displayName, 'bpe_et_taxe_de_tokenisation')
-    assert.equal(tocFr.entries[4].displayName, 'embeddings_a_travers_les_modalites')
-    assert.equal(tocFr.entries[6].displayName, 'reconnaissance_darakili_et_batir_ensemble')
+    assert.equal(tocFr.entries[0].displayName, 'la_plupart_des_inventions_repondent_a_une_limite')
+    assert.equal(tocFr.entries[9].displayName, 'une_science_derriere_chaque_limite')
 
-    // Verify Vega-Lite plots exist (venue surge, conditional probability, BPE tax, multimodal embeddings).
+    // Token tax and local-model memory charts.
     const plots = en.steps.flatMap((s) => (s.renderings || []).filter((r) => r.type === 'plot'))
-    assert.equal(plots.length, 4)
+    assert.equal(plots.length, 2)
 
-    // Verify poster asset, grounded external sources, production blog links, Africa AI 100, SALELA BONGO LLC, and DarAkili.
-    assert.ok(
-      fs.existsSync(
-        path.join(process.cwd(), 'public', 'edtrace', 'images', 'talks', 'indabax-drc-2026.jpg'),
-      ),
-    )
+    // BPE adds exactly one symbol to the vocabulary per merge: 9 characters, then 4 merges.
+    const vocab = en.steps.flatMap((s) => (s.env?.vocab_size ? [s.env.vocab_size.contents] : []))
+    assert.deepEqual(vocab, [10, 11, 12, 13])
+
+    // The metrics demo must show the wrong-meaning answer outscoring the right one.
+    const chrf = en.steps.flatMap((s) => (s.env?.chrf ? [s.env.chrf.contents] : []))
+    assert.equal(chrf.length, 2)
+    assert.ok(chrf[1] > chrf[0])
+
+    // No slide prose may be missing from a language.
+    for (const trace of [en, fr, ln, lua]) {
+      assert.doesNotMatch(JSON.stringify(trace), /undefined/)
+    }
+
     const serializedEn = JSON.stringify(en)
-    assert.match(serializedEn, /https:\/\/hai\.stanford\.edu\/ai-index/)
-    assert.match(serializedEn, /https:\/\/sensortower\.com/)
-    assert.match(serializedEn, /https:\/\/appfigures\.com/)
-    assert.match(serializedEn, /https:\/\/arxiv\.org\/abs\/2207\.08815/)
+    assert.match(serializedEn, /https:\/\/arxiv\.org\/abs\/2004\.09095/)
+    assert.match(serializedEn, /https:\/\/aclanthology\.org\/W15-3049\//)
+    assert.match(serializedEn, /https:\/\/ollama\.com/)
+    assert.match(serializedEn, /https:\/\/modelcontextprotocol\.io/)
+    assert.match(serializedEn, /https:\/\/aclanthology\.org\/2020\.findings-emnlp\.195\//)
     assert.match(serializedEn, /https:\/\/drkabongo\.com\/blog\/conditional-probability-machines/)
     assert.match(serializedEn, /https:\/\/drkabongo\.com\/blog\/llm-two-memories/)
-    assert.match(serializedEn, /https:\/\/drkabongo\.com\/blog\/llm-two-memories-part-2/)
-    assert.match(serializedEn, /Africa AI 100/)
+    assert.match(serializedEn, /Masakhane Research Foundation/)
     assert.match(serializedEn, /SALELA BONGO LLC/)
     assert.match(serializedEn, /DarAkili/)
 
